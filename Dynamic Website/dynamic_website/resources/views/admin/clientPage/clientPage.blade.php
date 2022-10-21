@@ -133,10 +133,15 @@
                             <p class="wow fadeInUp" data-wow-delay="0.6s">{{ $homeDataClient->home_description }}</p>
                             <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    {{-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest"></i></a></li> --}}
+
+
+                                    @foreach ($homeAllSocialDataClient as $homeSocialDataClient )
+                                      <li><a target="_blank" href="{{$homeSocialDataClient->homeSocialaddress}}"><i class="{{$homeSocialDataClient->homeSocialIcon}}"></i></a></li>  
+                                    @endforeach
                                 </ul>
                             </div>
                             <a href="#" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
@@ -144,14 +149,14 @@
                     </div>
                     <div class="col-xl-5 col-lg-6 d-none d-lg-block">
                         <div class="banner-img text-right">
-                            <img width="600px" height="600px" src="{{asset("uploads/homeSection")}}/{{$homeDataClient->home_image}}" alt="">
+                            <img width="600px" height="750px" src="{{asset("uploads/homeSection")}}/{{$homeDataClient->home_image}}" alt="">
                         </div>
                     </div>
                 </div>
                @endforeach
             
             </div>
-            <div class="banner-shape"><img src="img/shape/dot_circle.png" class="rotateme" alt="img"></div>
+            <div class="banner-shape"><img src="{{ asset('dynamic_webpage/img/shape/dot_circle.png') }}" class="rotateme" alt="img"></div>
         </section>
         <!-- banner-area-end -->
 
@@ -161,7 +166,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="about-img">
-                            <img src="img/banner/banner_img2.png" title="me-01" alt="me-01">
+                            <img src="{{ asset('dynamic_webpage/img/banner/banner_img2.png') }}" title="me-01" alt="me-01">
                         </div>
                     </div>
                     <div class="col-lg-6 pr-90">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\homeSecSocialModel;
 use Illuminate\Support\Str;
 use App\Models\homeSectionModel;
 use Carbon\Carbon;
@@ -13,8 +14,10 @@ class homeSectionController extends Controller
     function homeSectionpage()
     {
         $homeAllData = homeSectionModel::all();
+        $homeAllSocialDataClient = homeSecSocialModel::all();
         return view("admin.homeSection.homeSectionpage", [
             'homeAllData' => $homeAllData,
+            'homeAllSocialDataClient' => $homeAllSocialDataClient,
         ]);
     }
 
@@ -59,4 +62,84 @@ class homeSectionController extends Controller
             return back()->with("homeInsertFail", "One user data already insert for home page!!");
         }
     }
+
+
+    function homeSocialInsert(Request $req)
+    {
+
+        homeSecSocialModel::insert([
+            'homeSocialIcon' => $req->home_socialIcon,
+            'homeSocialaddress' => $req->home_socialaddress,
+            'created_at'=>Carbon::now(),
+        ]);
+
+        return back()->with('HomeinsertSocialSuccess', "Insert Success");
+
+    }
+
+
+function Homedelete($homeSecId){
+    homeSectionModel::find($homeSecId)->delete();
+    return back();
+}
+
+
+function HomeParmanentdeletePage(){
+    $AllhomeSecTrashed = homeSectionModel::onlyTrashed()->get();
+    $AllhomeSecSocialTrashed = homeSecSocialModel::onlyTrashed()->get();
+    return view("admin.homeSection.homeTrashBin",[
+            'AllhomeSecTrashed' => $AllhomeSecTrashed,
+            'AllhomeSecSocialTrashed' => $AllhomeSecSocialTrashed,
+    ]);
+}
+
+
+function HomeParmanentRestore($homeSecResId){
+
+    homeSectionModel::onlyTrashed()->find($homeSecResId)->restore();
+
+
+    return back();
+
+}
+
+
+function HomeParmanentdelete($homeSecParDelId){
+
+
+    $homeConentId = homeSectionModel::onlyTrashed()->where("id",$homeSecParDelId)->first()->home_image;
+    $deleteImg = public_path("uploads/homeSection/". $homeConentId);
+    unlink($deleteImg);
+
+    homeSectionModel::onlyTrashed()->find($homeSecParDelId)->forceDelete();
+
+    return back();
+
+}
+
+
+
+
+
+function homeSocialDeletePage($homesocialPageId){
+    homeSecSocialModel::find($homesocialPageId)->delete();
+
+    return back();
+}
+
+
+function homeSocialDeleteResore($homesocialPageId){
+
+    homeSecSocialModel::onlyTrashed()->find($homesocialPageId)->restore();
+     return back();
+
+}
+
+
+function homeSocialParmanantDelete($homeSecSocialParDelId){
+    homeSecSocialModel::onlyTrashed()->find($homeSecSocialParDelId)->forceDelete();
+    return back();
+}
+
+
 }

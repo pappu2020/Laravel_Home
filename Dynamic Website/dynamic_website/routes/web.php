@@ -32,3 +32,16 @@ Route::get('/clientPage', [clientPageController::class, 'clientPage'])->name('cl
 
 Route::get("/homeSectionpage",[homeSectionController::class, "homeSectionpage"])->name("homeSectionpage");
 Route::post("/homeSectionpage/homeInsert",[homeSectionController::class, "homeInsert"])->name("homeInsert");
+Route::post("/homeSectionpage/homeSocialInsert",[homeSectionController::class, "homeSocialInsert"])->name("homeSocialInsert");
+Route::get("/homeSectionpage/Homedelete/{homeSecId}", [homeSectionController::class, "Homedelete"])->name("Homedelete");
+Route::get("/homeSectionpage/HomeParmanentdeletePage", [homeSectionController::class, "HomeParmanentdeletePage"])->name("HomeParmanentdeletePage");
+Route::get("/homeSectionpage/HomeParmanentRestore/{homeSecResId}", [homeSectionController::class, "HomeParmanentRestore"])->name("HomeParmanentRestore");
+Route::get("/homeSectionpage/HomeParmanentdelete/{homeSecParDelId}", [homeSectionController::class, "HomeParmanentdelete"])->name("HomeParmanentdelete");
+
+
+
+Route::get("/homeSectionpage/homeSocialDeletePage/{homesocialPageId}", [homeSectionController::class, "homeSocialDeletePage"])->name("homeSocialDeletePage");
+Route::get("/homeSectionpage/homeSocialDeleteResore/{homesocialPageId}", [homeSectionController::class, "homeSocialDeleteResore"])->name("homeSocialDeleteResore");
+Route::get("/homeSectionpage/homeSocialParmanantDelete/{homeSecSocialParDelId}", [homeSectionController::class, "homeSocialParmanantDelete"])->name("homeSocialParmanantDelete");
+
+

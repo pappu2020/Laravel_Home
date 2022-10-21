@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string("home_name");
             $table->longText("home_description");
+           
             $table->string("home_image")->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

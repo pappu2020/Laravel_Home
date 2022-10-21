@@ -58,22 +58,30 @@
                         Apps
                     </li>
                     <li class="active-page">
-                        <a href="{{route("home")}}" class="active"><i
+                        <a href="{{ route('home') }}" class="active"><i
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
                     <li>
                         <a href="index.html"><i class="material-icons-two-tone">dashboard</i>Profile</a>
                     </li>
                     <li>
-                        <a href="{{route("clientPage")}}" target="_blank"><i class="material-icons-two-tone">dashboard</i>Visit client page</a>
+                        <a href="{{ route('clientPage') }}" target="_blank"><i
+                                class="material-icons-two-tone">dashboard</i>Visit client page</a>
                     </li>
 
                     <li>
                         <a href=""><i class="material-icons-two-tone">star</i>Services<i
                                 class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                         <ul class="sub-menu">
-                            <li>
-                                <a href="{{route("homeSectionpage")}}">Home Section</a>
+
+                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                    <i class="flaticon-381-television"></i>
+                                    <span class="nav-text">Home Section</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('homeSectionpage') }}">Add Content</a></li>
+                                    <li><a href="{{route("HomeParmanentdeletePage")}}">Trash Bin</a></li>
+                                </ul>
                             </li>
                             <li>
                                 <a href="invoice.html">About me section</a>
@@ -81,10 +89,10 @@
                             <li>
                                 <a href="settings.html">Services and solution</a>
                             </li>
-                           
+
                             <li>
                                 <a href="error.html">Recent works</a>
-                            </li> 
+                            </li>
                             <li>
                                 <a href="error.html">Customer Quotes</a>
                             </li>
@@ -304,6 +312,7 @@
     <script src="{{ asset('dashboard_asset/assets/js/main.min.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/js/custom.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/js/pages/dashboard.js') }}"></script>
+    <script src="https://kit.fontawesome.com/ecd7a02304.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
