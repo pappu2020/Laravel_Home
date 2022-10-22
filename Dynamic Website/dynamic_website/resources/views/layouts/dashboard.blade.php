@@ -83,9 +83,21 @@
                                     <li><a href="{{route("HomeParmanentdeletePage")}}">Trash Bin</a></li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="invoice.html">About me section</a>
+
+
+                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                    <i class="flaticon-381-television"></i>
+                                    <span class="nav-text">About me section</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('aboutSectionpage') }}">Add Content</a></li>
+                                    <li><a href="{{route("aboutSectionParmanantDeletePage")}}">Trash Bin</a></li>
+                                    <li><a href="{{route("aboutSectionDesParmanantDeletePage")}}">Trash Bin Description</a></li>
+                                </ul>
                             </li>
+
+
+                            
                             <li>
                                 <a href="settings.html">Services and solution</a>
                             </li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\aboutMeSectionController;
 use App\Http\Controllers\clientPageController;
 use App\Http\Controllers\homeSectionController;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +51,40 @@ Route::get("/homeSectionpage/homeSocialParmanantDelete/{homeSecSocialParDelId}",
 
 Route::post("/homeSectionpage/homeSocialUpdate", [homeSectionController::class, "homeSocialUpdate"])->name("homeSocialUpdate");
 Route::get("/homeSectionpage/homeSocialUpdateShow/{homeSocialUpdate}", [homeSectionController::class, "homeSocialUpdateShow"])->name("homeSocialUpdateShow");
+
+
+
+
+
+
+//About me section
+
+Route::get("/aboutSectionpage", [aboutMeSectionController::class, "aboutSectionpage"])->name("aboutSectionpage");
+Route::post("/aboutSectionpage/aboutSectionInsert", [aboutMeSectionController::class, "aboutSectionInsert"])->name("aboutSectionInsert");
+Route::post("/aboutSectionpage/aboutSectionDesInsert", [aboutMeSectionController::class, "aboutSectionDesInsert"])->name("aboutSectionDesInsert");
+
+
+//update
+Route::get("/aboutSectionpage/aboutSectionpageUpdate/{aboutSecInfoId}", [aboutMeSectionController::class, "aboutSectionpageUpdate"])->name("aboutSectionpageUpdate");
+Route::post("/aboutSectionpage/aboutSectionUpdate", [aboutMeSectionController::class, "aboutSectionUpdate"])->name("aboutSectionUpdate");
+Route::get("/aboutSectionpage/aboutSectionDesPageUpdate/{aboutSecDesInfoId}", [aboutMeSectionController::class, "aboutSectionDesPageUpdate"])->name("aboutSectionDesPageUpdate");
+
+Route::post("/aboutSectionpage/aboutSectionDesUpdate", [aboutMeSectionController::class, "aboutSectionDesUpdate"])->name("aboutSectionDesUpdate");
+
+
+
+//delete
+
+Route::get("/aboutSectionpage/aboutSectiondelete/{aboutSecId}", [aboutMeSectionController::class, "aboutSectiondelete"])->name("aboutSectiondelete");
+Route::get("/aboutSectionpage/aboutSectionParmanantDeletePage", [aboutMeSectionController::class, "aboutSectionParmanantDeletePage"])->name("aboutSectionParmanantDeletePage");
+
+Route::get("/aboutSectionpage/aboutSectionParmanantResore/{aboutSecResId}", [aboutMeSectionController::class, "aboutSectionParmanantResore"])->name("aboutSectionParmanantResore");
+
+Route::get("/aboutSectionpage/aboutSectionpageParmanantDelete/{aboutSecParDelId}", [aboutMeSectionController::class, "aboutSectionpageParmanantDelete"])->name("aboutSectionpageParmanantDelete");
+
+
+
+Route::get("/aboutSectionpage/aboutSectionDesdelete/{aboutSecDesId}", [aboutMeSectionController::class, "aboutSectionDesdelete"])->name("aboutSectionDesdelete");
+Route::get("/aboutSectionpage/aboutSectionDesParmanantDeletePage", [aboutMeSectionController::class, "aboutSectionDesParmanantDeletePage"])->name("aboutSectionDesParmanantDeletePage");
+Route::get("/aboutSectionpage/aboutSectionDesParmanantResore/{aboutSecDEsResId}", [aboutMeSectionController::class, "aboutSectionDesParmanantResore"])->name("aboutSectionDesParmanantResore");
+Route::get("/aboutSectionpage/aboutSectionpageDesParmanantDelete/{aboutSecDesParDelId}", [aboutMeSectionController::class, "aboutSectionpageDesParmanantDelete"])->name("aboutSectionpageDesParmanantDelete");

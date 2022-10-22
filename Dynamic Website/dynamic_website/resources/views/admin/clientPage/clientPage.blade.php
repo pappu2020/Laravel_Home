@@ -120,43 +120,48 @@
         <!-- banner-area -->
         <section id="home" class="banner-area banner-bg fix">
             <div class="container">
-                
+
                 @foreach ($homeAllDataClient as $homeDataClient)
-                    
-               
-                <div class="row align-items-center">
-                    <div class="col-xl-7 col-lg-6">
-                        <div class="banner-content">
-                            <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am {{ $homeDataClient->home_name }}
-                            </h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.6s">{{ $homeDataClient->home_description }}</p>
-                            <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
-                                <ul>
-                                    {{-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <div class="row align-items-center">
+                        <div class="col-xl-7 col-lg-6">
+                            <div class="banner-content">
+                                <h6 class="wow fadeInUp" data-wow-delay="0.2s">HELLO!</h6>
+                                <h2 class="wow fadeInUp" data-wow-delay="0.4s">I am {{ $homeDataClient->home_name }}
+                                </h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.6s">{{ $homeDataClient->home_description }}
+                                </p>
+                                <div class="banner-social wow fadeInUp" data-wow-delay="0.8s">
+                                    <ul>
+                                        {{-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                     <li><a href="#"><i class="fab fa-pinterest"></i></a></li> --}}
 
 
-                                    @foreach ($homeAllSocialDataClient as $homeSocialDataClient )
-                                      <li><a target="_blank" href="{{$homeSocialDataClient->homeSocialaddress}}"><i class="{{$homeSocialDataClient->homeSocialIcon}}"></i></a></li>  
-                                    @endforeach
-                                </ul>
+                                        @foreach ($homeAllSocialDataClient as $homeSocialDataClient)
+                                            <li><a target="_blank"
+                                                    href="{{ $homeSocialDataClient->homeSocialaddress }}"><i
+                                                        class="{{ $homeSocialDataClient->homeSocialIcon }}"></i></a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
                             </div>
-                            <a href="#" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
+                        </div>
+                        <div class="col-xl-5 col-lg-6 d-none d-lg-block">
+                            <div class="banner-img text-right">
+                                <img width="600px" height="750px"
+                                    src="{{ asset('uploads/homeSection') }}/{{ $homeDataClient->home_image }}"
+                                    alt="">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-6 d-none d-lg-block">
-                        <div class="banner-img text-right">
-                            <img width="600px" height="750px" src="{{asset("uploads/homeSection")}}/{{$homeDataClient->home_image}}" alt="">
-                        </div>
-                    </div>
-                </div>
-               @endforeach
-            
+                @endforeach
+
             </div>
-            <div class="banner-shape"><img src="{{ asset('dynamic_webpage/img/shape/dot_circle.png') }}" class="rotateme" alt="img"></div>
+            <div class="banner-shape"><img src="{{ asset('dynamic_webpage/img/shape/dot_circle.png') }}"
+                    class="rotateme" alt="img"></div>
         </section>
         <!-- banner-area-end -->
 
@@ -165,9 +170,12 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <div class="about-img">
-                            <img src="{{ asset('dynamic_webpage/img/banner/banner_img2.png') }}" title="me-01" alt="me-01">
-                        </div>
+                        @foreach ($AllaboutSecDescriptionData as $aboutSecDescriptionData)
+                            <div class="about-img">
+                                <img src="{{ asset('uploads/aboutSection')}}/{{$aboutSecDescriptionData->aboutImage}}" title="me-01"
+                                    alt="me-01">
+
+                            </div>
                     </div>
                     <div class="col-lg-6 pr-90">
                         <div class="section-title mb-25">
@@ -175,77 +183,40 @@
                             <h2>About Me</h2>
                         </div>
                         <div class="about-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, sed repudiandae odit
-                                deserunt, quas
-                                quibusdam necessitatibus nesciunt eligendi esse sit non reprehenderit quisquam
-                                asperiores maxime
-                                blanditiis culpa vitae velit. Numquam!</p>
+
+
+
+                            <p>{{ $aboutSecDescriptionData->aboutSection_description }}</p>
+                            @endforeach
                             <h3>Education:</h3>
                         </div>
                         <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2020</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>PHD of Interaction Design &amp; Animation</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s"
-                                            data-wow-duration="2s" role="progressbar" style="width: 65%;"
-                                            aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+
+
+
+                        @foreach ($AllaboutSecData as $aboutSecData)
+                            <div class="education">
+                                <div class="year">{{ $aboutSecData->about_Exam_year }}</div>
+                                <div class="line"></div>
+                                <div class="location">
+                                    <span>{{ $aboutSecData->about_Exam_name }}</span>
+                                    <div class="progressWrapper">
+                                        <div class="progress">
+                                            <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s"
+                                                data-wow-duration="2s" role="progressbar"
+                                                style="width: {{ $aboutSecData->about_Exam_result }}%;"
+                                                aria-valuenow="{{ $aboutSecData->about_Exam_result }}"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2016</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Master of Database Administration</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s"
-                                            data-wow-duration="2s" role="progressbar" style="width: 75%;"
-                                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2010</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Bachelor of Computer Engineering</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s"
-                                            data-wow-duration="2s" role="progressbar" style="width: 85%;"
-                                            aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
-                        <!-- Education Item -->
-                        <div class="education">
-                            <div class="year">2005</div>
-                            <div class="line"></div>
-                            <div class="location">
-                                <span>Diploma of Computer</span>
-                                <div class="progressWrapper">
-                                    <div class="progress">
-                                        <div class="progress-bar wow slideInLefts" data-wow-delay="0.2s"
-                                            data-wow-duration="2s" role="progressbar" style="width: 90%;"
-                                            aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Education Item -->
+                        @endforeach
+
+
+
+
+
                     </div>
                 </div>
             </div>
