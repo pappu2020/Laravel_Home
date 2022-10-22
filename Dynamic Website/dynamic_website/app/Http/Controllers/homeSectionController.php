@@ -15,9 +15,11 @@ class homeSectionController extends Controller
     {
         $homeAllData = homeSectionModel::all();
         $homeAllSocialDataClient = homeSecSocialModel::all();
+       
         return view("admin.homeSection.homeSectionpage", [
             'homeAllData' => $homeAllData,
             'homeAllSocialDataClient' => $homeAllSocialDataClient,
+            
         ]);
     }
 
@@ -141,5 +143,67 @@ function homeSocialParmanantDelete($homeSecSocialParDelId){
     return back();
 }
 
+
+
+//update
+
+function homeContentUpdate(Request $req){
+    if($req ->Update_home_image==null){
+        homeSectionModel::where("id",$req->hiddenHomeId)->update([
+                'home_name' => $req->Update_home_name,
+                'home_description' => $req->Update_home_description,
+             
+        ]);
+        return back()->with("updateHomeSuccess", "update success!");
+    }
+
+
+    else{
+            $homeContentId = homeSectionModel::where("id", $req->hiddenHomeId)->first()->home_image;
+            $deleteImg = public_path("uploads/homeSection/" . $homeContentId);
+            unlink($deleteImg);
+
+
+            $homeSection_img_update = $req->Update_home_image;
+            $extention_home_update = $homeSection_img_update->getClientOriginalExtension();
+
+
+            $after_replace_home_update = str_replace('', '-', $req->Update_home_name);
+            $fileNameUpdate = Str::lower($after_replace_home_update) . "-" . rand(1000000, 199999) . "." . $extention_home_update;
+            Image::make($homeSection_img_update)->save(public_path('uploads/homeSection/' . $fileNameUpdate));
+
+            homeSectionModel::where("id", $req->hiddenHomeId)->update([
+                'home_name' => $req->Update_home_name,
+                'home_description' => $req->Update_home_description,
+                'home_image' => $fileNameUpdate,
+            ]);
+
+            return back()->with("updateHomeSuccess","update success!");
+
+    }
+}
+
+
+
+function homeSocialUpdate(Request $req){
+
+    homeSecSocialModel::where("id",$req->hiddenHomeSocialId)->update([
+            'homeSocialIcon' => $req->Update_home_socialIcon,
+            'homeSocialaddress' => $req->Update_home_socialaddress,
+    ]);
+        return back()->with("updateHomeSocialSuccess", "update success!");
+
+}
+
+
+function homeSocialUpdateShow($homeSocialUpdate){
+
+        $homeAllSocialDataForUpdate = homeSecSocialModel::where("id", $homeSocialUpdate)->first();
+
+       return view("admin.homeSection.homeSocialUpdateShow",[
+            'homeAllSocialDataForUpdate'=> $homeAllSocialDataForUpdate,
+       ]);
+
+}
 
 }

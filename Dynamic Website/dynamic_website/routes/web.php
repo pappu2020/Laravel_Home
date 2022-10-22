@@ -38,10 +38,15 @@ Route::get("/homeSectionpage/HomeParmanentdeletePage", [homeSectionController::c
 Route::get("/homeSectionpage/HomeParmanentRestore/{homeSecResId}", [homeSectionController::class, "HomeParmanentRestore"])->name("HomeParmanentRestore");
 Route::get("/homeSectionpage/HomeParmanentdelete/{homeSecParDelId}", [homeSectionController::class, "HomeParmanentdelete"])->name("HomeParmanentdelete");
 
+Route::post("/homeSectionpage/homeContentUpdate", [homeSectionController::class, "homeContentUpdate"])->name("homeContentUpdate");
+
+
+
 
 
 Route::get("/homeSectionpage/homeSocialDeletePage/{homesocialPageId}", [homeSectionController::class, "homeSocialDeletePage"])->name("homeSocialDeletePage");
 Route::get("/homeSectionpage/homeSocialDeleteResore/{homesocialPageId}", [homeSectionController::class, "homeSocialDeleteResore"])->name("homeSocialDeleteResore");
 Route::get("/homeSectionpage/homeSocialParmanantDelete/{homeSecSocialParDelId}", [homeSectionController::class, "homeSocialParmanantDelete"])->name("homeSocialParmanantDelete");
 
-
+Route::post("/homeSectionpage/homeSocialUpdate", [homeSectionController::class, "homeSocialUpdate"])->name("homeSocialUpdate");
+Route::get("/homeSectionpage/homeSocialUpdateShow/{homeSocialUpdate}", [homeSectionController::class, "homeSocialUpdateShow"])->name("homeSocialUpdateShow");
