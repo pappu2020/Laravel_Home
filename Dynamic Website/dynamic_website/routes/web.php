@@ -3,6 +3,7 @@
 use App\Http\Controllers\aboutMeSectionController;
 use App\Http\Controllers\clientPageController;
 use App\Http\Controllers\homeSectionController;
+use App\Http\Controllers\serviceSectionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -88,3 +89,20 @@ Route::get("/aboutSectionpage/aboutSectionDesdelete/{aboutSecDesId}", [aboutMeSe
 Route::get("/aboutSectionpage/aboutSectionDesParmanantDeletePage", [aboutMeSectionController::class, "aboutSectionDesParmanantDeletePage"])->name("aboutSectionDesParmanantDeletePage");
 Route::get("/aboutSectionpage/aboutSectionDesParmanantResore/{aboutSecDEsResId}", [aboutMeSectionController::class, "aboutSectionDesParmanantResore"])->name("aboutSectionDesParmanantResore");
 Route::get("/aboutSectionpage/aboutSectionpageDesParmanantDelete/{aboutSecDesParDelId}", [aboutMeSectionController::class, "aboutSectionpageDesParmanantDelete"])->name("aboutSectionpageDesParmanantDelete");
+
+
+
+
+
+//Service Section
+
+
+Route::get("/serviceSectionPage",[serviceSectionController::class, "serviceSectionPage"])->name("serviceSectionPage");
+Route::post("/serviceSectionPage/serviceSectionInsert",[serviceSectionController::class, "serviceSectionInsert"])->name("serviceSectionInsert");
+Route::get("/serviceSectionEditPage/{serviceEditId}", [serviceSectionController::class, "serviceSectionEditPage"])->name("serviceSectionEditPage");
+Route::post("/serviceSectionUpdate", [serviceSectionController::class, "serviceSectionUpdate"])->name("serviceSectionUpdate");
+
+Route::get("/serviceSectionDelete/{serviceDeleteId}", [serviceSectionController::class, "serviceSectionDelete"])->name("serviceSectionDelete");
+Route::get("/serviceSectionParmanantDeletePage", [serviceSectionController::class, "serviceSectionParmanantDeletePage"])->name("serviceSectionParmanantDeletePage");
+Route::get("/serviceSectionParmanantDeletePage/serviceSectionRestore/{serviceRestoreId}", [serviceSectionController::class, "serviceSectionRestore"])->name("serviceSectionRestore");
+Route::get("/serviceSectionParmanantDeletePage/serviceSectionParmanantDelete/{serviceParDelId}", [serviceSectionController::class, "serviceSectionParmanantDelete"])->name("serviceSectionParmanantDelete");

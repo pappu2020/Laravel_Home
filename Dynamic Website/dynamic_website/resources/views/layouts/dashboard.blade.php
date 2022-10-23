@@ -22,9 +22,12 @@
     <link
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
-    <link href="{{ asset('dashboard_asset/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('dashboard_asset/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('dashboard_asset/assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard_asset/assets/plugins/pace/pace.css') }}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
 
     <!-- Theme Styles -->
@@ -97,11 +100,19 @@
                             </li>
 
 
-                            
-                            <li>
-                                <a href="settings.html">Services and solution</a>
+                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                    <i class="flaticon-381-television"></i>
+                                    <span class="nav-text">Services and solution</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('serviceSectionPage') }}">Add Content</a></li>
+                                    <li><a href="{{route("serviceSectionParmanantDeletePage")}}">Trash Bin</a></li>
+                                    
+                                </ul>
                             </li>
 
+
+                            
                             <li>
                                 <a href="error.html">Recent works</a>
                             </li>
@@ -317,7 +328,7 @@
 
     <!-- Javascripts -->
     <script src="{{ asset('dashboard_asset/assets/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('dashboard_asset/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{-- <script src="{{ asset('dashboard_asset/assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script> --}}
     <script src="{{ asset('dashboard_asset/assets/plugins/perfectscroll/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/plugins/pace/pace.min.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/plugins/apexcharts/apexcharts.min.js') }}"></script>
@@ -325,6 +336,8 @@
     <script src="{{ asset('dashboard_asset/assets/js/custom.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/js/pages/dashboard.js') }}"></script>
     <script src="https://kit.fontawesome.com/ecd7a02304.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

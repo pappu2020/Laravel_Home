@@ -6,6 +6,7 @@ use App\Models\aboutMeSectionDesModel;
 use App\Models\aboutMeSectionModel;
 use App\Models\homeSecSocialModel;
 use App\Models\homeSectionModel;
+use App\Models\serviceSectionModel;
 use Illuminate\Http\Request;
 
 class clientPageController extends Controller
@@ -15,11 +16,13 @@ class clientPageController extends Controller
         $homeAllSocialDataClient = homeSecSocialModel::all();
         $AllaboutSecData = aboutMeSectionModel::all();
         $AllaboutSecDescriptionData = aboutMeSectionDesModel::all();
+        $AllServiceSectionData = serviceSectionModel::all();
         return view("admin.clientPage.clientPage",[
             'homeAllDataClient' => $homeAllDataClient,
             'homeAllSocialDataClient' => $homeAllSocialDataClient,
             'AllaboutSecData' => $AllaboutSecData,
             'AllaboutSecDescriptionData' => $AllaboutSecDescriptionData,
+            'AllServiceSectionData' => $AllServiceSectionData,
         ]);
     }
 }

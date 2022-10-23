@@ -172,8 +172,8 @@
                     <div class="col-lg-6">
                         @foreach ($AllaboutSecDescriptionData as $aboutSecDescriptionData)
                             <div class="about-img">
-                                <img src="{{ asset('uploads/aboutSection')}}/{{$aboutSecDescriptionData->aboutImage}}" title="me-01"
-                                    alt="me-01">
+                                <img src="{{ asset('uploads/aboutSection') }}/{{ $aboutSecDescriptionData->aboutImage }}"
+                                    title="me-01" alt="me-01">
 
                             </div>
                     </div>
@@ -235,66 +235,24 @@
                     </div>
                 </div>
                 <div class="row">
+                    
+                    
+                    
+                    @foreach ($AllServiceSectionData as $ServiceSectionData)
+                        
+                    
                     <div class="col-lg-4 col-md-6">
                         <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                            <i class="fab fa-react"></i>
-                            <h3>Creative Design</h3>
+                            <i class="{{$ServiceSectionData -> service_icon}}"></i>
+                            <h3>{{$ServiceSectionData -> service_title}}</h3>
                             <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
+                                {{$ServiceSectionData -> service_description}}
                             </p>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.4s">
-                            <i class="fab fa-free-code-camp"></i>
-                            <h3>Unlimited Features</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.6s">
-                            <i class="fal fa-desktop"></i>
-                            <h3>Ultra Responsive</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                            <i class="fal fa-lightbulb-on"></i>
-                            <h3>Creative Ideas</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.4s">
-                            <i class="fal fa-edit"></i>
-                            <h3>Easy Customization</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.6s">
-                            <i class="fal fa-headset"></i>
-                            <h3>Supper Support</h3>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                indust.
-                            </p>
-                        </div>
-                    </div>
+
+                    @endforeach
+                   
                 </div>
             </div>
         </section>
@@ -611,6 +569,7 @@
     <script src="{{ asset('dynamic_webpage/js/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('dynamic_webpage/js/plugins.js') }}"></script>
     <script src="{{ asset('dynamic_webpage/js/main.js') }}"></script>
+    <script src="https://kit.fontawesome.com/ecd7a02304.js" crossorigin="anonymous"></script>
 </body>
 
 <!-- Mirrored from themebeyond.com/html/kufa/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Feb 2020 06:28:17 GMT -->
