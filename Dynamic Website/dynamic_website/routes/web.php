@@ -3,7 +3,9 @@
 use App\Http\Controllers\aboutMeSectionController;
 use App\Http\Controllers\clientPageController;
 use App\Http\Controllers\homeSectionController;
+use App\Http\Controllers\recentWorkController;
 use App\Http\Controllers\serviceSectionController;
+use App\Models\recentWorkModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -106,3 +108,13 @@ Route::get("/serviceSectionDelete/{serviceDeleteId}", [serviceSectionController:
 Route::get("/serviceSectionParmanantDeletePage", [serviceSectionController::class, "serviceSectionParmanantDeletePage"])->name("serviceSectionParmanantDeletePage");
 Route::get("/serviceSectionParmanantDeletePage/serviceSectionRestore/{serviceRestoreId}", [serviceSectionController::class, "serviceSectionRestore"])->name("serviceSectionRestore");
 Route::get("/serviceSectionParmanantDeletePage/serviceSectionParmanantDelete/{serviceParDelId}", [serviceSectionController::class, "serviceSectionParmanantDelete"])->name("serviceSectionParmanantDelete");
+
+
+
+
+
+
+//Recent work
+
+Route::get("/recentWorkPage", [recentWorkController::class, "recentWorkPage"])->name("recentWorkPage");
+Route::post("/recentWorkPage/recentWorkInsert", [recentWorkController::class, "recentWorkInsert"])->name("recentWorkInsert");

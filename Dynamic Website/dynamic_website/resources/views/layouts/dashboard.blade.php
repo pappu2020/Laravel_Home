@@ -109,13 +109,23 @@
                                     <li><a href="{{route("serviceSectionParmanantDeletePage")}}">Trash Bin</a></li>
                                     
                                 </ul>
+                            </li> 
+                            
+                            
+                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                                    <i class="flaticon-381-television"></i>
+                                    <span class="nav-text">Recent Work</span>
+                                </a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{ route('recentWorkPage') }}">Add Content</a></li>
+                                    {{-- <li><a href="{{route("serviceSectionParmanantDeletePage")}}">Trash Bin</a></li> --}}
+                                    
+                                </ul>
                             </li>
 
 
                             
-                            <li>
-                                <a href="error.html">Recent works</a>
-                            </li>
+                            
                             <li>
                                 <a href="error.html">Customer Quotes</a>
                             </li>
