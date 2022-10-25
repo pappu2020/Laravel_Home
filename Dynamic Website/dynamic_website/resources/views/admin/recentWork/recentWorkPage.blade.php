@@ -90,7 +90,7 @@
 
                                 @foreach ($AllrecentNumberData as $key => $recentNumberData)
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">{{$key+1}}</th>
                                         <td> <i class="{{ $recentNumberData->recentNumberIcon }}"></i></td>
                                         
                                         <td>{{ $recentNumberData->recentNumberTitle }}</td>
@@ -110,7 +110,7 @@
                                                             href="{{ route('recentEditPage', $recentData->id) }}"><button
                                                                 class="btn btn-success">Edit</button></button></a></li>
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('recentGeneralDelete', $recentData->id) }}"><button
+                                                            href="{{ route('recentWorkNumberGeneralDelete', $recentNumberData->id) }}"><button
                                                                 class="btn btn-danger">Delete</button></a></li>
 
                                                 </ul>

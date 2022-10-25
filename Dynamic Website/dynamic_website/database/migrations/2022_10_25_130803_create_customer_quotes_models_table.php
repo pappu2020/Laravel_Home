@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recent_work_number_models', function (Blueprint $table) {
+        Schema::create('customer_quotes_models', function (Blueprint $table) {
             $table->id();
-            $table->string("recentNumberIcon");
-            $table->integer("recentNumber");
-            $table->string("recentNumberTitle");
-            $table->integer("created_by");
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recent_work_number_models');
+        Schema::dropIfExists('customer_quotes_models');
     }
 };

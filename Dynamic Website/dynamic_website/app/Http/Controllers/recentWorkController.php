@@ -131,8 +131,10 @@ class recentWorkController extends Controller
         {
 
                 $AllrecentTrashedData = recentWorkModel::onlyTrashed()->get();
+                $AllrecentNumberTrashedData = recentWorkNumberModel::onlyTrashed()->get();
                 return view("admin.recentWork.recentTrashbbinPage", [
                         'AllrecentTrashedData' => $AllrecentTrashedData,
+                        'AllrecentNumberTrashedData' => $AllrecentNumberTrashedData,
                 ]);
         }
 
@@ -187,5 +189,28 @@ class recentWorkController extends Controller
 
                 return back()->with("recentNumberInsesrtSuccess", "Insert Success!");
 
+        }
+
+
+        function recentWorkNumberGeneralDelete($recentNumGenDeleteId){
+
+                recentWorkNumberModel::find($recentNumGenDeleteId)->delete();
+                return back();
+
+        }
+
+
+        function recentWorkNumberTrashRestore($recentNumTrashId){
+                recentWorkNumberModel::onlyTrashed()->where("id", $recentNumTrashId)->restore();
+                return back();
+
+        }
+
+        function recentWorkNumberTrashParmanantDelete($recentNumTrashParDelId)
+        {
+
+
+                recentWorkNumberModel::onlyTrashed()->where("id", $recentNumTrashParDelId)->forceDelete();
+                return back();
         }
 }

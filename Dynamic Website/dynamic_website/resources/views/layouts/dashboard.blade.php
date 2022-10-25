@@ -26,7 +26,8 @@
     <link href="{{ asset('dashboard_asset/assets/plugins/perfectscroll/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard_asset/assets/plugins/pace/pace.css') }}" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 
 
@@ -67,73 +68,108 @@
                     <li>
                         <a href="index.html"><i class="material-icons-two-tone">dashboard</i>Profile</a>
                     </li>
+
                     <li>
-                        <a href="{{ route('clientPage') }}" target="_blank"><i
-                                class="material-icons-two-tone">dashboard</i>Visit client page</a>
+                        <a href="{{ route('clientPage') }}"><span><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                                    height="26" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path fill-rule="evenodd"
+                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                </svg></span> Client Page</a>
                     </li>
 
-                    <li>
-                        <a href=""><i class="material-icons-two-tone">star</i>Services<i
-                                class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
-                        <ul class="sub-menu">
 
-                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                    <i class="flaticon-381-television"></i>
-                                    <span class="nav-text">Home Section</span>
-                                </a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('homeSectionpage') }}">Add Content</a></li>
-                                    <li><a href="{{route("HomeParmanentdeletePage")}}">Trash Bin</a></li>
-                                </ul>
-                            </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 
-
-                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                    <i class="flaticon-381-television"></i>
-                                    <span class="nav-text">About me section</span>
-                                </a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('aboutSectionpage') }}">Add Content</a></li>
-                                    <li><a href="{{route("aboutSectionParmanantDeletePage")}}">Trash Bin</a></li>
-                                    <li><a href="{{route("aboutSectionDesParmanantDeletePage")}}">Trash Bin Description</a></li>
-                                </ul>
-                            </li>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                    fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                                    <path fill-rule="evenodd"
+                                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                                </svg> Home Section</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('homeSectionpage') }}">Add Content</a></li>
+                            <li><a href="{{ route('HomeParmanentdeletePage') }}">Trash Bin</a></li>
+                        </ul>
+                    </li>
 
 
-                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                    <i class="flaticon-381-television"></i>
-                                    <span class="nav-text">Services and solution</span>
-                                </a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('serviceSectionPage') }}">Add Content</a></li>
-                                    <li><a href="{{route("serviceSectionParmanantDeletePage")}}">Trash Bin</a></li>
-                                    
-                                </ul>
-                            </li> 
-                            
-                            
-                            <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-                                    <i class="flaticon-381-television"></i>
-                                    <span class="nav-text">Recent Work</span>
-                                </a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{{ route('recentWorkPage') }}">Add Content</a></li>
-                                    <li><a href="{{route("recentTrashbbinPage")}}">Trash Bin</a></li>
-                                    
-                                </ul>
-                            </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 
-
-                            
-                            
-                            <li>
-                                <a href="error.html">Customer Quotes</a>
-                            </li>
-                            <li>
-                                <a href="error.html">Contact me</a>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                    fill="currentColor" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                                    <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                    <path
+                                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z" />
+                                </svg> About me section</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('aboutSectionpage') }}">Add Content</a></li>
+                            <li><a href="{{ route('aboutSectionParmanantDeletePage') }}">Trash Bin</a></li>
+                            <li><a href="{{ route('aboutSectionDesParmanantDeletePage') }}">Trash Bin Description</a>
                             </li>
                         </ul>
                     </li>
+
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+
+                            <span> <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                    fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                                    <path
+                                        d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                                    <path
+                                        d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z" />
+                                </svg> Services and solution</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('serviceSectionPage') }}">Add Content</a></li>
+                            <li><a href="{{ route('serviceSectionParmanantDeletePage') }}">Trash Bin</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                    fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+                                    <path
+                                        d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                                </svg> Recent Work</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('recentWorkPage') }}">Add Content</a></li>
+                            <li><a href="{{ route('recentTrashbbinPage') }}">Trash Bin</a></li>
+
+                        </ul>
+                    </li>
+
+
+
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                                        fill="currentColor" class="bi bi-quote" viewBox="0 0 16 16">
+                                        <path
+                                            d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
+                                    </svg> Customer Quotes</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('customerQuotesPage') }}">Add Content</a></li>
+                            {{-- <li><a href="{{ route('recentTrashbbinPage') }}">Trash Bin</a></li> --}}
+
+                        </ul>
+                    </li>
+
+
+
+
+
+
 
                 </ul>
             </div>
@@ -346,7 +382,9 @@
     <script src="{{ asset('dashboard_asset/assets/js/custom.js') }}"></script>
     <script src="{{ asset('dashboard_asset/assets/js/pages/dashboard.js') }}"></script>
     <script src="https://kit.fontawesome.com/ecd7a02304.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 </body>
 

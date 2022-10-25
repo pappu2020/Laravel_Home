@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\aboutMeSectionController;
 use App\Http\Controllers\clientPageController;
+use App\Http\Controllers\customerQuotesController;
 use App\Http\Controllers\homeSectionController;
 use App\Http\Controllers\recentWorkController;
 use App\Http\Controllers\serviceSectionController;
@@ -139,4 +140,15 @@ Route::get("/recentTrashbbinPage/recentTrashDelete/{recentTrashDeleteId}", [rece
 //Recent Work Number Section
 
 Route::Post("/recentWorkNumberInsert", [recentWorkController::class, "recentWorkNumberInsert"])->name("recentWorkNumberInsert");
+Route::get("/recentWorkNumberGeneralDelete/{recentNumGenDeleteId}", [recentWorkController::class, "recentWorkNumberGeneralDelete"])->name("recentWorkNumberGeneralDelete");
+Route::get("/recentWorkNumberTrashRestore/{recentNumTrashId}", [recentWorkController::class, "recentWorkNumberTrashRestore"])->name("recentWorkNumberTrashRestore");
+Route::get("/recentWorkNumberTrashParmanantDelete/{recentNumTrashParDelId}", [recentWorkController::class, "recentWorkNumberTrashParmanantDelete"])->name("recentWorkNumberTrashParmanantDelete");
 
+
+
+
+
+//Customer Quotes Section
+
+
+Route::get("/customerQuotesPage", [customerQuotesController::class, "customerQuotesPage"])->name("customerQuotesPage");
