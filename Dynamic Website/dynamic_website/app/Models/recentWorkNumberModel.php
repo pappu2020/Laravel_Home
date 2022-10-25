@@ -4,15 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class recentWorkModel extends Model
+class recentWorkNumberModel extends Model
 {
     use HasFactory;
-    use SoftDeletes;
-    protected $guarded = ["id"];
-    function rel_to_users()
-    {
+
+    function rel_to_users(){
         return $this->belongsTo(User::class, "created_by");
     }
 }

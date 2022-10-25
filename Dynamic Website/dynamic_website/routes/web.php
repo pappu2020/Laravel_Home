@@ -118,3 +118,25 @@ Route::get("/serviceSectionParmanantDeletePage/serviceSectionParmanantDelete/{se
 
 Route::get("/recentWorkPage", [recentWorkController::class, "recentWorkPage"])->name("recentWorkPage");
 Route::post("/recentWorkPage/recentWorkInsert", [recentWorkController::class, "recentWorkInsert"])->name("recentWorkInsert");
+
+//edit
+Route::get("/recentEditPage/{recentEditId}", [recentWorkController::class, "recentEditPage"])->name("recentEditPage");
+Route::post("/recentEditPage/recentWorkUpdate", [recentWorkController::class, "recentWorkUpdate"])->name("recentWorkUpdate");
+
+
+
+
+
+Route::get("/recentEditPage/recentGeneralDelete/{recentDelId}", [recentWorkController::class, "recentGeneralDelete"])->name("recentGeneralDelete");
+Route::get("/recentTrashbbinPage", [recentWorkController::class, "recentTrashbbinPage"])->name("recentTrashbbinPage");
+
+Route::get("/recentTrashbbinPage/recentTrashRestore/{recentTrashRestoreId}", [recentWorkController::class, "recentTrashRestore"])->name("recentTrashRestore");
+Route::get("/recentTrashbbinPage/recentTrashDelete/{recentTrashDeleteId}", [recentWorkController::class, "recentTrashDelete"])->name("recentTrashDelete");
+
+
+
+
+//Recent Work Number Section
+
+Route::Post("/recentWorkNumberInsert", [recentWorkController::class, "recentWorkNumberInsert"])->name("recentWorkNumberInsert");
+

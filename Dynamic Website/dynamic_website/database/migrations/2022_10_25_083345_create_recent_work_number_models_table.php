@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recent_work_models', function (Blueprint $table) {
+        Schema::create('recent_work_number_models', function (Blueprint $table) {
             $table->id();
-            $table->string("recentTitle");
-            $table->string("recentSubTitle");
-            $table->string("recentImage")->nullable();
+            $table->string("recentNumberIcon");
+            $table->integer("recentNumber");
+            $table->string("recentNumberTitle");
             $table->integer("created_by");
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recent_work_models');
+        Schema::dropIfExists('recent_work_number_models');
     }
 };

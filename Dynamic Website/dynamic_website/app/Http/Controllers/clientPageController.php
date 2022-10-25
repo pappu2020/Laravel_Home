@@ -7,6 +7,7 @@ use App\Models\aboutMeSectionModel;
 use App\Models\homeSecSocialModel;
 use App\Models\homeSectionModel;
 use App\Models\recentWorkModel;
+use App\Models\recentWorkNumberModel;
 use App\Models\serviceSectionModel;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,7 @@ class clientPageController extends Controller
         $AllaboutSecDescriptionData = aboutMeSectionDesModel::all();
         $AllServiceSectionData = serviceSectionModel::all();
         $AllrecentData = recentWorkModel::all();
+        $AllrecentWorkData = recentWorkNumberModel::all();
         return view("admin.clientPage.clientPage",[
             'homeAllDataClient' => $homeAllDataClient,
             'homeAllSocialDataClient' => $homeAllSocialDataClient,
@@ -26,6 +28,7 @@ class clientPageController extends Controller
             'AllaboutSecDescriptionData' => $AllaboutSecDescriptionData,
             'AllServiceSectionData' => $AllServiceSectionData,
             'AllrecentData' => $AllrecentData,
+            'AllrecentWorkData' => $AllrecentWorkData,
         ]);
     }
 }

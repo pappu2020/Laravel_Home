@@ -118,7 +118,7 @@
                                 </a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{ route('recentWorkPage') }}">Add Content</a></li>
-                                    {{-- <li><a href="{{route("serviceSectionParmanantDeletePage")}}">Trash Bin</a></li> --}}
+                                    <li><a href="{{route("recentTrashbbinPage")}}">Trash Bin</a></li>
                                     
                                 </ul>
                             </li>
