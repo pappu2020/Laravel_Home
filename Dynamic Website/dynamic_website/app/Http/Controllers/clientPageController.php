@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\aboutMeSectionDesModel;
 use App\Models\aboutMeSectionModel;
+use App\Models\customerQuotesModel;
 use App\Models\homeSecSocialModel;
 use App\Models\homeSectionModel;
 use App\Models\recentWorkModel;
@@ -21,6 +22,7 @@ class clientPageController extends Controller
         $AllServiceSectionData = serviceSectionModel::all();
         $AllrecentData = recentWorkModel::all();
         $AllrecentWorkData = recentWorkNumberModel::all();
+        $AllcustomerData = customerQuotesModel::all();
         return view("admin.clientPage.clientPage",[
             'homeAllDataClient' => $homeAllDataClient,
             'homeAllSocialDataClient' => $homeAllSocialDataClient,
@@ -29,6 +31,7 @@ class clientPageController extends Controller
             'AllServiceSectionData' => $AllServiceSectionData,
             'AllrecentData' => $AllrecentData,
             'AllrecentWorkData' => $AllrecentWorkData,
+            'AllcustomerData' => $AllcustomerData,
         ]);
     }
 }

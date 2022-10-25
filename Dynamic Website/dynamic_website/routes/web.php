@@ -152,3 +152,16 @@ Route::get("/recentWorkNumberTrashParmanantDelete/{recentNumTrashParDelId}", [re
 
 
 Route::get("/customerQuotesPage", [customerQuotesController::class, "customerQuotesPage"])->name("customerQuotesPage");
+Route::post("/customerQuotesPage/customerInsert", [customerQuotesController::class, "customerInsert"])->name("customerInsert");
+Route::get("/customerQuotesEditPage/{customerEditPageId}", [customerQuotesController::class, "customerQuotesEditPage"])->name("customerQuotesEditPage");
+Route::post("/customerQuotesEditPage/cutomerQuotesUpdate", [customerQuotesController::class, "cutomerQuotesUpdate"])->name("cutomerQuotesUpdate");
+Route::get("/customerQuotesEditPage/cutomerQuotesGenDel/{cusGenDelId}", [customerQuotesController::class, "cutomerQuotesGenDel"])->name("cutomerQuotesGenDel");
+
+
+
+//Trash
+Route::get("/customerTrashbbinPage", [customerQuotesController::class, "customerTrashbbinPage"])->name("customerTrashbbinPage");
+Route::get("/customerTrashbbinPage/customerQuotesRestore/{cutomerQuotesresId}", [customerQuotesController::class, "customerQuotesRestore"])->name("customerQuotesRestore");
+Route::get("/customerTrashbbinPage/cutomerQuotesParDel/{cutomerQuotesParId}", [customerQuotesController::class, "cutomerQuotesParDel"])->name("cutomerQuotesParDel");
+
+

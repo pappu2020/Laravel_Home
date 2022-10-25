@@ -235,24 +235,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    
-                    
-                    
-                    @foreach ($AllServiceSectionData as $ServiceSectionData)
-                        
-                    
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                            <i class="{{$ServiceSectionData -> service_icon}}"></i>
-                            <h3>{{$ServiceSectionData -> service_title}}</h3>
-                            <p>
-                                {{$ServiceSectionData -> service_description}}
-                            </p>
-                        </div>
-                    </div>
 
+
+
+                    @foreach ($AllServiceSectionData as $ServiceSectionData)
+                        <div class="col-lg-4 col-md-6">
+                            <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
+                                <i class="{{ $ServiceSectionData->service_icon }}"></i>
+                                <h3>{{ $ServiceSectionData->service_title }}</h3>
+                                <p>
+                                    {{ $ServiceSectionData->service_description }}
+                                </p>
+                            </div>
+                        </div>
                     @endforeach
-                   
+
                 </div>
             </div>
         </section>
@@ -270,23 +267,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    
-                    
+
+
                     @foreach ($AllrecentData as $recentData)
-                        
-                   
-                    <div class="col-lg-4 col-md-6 pitem">
-                        <div class="speaker-box">
-                            <div class="speaker-thumb">
-                                <img src="{{asset("uploads/recentWork")}}/{{$recentData -> recentImage}}" alt="img">
-                            </div>
-                            <div class="speaker-overlay">
-                                <span>{{$recentData -> recentTitle}}</span>
-                                <h4><a href="portfolio-single.html">{{$recentData -> recentSubTitle}}</a></h4>
-                                <a href="portfolio-single.html" class="arrow-btn">More information <span></span></a>
+                        <div class="col-lg-4 col-md-6 pitem">
+                            <div class="speaker-box">
+                                <div class="speaker-thumb">
+                                    <img src="{{ asset('uploads/recentWork') }}/{{ $recentData->recentImage }}"
+                                        alt="img">
+                                </div>
+                                <div class="speaker-overlay">
+                                    <span>{{ $recentData->recentTitle }}</span>
+                                    <h4><a href="portfolio-single.html">{{ $recentData->recentSubTitle }}</a></h4>
+                                    <a href="portfolio-single.html" class="arrow-btn">More information
+                                        <span></span></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -299,26 +296,23 @@
             <div class="container">
                 <div class="fact-wrap">
                     <div class="row justify-content-between">
-                        
-                        
-                        
+
+
+
                         @foreach ($AllrecentWorkData as $key => $recentWorkData)
-                            
-                       
-                        <div class="col-xl-2 col-lg-3 col-sm-6">
-                            <div class="fact-box text-center mb-50">
-                                <div class="fact-icon">
-                                    <i class="{{$recentWorkData->recentNumberIcon}}"></i>
-                                </div>
-                                <div class="fact-content">
-                                    <h2><span class="count">{{$recentWorkData->recentNumber}}</span></h2>
-                                    <span>{{$recentWorkData->recentNumberTitle}}</span>
+                            <div class="col-xl-2 col-lg-3 col-sm-6">
+                                <div class="fact-box text-center mb-50">
+                                    <div class="fact-icon">
+                                        <i class="{{ $recentWorkData->recentNumberIcon }}"></i>
+                                    </div>
+                                    <div class="fact-content">
+                                        <h2><span class="count">{{ $recentWorkData->recentNumber }}</span></h2>
+                                        <span>{{ $recentWorkData->recentNumberTitle }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                         @endforeach
-                       
                     </div>
                 </div>
             </div>
@@ -339,34 +333,27 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <div class="testimonial-active">
+                            
+                            
+                            @foreach ($AllcustomerData as $customerData)
+                                
+                            
+                            
                             <div class="single-testimonial text-center">
                                 <div class="testi-avatar">
-                                    <img src="img/images/testi_avatar.png" alt="img">
+                                    <img class="rounded-circle" width="200px" height="200px" src="{{asset("uploads/customerSection")}}/{{$customerData -> customerImage}}" alt="img">
                                 </div>
                                 <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence
-                                        of an action. The action can causd user interaction such as a button click, or
-                                        it can result <span>”</span></h4>
+                                    <h4><span>“</span> {{$customerData -> customer_description}}<span>”</span></h4>
                                     <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
+                                        <h5>{{$customerData -> customerTitle}}</h5>
+                                        <span>{{$customerData -> customerPosition}}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img src="img/images/testi_avatar.png" alt="img">
-                                </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> An event is a message sent by an object to signal the occur rence
-                                        of an action. The action can causd user interaction such as a button click, or
-                                        it can result <span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>tonoy jakson</h5>
-                                        <span>head of idea</span>
-                                    </div>
-                                </div>
-                            </div>
+
+                            @endforeach
+                           
                         </div>
                     </div>
                 </div>
@@ -375,7 +362,7 @@
         <!-- testimonial-area-end -->
 
         <!-- brand-area -->
-        <div class="barnd-area pt-100 pb-100">
+        {{-- <div class="barnd-area pt-100 pb-100">
             <div class="container">
                 <div class="row brand-active">
                     <div class="col-xl-2">
@@ -410,7 +397,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- brand-area-end -->
 
         <!-- contact-area -->

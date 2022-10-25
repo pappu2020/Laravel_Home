@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('customer_quotes_models', function (Blueprint $table) {
             $table->id();
+            $table->string("customerTitle");
+            $table->string("customerPosition");
+            $table->longText("customer_description");
+            $table->string("customerImage")->nullable();
+            $table->integer("created_by");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

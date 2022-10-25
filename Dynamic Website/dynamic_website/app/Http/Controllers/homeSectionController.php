@@ -47,8 +47,8 @@ class homeSectionController extends Controller
             $extention_home = $homeSection_img->getClientOriginalExtension();
 
 
-            $after_replace_home = str_replace('', '-', $req->home_name);
-            $fileName = Str::lower($after_replace_home) . "-" . rand(1000000, 199999) . "." . $extention_home;
+            $after_replace_home = str_replace(' ', '-', $req->home_name);
+            $fileName = Str::lower($after_replace_home)."-".rand(1000000, 199999).".".$extention_home;
             Image::make($homeSection_img)->save(public_path('uploads/homeSection/' . $fileName));
 
             homeSectionModel::find($homeSecId)->update([
