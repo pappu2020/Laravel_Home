@@ -50,23 +50,21 @@
                 <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
                 <div class="sidebar-user-switcher user-activity-online">
                     <a href="#">
-                        <img src="{{ asset('dashboard_asset/assets/images/avatars/avatar.png') }}">
+                        <img width="30px" height="50px" class="rounded rounded-circle" src="{{asset("uploads/user")}}/{{Auth::user()->profileImg}}">
                         <span class="activity-indicator"></span>
-                        <span class="user-info-text">Chloe<br><span class="user-state-info">On a call</span></span>
+                        <span class="user-info-text">{{Auth::user()->name}}<br><span class="user-state-info">Active</span></span>
                     </a>
                 </div>
             </div>
             <div class="app-menu">
                 <ul class="accordion-menu">
-                    <li class="sidebar-title">
-                        Apps
-                    </li>
+                    
                     <li class="active-page">
                         <a href="{{ route('home') }}" class="active"><i
                                 class="material-icons-two-tone">dashboard</i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="index.html"><i class="material-icons-two-tone">dashboard</i>Profile</a>
+                        <a href="{{route("profilePage")}}"><i class="material-icons-two-tone">dashboard</i>Profile</a>
                     </li>
 
                     <li>
@@ -293,8 +291,21 @@
                                 </li>
                                 <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown"
-                                        data-bs-toggle="dropdown"><img src="../../assets/images/flags/us.png"
-                                            alt=""></a>
+                                        data-bs-toggle="dropdown">
+                                    
+                                    @if (Auth::user()->profileImg == null)
+
+                                    <img src="{{Avatar::create(Auth::user()->name)->toBase64()}}" alt="" width="50px" height="50px" class="rounded rounded-circle">
+
+                                    @else
+
+                                    <img src="{{asset("uploads/user")}}/{{Auth::user()->profileImg}}" alt="" width="50px" height="50px">
+
+                                        
+                                    @endif
+                                    
+                                    
+                                    </a>
                                     <ul class="dropdown-menu dropdown-menu-end language-dropdown"
                                         aria-labelledby="languageDropDown">
                                         <li><a class="dropdown-item" href="#"><img

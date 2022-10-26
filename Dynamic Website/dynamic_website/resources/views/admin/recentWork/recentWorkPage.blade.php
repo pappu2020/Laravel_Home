@@ -107,7 +107,7 @@
                                                 <ul class="dropdown-menu text-center w-25"
                                                     aria-labelledby="dropdownMenuButton1">
                                                     <li><a class="dropdown-item"
-                                                            href="{{ route('recentEditPage', $recentData->id) }}"><button
+                                                            href="{{ route('recentEditPage', $recentNumberData->id) }}"><button
                                                                 class="btn btn-success">Edit</button></button></a></li>
                                                     <li><a class="dropdown-item"
                                                             href="{{ route('recentWorkNumberGeneralDelete', $recentNumberData->id) }}"><button

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\aboutMeSectionController;
+use App\Http\Controllers\adminController;
 use App\Http\Controllers\clientPageController;
 use App\Http\Controllers\contacFormController;
 use App\Http\Controllers\contactMeController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\serviceSectionController;
 use App\Models\contactFormModel;
 use App\Models\contactMeModel;
 use App\Models\recentWorkModel;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +37,25 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::get('/clientPage', [clientPageController::class, 'clientPage'])->name('clientPage');
+
+
+//Profile Page
+
+Route::get('/profilePage', [adminController::class, 'profilePage'])->name('profilePage');
+Route::post('/profileImgUpload', [adminController::class, 'profileImgUpload'])->name('profileImgUpload');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Home Section
