@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\aboutMeSectionDesModel;
 use App\Models\aboutMeSectionModel;
+use App\Models\contactMeModel;
 use App\Models\customerQuotesModel;
 use App\Models\homeSecSocialModel;
 use App\Models\homeSectionModel;
@@ -23,6 +24,7 @@ class clientPageController extends Controller
         $AllrecentData = recentWorkModel::all();
         $AllrecentWorkData = recentWorkNumberModel::all();
         $AllcustomerData = customerQuotesModel::all();
+        $AllcontactData = contactMeModel::all();
         return view("admin.clientPage.clientPage",[
             'homeAllDataClient' => $homeAllDataClient,
             'homeAllSocialDataClient' => $homeAllSocialDataClient,
@@ -32,6 +34,7 @@ class clientPageController extends Controller
             'AllrecentData' => $AllrecentData,
             'AllrecentWorkData' => $AllrecentWorkData,
             'AllcustomerData' => $AllcustomerData,
+            'AllcontactData' => $AllcontactData,
         ]);
     }
 }

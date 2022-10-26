@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\aboutMeSectionController;
 use App\Http\Controllers\clientPageController;
+use App\Http\Controllers\contacFormController;
+use App\Http\Controllers\contactMeController;
 use App\Http\Controllers\customerQuotesController;
 use App\Http\Controllers\homeSectionController;
 use App\Http\Controllers\recentWorkController;
 use App\Http\Controllers\serviceSectionController;
+use App\Models\contactFormModel;
+use App\Models\contactMeModel;
 use App\Models\recentWorkModel;
 use Illuminate\Support\Facades\Route;
 
@@ -163,5 +167,33 @@ Route::get("/customerQuotesEditPage/cutomerQuotesGenDel/{cusGenDelId}", [custome
 Route::get("/customerTrashbbinPage", [customerQuotesController::class, "customerTrashbbinPage"])->name("customerTrashbbinPage");
 Route::get("/customerTrashbbinPage/customerQuotesRestore/{cutomerQuotesresId}", [customerQuotesController::class, "customerQuotesRestore"])->name("customerQuotesRestore");
 Route::get("/customerTrashbbinPage/cutomerQuotesParDel/{cutomerQuotesParId}", [customerQuotesController::class, "cutomerQuotesParDel"])->name("cutomerQuotesParDel");
+
+
+
+
+
+
+
+
+//Contact ME section
+
+Route::get("/contactMePage", [contactMeController::class, "contactMePage"])->name("contactMePage");
+Route::post("/contactMePage/contactMeInsert", [contactMeController::class, "contactMeInsert"])->name("contactMeInsert");
+Route::post("/contactMePage/contactMeUpdate", [contactMeController::class, "contactMeUpdate"])->name("contactMeUpdate");
+Route::get("/contactMePage/contactMeGenDel/{contactMeGenId}", [contactMeController::class, "contactMeGenDel"])->name("contactMeGenDel");
+Route::get("/contactMeTrashedPage", [contactMeController::class, "contactMeTrashedPage"])->name("contactMeTrashedPage");
+Route::get("/contactMeTrashedPage/contactMeRestore/{contacMEresId}", [contactMeController::class, "contactMeRestore"])->name("contactMeRestore");
+Route::get("/contactMeTrashedPage/contactMeParDel/{contacMEParDelId}", [contactMeController::class, "contactMeParDel"])->name("contactMeParDel");
+
+
+
+
+//Contact me form
+
+Route::post("/contactMeFormInsert", [contacFormController::class, "contactMeFormInsert"])->name("contactMeFormInsert");
+Route::get("/contactView", [contacFormController::class, "contactView"])->name("contactView");
+
+
+
 
 

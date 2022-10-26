@@ -410,26 +410,54 @@
                             <h2>Contact Information</h2>
                         </div>
                         <div class="contact-content">
-                            <p>Event definition is - somthing that happens occurre How evesnt sentence. Synonym when an
-                                unknown printer took a galley.</p>
-                            <h5>OFFICE IN <span>NEW YORK</span></h5>
+                            
+                            
+                             @foreach ($AllcontactData as $contactData)
+                                 
+                             
+                            <h5>OFFICE IN <span>{{$contactData->contact_country_name}}</span></h5>
+                            
                             <div class="contact-list">
                                 <ul>
-                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>Event Center park WT 22
-                                        New York</li>
-                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>+9 125 645 8654</li>
-                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>info@exemple.com</li>
+                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>{{$contactData->contact_address}}</li>
+                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>{{$contactData->contact_phone_num}}</li>
+                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>{{$contactData->contact_email}}</li>
                                 </ul>
                             </div>
+                        
+                        @endforeach
+                        
+                        
+                        
                         </div>
                     </div>
                     <div class="col-lg-6">
+                        @if (session("conactFormSendSuccess"))
+                           <div class="alert alert-success">{{session("conactFormSendSuccess")}}</div> 
+                        @endif
                         <div class="contact-form">
-                            <form action="#">
-                                <input type="text" placeholder="your name *">
-                                <input type="email" placeholder="your email *">
-                                <textarea name="message" id="message" placeholder="your message *"></textarea>
-                                <button class="btn">SEND</button>
+                            <form action="{{route("contactMeFormInsert")}}" method="post">
+                                @csrf
+                                <input type="text" placeholder="Enter your name" name="contactFormName">
+                                @error("contactFormName")
+
+                                <div class="alert alert-danger">{{$message}}</div>
+                                    
+                                @enderror
+                                <input type="email" placeholder="Enter your email" name="contactFormEmail">
+
+                                 @error("contactFormEmail")
+
+                                <div class="alert alert-danger">{{$message}}</div>
+                                    
+                                @enderror
+                                <textarea name="contactFormMsg" id="message" placeholder="your message *"></textarea>
+                                @error("contactFormMsg")
+
+                                <div class="alert alert-danger">{{$message}}</div>
+                                    
+                                @enderror
+                                <button class="btn" type="submit">SEND</button>
                             </form>
                         </div>
                     </div>
