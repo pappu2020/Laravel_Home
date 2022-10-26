@@ -399,6 +399,16 @@
                                         </div>
                                     </div>
                                 </li>
+
+
+                                <li class="nav-item hidden-on-mobile"><a href="{{route("logout")}}"  class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log Out</a>
+                                
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                </form>
+                                
+                                
+                                </li>
                             </ul>
                         </div>
                     </div>

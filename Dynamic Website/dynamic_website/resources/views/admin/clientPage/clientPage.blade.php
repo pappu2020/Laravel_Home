@@ -84,30 +84,44 @@
             </div>
             <div class="logo-side mb-30">
                 <a href="index-2.html">
-                    <img src="img/logo/logo.png" alt="" />
+                   <h2>Pappu Saha</h2>
                 </a>
             </div>
+           
+           
+           
+            @foreach ($AllcontactData as $contactData)
+                
+            
             <div class="side-info mb-30">
                 <div class="contact-list mb-30">
-                    <h4>Office Address</h4>
-                    <p>123/A, Miranda City Likaoli
-                        Prikano, Dope</p>
+                    <h4>{{$contactData -> contact_address}}</h4>
+                    
                 </div>
                 <div class="contact-list mb-30">
-                    <h4>Phone Number</h4>
-                    <p>+0989 7876 9865 9</p>
+                    <h4>{{$contactData -> contact_phone_num}}</h4>
+                    
                 </div>
                 <div class="contact-list mb-30">
                     <h4>Email Address</h4>
-                    <p>info@example.com</p>
+                    <p>{{$contactData -> contact_email}}</p>
                 </div>
             </div>
+            @endforeach
+            
+            
+            
             <div class="social-icon-right mt-20">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                @foreach ($homeAllSocialDataClient as $homeSocialDataClient)
+                <a href="{{$homeSocialDataClient->homeSocialaddress}}"><i class="{{$homeSocialDataClient->homeSocialIcon}}"></i></a>
+                 @endforeach
+
             </div>
+        
+        
+        
+        
+        
         </div>
         <div class="offcanvas-overly"></div>
         <!-- offcanvas-end -->
