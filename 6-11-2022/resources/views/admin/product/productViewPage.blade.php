@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Product List</h5>
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="table_id">
                             <thead>
                                 <tr>
                                     <th scope="col">SL</th>
@@ -95,4 +95,14 @@
 
 
     </div>
+@endsection
+
+@section('javascriptSection')
+
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
+</script>
+    
 @endsection

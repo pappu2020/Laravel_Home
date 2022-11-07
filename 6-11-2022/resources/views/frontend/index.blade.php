@@ -156,7 +156,7 @@
 
                             <div class="card-body p-0">
                                 <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route("productDetails",$ProductsInfo->slug)}}"><img
                                             class="card-img-top"
                                             src="{{ asset('uploads/products/preview') }}/{{ $ProductsInfo->product_preview_img }}"
                                             alt="..."></a>
@@ -169,7 +169,7 @@
                                                 class="small">{{ $ProductsInfo->rel_to_category->catagory_name }}</span>
                                         </div>
                                         <h5 class="fs-md mb-0 lh-1 mb-1"><a
-                                                href="shop-single-v1.html">{{ $ProductsInfo->product_name }}</a>
+                                                href="{{route("productDetails",$ProductsInfo->slug)}}">{{ $ProductsInfo->product_name }}</a>
                                         </h5>
                                         <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
                                             <i class="fas fa-star filled"></i>

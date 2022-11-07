@@ -3273,7 +3273,7 @@ ul.dahs_navbar li a.active {
     cursor: pointer;
 }
 .form-check-input:checked~.form-option-label {
-    border-color: #121212;
+    border: 3px solid green;
     color: #121212;
 }
 .form-option-label:before, .form-option-label:after{

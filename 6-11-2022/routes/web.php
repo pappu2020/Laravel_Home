@@ -24,11 +24,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get("/welcome", [frontendController::class, "laravelHomePage"])->name("laravelHomePage");
+Route::get("/adminLogin", [frontendController::class, "adminLogin"])->name("adminLogin");
 
 //Frontend Section
 
 Route::get("/",[frontendController::class,"indexFrontend"])->name("indexFrontend");
+Route::get("product/productDetails/{slug}",[frontendController::class,"productDetails"])->name("productDetails");
+Route::POST("getSize",[frontendController::class,"getSize"]);
 
 
 

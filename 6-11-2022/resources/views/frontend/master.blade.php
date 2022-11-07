@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<meta name="author" content="Themezhub" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 		
         <title>Kumo- Fashion eCommerce HTML Template</title>
 		 
@@ -154,7 +155,7 @@
 							<div class="nav-toggle"></div>
 							<div class="nav-menus-wrapper">
 								<ul class="nav-menu">
-									<li><a href="#" class="pl-0">Home</a></li>
+									<li><a href="{{route("indexFrontend")}}" class="pl-0">Home</a></li>
 									<li><a href="#">Shop</a></li>
 									<li><a href="#">About Us</a></li>
 									<li><a href="#">Contact</a></li>
@@ -521,8 +522,11 @@
 			function closeSearch() {
 				document.getElementById("Search").style.display = "none";
 			}
-		</script>		
+		</script>
+		
+		@yield("frontend_script")
 
 	</body>
 
 </html>
+
