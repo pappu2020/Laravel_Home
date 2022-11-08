@@ -3,12 +3,14 @@
 use App\Http\Controllers\addColorController;
 use App\Http\Controllers\addInventoryController;
 use App\Http\Controllers\addSizeController;
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\catagory;
 use App\Http\Controllers\customerLoginRegController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\SubcatagoryController;
 use App\Http\Controllers\usersController;
+use App\Models\cartModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -131,3 +133,11 @@ Route::get("/customer/login/registration",[customerLoginRegController::class,"cu
 Route::post("/customerRegistration",[customerLoginRegController::class,"customerRegistration"])->name("customerRegistration");
 Route::post("/customerLogin",[customerLoginRegController::class,"customerLogin"])->name("customerLogin");
 Route::get("/customerLogout",[customerLoginRegController::class,"customerLogout"])->name("customerLogout");
+
+
+
+
+
+//Cart Section
+
+Route::post("/cartInsert",[cartController::class, "cartInsert"])->name("cartInsert");

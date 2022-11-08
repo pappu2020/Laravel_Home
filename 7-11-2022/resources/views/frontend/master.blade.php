@@ -80,12 +80,12 @@
                                 <div class="dropdown">
                                     <a class=" dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      {{Auth::guard('customerLogin')->user()->name}} 
+                                        {{ Auth::guard('customerLogin')->user()->name }}
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <a class="dropdown-item" href="#">Profile</a>
-                                        <a class="dropdown-item" href="{{route("customerLogout")}}">Sign Out</a>
-                                       
+                                        <a class="dropdown-item" href="{{ route('customerLogout') }}">Sign Out</a>
+
                                     </div>
                                 </div>
 
@@ -392,14 +392,19 @@
 
                     <div class="cart_select_items py-2">
                         <!-- Single Item -->
+                        
+                        
+                        @foreach (App\Models\cartModel::where("customer_id",Auth::guard("customerLogin")->id())->get() as $cartInfo)
+                            
+                        
                         <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
                             <div class="cart_single d-flex align-items-center">
                                 <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/4.jpg" width="60"
+                                    <a href="#"><img src="{{asset("uploads/products/preview")}}/{{$cartInfo->rel_to_product->product_preview_img}}" width="60"
                                             class="img-fluid" alt="" /></a>
                                 </div>
                                 <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Women Striped Shirt Dress</h4>
+                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">{{$cartInfo->rel_to_product->product_name}}</h4>
                                     <p class="mb-2"><span class="text-dark ft-medium small">36</span>, <span
                                             class="text-dark small">Red</span></p>
                                     <h4 class="fs-md ft-medium mb-0 lh-1">$129</h4>
@@ -409,42 +414,8 @@
                             </div>
                         </div>
 
-                        <!-- Single Item -->
-                        <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
-                            <div class="cart_single d-flex align-items-center">
-                                <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/7.jpg" width="60"
-                                            class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Girls Floral Print Jumpsuit
-                                    </h4>
-                                    <p class="mb-2"><span class="text-dark ft-medium small">36</span>, <span
-                                            class="text-dark small">Red</span></p>
-                                    <h4 class="fs-md ft-medium mb-0 lh-1">$129</h4>
-                                </div>
-                            </div>
-                            <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button>
-                            </div>
-                        </div>
+                        @endforeach
 
-                        <!-- Single Item -->
-                        <div class="d-flex align-items-center justify-content-between px-3 py-3">
-                            <div class="cart_single d-flex align-items-center">
-                                <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/8.jpg" width="60"
-                                            class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Girls Solid A-Line Dress</h4>
-                                    <p class="mb-2"><span class="text-dark ft-medium small">30</span>, <span
-                                            class="text-dark small">Blue</span></p>
-                                    <h4 class="fs-md ft-medium mb-0 lh-1">$100</h4>
-                                </div>
-                            </div>
-                            <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -471,59 +442,43 @@
 
                     <div class="cart_select_items py-2">
                         <!-- Single Item -->
+                        
+                        
+                        
+                         @foreach (App\Models\cartModel::where("customer_id",Auth::guard("customerLogin")->id())->get() as $cartInfo)
                         <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
                             <div class="cart_single d-flex align-items-center">
                                 <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/4.jpg" width="60"
+                                    <a href="#"><img src="{{asset("uploads/products/preview")}}/{{$cartInfo->rel_to_product->product_preview_img}}" width="60"
                                             class="img-fluid" alt="" /></a>
                                 </div>
                                 <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Women Striped Shirt Dress</h4>
-                                    <p class="mb-2"><span class="text-dark ft-medium small">36</span>, <span
-                                            class="text-dark small">Red</span></p>
-                                    <h4 class="fs-md ft-medium mb-0 lh-1">$129</h4>
-                                </div>
-                            </div>
-                            <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button>
-                            </div>
-                        </div>
+                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">{{$cartInfo->rel_to_product->product_name}}</h4>
+                                    <p class="mb-2"><span class="text-dark ft-medium small">
+                                        
+                                     @if ($cartInfo->rel_to_size->SizeName == "N/A")
+                                     Size Not Available
 
-                        <!-- Single Item -->
-                        <div class="d-flex align-items-center justify-content-between br-bottom px-3 py-3">
-                            <div class="cart_single d-flex align-items-center">
-                                <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/7.jpg" width="60"
-                                            class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Girls Floral Print Jumpsuit
-                                    </h4>
-                                    <p class="mb-2"><span class="text-dark ft-medium small">36</span>, <span
-                                            class="text-dark small">Red</span></p>
-                                    <h4 class="fs-md ft-medium mb-0 lh-1">$129</h4>
-                                </div>
-                            </div>
-                            <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button>
-                            </div>
-                        </div>
+                                     @else
 
-                        <!-- Single Item -->
-                        <div class="d-flex align-items-center justify-content-between px-3 py-3">
-                            <div class="cart_single d-flex align-items-center">
-                                <div class="cart_selected_single_thumb">
-                                    <a href="#"><img src="assets/img/product/8.jpg" width="60"
-                                            class="img-fluid" alt="" /></a>
-                                </div>
-                                <div class="cart_single_caption pl-2">
-                                    <h4 class="product_title fs-sm ft-medium mb-0 lh-1">Girls Solid A-Line Dress</h4>
-                                    <p class="mb-2"><span class="text-dark ft-medium small">30</span>, <span
-                                            class="text-dark small">Blue</span></p>
-                                    <h4 class="fs-md ft-medium mb-0 lh-1">$100</h4>
+                                     {{$cartInfo->rel_to_size->SizeName}}
+                                    
+                                     @endif
+                                
+                                
+                                
+                                   </span>, <span
+                                            class="text-dark small">{{$cartInfo->rel_to_color->ColorName}}</span></p>
+                                    <h4 class="fs-md ft-medium mb-0 lh-1">Tk {{$cartInfo->rel_to_product->After_discount}}/-</h4>
                                 </div>
                             </div>
                             <div class="fls_last"><button class="close_slide gray"><i class="ti-close"></i></button>
                             </div>
                         </div>
+                        @endforeach
+
+                       
+                      
 
                     </div>
 
@@ -621,6 +576,43 @@
             })
         </script>
     @endif
+
+
+    @if (session('PleaseLogin'))
+        <script>
+            Swal.fire({
+                title: 'You must have to login first to add to cart',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+        </script>
+    @endif
+
+    @if (session('cardAddedSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Product added to cart successfully'
+            })
+        </script>
+    @endif
+
 
 </body>
 
