@@ -141,3 +141,6 @@ Route::get("/customerLogout",[customerLoginRegController::class,"customerLogout"
 //Cart Section
 
 Route::post("/cartInsert",[cartController::class, "cartInsert"])->name("cartInsert");
+Route::get("/cartItemDelete/{cartItemDeleteId}",[cartController::class, "cartItemDelete"])->name("cartItemDelete");
+Route::get("/AllcartItemDelete",[cartController::class, "AllcartItemDelete"])->name("AllcartItemDelete");
+Route::get("/cartPage",[cartController::class, "cartPage"])->name("cartPage");

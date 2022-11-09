@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('add_size_models', function (Blueprint $table) {
             $table->id();
-            $table->string("SizeName");
+            $table->string("SizeName")->nullable();
             $table->integer("created_by");
             $table->timestamps();
         });

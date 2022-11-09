@@ -54,8 +54,7 @@
 
 
                             @foreach ($getProductDetails as $ProductDetails)
-
-                               <input type="hidden" value="{{$ProductDetails -> id}}" name="product_id">
+                                <input type="hidden" value="{{ $ProductDetails->id }}" name="product_id">
                                 <div class="prt_01 mb-1"><span
                                         class="text-light bg-info rounded px-2 py-1">{{ $ProductDetails->rel_to_category->catagory_name }}</span>
                                 </div>
@@ -154,11 +153,11 @@
                                     <div class="col-12 col-lg-auto">
                                         <!-- Quantity -->
                                         <select class="mb-2 custom-select" name="cart_quantity">
-                                            <option value="1" selected="">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+
+                                            @for ($i = 1; $i <= 20; $i++)
+                                                <option value="{{ $i }}">{{ $i }}</option>
+                                            @endfor
+
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg">

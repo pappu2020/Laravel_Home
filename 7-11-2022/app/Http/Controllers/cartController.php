@@ -26,4 +26,38 @@ class cartController extends Controller
             return redirect()->route("customerLoginRegPage")->with("PleaseLogin", "You must have to login first to add to cart");
         }
     }
+
+
+  function cartItemDelete($cartItemDeleteId){
+
+    cartModel::find($cartItemDeleteId)->delete();
+    return back();
+
+  }
+
+
+  function AllcartItemDelete(){
+    cartModel::where("customer_id",Auth::guard("customerLogin")->id())->delete();
+    return back();
+  }
+
+
+  function cartPage(){
+    $allCartInfo = cartModel::where("customer_id", Auth::guard("customerLogin")->id())->get();
+    return view("frontend.cartPage",[
+            'allCartInfo' => $allCartInfo,
+    ]);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 }
