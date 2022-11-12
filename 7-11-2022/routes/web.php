@@ -5,6 +5,7 @@ use App\Http\Controllers\addInventoryController;
 use App\Http\Controllers\addSizeController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\catagory;
+use App\Http\Controllers\couponController;
 use App\Http\Controllers\customerLoginRegController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\productController;
@@ -124,6 +125,17 @@ Route::post("/addSizePage/colorInsert", [addColorController::class, "colorInsert
 
 
 
+//Coupon
+
+
+
+
+Route::get("/addCouponPage", [couponController::class, "addCouponPage"])->name("addCouponPage");
+Route::post("/addCouponPage/couponInsert", [couponController::class, "couponInsert"])->name("couponInsert");
+
+
+
+
 
 
 //Customer Login Section
@@ -144,3 +156,4 @@ Route::post("/cartInsert",[cartController::class, "cartInsert"])->name("cartInse
 Route::get("/cartItemDelete/{cartItemDeleteId}",[cartController::class, "cartItemDelete"])->name("cartItemDelete");
 Route::get("/AllcartItemDelete",[cartController::class, "AllcartItemDelete"])->name("AllcartItemDelete");
 Route::get("/cartPage",[cartController::class, "cartPage"])->name("cartPage");
+Route::post("/cartPage/cartUpdate",[cartController::class, "cartUpdate"])->name("cartUpdate");

@@ -36,6 +36,13 @@
                     <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x mb-4">
 
 
+                        @php
+
+                        $subtotal = 0;
+                            
+                        @endphp
+
+
 
                         @foreach ($allCartInfo as $CartInfo)
                             <li class="list-group-item">
@@ -45,6 +52,9 @@
                                         <img src="{{ asset('uploads/products/preview') }}/{{ $CartInfo->rel_to_product->product_preview_img }}"
                                             alt="..." class="img-fluid">
                                     </div>
+
+                                    <form action="{{route("cartUpdate")}}" method="POST">
+                                        @csrf
                                     <div class="col d-flex align-items-center justify-content-between">
                                         <div class="cart_single_caption pl-2">
                                             <h4 class="product_title fs-md ft-medium mb-1 lh-1">
@@ -67,8 +77,8 @@
 
 
                                                 </span></p>
-                                            <h4 class="fs-md ft-medium mb-3 lh-1">Tk {{ $CartInfo->rel_to_product->After_discount }}</h4>
-                                            <select class="mb-2 custom-select w-auto">
+                                            <h4 class="fs-md ft-medium mb-3 lh-1">Tk {{ $CartInfo->rel_to_product->After_discount }} X {{ $CartInfo->Quantity }} </h4>
+                                            <select class="mb-2 custom-select w-auto" name="cartPageSizeSelection[{{$CartInfo->id}}]">
                                                 <option value="1"{{$CartInfo->Quantity == 1?'selected':''}}>1</option>
                                                 <option value="2"{{$CartInfo->Quantity == 2?'selected':''}}>2</option>
                                                 <option value="3"{{$CartInfo->Quantity == 3?'selected':''}}>3</option>
@@ -76,17 +86,26 @@
                                                 <option value="5"{{$CartInfo->Quantity == 5?'selected':''}}>5</option>
                                             </select>
                                         </div>
-                                        <div class="fls_last"><button class="close_slide gray"><i
-                                                    class="ti-close"></i></button>
+                                        <div class="fls_last"><a href="{{route("cartItemDelete",$CartInfo->id)}}" class="close_slide gray"><i
+                                                    class="ti-close"></i></a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
-                        @endforeach
 
+                            @php
+                                $subtotal = $CartInfo->rel_to_product->After_discount*$CartInfo->Quantity; 
+                            @endphp
+                        @endforeach
+                      <div class="col-12 col-md-auto mfliud mt-3">
+                            <button type="submit" class="btn stretched-link borders">Update Cart</button>
+                        </div>
+                    </form>
 
 
                     </ul>
+
+                   
 
                     <div class="row align-items-end justify-content-between mb-10 mb-md-0">
                         <div class="col-12 col-md-7">
@@ -103,9 +122,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-12 col-md-auto mfliud">
-                            <button class="btn stretched-link borders">Update Cart</button>
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -114,7 +131,7 @@
                         <div class="card-body">
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
-                                    <span>Subtotal</span> <span class="ml-auto text-dark ft-medium">$98.12</span>
+                                    <span>Subtotal</span> <span class="ml-auto text-dark ft-medium">Tk {{$subtotal}}/-</span>
                                 </li>
                                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                                     <span>Discount</span> <span class="ml-auto text-dark ft-medium">$10.10</span>
