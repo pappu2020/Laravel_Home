@@ -37,8 +37,8 @@
 
 
                         @php
-
-                        $subtotal = 0;
+                            
+                            $subtotal = 0;
                             
                         @endphp
 
@@ -53,59 +53,74 @@
                                             alt="..." class="img-fluid">
                                     </div>
 
-                                    <form action="{{route("cartUpdate")}}" method="POST">
+                                    <form action="{{ route('cartUpdate') }}" method="POST">
                                         @csrf
-                                    <div class="col d-flex align-items-center justify-content-between">
-                                        <div class="cart_single_caption pl-2">
-                                            <h4 class="product_title fs-md ft-medium mb-1 lh-1">
-                                                {{ $CartInfo->rel_to_product->product_name }}</h4>
-                                            <p class="mb-1 lh-1"><span class="text-dark">
-                                                    @if ($CartInfo->size_id == null)
-                                                        Size Not Available
-                                                    @else
-                                                        Size: {{ $CartInfo->rel_to_size->SizeName }}
-                                                    @endif
+                                        <div class="col d-flex align-items-center justify-content-between">
+                                            <div class="cart_single_caption pl-2">
+                                                <h4 class="product_title fs-md ft-medium mb-1 lh-1">
+                                                    {{ $CartInfo->rel_to_product->product_name }}</h4>
+                                                <p class="mb-1 lh-1"><span class="text-dark">
+                                                        @if ($CartInfo->size_id == null)
+                                                            Size Not Available
+                                                        @else
+                                                            Size: {{ $CartInfo->rel_to_size->SizeName }}
+                                                        @endif
 
-                                                </span></p>
-                                            <p class="mb-3 lh-1"><span class="text-dark">
+                                                    </span></p>
+                                                <p class="mb-3 lh-1"><span class="text-dark">
 
-                                                    @if ($CartInfo->color_id == null)
-                                                        color Not Available
-                                                    @else
-                                                        Size: {{ $CartInfo->rel_to_color->ColorName }}
-                                                    @endif
+                                                        @if ($CartInfo->color_id == null)
+                                                            color Not Available
+                                                        @else
+                                                            Size: {{ $CartInfo->rel_to_color->ColorName }}
+                                                        @endif
 
 
-                                                </span></p>
-                                            <h4 class="fs-md ft-medium mb-3 lh-1">Tk {{ $CartInfo->rel_to_product->After_discount }} X {{ $CartInfo->Quantity }} </h4>
-                                            <select class="mb-2 custom-select w-auto" name="cartPageSizeSelection[{{$CartInfo->id}}]">
-                                                <option value="1"{{$CartInfo->Quantity == 1?'selected':''}}>1</option>
-                                                <option value="2"{{$CartInfo->Quantity == 2?'selected':''}}>2</option>
-                                                <option value="3"{{$CartInfo->Quantity == 3?'selected':''}}>3</option>
-                                                <option value="4"{{$CartInfo->Quantity == 4?'selected':''}}>4</option>
-                                                <option value="5"{{$CartInfo->Quantity == 5?'selected':''}}>5</option>
-                                            </select>
+                                                    </span></p>
+                                                <h4 class="fs-md ft-medium mb-3 lh-1">Tk
+                                                    {{ $CartInfo->rel_to_product->After_discount }} X
+                                                    {{ $CartInfo->Quantity }} </h4>
+                                                <select class="mb-2 custom-select w-auto"
+                                                    name="cartPageSizeSelection[{{ $CartInfo->id }}]">
+                                                    <option value="1"{{ $CartInfo->Quantity == 1 ? 'selected' : '' }}>1
+                                                    </option>
+                                                    <option value="2"{{ $CartInfo->Quantity == 2 ? 'selected' : '' }}>
+                                                        2
+                                                    </option>
+                                                    <option value="3"{{ $CartInfo->Quantity == 3 ? 'selected' : '' }}>
+                                                        3
+                                                    </option>
+                                                    <option value="4"{{ $CartInfo->Quantity == 4 ? 'selected' : '' }}>
+                                                        4
+                                                    </option>
+                                                    <option value="5"{{ $CartInfo->Quantity == 5 ? 'selected' : '' }}>
+                                                        5
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="fls_last"><a href="{{ route('cartItemDelete', $CartInfo->id) }}"
+                                                    class="close_slide gray"><i class="ti-close"></i></a>
+                                            </div>
                                         </div>
-                                        <div class="fls_last"><a href="{{route("cartItemDelete",$CartInfo->id)}}" class="close_slide gray"><i
-                                                    class="ti-close"></i></a>
-                                        </div>
-                                    </div>
                                 </div>
                             </li>
-
                             @php
-                                $subtotal = $CartInfo->rel_to_product->After_discount*$CartInfo->Quantity; 
+                                $subtotal += $CartInfo->rel_to_product->After_discount * $CartInfo->Quantity;
                             @endphp
                         @endforeach
-                      <div class="col-12 col-md-auto mfliud mt-3">
+
+
+
+                        <div class="col-12 col-md-auto mfliud mt-3">
                             <button type="submit" class="btn stretched-link borders">Update Cart</button>
                         </div>
-                    </form>
+
+                        </form>
 
 
                     </ul>
 
-                   
+
 
                     <div class="row align-items-end justify-content-between mb-10 mb-md-0">
                         <div class="col-12 col-md-7">
@@ -122,7 +137,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -131,7 +146,8 @@
                         <div class="card-body">
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
-                                    <span>Subtotal</span> <span class="ml-auto text-dark ft-medium">Tk {{$subtotal}}/-</span>
+                                    <span>Subtotal</span> <span class="ml-auto text-dark ft-medium">Tk
+                                        {{ $subtotal }}/-</span>
                                 </li>
                                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                                     <span>Discount</span> <span class="ml-auto text-dark ft-medium">$10.10</span>

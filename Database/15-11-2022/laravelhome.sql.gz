@@ -1,0 +1,714 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 15, 2022 at 01:03 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `laravelhome`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_color_models`
+--
+
+CREATE TABLE `add_color_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `ColorName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ColorCode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `add_color_models`
+--
+
+INSERT INTO `add_color_models` (`id`, `ColorName`, `ColorCode`, `created_by`, `created_at`, `updated_at`) VALUES
+(3, NULL, NULL, 36, '2022-10-20 15:27:49', NULL),
+(4, 'Black', '#000000', 36, '2022-10-20 15:32:33', NULL),
+(5, 'Blue', '#0000FF', 36, '2022-10-20 15:34:16', NULL),
+(6, 'Green', '#00FF00', 36, '2022-10-20 15:34:46', NULL),
+(7, 'Sky blue', '#87CEEB', 36, '2022-10-20 17:46:56', NULL),
+(8, 'Red', '#FF0000', 36, '2022-10-20 18:52:24', NULL),
+(9, 'Grey', '#808080', 36, '2022-11-07 14:55:15', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_inventory_models`
+--
+
+CREATE TABLE `add_inventory_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `Color_id` int(11) NOT NULL,
+  `size_id` int(11) NOT NULL,
+  `Quantity` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `add_inventory_models`
+--
+
+INSERT INTO `add_inventory_models` (`id`, `product_id`, `Color_id`, `size_id`, `Quantity`, `created_at`, `updated_at`) VALUES
+(1, 14, 7, 1, 25, '2022-10-20 17:47:22', NULL),
+(2, 9, 7, 2, 150, '2022-10-20 18:53:02', NULL),
+(4, 15, 5, 2, 90, '2022-10-20 18:54:32', NULL),
+(5, 15, 6, 1, 90, '2022-10-20 18:54:49', NULL),
+(6, 9, 5, 3, 100, '2022-10-20 18:55:19', '2022-11-06 10:16:51'),
+(8, 10, 4, 5, 50, '2022-11-06 10:18:38', NULL),
+(9, 10, 5, 6, 20, '2022-11-06 10:18:50', NULL),
+(11, 15, 5, 14, 50, '2022-11-06 10:22:40', NULL),
+(13, 15, 3, 3, 8, '2022-11-06 10:32:12', NULL),
+(15, 13, 4, 16, 50, '2022-11-06 10:39:05', NULL),
+(16, 16, 3, 14, 10, '2022-11-06 10:39:39', NULL),
+(17, 17, 4, 15, 41, '2022-11-06 10:40:11', NULL),
+(18, 24, 5, 2, 20, '2022-11-07 06:06:05', NULL),
+(19, 24, 7, 3, 30, '2022-11-07 06:06:19', NULL),
+(20, 24, 6, 3, 10, '2022-11-07 06:06:34', NULL),
+(21, 24, 5, 4, 15, '2022-11-07 06:06:48', NULL),
+(22, 23, 5, 14, 36, '2022-11-07 08:11:46', NULL),
+(23, 23, 6, 14, 10, '2022-11-07 08:11:57', NULL),
+(24, 23, 8, 14, 20, '2022-11-07 08:12:19', NULL),
+(25, 9, 6, 2, 5, '2022-11-07 09:24:00', NULL),
+(26, 21, 3, 12, 20, '2022-11-07 09:50:31', NULL),
+(27, 21, 3, 10, 10, '2022-11-07 09:50:46', NULL),
+(28, 25, 4, 14, 10, '2022-11-07 10:05:29', NULL),
+(29, 22, 6, 14, 10, '2022-11-07 11:08:30', NULL),
+(30, 22, 4, 14, 50, '2022-11-07 11:08:49', NULL),
+(31, 27, 7, 3, 20, '2022-11-07 14:54:17', NULL),
+(32, 27, 7, 2, 16, '2022-11-07 14:54:31', NULL),
+(33, 28, 9, 2, 20, '2022-11-07 14:55:44', NULL),
+(34, 28, 9, 3, 15, '2022-11-07 14:55:53', NULL),
+(35, 26, 4, 14, 20, '2022-11-07 14:59:08', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `add_size_models`
+--
+
+CREATE TABLE `add_size_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `SizeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `add_size_models`
+--
+
+INSERT INTO `add_size_models` (`id`, `SizeName`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 'S', 36, '2022-10-20 15:00:07', NULL),
+(2, 'M', 36, '2022-10-20 15:00:19', NULL),
+(3, 'XL', 36, '2022-10-20 15:00:23', NULL),
+(4, 'XXL', 36, '2022-10-20 18:51:53', NULL),
+(5, '5', 36, '2022-11-06 10:17:53', NULL),
+(6, '6', 36, '2022-11-06 10:17:59', NULL),
+(7, '7', 36, '2022-11-06 10:18:05', NULL),
+(8, '8', 36, '2022-11-06 10:18:10', NULL),
+(9, '400', 36, '2022-11-06 10:19:33', NULL),
+(10, '500', 36, '2022-11-06 10:19:40', NULL),
+(11, '800', 36, '2022-11-06 10:19:45', NULL),
+(12, '1000', 36, '2022-11-06 10:19:52', NULL),
+(13, '100', 36, '2022-11-06 10:19:59', NULL),
+(14, 'N/A', 36, '2022-11-06 10:22:03', NULL),
+(15, '43', 36, '2022-11-06 10:37:49', NULL),
+(16, '13', 36, '2022-11-06 10:38:30', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_models`
+--
+
+CREATE TABLE `cart_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `color_id` int(11) DEFAULT NULL,
+  `size_id` int(11) DEFAULT NULL,
+  `Quantity` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cart_models`
+--
+
+INSERT INTO `cart_models` (`id`, `customer_id`, `product_id`, `color_id`, `size_id`, `Quantity`, `created_at`, `updated_at`) VALUES
+(19, 1, 27, 7, 3, 2, '2022-11-13 18:33:08', '2022-11-13 18:35:04'),
+(20, 1, 22, 6, 14, 1, '2022-11-13 18:33:27', NULL),
+(21, 1, 26, 4, 14, 1, '2022-11-13 18:33:41', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `catagory_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `catagory_img` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `added_by` int(11) NOT NULL,
+  `deleted_at` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id`, `catagory_name`, `catagory_img`, `created_at`, `updated_at`, `added_by`, `deleted_at`) VALUES
+(9, 'Women fashion', 'women fashion-920804.png', '2022-10-13 14:23:36', '2022-10-18 11:49:46', 36, NULL),
+(10, 'Health and beauty', 'health and beauty-537613.png', '2022-10-13 14:24:49', '2022-10-13 14:24:52', 36, NULL),
+(11, 'Mens fashion', 'mens fashion-283342.png', '2022-10-13 14:27:40', '2022-10-13 14:27:42', 36, NULL),
+(12, 'Electronics Devices', 'electronics devices-874306.png', '2022-10-13 14:29:35', '2022-10-13 14:29:36', 36, NULL),
+(13, 'Sports', 'sports-574496.png', '2022-10-13 14:31:51', '2022-10-13 14:31:52', 36, NULL),
+(14, 'Babies & toys', 'babies & toys-846172.png', '2022-10-13 14:32:56', '2022-10-13 14:32:57', 36, NULL),
+(15, 'Plants', 'plants-666835.png', '2022-10-13 14:34:17', '2022-10-13 14:34:18', 36, NULL),
+(16, 'Home Appliances', 'home appliances-294267.png', '2022-10-13 14:37:23', '2022-10-13 14:37:24', 36, NULL),
+(27, 'Furniture', 'furniture-495857.png', '2022-11-06 18:03:49', '2022-11-06 18:03:49', 36, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coupon_models`
+--
+
+CREATE TABLE `coupon_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `couponCode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `couponType` int(11) NOT NULL,
+  `couponDiscount` int(11) NOT NULL,
+  `couponValidity` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `coupon_models`
+--
+
+INSERT INTO `coupon_models` (`id`, `couponCode`, `couponType`, `couponDiscount`, `couponValidity`, `created_at`, `updated_at`) VALUES
+(1, 'bijoy16', 1, 16, '2022-12-16', '2022-11-12 17:32:13', NULL),
+(2, 'newcustomer200', 2, 200, '2023-01-20', '2022-11-12 17:33:22', NULL),
+(3, 'biswas50', 2, 50, '2022-12-30', '2022-11-12 17:59:59', NULL),
+(4, 'hurrah100', 2, 100, '2023-01-20', '2022-11-13 18:32:46', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_login_models`
+--
+
+CREATE TABLE `customer_login_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `photo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `customer_login_models`
+--
+
+INSERT INTO `customer_login_models` (`id`, `name`, `email`, `password`, `country`, `address`, `photo`, `created_at`, `updated_at`) VALUES
+(1, 'Pappu Saha', 'sahapappu019@gmail.com', '$2y$10$nVVC6/xm3pHS7hsGAq1Ig.a4uJH/.ZYyOpifMTb19TiYPfE3OTxxy', NULL, NULL, NULL, '2022-11-07 17:48:50', NULL),
+(2, 'Anamika Saha', 'sahaanamika@gmail.com', '$2y$10$8Yjpp9VdOVZauhM6VxXs7eysiawjz3b5tMBEsntg.pWUt2fXcJ6cy', NULL, NULL, NULL, '2022-11-07 18:41:23', NULL),
+(3, 'Peter Forbes', 'pasicu@mailinator.com', '$2y$10$G/GE4o9hp/aqtel3cZ09w.u79F6epm3U0GslFzPv6FOwvLUbwc5O2', NULL, NULL, NULL, '2022-11-07 18:44:34', NULL),
+(4, 'Karleigh Cardenas', 'qahi@mailinator.com', '$2y$10$AAjS3.b0bCZYyeK5fYCJ7OAR00wN9EezUcsjjR1VcjEtGJ3FrYKPi', NULL, NULL, NULL, '2022-11-08 15:18:13', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(6, '2022_10_12_195232_create_categories_table', 2),
+(7, '2022_10_18_192626_create_sub_category_models_table', 3),
+(8, '2022_10_19_112527_create_product_models_table', 4),
+(9, '2022_10_19_161200_create_product_thumbsnail_models_table', 5),
+(10, '2022_10_20_202824_create_add_size_models_table', 6),
+(11, '2022_10_20_210636_create_add_color_models_table', 7),
+(12, '2022_10_20_214944_create_add_inventory_models_table', 8),
+(13, '2022_11_07_211004_create_customer_login_models_table', 9),
+(14, '2022_11_08_185040_create_cart_models_table', 10),
+(15, '2022_11_12_225732_create_coupon_models_table', 11);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_models`
+--
+
+CREATE TABLE `product_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `Subcategory_id` int(11) NOT NULL,
+  `product_Price` int(11) NOT NULL,
+  `product_Discount` int(11) DEFAULT NULL,
+  `After_discount` int(11) NOT NULL,
+  `product_Brand` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_Short_desp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `product_Long_desp` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product_preview_img` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_models`
+--
+
+INSERT INTO `product_models` (`id`, `product_name`, `category_id`, `Subcategory_id`, `product_Price`, `product_Discount`, `After_discount`, `product_Brand`, `product_Short_desp`, `product_Long_desp`, `product_preview_img`, `slug`, `created_by`, `created_at`, `updated_at`) VALUES
+(9, 'Turquoise Embroidered Joysree Silk Kameez with Coaty', 9, 2, 11500, 5, 10925, 'Aarong', 'Turquoise joysree silk kameez with floral embroidery. Features with muslin embroidered coaty. Comes with light cyan printed poplin shalwar. Purple printed dupatta with endi silk striped', '<div class=\"product attribute description\">\r\n    <h3>Product Description</h3>\r\n        <div class=\"value\">Turquoise joysree silk kameez with floral \r\nembroidery. Features with muslin embroidered coaty. Comes with light \r\ncyan printed poplin shalwar. Purple printed dupatta with endi silk \r\nstriped.</div>\r\n</div>\r\n\r\n    \r\n        \r\n            <table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\">\r\n            <tbody>\r\n                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Bottom Colour</th>\r\n                    <td class=\"col data\" data-th=\"Bottom Colour\">Light Cyan</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Bottom Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Bottom Fabric\">Poplin</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Bottom Length</th>\r\n                    <td class=\"col data\" data-th=\"Bottom Length\">Long</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Dry Clean</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Collar/Neck</th>\r\n                    <td class=\"col data\" data-th=\"Collar/Neck\">Band Collar</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Cut /Fit</th>\r\n                    <td class=\"col data\" data-th=\"Cut /Fit\">Front Open</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Dupatta Colour</th>\r\n                    <td class=\"col data\" data-th=\"Dupatta Colour\">Purple</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Dupatta Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Dupatta Fabric\">Endi Silk</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Muslin</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sleeve</th>\r\n                    <td class=\"col data\" data-th=\"Sleeve\">3-Quarter Sleeve</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Length</th>\r\n                    <td class=\"col data\" data-th=\"Length\">Long</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value Addition</th>\r\n                    <td class=\"col data\" data-th=\"Value Addition\">Hand Embroidery</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Waist</th>\r\n                    <td class=\"col data\" data-th=\"Waist\">Elastic Waist</td></tr></tbody></table><p></p>', 'turquoise-embroidered-joysree-silk-kameez-with-coaty-1481538.webp', 'turquoise-embroidered-joysree-silk-kameez-with-coaty-1857810', '36', '2022-10-20 12:35:05', '2022-10-20 12:35:07'),
+(10, 'Green Embroidered Leather Nagra', 9, 3, 999, 3, 969, 'Aarong', 'This green based multi-coloured pair of embroidered leather nagra are perfect for special occasions.', '<div class=\"product attribute description\">\r\n    <h3>Product Description</h3>\r\n        <div class=\"value\">This green based multi-coloured pair of embroidered leather nagra are perfect for special occasions.</div>\r\n</div>\r\n\r\n    \r\n        \r\n            <table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\">\r\n            <tbody>\r\n                                                                        <tr>\r\n                    <th class=\"col label\" scope=\"row\">Colour</th>\r\n                    <td class=\"col data\" data-th=\"Colour\">Green</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Upper</th>\r\n                    <td class=\"col data\" data-th=\"Upper\">Thread</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Upper Value Addition</th>\r\n                    <td class=\"col data\" data-th=\"Upper Value Addition\">Machine Embroidery</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Lining</th>\r\n                    <td class=\"col data\" data-th=\"Lining\">Faux Leather Lining</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sole</th>\r\n                    <td class=\"col data\" data-th=\"Sole\">Rubber Sole</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Toe</th>\r\n                    <td class=\"col data\" data-th=\"Toe\">Close Toed</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Heel</th>\r\n                    <td class=\"col data\" data-th=\"Heel\">Flat</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Clean With Soft Dry Brush And Keep It Dry Place</td></tr></tbody></table><p></p>', 'green-embroidered-leather-nagra-1156900.webp', 'green-embroidered-leather-nagra-1655597', '36', '2022-10-20 12:39:25', '2022-10-20 12:39:26'),
+(13, 'Apple MacBook Air 13.3-Inch Retina Display 8-core Apple M1 chip with 8GB RAM, 256GB SSD (MGN63) Space Gray', 12, 11, 122000, 5, 115900, 'Apple', 'Apple\'s thinnest, lightest notebook, completely transformed by the Apple M1 chip. CPU speeds up to 3.5x faster. GPU speeds up to 5x faster. Our most advanced Neural Engine for up to 9x faster machine learning', '<div class=\"section-head\">\r\n        <h2>Specification</h2>\r\n    </div>\r\n    \r\n        <table class=\"data-table flex-table\" cellspacing=\"0\" cellpadding=\"0\"><colgroup>\r\n            <col class=\"name\">\r\n            <col class=\"value\">\r\n        </colgroup>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Processor</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Processor Brand</td><td class=\"value\">Apple </td>\r\n        </tr><tr>\r\n            <td class=\"name\">Processor Model</td><td class=\"value\">M1 chip</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Processor Frequency</td><td class=\"value\">2.06 - 3.8GHz</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Processor Core</td><td class=\"value\">8</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Processor Thread</td><td class=\"value\">8</td>\r\n        </tr><tr>\r\n            <td class=\"name\">CPU Cache</td><td class=\"value\">16 MB</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Display</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Display Size</td><td class=\"value\">13.3-inch</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Display Type</td><td class=\"value\">Retina display with IPS technology</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Display Resolution</td><td class=\"value\">2560 X 1600 </td>\r\n        </tr><tr>\r\n            <td class=\"name\">Touch Screen</td><td class=\"value\">No</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Display Features</td><td class=\"value\">LED-backlit;  227 pixels per inch with support for millions of colors</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Memory</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">RAM</td><td class=\"value\">8GB</td>\r\n        </tr><tr>\r\n            <td class=\"name\">RAM Type</td><td class=\"value\">Unified memory</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Removable</td><td class=\"value\">No</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Storage</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Storage Type</td><td class=\"value\">SSD</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Storage Capacity</td><td class=\"value\">256GB</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Extra M.2 Slot</td><td class=\"value\">N/A</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Graphics</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Graphics Model</td><td class=\"value\">Apple 7-core GPU</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Graphics Memory</td><td class=\"value\">Shared</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Keyboard &amp; TouchPad</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Keyboard Type</td><td class=\"value\">Backlit Magic Keyboard</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Keyboard Features</td><td class=\"value\">78 (ANSI) or 79 (ISO) keys including 12 function keys and 4 arrow keys in an inverted-T arrangement<br>\r\nAmbient light sensor<br>\r\n</td>\r\n        </tr><tr>\r\n            <td class=\"name\">TouchPad</td><td class=\"value\">Force Touch \r\ntrackpad for precise cursor control and pressure-sensing capabilities; \r\nenables Force clicks, accelerators, pressure-sensitive drawing, and \r\nMulti-Touch gestures</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Camera &amp; Audio</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">WebCam</td><td class=\"value\">HD </td>\r\n        </tr><tr>\r\n            <td class=\"name\">Speaker</td><td class=\"value\">Stereo speakers</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Microphone</td><td class=\"value\">Three-mic array with directional beamforming</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Audio Features</td><td class=\"value\">Wide stereo sound<br>\r\nSupport for Dolby Atmos playback</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Ports &amp; Slots</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Optical Drive</td><td class=\"value\">N/A</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Card Reader</td><td class=\"value\">N/A</td>\r\n        </tr><tr>\r\n            <td class=\"name\">VGA/D-Sub</td><td class=\"value\">Yes</td>\r\n        </tr><tr>\r\n            <td class=\"name\">HDMI Port</td><td class=\"value\">Yes</td>\r\n        </tr><tr>\r\n            <td class=\"name\">USB Type-C / Thunderbolt Port</td><td class=\"value\">Two Thunderbolt / USB 4 ports</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Headphone &amp; Microphone Port</td><td class=\"value\">3.5 mm headphone jack</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Network &amp; Connectivity</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">LAN</td><td class=\"value\">N/A</td>\r\n        </tr><tr>\r\n            <td class=\"name\">WiFi</td><td class=\"value\">802.11ac Wi-Fi wireless network, compatible with IEEE 802.11a / b / g / n</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Bluetooth</td><td class=\"value\">5.0 wireless technology</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Security</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Fingerprint Sensor</td><td class=\"value\">N/A</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Software</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Operating System</td><td class=\"value\">macOS</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Power</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Battery Type</td><td class=\"value\">lithium‑polymer </td>\r\n        </tr><tr>\r\n            <td class=\"name\">Battery Capacity</td><td class=\"value\">49.9‑watt‑hour</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Adapter Type</td><td class=\"value\">30W USB-C power adapter</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Physical Specification</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Color</td><td class=\"value\">Space Gray</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Dimensions</td><td class=\"value\">Thickness: 0.41 to 1.61 cm (0.16 to 0.63 inches)<br>\r\nWidth: 30.41 cm (11.97 inches)<br>\r\nDepth: 21.24 cm (8.36 inches)</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Weight</td><td class=\"value\">1.29 kg (2.8 lbs)</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Warranty</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Warranty Details</td><td class=\"value\">01 year International Limited Warranty (Terms &amp; Condition Apply As Per Apple)</td></tr></tbody></table><p></p>', 'apple-macbook-air-13.3-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram,-256gb-ssd-(mgn63)-space-gray-1680602.jpg', 'apple-macbook-air-13.3-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram,-256gb-ssd-(mgn63)-space-gray-970229', '36', '2022-10-20 12:53:38', '2022-10-20 12:53:38'),
+(14, 'Argentina Home Kit - Player Edition - Fifa 2022', 13, 17, 1450, 5, 1378, 'Best jersey', 'e bring you the best quality imported jerseys and kits. Feel comfortable with the sweat-wicking and breathable jerseys. Perfect for workout, sports or even lazy evenings. Cheer for your favorite team by sporting their loyalty and support.', '<p><p><span>We bring you the best quality imported jerseys and kits. Feel \r\ncomfortable with the sweat-wicking and breathable jerseys. Perfect for \r\nworkout, sports or even lazy evenings. Cheer for your favorite team by \r\nsporting their loyalty and support.</span> </p><ul><li>Imported</li><li>Sweat-wicking fabric</li><li>Stretchable, Breathable &amp; Comfortable.</li><li>Keeps you confident, Cool and Sporty.</li><li>Imported</li></ul> <strong>Fan version vs Player version:</strong><br><br> <strong>1. Price:</strong><br> <span>Fan\r\n version&nbsp;jerseys always cost less than their&nbsp;Player version&nbsp; \r\ncounterparts. This is because they are built with more cost-effective \r\nfabric and applications. Fan version jerseys are designed for everyday \r\nsupport and casual wear.  Player version&nbsp;jerseys, on the other hand, are\r\n built to assist world class athletes in performing at the highest \r\nlevel.</span> <br><br>  <strong>2. Application:</strong><br> <span>On \r\nthe Fan version, most applications&nbsp; are embroidered or sewn-on, meaning \r\nthey have a thread-like feel and are durable, able to withstand \r\nextensive wear and numerous wash cycles.&nbsp;On the  Player version, \r\napplications are heat-pressed, meaning they have a smooth, synthetic \r\nfeel and must be handled with care when washed.</span></p><p><strong>3. Fit:</strong><br> <span>OFan version kits are built like \r\nt-shirts or polos, while  Player version are tighter, slim and \r\nform-fitting. This means there will be visible differences in the \r\ntightness of the shirts at the waist, hips and arms.</span></p>', 'argentina-home-kit---player-edition---fifa-2022-386975.jpg', 'argentina-home-kit---player-edition---fifa-2022-1049060', '36', '2022-10-20 12:58:46', '2022-10-20 12:58:46'),
+(15, 'Wooden Toy', 14, 18, 450, 5, 428, 'Toys world', 'Mahogany wooden toy parade cannon with four wheels.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\">\r\n            <tbody>\r\n                                                                        <tr>\r\n                    <th class=\"col label\" scope=\"row\">Colour</th>\r\n                    <td class=\"col data\" data-th=\"Colour\">Black</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value addition</th>\r\n                    <td class=\"col data\" data-th=\"Value addition\">Hand Paint</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Material</th>\r\n                    <td class=\"col data\" data-th=\"Material\">Wood</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Unit</th>\r\n                    <td class=\"col data\" data-th=\"Unit\">Single Piece</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Length</th>\r\n                    <td class=\"col data\" data-th=\"Length\">13</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Width</th>\r\n                    <td class=\"col data\" data-th=\"Width\">6.5</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Height</th>\r\n                    <td class=\"col data\" data-th=\"Height\">7.5</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Measurement Unit</th>\r\n                    <td class=\"col data\" data-th=\"Measurement Unit\">CM</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Clean With Soft Dry Brush And Keep It Dry Place</td></tr></tbody></table><p><br></p>', 'wooden-toy-1731045.webp', 'wooden-toy-361582', '36', '2022-10-20 13:02:25', '2022-10-20 13:02:26'),
+(16, 'Drobe Kamini Plants', 15, 19, 280, 2, 274, '', 'Drobe Kamini\r\n\r\nHybrid', '<h4>Drobe Kamini</h4>\r\n<p>Hybrid</p><p></p>', 'drobe-kamini-plants-388066.webp', 'drobe-kamini-plants-1815341', '36', '2022-10-20 13:05:03', '2022-10-20 13:05:03'),
+(17, 'Sony Bravia w660f 43 inch LED Smart TV', 16, 12, 47500, 5, 45125, 'Sony', 'Sony Bravia w660f 43 inch LED Smart TV\r\nX-Reality PRO picture processing upscales every pixel for exceptional Full HD clarity. Brings you the excitement of movies and games in vividly detailed HDR.View photos and videos', '<div class=\"section-head\">\r\n        <h2>Specification</h2>\r\n    </div>\r\n    \r\n        <table class=\"data-table flex-table\" cellspacing=\"0\" cellpadding=\"0\"><colgroup>\r\n            <col class=\"name\">\r\n            <col class=\"value\">\r\n        </colgroup>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Main Features</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Display Type</td><td class=\"value\">LCD</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Screen Size</td><td class=\"value\">43\'\'</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Resolution</td><td class=\"value\">1920x1080</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Connectivity </td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">USB</td><td class=\"value\">2 (Side/Stacking)</td>\r\n        </tr><tr>\r\n            <td class=\"name\">HDMI</td><td class=\"value\">2 (2Side)</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Bluetooth</td><td class=\"value\">No</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Wi-Fi</td><td class=\"value\"> 802.11b/g/n</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Audio</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Audio Output</td><td class=\"value\">AUDIO POWER OUTPUT 5W + 5W<br>\r\n1 (Side Hybrid with Headphone Out, Audio Out and Subwoofer Out</td>\r\n        </tr><tr>\r\n            <td class=\"name\">  Speaker System</td><td class=\"value\">Open Baffle Speaker</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Power</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Power Supply</td><td class=\"value\">AC 100-240V, 50/60Hz, DC 19.5V</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Remote Control</td><td class=\"value\">Yes</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Standby Power Consumption</td><td class=\"value\">0.5W</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Physical Specification </td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Dimension (L x W x H)</td><td class=\"value\">DIMENSION OF TV WITH STAND (W X H X D) Approx. 974x628x268 mm</td>\r\n        </tr><tr>\r\n            <td class=\"name\">Weight</td><td class=\"value\">WEIGHT OF TV WITH STAND Approx. 8.2 kg</td>\r\n        </tr>        </tbody>\r\n                <thead>\r\n        <tr>\r\n            <td class=\"heading-row\" colspan=\"3\">Manufacture Warranty</td>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr>\r\n            <td class=\"name\">Warranty</td><td class=\"value\">No Parts Warranty</td></tr></tbody></table><p></p>', 'sony-bravia-w660f-43-inch-led-smart-tv-230611.jpg', 'sony-bravia-w660f-43-inch-led-smart-tv-797088', '36', '2022-10-20 13:07:29', '2022-10-20 13:07:29'),
+(21, 'Hyaluron Plump Hydrating Shampoo, Paraben-Free', 10, 7, 789, 2, 773, 'Loreal', 'Inspired by Skincare, Elvive Hyaluron + Plump regimen for dry hair, locks in moisture for up to 72H, achieving shinier, bouncier, free-flowing hair', '<summary class=\"oap-collapsible__title\">Product Details</summary> 72H\r\n Moisture - Hyaluron Plump Hydrating Shampoo gently cleanses, instantly \r\nhydrates, and replumps dry hair for up to 72 hours without weigh down, \r\nwhen used with system. For bouncy, shiny, free-flowing hair.\r\n<br><br>\r\nInspired by Skincare - Expert formulated Hyaluronic Care Complex \r\nprovides 72H hydration and replenished moisture. From the number 1 \r\nSkincare Serum Brand.\r\n<br><br>\r\nHydrating Routine - Gently cleanse with Elvive Hyaluron Plump Shampoo. \r\nPrime with flash hydration Wonder Water, then condition to instantly \r\ndetangle and moisturize. Finish with Replumping Serum to deliver a boost\r\n of moisture for fuller-feeling hair.\r\n<br><br>\r\nFresh Fragrance - Indulge in a blend of bright berries, cherry blossom, sweet vanilla, and sandalwood.\r\n<p></p>', 'hyaluron-plump-hydrating-shampoo,-paraben-free-1160586.webp', 'hyaluron-plump-hydrating-shampoo,-paraben-free-125195', '36', '2022-11-06 16:34:48', '2022-11-06 16:34:48'),
+(22, 'Bottle Green Printed and Embroidered Viscose Tunic', 9, 2, 1500, 3, 1455, 'Aarong', 'Bottle green printed and tie-dyed viscose tunic with embroidery and sequin detailing.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\">\r\n            <tbody>\r\n                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Hand Wash With Mild Detergent In Cold Water</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Collar/Neck</th>\r\n                    <td class=\"col data\" data-th=\"Collar/Neck\">Boat Neck</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Cut /Fit</th>\r\n                    <td class=\"col data\" data-th=\"Cut /Fit\">Trail Tunic</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Viscose</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sleeve</th>\r\n                    <td class=\"col data\" data-th=\"Sleeve\">Short Sleeve</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Length</th>\r\n                    <td class=\"col data\" data-th=\"Length\">Long</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value Addition</th>\r\n                    <td class=\"col data\" data-th=\"Value Addition\">Hand Embroidery</td></tr></tbody></table><p><br></p>', 'bottle-green-printed-and-embroidered-viscose-tunic-1410213.webp', 'bottle-green-printed-and-embroidered-viscose-tunic-598568', '36', '2022-11-06 16:47:51', '2022-11-06 16:47:52'),
+(23, 'Fuchsia Half Silk Jamdani Saree', 9, 2, 17500, 5, 16625, 'Aarong', 'Fuchsia half silk jamdani saree with golden, silver and green buti. Comes with matching unstitched blouse piece. Blouse shown in the photo is a styling suggestion, it is not a part of the actual product.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\">\r\n            <tbody>\r\n                                                                        <tr>\r\n                    <th class=\"col label\" scope=\"row\">Aanchal</th>\r\n                    <td class=\"col data\" data-th=\"Aanchal\">Patterned Aanchal</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Blouse</th>\r\n                    <td class=\"col data\" data-th=\"Blouse\">With Blouse Piece</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Dry Clean</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Half Silk (Silk &amp; Cotton)</td></tr></tbody></table><p><br></p>', 'fuchsia-half-silk-jamdani-saree-1733069.webp', 'fuchsia-half-silk-jamdani-saree-310791', '36', '2022-11-06 17:20:03', '2022-11-06 17:20:04'),
+(24, 'Navy Blue Textured Cotton Panjabi', 11, 15, 2850, 2, 2793, 'Aarong', 'Navy blue textured cotton panjabi with blue and yellow weaving detailing.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\"><tbody><tr><th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Hand Wash With Mild Detergent In Cold Water</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Collar/Neck</th>\r\n                    <td class=\"col data\" data-th=\"Collar/Neck\">Band Collar</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Cut /Fit</th>\r\n                    <td class=\"col data\" data-th=\"Cut /Fit\">Regular Fit</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Cotton</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Pocket</th>\r\n                    <td class=\"col data\" data-th=\"Pocket\">Side Pocket</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Side Cut</th>\r\n                    <td class=\"col data\" data-th=\"Side Cut\">Side Open</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sleeve</th>\r\n                    <td class=\"col data\" data-th=\"Sleeve\">Full Sleeve</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Length</th>\r\n                    <td class=\"col data\" data-th=\"Length\">Long</td></tr></tbody></table><p><br></p>', 'navy-blue-textured-cotton-panjabi-1378798.webp', 'navy-blue-textured-cotton-panjabi-581371', '36', '2022-11-06 17:21:40', '2022-11-06 17:21:41'),
+(26, 'Silver Erri Embroidered Leather Bag', 9, 6, 4200, 5, 3990, 'Aarong', 'Silver leather bag with erri embroidery and beads detailing. Features specious compartment with one slip pocket and leather top two handle and one detachable-adjustable strap for comfortable movement.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\"><tbody><tr><th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Clean With Soft Dry Brush And Keep It Dry Place</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Closure</th>\r\n                    <td class=\"col data\" data-th=\"Closure\">Zipper</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Material</th>\r\n                    <td class=\"col data\" data-th=\"Material\">Genuine Leather</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Handle</th>\r\n                    <td class=\"col data\" data-th=\"Handle\">With Genuine Leather Handle</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Height</th>\r\n                    <td class=\"col data\" data-th=\"Height\">21</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Interior type</th>\r\n                    <td class=\"col data\" data-th=\"Interior type\">Inner Zipped Pocket</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Length</th>\r\n                    <td class=\"col data\" data-th=\"Length\">28</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Lining</th>\r\n                    <td class=\"col data\" data-th=\"Lining\">Fabric</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Measurment Unit</th>\r\n                    <td class=\"col data\" data-th=\"Measurment Unit\">CM</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Type</th>\r\n                    <td class=\"col data\" data-th=\"Type\">Shoulder Bag</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Strap</th>\r\n                    <td class=\"col data\" data-th=\"Strap\">Adjustable &amp; Removable Strap</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Strap Material</th>\r\n                    <td class=\"col data\" data-th=\"Strap Material\">Genuine Leather</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Unit</th>\r\n                    <td class=\"col data\" data-th=\"Unit\">Single</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value Addition</th>\r\n                    <td class=\"col data\" data-th=\"Value Addition\">Erri Embroidery</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Width</th>\r\n                    <td class=\"col data\" data-th=\"Width\">10</td></tr></tbody></table><p><br></p>', 'silver-erri-embroidered-leather-bag-1615186.jpg', 'silver-erri-embroidered-leather-bag-1341920', '36', '2022-11-07 07:37:47', '2022-11-07 07:37:47'),
+(27, 'Sky Blue Printed Cotton Shirt', 11, 9, 755, NULL, 755, 'Aarong', 'Sky blue cotton shirt with black prints. Features chest pocket.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\"><tbody><tr><th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Hand Wash With Mild Detergent In Cold Water</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Collar/Neck</th>\r\n                    <td class=\"col data\" data-th=\"Collar/Neck\">Semi Spread Collar</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Cut /Fit</th>\r\n                    <td class=\"col data\" data-th=\"Cut /Fit\">Regular Fit</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Cotton</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Pocket</th>\r\n                    <td class=\"col data\" data-th=\"Pocket\">Chest Pocket</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sleeve</th>\r\n                    <td class=\"col data\" data-th=\"Sleeve\">Half Sleeve</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value Addition</th>\r\n                    <td class=\"col data\" data-th=\"Value Addition\">Screen Print</td></tr></tbody></table><p><br></p>', 'sky-blue-printed-cotton-shirt-1115497.webp', 'sky-blue-printed-cotton-shirt-1807950', '36', '2022-11-07 14:47:14', '2022-11-07 14:47:15'),
+(28, 'Grey Printed Cotton Shirt', 11, 9, 840, NULL, 840, 'Aarong', 'Grey cotton shirt with black and green prints. Features chest pocket.', '<table class=\"data table additional-attributes\" id=\"product-attribute-specs-table\"><tbody><tr><th class=\"col label\" scope=\"row\">Care</th>\r\n                    <td class=\"col data\" data-th=\"Care\">Hand Wash With Mild Detergent In Cold Water</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Collar/Neck</th>\r\n                    <td class=\"col data\" data-th=\"Collar/Neck\">Semi Spread Collar</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Cut /Fit</th>\r\n                    <td class=\"col data\" data-th=\"Cut /Fit\">Regular Fit</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Fabric</th>\r\n                    <td class=\"col data\" data-th=\"Fabric\">Cotton</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Pocket</th>\r\n                    <td class=\"col data\" data-th=\"Pocket\">Chest Pocket</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Sleeve</th>\r\n                    <td class=\"col data\" data-th=\"Sleeve\">Half Sleeve</td>\r\n                </tr>\r\n                                                            <tr>\r\n                    <th class=\"col label\" scope=\"row\">Value Addition</th></tr></tbody></table><p><br></p>', 'grey-printed-cotton-shirt-611923.webp', 'grey-printed-cotton-shirt-1598133', '36', '2022-11-07 14:53:16', '2022-11-07 14:53:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_thumbsnail_models`
+--
+
+CREATE TABLE `product_thumbsnail_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `thumbs_images` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product_thumbsnail_models`
+--
+
+INSERT INTO `product_thumbsnail_models` (`id`, `product_id`, `thumbs_images`, `created_at`, `updated_at`) VALUES
+(10, 9, 'turquoise-embroidered-joysree-silk-kameez-with-coaty-215387.webp', NULL, NULL),
+(11, 9, 'turquoise-embroidered-joysree-silk-kameez-with-coaty-1376328.webp', NULL, NULL),
+(12, 9, 'turquoise-embroidered-joysree-silk-kameez-with-coaty-1201036.webp', NULL, NULL),
+(13, 9, 'turquoise-embroidered-joysree-silk-kameez-with-coaty-698156.webp', NULL, NULL),
+(14, 10, 'green-embroidered-leather-nagra-1787517.webp', NULL, NULL),
+(15, 10, 'green-embroidered-leather-nagra-496584.webp', NULL, NULL),
+(16, 10, 'green-embroidered-leather-nagra-979175.webp', NULL, NULL),
+(21, 13, 'apple-macbook-air-13.3-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram,-256gb-ssd-(mgn63)-space-gray-1262825.jpg', NULL, NULL),
+(22, 13, 'apple-macbook-air-13.3-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram,-256gb-ssd-(mgn63)-space-gray-257465.jpg', NULL, NULL),
+(23, 14, 'argentina-home-kit---player-edition---fifa-2022-838130.jpg', NULL, NULL),
+(24, 14, 'argentina-home-kit---player-edition---fifa-2022-1736674.jpg', NULL, NULL),
+(25, 15, 'wooden-toy-1938043.webp', NULL, NULL),
+(26, 15, 'wooden-toy-1304584.webp', NULL, NULL),
+(27, 15, 'wooden-toy-1595371.webp', NULL, NULL),
+(28, 16, 'drobe-kamini-plants-1309177.webp', NULL, NULL),
+(29, 17, 'sony-bravia-w660f-43-inch-led-smart-tv-873688.jpg', NULL, NULL),
+(40, 21, 'hyaluron-plump-hydrating-shampoo,-paraben-free-257654.webp', NULL, NULL),
+(41, 22, 'bottle-green-printed-and-embroidered-viscose-tunic-837569.webp', NULL, NULL),
+(42, 22, 'bottle-green-printed-and-embroidered-viscose-tunic-857457.webp', NULL, NULL),
+(43, 22, 'bottle-green-printed-and-embroidered-viscose-tunic-1314206.webp', NULL, NULL),
+(44, 22, 'bottle-green-printed-and-embroidered-viscose-tunic-488168.webp', NULL, NULL),
+(45, 22, 'bottle-green-printed-and-embroidered-viscose-tunic-414891.webp', NULL, NULL),
+(46, 23, 'fuchsia-half-silk-jamdani-saree-335036.webp', NULL, NULL),
+(47, 23, 'fuchsia-half-silk-jamdani-saree-796306.webp', NULL, NULL),
+(48, 23, 'fuchsia-half-silk-jamdani-saree-1206105.webp', NULL, NULL),
+(49, 24, 'navy-blue-textured-cotton-panjabi-1092772.webp', NULL, NULL),
+(50, 24, 'navy-blue-textured-cotton-panjabi-1380734.webp', NULL, NULL),
+(51, 24, 'navy-blue-textured-cotton-panjabi-333082.webp', NULL, NULL),
+(52, 24, 'navy-blue-textured-cotton-panjabi-466248.webp', NULL, NULL),
+(53, 25, 'executive-chair-st:black-1163115.jpeg', NULL, NULL),
+(54, 26, 'silver-erri-embroidered-leather-bag-1437497.jpg', NULL, NULL),
+(55, 26, 'silver-erri-embroidered-leather-bag-1037926.webp', NULL, NULL),
+(56, 26, 'silver-erri-embroidered-leather-bag-1011808.jpg', NULL, NULL),
+(57, 27, 'sky-blue-printed-cotton-shirt-745859.webp', NULL, NULL),
+(58, 27, 'sky-blue-printed-cotton-shirt-997364.webp', NULL, NULL),
+(59, 27, 'sky-blue-printed-cotton-shirt-1127806.webp', NULL, NULL),
+(60, 28, 'grey-printed-cotton-shirt-1435901.webp', NULL, NULL),
+(61, 28, 'grey-printed-cotton-shirt-1811865.webp', NULL, NULL),
+(62, 28, 'grey-printed-cotton-shirt-488123.webp', NULL, NULL),
+(63, 28, 'grey-printed-cotton-shirt-1791259.webp', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_category_models`
+--
+
+CREATE TABLE `sub_category_models` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subCategoryName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subCategoryImg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `added_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sub_category_models`
+--
+
+INSERT INTO `sub_category_models` (`id`, `category_id`, `subCategoryName`, `subCategoryImg`, `added_by`, `created_at`, `updated_at`) VALUES
+(2, 9, 'Women-Clothing', 'clothing-127457.jpg', 36, '2022-10-18 14:28:25', '2022-10-18 14:28:26'),
+(3, 9, 'Woman-Shoes', 'shoes-158249.jpg', 36, '2022-10-18 15:03:58', '2022-10-18 15:03:59'),
+(4, 9, 'Woman-Watches', 'watches-159713.jpg', 36, '2022-10-18 15:05:41', '2022-10-18 15:05:43'),
+(5, 9, 'Woman-Jewelry', 'jewelry-114876.jpg', 36, '2022-10-18 15:08:25', '2022-10-18 15:08:26'),
+(6, 9, 'Woman-Bags', 'bags-103512.jpg', 36, '2022-10-18 15:09:21', '2022-10-18 15:09:22'),
+(7, 10, 'Sampoo', 'sampoo-119052.jpg', 36, '2022-10-18 15:18:23', '2022-10-18 15:18:23'),
+(8, 10, 'Face Wash', 'face wash-155484.jpg', 36, '2022-10-18 15:19:37', '2022-10-18 15:19:38'),
+(9, 11, 'Mens Shirt', 'mens shirt-184357.jpg', 36, '2022-10-18 15:21:13', '2022-10-18 15:21:14'),
+(10, 13, 'Ball', 'ball-111322.jpg', 36, '2022-10-18 15:22:17', '2022-10-18 15:22:18'),
+(11, 12, 'Laptop', 'laptop-193473.jpg', 36, '2022-10-18 15:23:13', '2022-10-18 15:23:15'),
+(12, 16, 'Tv', 'tv-111134.jpg', 36, '2022-10-18 15:24:25', '2022-10-18 15:24:26'),
+(13, 22, 'Cat', 'cat-164415.jpg', 36, '2022-10-18 15:26:34', '2022-10-18 15:26:34'),
+(14, 12, 'Mouse', 'mouse-148285.jpg', 36, '2022-10-19 05:20:33', '2022-10-19 05:20:36'),
+(15, 11, 'Men Punjabi', 'men shirt-107154.jpg', 36, '2022-10-19 10:44:33', '2022-10-19 10:44:35'),
+(16, 25, 'Burger', 'burger-185072.jpg', 36, '2022-10-19 10:51:34', '2022-10-19 10:51:34'),
+(17, 13, 'Jersey', 'jersey-184019.jpg', 36, '2022-10-20 12:57:00', '2022-10-20 12:57:01'),
+(18, 14, 'Wooden toy', 'wooden toy-192744.webp', 36, '2022-10-20 13:00:33', '2022-10-20 13:00:33'),
+(19, 15, 'Flower', 'flower-105528.webp', 36, '2022-10-20 13:03:39', '2022-10-20 13:03:39'),
+(20, 27, 'Office Chair', 'office chair-108317.jpeg', 36, '2022-11-06 18:04:30', '2022-11-06 18:04:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `image`, `remember_token`, `created_at`, `updated_at`) VALUES
+(6, 'Prof. Isabella Abshire', 'marlin80@example.com', '2022-09-24 17:26:03', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'Zz7bsUSckX', '2022-09-24 17:26:03', '2022-09-24 17:26:03'),
+(7, 'Adah Moen', 'hester.cremin@example.com', '2022-09-24 17:26:03', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'h92727RuZG', '2022-09-24 17:26:03', '2022-09-24 17:26:03'),
+(9, 'Monique Nolan', 'stephania90@example.net', '2022-09-24 17:26:03', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'fdEN7Crj2x', '2022-09-24 17:26:03', '2022-09-24 17:26:03'),
+(12, 'Jabari Kertzmann', 'zschneider@example.org', '2022-09-24 17:26:03', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'ErYZ0Js7nE', '2022-09-24 17:26:03', '2022-09-24 17:26:03'),
+(17, 'Mohammed Maggio', 'ima23@example.net', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'APPRadFusk', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(18, 'Sim Kertzmann', 'karli09@example.com', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'thmheUJzCR', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(19, 'Halie Bauch', 'kunze.isabell@example.com', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'uLCnIWxcne', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(20, 'Ms. Valentina Labadie III', 'desmond.volkman@example.org', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'aglp0SDSLK', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(21, 'Jason O\'Hara', 'alvera.gusikowski@example.com', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'dIbA99IrM7', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(22, 'Mr. Marcus Greenholt V', 'fbode@example.net', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'iFqAvDoQTv', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(23, 'Jeanette Schamberger', 'eulalia96@example.org', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'Z7equymgjC', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(24, 'Dr. Noemy Smitham', 'wconn@example.com', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'CLQ7klsvSm', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(26, 'Carmela Kulas', 'raymundo55@example.org', '2022-09-28 14:10:48', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', NULL, 'wh1AAOTKDC', '2022-09-28 14:10:48', '2022-09-28 14:10:48'),
+(27, 'Yen Owens', 'vutiw@mailinator.com', NULL, '$2y$10$KjaNzFt.dpgo4UzWdecjJ./yi0bVv7GaoJ4TZhAcGDr3qkzAXDwiK', NULL, NULL, '2022-09-29 15:04:25', '2022-09-29 15:04:25'),
+(29, 'Rina Hyde', 'hovusipa@mailinator.com', NULL, 'Pa$$w0rd!5', NULL, NULL, '2022-09-29 19:02:57', '2022-09-29 19:06:45'),
+(30, 'Elizabeth Gray', 'gyde@mailinator.com', NULL, 'Pa$$w0rd!6', NULL, NULL, '2022-09-29 19:11:15', '2022-09-29 19:12:25'),
+(31, 'Lewis Mcdonald', 'qopufihupe@mailinator.com', NULL, 'aAsS123@7', NULL, NULL, '2022-09-29 19:19:58', '2022-09-29 19:21:04'),
+(32, 'Darrel Hunt', 'qimohudidi@mailinator.com', NULL, '$2y$10$sDQTAzyG5CdRFptFbAWjtOqihAx7C./JauQpsMIH9l7iSRvFvWc7O', NULL, NULL, '2022-09-29 19:27:42', '2022-09-29 19:27:42'),
+(33, 'Karina Hodge', 'sawibahu@mailinator.com', NULL, 'aAsS123@79', NULL, NULL, '2022-09-29 19:31:56', '2022-09-29 19:34:03'),
+(34, 'Cadman Blair', 'mify@mailinator.com', NULL, '$2y$10$DyTw3fmMUi47QAVZLlcNyerpHm4pJ6RTRU4nx6BeZhSvby/KuMN4u', NULL, NULL, '2022-09-29 19:36:54', '2022-09-29 19:37:30'),
+(35, 'Solomon David', 'vamone@mailinator.com', NULL, '$2y$10$kj7RRFOMOT84u7cwstM2Ou1AqXPcT4k0.7o7DQDKF10a5s339EfPa', NULL, NULL, '2022-09-29 19:38:42', '2022-09-29 19:38:59'),
+(36, 'Pappu saha', 'sahapappu018@gmail.com', NULL, '$2y$10$uZFG7TN9ewnsWxVWB6RsZu0v2Hv5xCjZQd9nyYEZVvO37cNYn.iSe', '36.jpeg', NULL, '2022-09-29 19:40:47', '2022-10-20 12:12:56'),
+(37, 'Tyrone', 'lizaty@mailinator.com', NULL, '$2y$10$v1wMGN7ydD9QKF3R1b5Tnu.WIVCvgCn72C4G2DO.Ble/8aWzYGO/S', NULL, NULL, '2022-09-29 19:43:55', '2022-09-29 19:45:31'),
+(38, 'Teagan', 'jexoqasesu@mailinator.com', NULL, '$2y$10$G6b8eltc6QyAknEKZxQ1H.smToN.dOJQFK94b.C.rEXvgJgmWHu/.', NULL, NULL, '2022-09-29 19:51:05', '2022-09-29 19:55:40'),
+(39, 'Irene Norton', 'nibo@mailinator.com', NULL, '$2y$10$tr25h2sdpzytHxG1f.xhm.KBbd7OkrjMOkVMyfAuVU1cgEvnxv4jy', NULL, NULL, '2022-09-29 19:56:40', '2022-09-29 19:56:40');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `add_color_models`
+--
+ALTER TABLE `add_color_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `add_inventory_models`
+--
+ALTER TABLE `add_inventory_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `add_size_models`
+--
+ALTER TABLE `add_size_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_models`
+--
+ALTER TABLE `cart_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `categories_catagory_name_unique` (`catagory_name`);
+
+--
+-- Indexes for table `coupon_models`
+--
+ALTER TABLE `coupon_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer_login_models`
+--
+ALTER TABLE `customer_login_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Indexes for table `product_models`
+--
+ALTER TABLE `product_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `product_thumbsnail_models`
+--
+ALTER TABLE `product_thumbsnail_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sub_category_models`
+--
+ALTER TABLE `sub_category_models`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `add_color_models`
+--
+ALTER TABLE `add_color_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `add_inventory_models`
+--
+ALTER TABLE `add_inventory_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT for table `add_size_models`
+--
+ALTER TABLE `add_size_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `cart_models`
+--
+ALTER TABLE `cart_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `coupon_models`
+--
+ALTER TABLE `coupon_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `customer_login_models`
+--
+ALTER TABLE `customer_login_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `product_models`
+--
+ALTER TABLE `product_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `product_thumbsnail_models`
+--
+ALTER TABLE `product_thumbsnail_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `sub_category_models`
+--
+ALTER TABLE `sub_category_models`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

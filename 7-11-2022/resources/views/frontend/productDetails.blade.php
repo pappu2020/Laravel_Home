@@ -97,6 +97,11 @@
                                 <div class="text-left">
 
 
+                                    @php
+                                        $color = null; 
+                                    @endphp
+
+
                                     @foreach ($getAvailableColor as $AvailableColor)
                                         @if ($AvailableColor->rel_to_color->ColorName == null)
                                             <h4 class="text-danger">Not Available</h3>
