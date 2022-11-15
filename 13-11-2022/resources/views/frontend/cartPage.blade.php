@@ -177,13 +177,26 @@
                                      @php
                                             $percentage = 0;
                                             $solid = 0;
-                                        @endphp
+                                     @endphp
 
                                       @if ($type == 1)
                                        Tk {{$percentage = $subtotal * ($discount/100)}}/-
+
+                                       @php
+                                           session([
+                                           'totalAmountForCartPage' => $percentage = $subtotal * ($discount/100),
+                                    ]);
+                                       @endphp
                                        
                                        @else
                                        Tk {{$solid = $subtotal - $discount}}/-
+
+                                       
+                                       @php
+                                           session([
+                                           'totalAmountForCartPage' => $solid = $subtotal - $discount,
+                                    ]);
+                                       @endphp
                                       @endif
 
                                     </span>
@@ -195,7 +208,7 @@
                         </div>
                     </div>
 
-                    <a class="btn btn-block btn-dark mb-3" href="checkout.html">Proceed to Checkout</a>
+                    <a class="btn btn-block btn-dark mb-3" href="{{route("checkoutPage")}}">Proceed to Checkout</a>
 
                     <a class="btn-link text-dark ft-medium" href="shop.html">
                         <i class="ti-back-left mr-2"></i> Continue Shopping

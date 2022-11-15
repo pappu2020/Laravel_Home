@@ -23,6 +23,7 @@
     <link href="{{ asset('frontend_asset/assets/css/plugins/snackbar.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend_asset/assets/css/plugins/themify.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend_asset/assets/css/styles.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -550,6 +551,7 @@
     <script src="{{ asset('frontend_asset/assets/js/jQuery.style.switcher.js') }}"></script>
     <script src="{{ asset('frontend_asset/assets/js/custom.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->

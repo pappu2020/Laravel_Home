@@ -5,6 +5,7 @@ use App\Http\Controllers\addInventoryController;
 use App\Http\Controllers\addSizeController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\catagory;
+use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\couponController;
 use App\Http\Controllers\customerLoginRegController;
 use App\Http\Controllers\frontendController;
@@ -158,3 +159,11 @@ Route::get("/AllcartItemDelete",[cartController::class, "AllcartItemDelete"])->n
 Route::get("/cartPage",[cartController::class, "cartPage"])->name("cartPage");
 Route::post("/cartPage/cartUpdate",[cartController::class, "cartUpdate"])->name("cartUpdate");
 // Route::get("/couponEnter",[cartController::class, "couponEnter"])->name("couponEnter");
+
+
+
+
+//Checkout page
+
+Route::get("/checkoutPage", [checkoutController::class, "checkoutPage"])->name("checkoutPage");
+Route::post("/ajaxGetCity", [checkoutController::class, "ajaxGetCity"]);
