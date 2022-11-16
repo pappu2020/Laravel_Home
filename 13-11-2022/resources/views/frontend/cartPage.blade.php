@@ -158,7 +158,25 @@
                                 <li class="list-group-item d-flex text-dark fs-sm ft-regular">
                                     <span>Discount</span> <span class="ml-auto text-dark ft-medium">
 
-                                        Tk {{$discount}}/-
+                                      @if ($type == 1)
+                                       @php
+                                        $percentageShow = $subtotal * ($discount/100)
+                                      @endphp
+                                       Tk {{$percentageShow}}
+
+                                       @else
+
+                                       Tk {{$discount}}
+
+
+                                       
+                                      
+                                      
+
+
+                                      
+                                          
+                                      @endif
 
 
                                     </span>
@@ -180,11 +198,18 @@
                                      @endphp
 
                                       @if ($type == 1)
-                                       Tk {{$percentage = $subtotal * ($discount/100)}}/-
+                                       
+                                      @php
+                                        $percentage = $subtotal * ($discount/100)
+                                      @endphp
+                                      Tk {{$subtotal-$percentage}}
+                                      
+                                      
+
 
                                        @php
                                            session([
-                                           'totalAmountForCartPage' => $percentage = $subtotal * ($discount/100),
+                                           'totalAmountForCartPage' => $subtotal-$percentage,
                                     ]);
                                        @endphp
                                        

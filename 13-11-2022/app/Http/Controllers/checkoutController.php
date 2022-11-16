@@ -12,9 +12,11 @@ class checkoutController extends Controller
 {
     function checkoutPage(){
         $allCartInfo = cartModel::where("customer_id",Auth::guard("customerLogin")->id())->get();
+        $allCartCount = cartModel::where("customer_id",Auth::guard("customerLogin")->id())->count();
         $Allcountry = countries::all();
         return view("frontend.checkoutPage",[
             'allCartInfo' => $allCartInfo,
+            'allCartCount' => $allCartCount,
             'Allcountry' => $Allcountry,
         ]);
     }
