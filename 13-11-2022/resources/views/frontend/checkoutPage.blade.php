@@ -34,7 +34,7 @@
 
             <div class="row justify-content-between">
                 <div class="col-12 col-lg-7 col-md-12">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('checkoutFormInsert') }}">
                         @csrf
                         <h5 class="mb-4 ft-medium">Billing Details</h5>
                         <div class="row mb-2">
@@ -113,13 +113,13 @@
 
                         </div>
 
-                    </form>
+
                 </div>
 
                 <!-- Sidebar -->
                 <div class="col-12 col-lg-4 col-md-12">
                     <div class="d-block mb-3">
-                        <h5 class="mb-4">Order Items ({{$allCartCount}})</h5>
+                        <h5 class="mb-4">Order Items ({{ $allCartCount }})</h5>
                         <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x mb-4">
 
 
@@ -183,15 +183,18 @@
                             <h6>Select Payment Method</h6>
                             <ul class="no-ul-list">
                                 <li>
-                                    <input id="c3" class="radio-custom" name="payment_method" type="radio">
+                                    <input id="c3" class="radio-custom" name="payment_method" type="radio"
+                                        value="1">
                                     <label for="c3" class="radio-custom-label">Cash on Delivery</label>
                                 </li>
                                 <li>
-                                    <input id="c4" class="radio-custom" name="payment_method" type="radio">
+                                    <input id="c4" class="radio-custom" name="payment_method" type="radio"
+                                        value="2">
                                     <label for="c4" class="radio-custom-label">Pay With SSLCommerz</label>
                                 </li>
                                 <li>
-                                    <input id="c5" class="radio-custom" name="payment_method" type="radio">
+                                    <input id="c5" class="radio-custom" name="payment_method" type="radio"
+                                        value="3">
                                     <label for="c5" class="radio-custom-label">Pay With Stripe</label>
                                 </li>
                             </ul>
@@ -218,7 +221,9 @@
                     </div>
 
 
-                    <a class="btn btn-block btn-dark mb-3" href="checkout.html">Place Your Order</a>
+                    <button class="btn btn-dark mb-3" type="submit">Place Your Order</button>
+
+                    </form>
                 </div>
 
             </div>
@@ -260,24 +265,26 @@
 
 
             $.ajax({
-               
 
-               type:'POST',
-               url:'ajaxGetCity',
-               data:{'country_id':country_id},
-               success:function(data){
+
+                type: 'POST',
+                url: 'ajaxGetCity',
+                data: {
+                    'country_id': country_id
+                },
+                success: function(data) {
                     $("#billCity").html(data);
-               }
+                }
 
             });
         })
     </script>
 
 
-<script>
-    $(document).ready(function() {
-    $('#billCountry').select2();
-    $('#billCity').select2();
-});
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#billCountry').select2();
+            $('#billCity').select2();
+        });
+    </script>
 @endsection

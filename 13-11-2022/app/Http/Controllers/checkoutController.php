@@ -27,13 +27,21 @@ class checkoutController extends Controller
        $str = '<option value="">-- Select City --</option>';
 
        foreach($getCities as $Cities){
-            $str .= '<option value="">' . $Cities->name.'</option>';
+            $str .= '<option value="$Cities->id">' . $Cities->name.'</option>';
            
        }
 
         echo $str;
 
       
+   }
+
+
+
+
+
+   function checkoutFormInsert(Request $req){
+    print_r($req->all());
    }
 
 
