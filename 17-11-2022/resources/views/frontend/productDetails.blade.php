@@ -198,6 +198,12 @@
                                             @endfor
 
                                         </select>
+
+                                      @if (session("QuantityError"))
+
+                                      <p class="text-danger fst-italic">{{session("QuantityError")}}</p>
+                                          
+                                      @endif
                                     </div>
                                     <div class="col-12 col-lg">
                                         <!-- Submit -->

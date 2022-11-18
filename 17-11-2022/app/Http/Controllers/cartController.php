@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\addInventoryModel;
 use App\Models\cartModel;
 use App\Models\couponModel;
 use Carbon\Carbon;
@@ -12,17 +13,26 @@ class cartController extends Controller
 {
   function cartInsert(Request $req)
   {
-    if (Auth::guard("customerLogin")->check()) {
-      cartModel::insert([
-        'customer_id' => Auth::guard("customerLogin")->id(),
-        'product_id' => $req->product_id,
-        'color_id' => $req->color_id,
-        'size_id' => $req->size,
-        'Quantity' => $req->cart_quantity,
-        'created_at' => Carbon::now(),
-      ]);
 
-      return back()->with("cardAddedSuccess", "Product added to cart successfully");
+
+    if (Auth::guard("customerLogin")->check()) {
+
+      if ($req->cart_quantity > addInventoryModel::where("product_id", $req->product_id)->where("Color_id", $req->color_id,)->where("size_id", $req->size,)->first()->Quantity) {
+
+        $stockSize = addInventoryModel::where("product_id", $req->product_id)->where("Color_id", $req->color_id,)->where("size_id", $req->size,)->first()->Quantity;
+        return back()->with("QuantityError", "Stock available: " . $stockSize  . " pcs");
+      } else {
+        cartModel::insert([
+          'customer_id' => Auth::guard("customerLogin")->id(),
+          'product_id' => $req->product_id,
+          'color_id' => $req->color_id,
+          'size_id' => $req->size,
+          'Quantity' => $req->cart_quantity,
+          'created_at' => Carbon::now(),
+        ]);
+
+        return back()->with("cardAddedSuccess", "Product added to cart successfully");
+      }
     } else {
       return redirect()->route("customerLoginRegPage")->with("PleaseLogin", "You must have to login first to add to cart");
     }
@@ -52,34 +62,26 @@ class cartController extends Controller
     $message = '';
     $allDone = "";
     $type = '';
-    if($coupon_code == ''){
+    if ($coupon_code == '') {
       $discount = 0;
-    }
+    } else {
 
-    else{
+      if (couponModel::where("couponCode", $coupon_code)->exists()) {
 
-      if(couponModel::where("couponCode", $coupon_code)->exists()){
-
-        if(Carbon::now()->format('Y-m-d') < couponModel::where("couponCode", $coupon_code)-> first()->couponValidity){
+        if (Carbon::now()->format('Y-m-d') < couponModel::where("couponCode", $coupon_code)->first()->couponValidity) {
           $type = couponModel::where("couponCode", $coupon_code)->first()->couponType;
           $discount = couponModel::where("couponCode", $coupon_code)->first()->couponDiscount;
           $allDone = "Voucer code: ";
-          
-        }
-        else{
+        } else {
           $discount = 0;
           $message = 'Coupon code is expired!!';
         }
-        
-      }
-
-      else{
+      } else {
         $discount = 0;
         $message = 'Invalid code.Try again!!';
       }
-
     }
-  
+
     return view("frontend.cartPage", [
       'allCartInfo' => $allCartInfo,
       'coupon_code' => $coupon_code,
@@ -104,19 +106,4 @@ class cartController extends Controller
 
     return back();
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

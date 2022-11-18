@@ -97,6 +97,8 @@
                                                         5
                                                     </option>
                                                 </select>
+
+                                                
                                             </div>
                                             <div class="fls_last"><a href="{{ route('cartItemDelete', $CartInfo->id) }}"
                                                     class="close_slide gray"><i class="ti-close"></i></a>

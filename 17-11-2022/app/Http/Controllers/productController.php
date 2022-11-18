@@ -110,6 +110,9 @@ class productController extends Controller
 
     function productViewPage()
     {
+
+
+        
         $allProductsInfo = productModel::all();
         return view("admin.product.productViewPage", [
             'allProductsInfo' => $allProductsInfo,

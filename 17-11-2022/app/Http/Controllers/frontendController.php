@@ -47,6 +47,9 @@ class frontendController extends Controller
         $getsize = addSizeModel::all();
         $getAvailableSize = addInventoryModel::where("product_id", $getProductDetails->first()->id)->first()->size_id;
 
+
+       
+
         return view("frontend.productDetails", [
             'getProductDetails' => $getProductDetails,
             'getProductThumbedDetails' => $getProductThumbedDetails,

@@ -481,7 +481,15 @@
 
 
                                                 </span>, <span
-                                                    class="text-dark small">{{ $cartInfo->rel_to_color->ColorName }}</span>
+                                                    class="text-dark small">
+                                                
+                                                @if ($cartInfo->color_id == null)
+                                                            color Not Available
+                                                        @else
+                                                            Size: {{ $cartInfo->rel_to_color->ColorName }}
+                                                        @endif
+                                                
+                                                </span>
                                             </p>
                                             <h4 class="fs-md ft-medium mb-0 lh-1">Tk
                                                 {{ $cartInfo->rel_to_product->After_discount }} X <span

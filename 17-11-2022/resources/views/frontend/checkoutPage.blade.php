@@ -129,7 +129,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-3">
                                             <!-- Image -->
-                                            <a href="product.html"><img
+                                            <a href="{{route("productDetails",$CartInfo->rel_to_product->slug)}}"><img
                                                     src="{{ asset('uploads/products/preview') }}/{{ $CartInfo->rel_to_product->product_preview_img }}"
                                                     alt="..." class="img-fluid"></a>
                                         </div>
@@ -140,7 +140,11 @@
                                                 <p class="mb-1 lh-1"><span class="text-dark">Size:
                                                         {{ $CartInfo->rel_to_size->SizeName }}</p>
                                                 <p class=""><span class="text-dark">Color:
-                                                        {{ $CartInfo->rel_to_color->ColorName }}</span></p>
+                                                        @if ($CartInfo->color_id == null)
+                                                            color Not Available
+                                                        @else
+                                                            Size: {{ $CartInfo->rel_to_color->ColorName }}
+                                                        @endif</span></p>
                                                 <p class="mb-3 lh-1"><span class="text-dark">Quantity:
                                                         {{ $CartInfo->Quantity }}</span></p>
                                                 <h4 class="fs-md ft-medium mb-3 lh-1">Tk
