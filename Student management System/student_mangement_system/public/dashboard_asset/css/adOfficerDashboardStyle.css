@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,700;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@400;500;600;700;800&display=swap');
+
+body {
+    background-color: #F8F8F8;
+}
+
+
+
+
+.navBarContainer {
+    background-color: white;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.mymenuBtn {
+    margin-top: 16px;
+}
+
+.myMenuBody {
+    width: 130px;
+    background-color: #F1F1F1;
+}
+
+.menuListItemDiv {
+    background-color: aliceblue;
+    padding: 5px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-bottom: 20px;
+    border-radius: 2%;
+    box-sizing: border-box;
+}
+
+.icon {
+    font-size: 30px;
+    margin-left: 26px;
+    margin-top: 10px;
+}
+
+.menuListItem {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+
+}
+
+.menuListItemPara {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 15px;
+    margin-left: 7px;
+
+}
+
+.menuListItemParaStudent {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.menuListItemParaTuition {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 15px;
+    text-align: center;
+}
+
+.menuListItemParaRevenue {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+
+.SearchDiv {
+    margin-left: 70px;
+
+    width: 260px;
+    padding: 18px;
+}
+
+.searchItem {
+    padding: 5px;
+
+
+}
+
+.searchIconDiv {
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.logo {
+    margin-left: 220px;
+}
+
+
+.userTitleDiv {
+    margin-left: 250px;
+    margin-top: 28px;
+    margin-right: 20px;
+}
+
+.userTitle {
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.userSubTitle {
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 0.1;
+}
+
+.userImage {
+    margin-top: 10px;
+    margin-left: 15px;
+    border: 2px solid blue;
+}
+
+.mysignOutBtn {
+    margin-top: 25px;
+    margin-left: 35px;
+}
+
+
+
+
+.mainSectionHeading {
+    border-bottom: 3px solid #ddd;
+    padding: 2px;
+}
+
+.addOfficerEditParaLink {
+    text-decoration: none;
+
+}
+
+.addOfficerEditPara {
+    color: white;
+
+}
+
+.addOfficerEditDiv {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
+    /* margin: 10px;
+                    padding: 15px 45px; */
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    /* display: block; */
+    margin-right: 40px;
+    width: 150px;
+    height: 40px;
+    margin-left: auto;
+    margin-top: 25px;
+}
+
+.addOfficerEditDiv:hover {
+    background-position: right center;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Admission officer profile */
+
+
+.MainSectionContainer {
+    padding: 30px;
+}
+
+.mobileDiv {
+
+    background-color: #185286;
+    width: 300px;
+    height: 60px;
+
+}
+
+.mobileNumber {
+    color: white;
+    font-size: 20px;
+    padding: 14px;
+}
+
+.editIconDiv {
+   
+   
+    color: white;
+    width: 44px;
+    height: 44px;
+    margin-top: 7px;
+    margin-right: 34px;
+}
+
+.editIcon {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
+.editIconPicDiv {
+    background-color: #185286;
+    border: 2px solid white;
+    color: white;
+    width: 44px;
+    height: 44px;
+    margin-top: 7px;
+    margin-right: 5px;
+}
+
+.editIconPic {
+    position: absolute;
+    margin-left: -58px;
+    margin-top: -177px;
+}
+
+.editIconEmail {
+    position: absolute;
+    margin-left: 8px;
+    margin-top: 7px;
+}
+
+.emailDiv {
+    background-color: #21A6BB;
+    width: 300px;
+    height: 60px;
+}
+
+.email {
+    color: white;
+    font-size: 15px;
+    padding: 14px;
+}
+
+.mainSectionRight {
+    padding: 40px;
+    background-color: white;
+    height: 400px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
