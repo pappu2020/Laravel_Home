@@ -119,7 +119,7 @@
                     </div>
                     <div class=" bd-highlight userTitleDiv">
 
-                        <p class="userTitle">Pappu Saha</p>
+                        <p class="userTitle">{{Auth::user()->name}}</p>
                     </div>
                     <div class=" bd-highlight">
                         <img src="" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">

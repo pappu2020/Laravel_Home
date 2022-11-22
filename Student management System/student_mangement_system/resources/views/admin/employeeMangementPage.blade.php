@@ -12,23 +12,16 @@
     <div class="row employeeManagementDiv">
 
 
-        <a href="{{route("employeeReg")}}" class="col-lg-2 text-decoration-none employeesDiv">
+        <a href="{{route("teacherReg")}}" class="col-lg-2 text-decoration-none employeesDiv">
             <div class="employeeManagement">
 
-                <p class="employeePara ms-4">Employees ADD</p>
+                <p class="employeePara ms-4">Teachers ADD</p>
 
 
             </div>
         </a>
 
-        <a href="./allEmployeeList.php" class="col-lg-2 text-decoration-none employeesDiv">
-            <div class="employeeManagement">
-
-                <p class="employeePara ms-4">All Employees List</p>
-
-            </div>
-        </a>
-
+      
 
         <a href="./teacherListView.php" class="col-lg-2 text-decoration-none employeesDiv">
             <div class="employeeManagement">

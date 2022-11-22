@@ -29,12 +29,16 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'Adminhome'])->
 Route::get('/employeeMangementPage', [employeeMangementController::class, 'employeeMangementPage'])->name('employeeMangementPage');
 
 
-//Employees management
-Route::get('/employeeReg', [employeeController::class, 'employeeReg'])->name('employeeReg');
-Route::post('/employeeReg/employeeInsert', [employeeController::class, 'employeeInsert'])->name('employeeInsert');
-
-
-
 //Teacher management
+Route::get('/teacherReg', [teacherController::class, 'teacherReg'])->name('teacherReg');
+Route::post('/teacherReg/teacherInsert', [teacherController::class, 'teacherInsert'])->name('teacherInsert');
+Route::get('/teacherLoginFailed', [teacherController::class, 'teacherLoginFailed'])->name('teacherLoginFailed');
+
+
+Route::get('/teacherLogin', [teacherController::class, 'teacherLoginPage'])->name('teacherLoginPage');
+Route::post('/teacherLoginCheck', [teacherController::class, 'teacherLoginCheck'])->name('teacherLoginCheck');
+
+
+
 Route::get('/teacherProfilePage', [teacherController::class, 'teacherProfilePage'])->name('teacherProfilePage');
 
