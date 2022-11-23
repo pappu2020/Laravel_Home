@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\employeeMangementController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,4 +42,6 @@ Route::post('/teacherLoginCheck', [teacherController::class, 'teacherLoginCheck'
 
 
 Route::get('/teacherProfilePage', [teacherController::class, 'teacherProfilePage'])->name('teacherProfilePage');
+Route::post('/teacherProfilePage/teacherPicUpload', [teacherController::class, 'teacherPicUpload'])->name('teacherPicUpload');
+Route::get('/logoutTeacher', [teacherController::class, 'logoutTeacher'])->name('logoutTeacher');
 

@@ -90,14 +90,11 @@
                     <div class="rightPartRegStart">
 
                         <div class="col-lg-3 mb-3">
+                            <p class="mb-1">Position: </p> 
                             <select class="form-select @error('postion') is-invalid @enderror" name="postion">
-                                <option>Select Position</option>
-                                <option value="1">Teacher</option>
-                                <option value="2">Admission Officier</option>
-                                <option value="3">Maintenance Technician</option>
-                                <option value="4">Security Gourd</option>
-                                <option value="5">Cleaner Person</option>
-
+                                
+                                <option selected value="1">Teacher</option>
+                                
                             </select>
 
                         </div>

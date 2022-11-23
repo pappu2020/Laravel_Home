@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstarp Format</title>
+    <title>Teacher's Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{asset("dashboard_asset/css/adminDashboard.css")}}">
@@ -119,15 +119,17 @@
                     </div>
                     <div class=" bd-highlight userTitleDiv">
 
-                        <p class="userTitle">{{Auth::guard("teacherlogin")->user()->name}}</p>
+                        <p class="userTitle">Welcome, {{Auth::guard("teacherlogin")->user()->name}}</p>
+                        <p class="fst-italic userTitle">Teacher</p>
                     </div>
                     <div class=" bd-highlight">
-                        <img src="" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
+                        <img src="{{asset('uploads/teacher')}}/{{Auth::guard("teacherlogin")->user()->photo}}" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
                     </div>
 
 
                     <div class="bd-highlight">
-                        <a href="signOutBackend.php?id=200" class="btn btn-danger mysignOutBtn">Sign Out</a>
+                        <a href="{{ route('logoutTeacher') }}" class="btn btn-danger mysignOutBtn" >Sign Out</a>
+                                                     
                     </div>
 
                 </div>

@@ -103,12 +103,12 @@ body {
 
 
 .userTitleDiv {
-    margin-left: 410px;
+    margin-left: 180px;
     margin-top: 28px;
 }
 
 .userTitle {
-    font-size: 20px;
+    font-size: 15px;
     font-style: italic;
     font-weight: bold;
 }

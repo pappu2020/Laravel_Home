@@ -8,9 +8,15 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Str;
+use Image;
 
 class teacherController extends Controller
 {
+
+
+    
+
     function teacherReg(){
         return view("admin.employees.teacherRegForm");
     }
@@ -87,6 +93,14 @@ class teacherController extends Controller
     function teacherLoginPage(){
         return view("admin.employees.teacherLoginPage");
     }
+
+    function logoutTeacher()
+    {
+        
+            Auth::guard("teacherlogin")->logout();
+            return redirect()->route("teacherLoginPage");
+        
+    }
     
     
     function teacherLoginCheck(Request $req){
@@ -103,8 +117,79 @@ class teacherController extends Controller
 
 
     function teacherProfilePage(){
+        
         return view("admin.teachers.teacherProfilePage");
     }
+
+
+    function teacherPicUpload(Request $req){
+        
+        if(Auth::guard("teacherlogin")->user()->photo == null){
+            $teacherName = Auth::guard("teacherlogin")->user()->name;
+            
+            
+            
+            
+            $getImageFromForm = $req->addTeacherProfileup;
+            $extention = $getImageFromForm->getClientOriginalExtension();
+
+            $replaceSpaceName = str_replace(' ', '-', $teacherName);
+            $fileName = Str::lower($replaceSpaceName)."-".rand(999999,100000)."-". $extention;
+            Image::make($getImageFromForm)->save(public_path("uploads/teacher/". $fileName));
+
+            teacherLogin::where("id",Auth::guard("teacherlogin")->user()->id)->update([
+               'photo' => $fileName,
+            ]);
+
+            return back();
+
+
+
+        }
+
+        else{
+            $delete_pic = public_path('uploads/teacher/'.Auth::guard("teacherlogin")->user()->photo);
+            unlink($delete_pic);
+            $teacherName = Auth::guard("teacherlogin")->user()->name;
+
+
+
+
+            $getImageFromForm = $req->addTeacherProfileup;
+            $extention = $getImageFromForm->getClientOriginalExtension();
+
+            $replaceSpaceName = str_replace(' ', '-', $teacherName);
+            $fileName = Str::lower($replaceSpaceName) . "-" . rand(999999, 100000) . "-" . $extention;
+            Image::make($getImageFromForm)->save(public_path("uploads/teacher/" . $fileName));
+
+            teacherLogin::where("id", Auth::guard("teacherlogin")->user()->id)->update([
+                'photo' => $fileName,
+            ]);
+
+            return back();
+
+
+        }
+        
+       
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
