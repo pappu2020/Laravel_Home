@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\invoiceMail;
 use App\Models\addInventoryModel;
 use App\Models\BillingAddressModel;
 use App\Models\cartModel;
@@ -12,6 +13,7 @@ use App\Models\ordersBillModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class checkoutController extends Controller
 {
@@ -118,7 +120,7 @@ class checkoutController extends Controller
 
       }
 
-
+      Mail::to($req->billEmail)->send(new invoiceMail($order_id));
       return redirect()->route("orderSuccessRoute")->with("orderSuccess", $order_id);
     } elseif ($req->payment_method == 2) {
       echo "SSL";
