@@ -46,6 +46,11 @@ return [
             'driver' => 'session',
             'provider' => 'teacher_logins',
         ],
+
+        'addofficerguard' => [
+            'driver' => 'session',
+            'provider' => 'add_officer_models',
+        ],
     ],
 
     /*
@@ -74,6 +79,11 @@ return [
         'teacher_logins' => [
             'driver' => 'eloquent',
             'model' => App\Models\teacherLogin::class,
+        ],
+
+        'add_officer_models' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\addOfficerModel::class,
         ],
 
         // 'users' => [

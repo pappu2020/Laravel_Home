@@ -151,6 +151,7 @@ Route::get("/customerLogout",[customerLoginRegController::class,"customerLogout"
 //customer profile
 Route::get("/customerProfile", [customerProfileController::class, "customerProfile"])->name("customerProfile");
 Route::post("/customerProfile/customerProfileUpdate", [customerProfileController::class, "customerProfileUpdate"])->name("customerProfileUpdate");
+Route::get("/customerProfile/customerOrderPage", [customerProfileController::class, "customerOrderPage"])->name("customerOrderPage");
 
 
 

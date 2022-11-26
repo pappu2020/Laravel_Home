@@ -119,16 +119,16 @@
                     </div>
                     <div class=" bd-highlight userTitleDiv">
 
-                        <p class="userTitle">Welcome, {{Auth::guard("teacherlogin")->user()->name}}</p>
-                        <p class="fst-italic userTitle">Teacher</p>
+                        <p class="userTitle">Welcome, {{Auth::guard("addofficerguard")->user()->name}}</p>
+                        <p class="fst-italic userTitle">Admission Officer</p>
                     </div>
                     <div class=" bd-highlight">
-                        <img src="{{asset('uploads/teacher')}}/{{Auth::guard("teacherlogin")->user()->photo}}" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
+                        <img src="" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
                     </div>
 
 
                     <div class="bd-highlight">
-                        <a href="{{ route('logoutTeacher') }}" class="btn btn-danger mysignOutBtn" >Sign Out</a>
+                        <a href="{{ route('logoutaddOfficer') }}" class="btn btn-danger mysignOutBtn" >Sign Out</a>
                                                      
                     </div>
 

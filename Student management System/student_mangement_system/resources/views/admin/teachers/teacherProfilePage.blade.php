@@ -167,7 +167,9 @@
 
             <div class="col-lg-8 mainSectionRight">
 
-                <form action="./AdofficerProfileUpdate.php" method="POST">
+                <form action="{{route("teacherInfoUpdate")}}" method="POST">
+
+                    @csrf
 
                   
                         
@@ -178,8 +180,10 @@
 
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->name}}" name="addOfficerName">
+                                <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->name}}" name="Name">
                             </div>
+
+                            <input type="hidden" name="teacherHiddenId"  value="{{Auth::guard("teacherlogin")->id()}}">
 
 
                         </div>
@@ -187,25 +191,25 @@
 
                             <label for="name" class="form-label">Father Name</label>
                             <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->fatherName}}"
-                                name="addOfficerFatherName">
+                                name="FatherName">
 
 
                         </div>
                         <div class="col-lg-3">
                             <label for="name" class="form-label">Mother Name</label>
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->motherName}}" name="addOfficerMotherName">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->motherName}}" name="MotherName">
 
                         </div>
 
                         <div class="col-lg-3">
                             <label for="name" class="form-label">National Id Number</label>
-                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->nationalid}}" name="addOfficerNationalId">
+                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->nationalid}}" name="NationalId">
 
                         </div>
 
                         <div class="col-lg-3">
                             <label for="name" class="form-label">Birth Reg. Number</label>
-                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->birthRegNum}}" name="addOfficerBirthReg">
+                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->birthRegNum}}" name="BirthReg">
 
                         </div>
 
@@ -215,7 +219,7 @@
 
                             <label for="dob" class="form-label">Date Of Birth</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->dob}}" name="addOfficerDob">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->dob}}" name="Dob">
 
 
 
@@ -226,7 +230,7 @@
 
                             <label for="dob" class="form-label">Blood Group</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->bloodGrp}}" name="addOfficerBloodGrp">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->bloodGrp}}" name="BloodGrp">
 
 
 
@@ -236,33 +240,33 @@
                         <div class="col-lg-2">
                             <label for="dob" class="form-label">Religion</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->religion}}" name="addOfficerReligion">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->religion}}" name="Religion">
                         </div>
 
                         <div class="col-lg-2">
                             <label for="dob" class="form-label">Gender</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Gender}}" name="addOfficerGender">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Gender}}" name="Gender">
                         </div>
 
                         <div class="col-lg-3">
                             <label for="dob" class="form-label">How to know about us</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Howtoknowaboutus}}" name="addOfficerHoWTo">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Howtoknowaboutus}}" name="HoWTo">
                         </div>
 
 
                         <div class="col-lg-4">
                             <label for="dob" class="form-label">Present Address</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->presentAddress}}" name="addOfficerPresent">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->presentAddress}}" name="Present">
                         </div>
 
 
                         <div class="col-lg-4">
                             <label for="dob" class="form-label">Parmanant Address</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->parmanentAddress}}" name="addOfficerParmanant">
+                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->parmanentAddress}}" name="Parmanant">
                         </div>
 
 
@@ -271,6 +275,13 @@
                                 <p class="addOfficerEditPara">Edit Profile</p>
                             </button>
                         </div>
+
+
+                        @if (session("updateSuccess"))
+
+                        <div class="alert alert-success">{{session("updateSuccess")}}</div>
+                            
+                        @endif
 
 
 

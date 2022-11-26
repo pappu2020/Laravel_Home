@@ -30,7 +30,16 @@
 
             </div>
         </a>
-        <a href="#" class="col-lg-2 text-decoration-none employeesDiv">
+        <a href="{{route("addOfficerRegPage")}}" class="col-lg-2 text-decoration-none employeesDiv">
+            <div class="employeeManagement">
+
+                <p class="employeePara">Admission Officier Add</p>
+
+            </div>
+        </a>
+
+
+         <a href="#" class="col-lg-2 text-decoration-none employeesDiv">
             <div class="employeeManagement">
 
                 <p class="employeePara">Admission Officier List</p>

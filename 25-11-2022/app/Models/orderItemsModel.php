@@ -23,4 +23,11 @@ class orderItemsModel extends Model
     {
         return $this->belongsTo(addSizeModel::class, "size");
     }
+    
+    function rel_to_orderBills()
+    {
+        return $this->belongsTo(ordersBillModel::class, "order_id");
+    }
+
+    
 }

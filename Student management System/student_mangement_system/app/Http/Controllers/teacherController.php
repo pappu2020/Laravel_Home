@@ -181,6 +181,27 @@ class teacherController extends Controller
 
 
 
+function teacherInfoUpdate(Request $req){
+    teacherLogin::where("id", Auth::guard("teacherlogin")->id())->update([
+            'name' => $req->Name,
+            'fatherName' => $req->FatherName,
+            'motherName' => $req->MotherName,
+            
+            'nationalid' => $req->NationalId,
+            'birthRegNum' => $req->BirthReg,
+            'dob' => $req->Dob,
+            'bloodGrp' => $req->BloodGrp,
+            'religion' => $req->Religion,
+            'Gender' => $req->Gender,
+            'Howtoknowaboutus' => $req->HoWTo,
+            'presentAddress' => $req->Present,
+            'parmanentAddress' => $req->Parmanant,
+    ]);
+
+
+    return back()->with("updateSuccess","update success!!!");
+}
+
 
 
 
