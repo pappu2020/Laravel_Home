@@ -15,13 +15,35 @@ class cartController extends Controller
   {
 
 
+
+
+    $req->validate([
+      'color_id' => 'required',
+      'size' => 'required',
+      'cart_quantity' => 'required',
+    ],[
+      'color_id.required'=>'Please Select the Color',
+      'size.required'=>'Please Select the Size',
+      'cart_quantity.required'=>'Please Select the Quantity',
+    ]);
+
+
     if (Auth::guard("customerLogin")->check()) {
 
       if ($req->cart_quantity > addInventoryModel::where("product_id", $req->product_id)->where("Color_id", $req->color_id,)->where("size_id", $req->size,)->first()->Quantity) {
 
         $stockSize = addInventoryModel::where("product_id", $req->product_id)->where("Color_id", $req->color_id,)->where("size_id", $req->size,)->first()->Quantity;
         return back()->with("QuantityError", "Stock available: " . $stockSize  . " pcs");
-      } else {
+      
+      } 
+      
+      
+      
+      
+      
+      
+      
+      else {
         cartModel::insert([
           'customer_id' => Auth::guard("customerLogin")->id(),
           'product_id' => $req->product_id,

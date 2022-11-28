@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Teacher's Profile</title>
+    <title>Admission Officer's Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{asset("dashboard_asset/css/adminDashboard.css")}}">
@@ -36,7 +36,7 @@
 
                                         <i class="fa-solid fa-house-user icon"></i>
 
-                                        <p class="menuListItemPara">Dashboard</p>
+                                        <p class="menuListItemPara">Profile</p>
 
                                     </div>
                                 </a>
@@ -45,7 +45,7 @@
 
                                         <i class="fa-solid fa-users-gear icon"></i>
 
-                                        <p class="menuListItemPara">Classes</p>
+                                        <p class="menuListItemPara">Dashboard</p>
 
                                     </div>
                                 </a>
@@ -54,7 +54,7 @@
 
                                         <i class="fa-solid fa-user-tie icon"></i>
 
-                                        <p class="menuListItemParaStudent">Attendence</p>
+                                        <p class="menuListItemParaStudent">Student</p>
 
                                     </div>
                                 </a>
@@ -63,7 +63,7 @@
 
                                         <i class="fa-sharp fa-solid fa-sack-dollar icon"></i>
 
-                                        <p class="menuListItemParaTuition">Students</p>
+                                        <p class="menuListItemParaTuition">Salary</p>
 
                                     </div>
                                 </a>
@@ -78,7 +78,7 @@
                                     </div>
                                 </a>
 
-                                <a href="#" class="menuListItem">
+                                {{-- <a href="#" class="menuListItem">
                                     <div class=" bd-highlight menuListItemDiv">
 
                                         <i class="fa-sharp fa-solid fa-sack-dollar icon"></i>
@@ -86,7 +86,7 @@
                                         <p class="menuListItemParaRevenue">Salary</p>
 
                                     </div>
-                                </a>
+                                </a> --}}
 
 
 
@@ -123,7 +123,7 @@
                         <p class="fst-italic userTitle">Admission Officer</p>
                     </div>
                     <div class=" bd-highlight">
-                        <img src="" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
+                        <img src="{{ asset('uploads/adofficer') }}/{{ Auth::guard('addofficerguard')->user()->photo }}" class="userImage rounded rounded-circle" alt="" width="50px" height="50px">
                     </div>
 
 

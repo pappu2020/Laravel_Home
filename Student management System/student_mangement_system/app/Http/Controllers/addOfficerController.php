@@ -81,12 +81,12 @@ class addOfficerController extends Controller
 
     function adOfficerLoginCheck(Request $req)
     {
-        
-        if($req->email=="" && $req->password ==""){
-            return redirect()->route("addofficerLoginPage")->with("adOfficerLoginFailedEmpty", "Email and Password is required"); 
+
+        if ($req->email == "" && $req->password == "") {
+            return redirect()->route("addofficerLoginPage")->with("adOfficerLoginFailedEmpty", "Email and Password is required");
         }
-        
-        
+
+
         if (Auth::guard("addofficerguard")->attempt(['email' => $req->email, 'password' => $req->password])) {
             return redirect()->route("adOffierPage");
         } else {
@@ -106,4 +106,76 @@ class addOfficerController extends Controller
         Auth::guard("addofficerguard")->logout();
         return redirect()->route("addofficerLoginPage");
     }
+
+
+    function adOfficerInfoUpdate(Request $req)
+    {
+
+        addOfficerModel::where("id", Auth::guard("addofficerguard")->id())->update([
+            'name' => $req->Name,
+            'fatherName' => $req->FatherName,
+            'motherName' => $req->MotherName,
+
+            'nationalid' => $req->NationalId,
+            'birthRegNum' => $req->BirthReg,
+            'dob' => $req->Dob,
+            'bloodGrp' => $req->BloodGrp,
+            'religion' => $req->Religion,
+            'Gender' => $req->Gender,
+            'Howtoknowaboutus' => $req->HoWTo,
+            'presentAddress' => $req->Present,
+            'parmanentAddress' => $req->Parmanant,
+        ]);
+
+
+        return back()->with("adOfficerupdateSuccess", "update success!!!");
+    }
+
+
+function adOfficerPicUpload(Request $req){
+
+        if (Auth::guard("addofficerguard")->user()->photo == null) {
+            $adofficerName = Auth::guard("addofficerguard")->user()->name;
+
+
+
+
+            $getImageFromForm = $req->addadOfficerProfileup;
+            $extention = $getImageFromForm->getClientOriginalExtension();
+
+            $replaceSpaceName = str_replace(' ', '-', $adofficerName);
+            $fileName = Str::lower($replaceSpaceName) . "-" . rand(999999, 100000) . "-" . $extention;
+            Image::make($getImageFromForm)->save(public_path("uploads/adofficer/" . $fileName));
+
+            addOfficerModel::where("id", Auth::guard("addofficerguard")->user()->id)->update([
+                'photo' => $fileName,
+            ]);
+
+            return back();
+        } else {
+            $delete_pic = public_path('uploads/adofficer/' . Auth::guard("addofficerguard")->user()->photo);
+            unlink($delete_pic);
+            $adofficerName = Auth::guard("addofficerguard")->user()->name;
+
+
+
+
+            $getImageFromForm = $req->addadOfficerProfileup;
+            $extention = $getImageFromForm->getClientOriginalExtension();
+
+            $replaceSpaceName = str_replace(' ', '-', $adofficerName);
+            $fileName = Str::lower($replaceSpaceName) . "-" . rand(999999, 100000) . "-" . $extention;
+            Image::make($getImageFromForm)->save(public_path("uploads/adofficer/" . $fileName));
+
+            addOfficerModel::where("id", Auth::guard("addofficerguard")->user()->id)->update([
+                'photo' => $fileName,
+            ]);
+
+            return back();
+            
+        }
+
+}
+
+
 }

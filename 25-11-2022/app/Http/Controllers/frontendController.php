@@ -71,7 +71,7 @@ class frontendController extends Controller
         foreach ($getClickedSize as $ClickedSize) {
             $str .= '<div class="form-check size-option form-option form-check-inline mb-2">
                                                 <input class="form-check-input" type="radio" name="size"
-                                                    id="{{ $size' . $ClickedSize->rel_to_size->id . ' }}" checked=""
+                                                    id="{{ $size' . $ClickedSize->rel_to_size->id . ' }}"
                                                     value="' . $ClickedSize->rel_to_size->id . '">
                                                 <label class="form-option-label"
                                                     for="{{ $size' . $ClickedSize->rel_to_size->id . ' }}">' . $ClickedSize->rel_to_size->SizeName . '</label>

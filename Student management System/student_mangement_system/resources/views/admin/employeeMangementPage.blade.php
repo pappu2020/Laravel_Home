@@ -23,7 +23,7 @@
 
       
 
-        <a href="./teacherListView.php" class="col-lg-2 text-decoration-none employeesDiv">
+        <a href="{{route("TeacherListPage")}}" class="col-lg-2 text-decoration-none employeesDiv">
             <div class="employeeManagement">
 
                 <p class="employeePara ms-4">Teachers List</p>

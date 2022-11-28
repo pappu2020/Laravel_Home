@@ -116,7 +116,16 @@ class checkoutController extends Controller
           'created_at' => Carbon::now(),
         ]);
 
-        addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id",$carts->size_id,)->decrement("Quantity", $carts->Quantity);
+
+
+        if(addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id", $carts->size_id,)->first()->Quantity >0){
+          addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id", $carts->size_id,)->decrement("Quantity", $carts->Quantity);
+        }
+        else{
+          return redirect()->route("productDetails")->with("quantity_zero","0");
+        }
+
+       
 
       }
       

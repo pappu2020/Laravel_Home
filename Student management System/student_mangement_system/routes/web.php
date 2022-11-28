@@ -29,6 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'Adminhome'])->
 //employeeMangement page
 
 Route::get('/employeeMangementPage', [employeeMangementController::class, 'employeeMangementPage'])->name('employeeMangementPage');
+Route::get('employeeMangementPage/TeacherListPage', [employeeMangementController::class, 'TeacherListPage'])->name('TeacherListPage');
 
 
 //Teacher management
@@ -51,6 +52,7 @@ Route::get('/logoutTeacher', [teacherController::class, 'logoutTeacher'])->name(
 
 
 
+
 //Addmission officer
 Route::get('/addofficerLogin', [addOfficerController::class, 'addofficerLoginPage'])->name('addofficerLoginPage');
 Route::get('/addOfficerRegPage', [addOfficerController::class, 'addOfficerRegPage'])->name('addOfficerRegPage');
@@ -58,6 +60,8 @@ Route::post('/addOfficerInsert', [addOfficerController::class, 'addOfficerInsert
 Route::post('/adOfficerLoginCheck', [addOfficerController::class, 'adOfficerLoginCheck'])->name('adOfficerLoginCheck');
 Route::get('/adOffierPage', [addOfficerController::class, 'adOffierPage'])->name('adOffierPage');
 Route::get('/logoutaddOfficer', [addOfficerController::class, 'logoutaddOfficer'])->name('logoutaddOfficer');
+Route::post('/adOffierPage/adOfficerInfoUpdate', [addOfficerController::class, 'adOfficerInfoUpdate'])->name('adOfficerInfoUpdate');
+Route::post('/adOffierPage/adOfficerPicUpload', [addOfficerController::class, 'adOfficerPicUpload'])->name('adOfficerPicUpload');
 
 
 

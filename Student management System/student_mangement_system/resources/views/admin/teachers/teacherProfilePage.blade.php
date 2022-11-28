@@ -1,5 +1,5 @@
 @extends('layouts.teacherDashboard')
- <link rel="stylesheet" href="{{asset("dashboard_asset/css/adOfficerDashboardStyle.css")}}">
+<link rel="stylesheet" href="{{ asset('dashboard_asset/css/adOfficerDashboardStyle.css') }}">
 
 @section('content')
     <div class="MainSectionContainer">
@@ -7,7 +7,7 @@
         <div class="row mainSectionStart">
             <div class="col-lg-3 mainSectionLeft">
 
-                <img src="{{asset('uploads/teacher')}}/{{Auth::guard("teacherlogin")->user()->photo}}" alt=""
+                <img src="{{ asset('uploads/teacher') }}/{{ Auth::guard('teacherlogin')->user()->photo }}" alt=""
                     class="mainSectionLeftImage" width="300px" height="400px">
 
 
@@ -31,16 +31,19 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <form action="{{route("teacherPicUpload")}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('teacherPicUpload') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="modal-body">
 
-                                    <img src="{{asset('uploads/teacher')}}/{{Auth::guard("teacherlogin")->user()->photo}}"
-                                        alt="" class="adOffiCierProfilePic" width="300px" height="300px" id="teacherProfileImg">
-                                    <input type="file" class="form-control mt-3" name="addTeacherProfileup" onchange="document.getElementById('teacherProfileImg').src = window.URL.createObjectURL(this.files[0])">
+                                    <img src="{{ asset('uploads/teacher') }}/{{ Auth::guard('teacherlogin')->user()->photo }}"
+                                        alt="" class="adOffiCierProfilePic" width="300px" height="300px"
+                                        id="teacherProfileImg">
+                                    <input type="file" class="form-control mt-3" name="addTeacherProfileup"
+                                        onchange="document.getElementById('teacherProfileImg').src = window.URL.createObjectURL(this.files[0])">
 
 
-                                    <input type="hidden" value="{{Auth::guard("teacherlogin")->user()->name}}" name="teacherName">
+                                    <input type="hidden" value="{{ Auth::guard('teacherlogin')->user()->name }}"
+                                        name="teacherName">
 
                                 </div>
                                 <div class="modal-footer">
@@ -82,7 +85,7 @@
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                            </svg></span> {{Auth::guard("teacherlogin")->user()->phoneNum}}</p>
+                            </svg></span> {{ Auth::guard('teacherlogin')->user()->phoneNum }}</p>
 
 
 
@@ -146,7 +149,7 @@
                                 viewBox="0 0 16 16">
                                 <path
                                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-                            </svg></span> {{Auth::guard("teacherlogin")->user()->email}}</p>
+                            </svg></span> {{ Auth::guard('teacherlogin')->user()->email }}</p>
 
 
                     <span class="bd-highlight editIconDiv rounded rounded-circle"><svg xmlns="http://www.w3.org/2000/svg"
@@ -167,49 +170,54 @@
 
             <div class="col-lg-8 mainSectionRight">
 
-                <form action="{{route("teacherInfoUpdate")}}" method="POST">
+                <form action="{{ route('teacherInfoUpdate') }}" method="POST">
 
                     @csrf
 
-                  
-                        
-                  
-                    
+
+
+
+
                     <div class="row g-3">
                         <div class="col-lg-3">
 
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->name}}" name="Name">
+                                <input type="text" class="form-control"
+                                    value="{{ Auth::guard('teacherlogin')->user()->name }}" name="Name">
                             </div>
 
-                            <input type="hidden" name="teacherHiddenId"  value="{{Auth::guard("teacherlogin")->id()}}">
+                            <input type="hidden" name="teacherHiddenId"
+                                value="{{ Auth::guard('teacherlogin')->id() }}">
 
 
                         </div>
                         <div class="col-lg-3">
 
                             <label for="name" class="form-label">Father Name</label>
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->fatherName}}"
-                                name="FatherName">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->fatherName }}" name="FatherName">
 
 
                         </div>
                         <div class="col-lg-3">
                             <label for="name" class="form-label">Mother Name</label>
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->motherName}}" name="MotherName">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->motherName }}" name="MotherName">
 
                         </div>
 
                         <div class="col-lg-3">
                             <label for="name" class="form-label">National Id Number</label>
-                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->nationalid}}" name="NationalId">
+                            <input type="number" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->nationalid }}" name="NationalId">
 
                         </div>
 
                         <div class="col-lg-3">
                             <label for="name" class="form-label">Birth Reg. Number</label>
-                            <input type="number" class="form-control" value="{{Auth::guard("teacherlogin")->user()->birthRegNum}}" name="BirthReg">
+                            <input type="number" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->birthRegNum }}" name="BirthReg">
 
                         </div>
 
@@ -219,7 +227,8 @@
 
                             <label for="dob" class="form-label">Date Of Birth</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->dob}}" name="Dob">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->dob }}" name="Dob">
 
 
 
@@ -230,7 +239,8 @@
 
                             <label for="dob" class="form-label">Blood Group</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->bloodGrp}}" name="BloodGrp">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->bloodGrp }}" name="BloodGrp">
 
 
 
@@ -240,33 +250,38 @@
                         <div class="col-lg-2">
                             <label for="dob" class="form-label">Religion</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->religion}}" name="Religion">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->religion }}" name="Religion">
                         </div>
 
                         <div class="col-lg-2">
                             <label for="dob" class="form-label">Gender</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Gender}}" name="Gender">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->Gender }}" name="Gender">
                         </div>
 
                         <div class="col-lg-3">
                             <label for="dob" class="form-label">How to know about us</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->Howtoknowaboutus}}" name="HoWTo">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->Howtoknowaboutus }}" name="HoWTo">
                         </div>
 
 
                         <div class="col-lg-4">
                             <label for="dob" class="form-label">Present Address</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->presentAddress}}" name="Present">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->presentAddress }}" name="Present">
                         </div>
 
 
                         <div class="col-lg-4">
                             <label for="dob" class="form-label">Parmanant Address</label>
 
-                            <input type="text" class="form-control" value="{{Auth::guard("teacherlogin")->user()->parmanentAddress}}" name="Parmanant">
+                            <input type="text" class="form-control"
+                                value="{{ Auth::guard('teacherlogin')->user()->parmanentAddress }}" name="Parmanant">
                         </div>
 
 
@@ -277,10 +292,8 @@
                         </div>
 
 
-                        @if (session("updateSuccess"))
-
-                        <div class="alert alert-success">{{session("updateSuccess")}}</div>
-                            
+                        @if (session('updateSuccess'))
+                            <div class="alert alert-success">{{ session('updateSuccess') }}</div>
                         @endif
 
 
@@ -288,7 +301,7 @@
                     </div>
 
 
-                    
+
 
 
 
@@ -298,4 +311,6 @@
             </div>
 
         </div>
-    @endsection
+
+    </div>
+@endsection

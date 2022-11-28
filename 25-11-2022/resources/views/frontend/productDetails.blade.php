@@ -94,6 +94,11 @@
 
 
                                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">Color:</p>
+                                @error("color_id")
+
+                                <p class="text-danger">{{$message}}</p>
+                                    
+                                @enderror
                                 <div class="text-left">
 
 
@@ -146,6 +151,11 @@
 
                             <div class="prt_04 mb-4">
                                 <p class="d-flex align-items-center mb-0 text-dark ft-medium">Size:</p>
+                                @error("size")
+
+                                <p class="text-danger">{{$message}}</p>
+                                    
+                                @enderror
                                 <div class="text-left pb-0 pt-2 sizeId">
 
 
@@ -153,7 +163,7 @@
                                         @foreach ($getsize as $size)
                                             <div class="form-check size-option form-option form-check-inline mb-2">
                                                 <input class="form-check-input" type="radio" name="size"
-                                                    id="{{ $size->SizeName }}" checked=""
+                                                    id="{{ $size->SizeName }}"
                                                     value="{{ $size->SizeName }}">
                                                 <label class="form-option-label"
                                                     for="{{ $size->SizeName }}">{{ $size->SizeName }}</label>
@@ -166,22 +176,19 @@
                                         @if ($sizeShow->rel_to_size->id == 14)
                                             <div class="form-check size-option form-option form-check-inline mb-2">
                                                 <input class="form-check-input" type="radio" name="size"
-                                                    id="{{ $sizeShow->id }}" checked=""
+                                                    id="{{ $sizeShow->id }}" 
                                                     value="{{ $sizeShow->rel_to_size->id }}">
                                                 <label class="form-option-label"
                                                     for="{{ $sizeShow->id }}">{{ $sizeShow->rel_to_size->SizeName }}</label>
                                             </div>
-
-                                            @else
-
+                                        @else
                                             <div class="form-check size-option form-option form-check-inline mb-2">
                                                 <input class="form-check-input" type="radio" name="size"
-                                                    id="{{ $sizeShow->id }}" checked=""
+                                                    id="{{ $sizeShow->id }}" 
                                                     value="{{ $sizeShow->rel_to_size->id }}">
                                                 <label class="form-option-label"
                                                     for="{{ $sizeShow->id }}">{{ $sizeShow->rel_to_size->SizeName }}</label>
                                             </div>
-
                                         @endif
                                     @endforeach
                                 </div>
@@ -193,17 +200,21 @@
                                         <!-- Quantity -->
                                         <select class="mb-2 custom-select" name="cart_quantity">
 
-                                            @for ($i = 1; $i <= 20; $i++)
+                                            @for ($i = 1; $i <= 50; $i++)
                                                 <option value="{{ $i }}">{{ $i }}</option>
                                             @endfor
 
                                         </select>
 
-                                      @if (session("QuantityError"))
+                                        @if (session('QuantityError') )
+                                            <p class="text-danger fst-italic">{{ session('QuantityError') }}</p>
 
-                                      <p class="text-danger fst-italic">{{session("QuantityError")}}</p>
-                                          
-                                      @endif
+                                                                                  
+                                        @endif 
+                                        
+                                        @if (session('quantity_zero'))
+                                            <p class="text-danger fst-italic">{{ session('quantity_zero') }}</p>
+                                        @endif
                                     </div>
                                     <div class="col-12 col-lg">
                                         <!-- Submit -->
