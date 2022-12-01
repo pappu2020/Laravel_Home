@@ -4,6 +4,7 @@ use App\Http\Controllers\addOfficerController;
 use App\Http\Controllers\employeeController;
 use App\Http\Controllers\employeeMangementController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\studentController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'Adminhome'])->
 
 Route::get('/employeeMangementPage', [employeeMangementController::class, 'employeeMangementPage'])->name('employeeMangementPage');
 Route::get('employeeMangementPage/TeacherListPage', [employeeMangementController::class, 'TeacherListPage'])->name('TeacherListPage');
+Route::get('/addClassesPage', [employeeMangementController::class, 'addClassesPage'])->name('addClassesPage');
+Route::post('/classInsert', [employeeMangementController::class, 'classInsert'])->name('classInsert');
 
 
 //Teacher management
@@ -62,6 +65,11 @@ Route::get('/adOffierPage', [addOfficerController::class, 'adOffierPage'])->name
 Route::get('/logoutaddOfficer', [addOfficerController::class, 'logoutaddOfficer'])->name('logoutaddOfficer');
 Route::post('/adOffierPage/adOfficerInfoUpdate', [addOfficerController::class, 'adOfficerInfoUpdate'])->name('adOfficerInfoUpdate');
 Route::post('/adOffierPage/adOfficerPicUpload', [addOfficerController::class, 'adOfficerPicUpload'])->name('adOfficerPicUpload');
+Route::get('/addOfficerOperationPage', [addOfficerController::class, 'addOfficerOperationPage'])->name('addOfficerOperationPage');
+
+
+//student management
+Route::get('/studentAddForm', [studentController::class, 'studentAddForm'])->name('studentAddForm');
 
 
 

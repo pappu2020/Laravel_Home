@@ -29,6 +29,15 @@
                 <p class="employeePara ms-4">Teachers List</p>
 
             </div>
+        </a>  
+        
+        
+        <a href="{{route("addClassesPage")}}" class="col-lg-2 text-decoration-none employeesDiv">
+            <div class="employeeManagement">
+
+                <p class="employeePara ms-4">Add Classes</p>
+
+            </div>
         </a>
         <a href="{{route("addOfficerRegPage")}}" class="col-lg-2 text-decoration-none employeesDiv">
             <div class="employeeManagement">

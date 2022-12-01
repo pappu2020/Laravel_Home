@@ -177,5 +177,9 @@ function adOfficerPicUpload(Request $req){
 
 }
 
+function addOfficerOperationPage(){
+    return view("admin.addOfficer.adOfficerOperationPage");
+}
+
 
 }
