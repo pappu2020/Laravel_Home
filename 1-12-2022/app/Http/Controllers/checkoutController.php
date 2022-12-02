@@ -50,11 +50,11 @@ class checkoutController extends Controller
   {
 
 
-   $req->validate([
+    $req->validate([
 
       'billName' => 'required',
       'billEmail' => 'required',
-      
+
       'billMobile' => 'required',
       'billAddress' => 'required',
       'billCountry' => 'required',
@@ -62,7 +62,7 @@ class checkoutController extends Controller
       'billZip' => 'required',
       'billAdditionalInfo' => 'required',
 
-   ]);
+    ]);
 
 
 
@@ -103,7 +103,7 @@ class checkoutController extends Controller
       $cartsInfo = cartModel::where("customer_id", Auth::guard("customerLogin")->id())->get();
 
 
-      foreach($cartsInfo  as $carts){
+      foreach ($cartsInfo  as $carts) {
 
         orderItemsModel::insert([
           'order_id' => $order_id,
@@ -118,73 +118,57 @@ class checkoutController extends Controller
 
 
 
-        if(addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id", $carts->size_id,)->first()->Quantity >0){
+        if (addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id", $carts->size_id,)->first()->Quantity > 0) {
           addInventoryModel::where("product_id", $carts->product_id)->where("Color_id", $carts->color_id,)->where("size_id", $carts->size_id,)->decrement("Quantity", $carts->Quantity);
+        } else {
+          return redirect()->route("productDetails")->with("quantity_zero", "0");
         }
-        else{
-          return redirect()->route("productDetails")->with("quantity_zero","0");
-        }
-
-       
-
       }
-      
+
       // Mail::to($req->billEmail)->send(new invoiceMail($order_id));
 
-//     $url = "https://bulksmsbd.net/api/smsapi";
-//     $api_key = "{i5fKe1NZdlNWvbQZ3Fqf}";
-//     $senderid = "{pappu2022}";
-//     $number = "88016xxxxxxxx,88019xxxxxxxx";
-//     $message = "Congratualations!! Your order no.". $order_id ."has been successfully Placed please ready".$req->totalAmountForCartPage + $req->charge."for received product";
-//      
-//     $data=[
-//         "api_key" => $api_key,
-//         "senderid" => $senderid,
-//         "number" => $number,
-//         "message" => $message
-//     ];
-//     $ch = curl_init();
-//     curl_setopt($ch, CURLOPT_URL, $url);
-//     curl_setopt($ch, CURLOPT_POST, 1);
-//     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-//     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-//     $response = curl_exec($ch);
-//     curl_close($ch);
-//     return $response;
- 
-      return redirect()->route("orderSuccessRoute")->with("orderSuccess", $order_id);
+      //     $url = "https://bulksmsbd.net/api/smsapi";
+      //     $api_key = "{i5fKe1NZdlNWvbQZ3Fqf}";
+      //     $senderid = "{pappu2022}";
+      //     $number = "88016xxxxxxxx,88019xxxxxxxx";
+      //     $message = "Congratualations!! Your order no.". $order_id ."has been successfully Placed please ready".$req->totalAmountForCartPage + $req->charge."for received product";
+      //      
+      //     $data=[
+      //         "api_key" => $api_key,
+      //         "senderid" => $senderid,
+      //         "number" => $number,
+      //         "message" => $message
+      //     ];
+      //     $ch = curl_init();
+      //     curl_setopt($ch, CURLOPT_URL, $url);
+      //     curl_setopt($ch, CURLOPT_POST, 1);
+      //     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+      //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      //     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      //     $response = curl_exec($ch);
+      //     curl_close($ch);
+      //     return $response;
 
-      
+      return redirect()->route("orderSuccessRoute")->with("orderSuccess", $order_id);
     } elseif ($req->payment_method == 2) {
-      return redirect()->route("pay");
+      $customer_order_info = $req->all();
+      return redirect()->route("pay")->with("customer_order_info", $customer_order_info);
     } else {
       echo "swipe";
     }
   }
 
 
- function orderSuccessRoute(){
+  function orderSuccessRoute()
+  {
     $orderSessionId = session('orderSuccess');
 
-    if(session("orderSuccess")){
-      return view("frontend.orderSuccessPage",[
+    if (session("orderSuccess")) {
+      return view("frontend.orderSuccessPage", [
         'orderSessionId' => $orderSessionId,
       ]);
-    }
-
-    else{
+    } else {
       abort('404');
     }
- }
-
-
- 
-
-
-
-
-
-
-
+  }
 }

@@ -43,6 +43,7 @@
                                 <div class="form-group">
                                     <label class="text-dark">Full Name *</label>
                                     <input type="text" class="form-control" name="billName" placeholder="First Name" />
+                                    <input type="hidden" class="form-control" name="customer_id" value="{{Auth::guard("customerLogin")->id()}}" placeholder="First Name" />
                                 </div>
                                 @error("billName")
                                   <p class="text-danger">{{$message}}</p>  
