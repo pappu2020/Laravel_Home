@@ -31,8 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'Adminhome'])->
 
 Route::get('/employeeMangementPage', [employeeMangementController::class, 'employeeMangementPage'])->name('employeeMangementPage');
 Route::get('employeeMangementPage/TeacherListPage', [employeeMangementController::class, 'TeacherListPage'])->name('TeacherListPage');
-Route::get('/addClassesPage', [employeeMangementController::class, 'addClassesPage'])->name('addClassesPage');
-Route::post('/classInsert', [employeeMangementController::class, 'classInsert'])->name('classInsert');
+
 
 
 //Teacher management
@@ -69,7 +68,23 @@ Route::get('/addOfficerOperationPage', [addOfficerController::class, 'addOfficer
 
 
 //student management
+
 Route::get('/studentAddForm', [studentController::class, 'studentAddForm'])->name('studentAddForm');
+Route::get('/addClassesPage', [studentController::class, 'addClassesPage'])->name('addClassesPage');
+Route::post('/classInsert', [studentController::class, 'classInsert'])->name('classInsert');
+Route::post('/subjectInsert', [studentController::class, 'subjectInsert'])->name('subjectInsert');
+
+
+
+Route::post('/allClassInfo', [studentController::class, 'allClassInfo'])->name('allClassInfo');
+
+
+Route::post('/studentInsert', [studentController::class, 'studentInsert'])->name('studentInsert');
+
+
+
+
+
 
 
 

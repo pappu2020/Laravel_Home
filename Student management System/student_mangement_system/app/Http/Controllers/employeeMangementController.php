@@ -23,25 +23,5 @@ class employeeMangementController extends Controller
     }
 
 
-    function addClassesPage(){
-        return view("admin.addClassesPage");
-    }
-
-
-    function classInsert(Request $req){
-        $req->validate([
-          'class' => 'required',
-          'course' => 'required',
-        ]);
-
-
-        addClassesCoursesModel::insert([
-            'class' => $req->class,
-            'course' => $req->course,
-            'created_at' => Carbon::now(),
-        ]);
-
-
-        return back()->with("insertSuccess","Insert Success");
-    }
+    
 }
