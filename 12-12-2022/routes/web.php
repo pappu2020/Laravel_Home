@@ -17,6 +17,7 @@ use App\Http\Controllers\SubcatagoryController;
 use App\Http\Controllers\usersController;
 use App\Models\cartModel;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StripePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -223,3 +224,11 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
+
+
+//Stripe
+
+Route::controller(StripePaymentController::class)->group(function () {
+    Route::get('stripe', 'stripe')->name("stripe");
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});

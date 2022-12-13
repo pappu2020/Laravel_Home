@@ -154,7 +154,8 @@ class checkoutController extends Controller
       $customer_order_info = $req->all();
       return redirect()->route("pay")->with("customer_order_info", $customer_order_info);
     } else {
-      echo "swipe";
+      $customer_order_info = $req->all();
+      return redirect()->route("stripe")->with("customer_order_info", $customer_order_info);
     }
   }
 
