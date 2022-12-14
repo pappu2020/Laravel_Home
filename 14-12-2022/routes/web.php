@@ -13,6 +13,7 @@ use App\Http\Controllers\customerProfileController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\productTrackingController;
+use App\Http\Controllers\roleManagementController;
 use App\Http\Controllers\SubcatagoryController;
 use App\Http\Controllers\usersController;
 use App\Models\cartModel;
@@ -232,3 +233,16 @@ Route::controller(StripePaymentController::class)->group(function () {
     Route::get('stripe', 'stripe')->name("stripe");
     Route::post('stripe', 'stripePost')->name('stripe.post');
 });
+
+
+
+
+
+//Role Management
+
+
+Route::get("/roleMangementPage",[roleManagementController::class, "roleMangementPage"])->name("roleMangementPage");
+Route::post("/addPermission",[roleManagementController::class, "addPermission"])->name("addPermission");
+Route::post("/addRole",[roleManagementController::class, "addRole"])->name("addRole");
+Route::post("/assignRole",[roleManagementController::class, "assignRole"])->name("assignRole");
+Route::get("/removeRole/{removeRoleid}",[roleManagementController::class, "removeRole"])->name("removeRole");
