@@ -168,7 +168,7 @@
                                     @endif
 
                                     @foreach (App\Models\addInventoryModel::where('product_id', $ProductDetails->first()->id)->get() as $sizeShow)
-                                        @if ($sizeShow->rel_to_size->id == 14)
+                                        @if ($sizeShow->rel_to_size->id == 1)
                                             <div class="form-check size-option form-option form-check-inline mb-2">
                                                 <input class="form-check-input" type="radio" name="size"
                                                     id="{{ $sizeShow->id }}" value="{{ $sizeShow->rel_to_size->id }}">
@@ -209,14 +209,15 @@
                                     </div>
                                     <div class="col-12 col-lg">
                                         <!-- Submit -->
-                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2" name="wishCartBtn" value="1">
+                                        <button type="submit" class="btn btn-block custom-height bg-dark mb-2"
+                                            name="wishCartBtn" value="1">
                                             <i class="lni lni-shopping-basket mr-2"></i>Add to Cart
                                         </button>
                                     </div>
                                     <div class="col-12 col-lg-auto">
                                         <!-- Wishlist -->
                                         <button class="btn custom-height btn-default btn-block mb-2 text-dark"
-                                           type="submit"  name="wishCartBtn" value="2">
+                                            type="submit" name="wishCartBtn" value="2">
                                             <i class="lni lni-heart mr-2"></i>Wishlist
                                         </button>
                                     </div>
@@ -343,88 +344,17 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Review -->
-                                <div class="single_rev d-flex align-items-start br-bottom py-3">
-                                    <div class="single_rev_thumb"><img src="assets/img/team-2.jpg"
-                                            class="img-fluid circle" width="90" alt="" /></div>
-                                    <div class="single_rev_caption d-flex align-items-start pl-3">
-                                        <div class="single_capt_left">
-                                            <h5 class="mb-0 fs-md ft-medium lh-1">Seema Gupta</h5>
-                                            <span class="small">30 Aug 2021</span>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                                in culpa qui officia deserunt mollitia animi, id est laborum</p>
-                                        </div>
-                                        <div class="single_capt_right">
-                                            <div
-                                                class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <!-- Single Review -->
-                                <div class="single_rev d-flex align-items-start br-bottom py-3">
-                                    <div class="single_rev_thumb"><img src="assets/img/team-3.jpg"
-                                            class="img-fluid circle" width="90" alt="" /></div>
-                                    <div class="single_rev_caption d-flex align-items-start pl-3">
-                                        <div class="single_capt_left">
-                                            <h5 class="mb-0 fs-md ft-medium lh-1">Mark Jugermi</h5>
-                                            <span class="small">10 Oct 2021</span>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                                in culpa qui officia deserunt mollitia animi, id est laborum</p>
-                                        </div>
-                                        <div class="single_capt_right">
-                                            <div
-                                                class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Single Review -->
-                                <div class="single_rev d-flex align-items-start py-3">
-                                    <div class="single_rev_thumb"><img src="assets/img/team-4.jpg"
-                                            class="img-fluid circle" width="90" alt="" /></div>
-                                    <div class="single_rev_caption d-flex align-items-start pl-3">
-                                        <div class="single_capt_left">
-                                            <h5 class="mb-0 fs-md ft-medium lh-1">Meena Rajpoot</h5>
-                                            <span class="small">17 Dec 2021</span>
-                                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                                praesentium voluptatum deleniti atque corrupti quos dolores et quas
-                                                molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                                in culpa qui officia deserunt mollitia animi, id est laborum</p>
-                                        </div>
-                                        <div class="single_capt_right">
-                                            <div
-                                                class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                                <i class="fas fa-star filled"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 
+
+                            @auth("customerLogin")
+                                
+                           
+
                             <div class="reviews_rate">
-                                <form class="row">
+                                <form class="row" method="post" action="">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <h4>Submit Rating</h4>
                                     </div>
@@ -498,6 +428,12 @@
 
                                 </form>
                             </div>
+
+                             @endauth
+
+
+
+
 
                         </div>
                     </div>

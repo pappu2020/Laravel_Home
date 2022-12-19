@@ -55,9 +55,9 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item btn btn-primary"
-                                                href="http://127.0.0.1:8000/catagory/catagoryEditPage/9">Edit</a>
+                                                href="">Edit</a>
                                             <a class="dropdown-item"
-                                                href="http://127.0.0.1:8000/catagory/catagoryDelete/9">Delete</a>
+                                                href="">Delete</a>
                                         </div>
 
                                     </td>
@@ -267,7 +267,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item btn btn-primary"
-                                                href="http://127.0.0.1:8000/catagory/catagoryEditPage/9">Edit</a>
+                                                href="">Edit</a>
                                             <a class="dropdown-item"
                                                 href="{{route("removeRole",$Users->id)}}">Remove</a>
                                         </div>

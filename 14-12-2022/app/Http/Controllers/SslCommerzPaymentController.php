@@ -102,7 +102,7 @@ class SslCommerzPaymentController extends Controller
                 'totalAmountForCartPage' =>$customerAllInfo['totalAmountForCartPage'],
                 'subTotalAmountForCartPage' => $customerAllInfo['subTotalAmountForCartPage'],
                 'discountForCartPage' => $customerAllInfo['discountForCartPage'],
-                'payment_method' => $customerAllInfo['payment_method'],
+                
                 'created_at' => Carbon::now(),
             ]);
 

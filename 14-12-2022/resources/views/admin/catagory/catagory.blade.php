@@ -13,6 +13,10 @@
                             
                         @endif
                         <h5 class="card-title">Category List</h5>
+                        
+                        @can("Category_List_Show")
+                            
+                       
                         <table class="table table-striped table-hover" id="table_id">
                             <thead>
                                 <tr>
@@ -55,7 +59,13 @@
                                                 </button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item btn btn-primary" href="{{route("catagoryEditPage",$categories->id)}}">Edit</a>
+                                                    
+                                                    @can("Category_List_Delete")
+                                                        
+                                                    
                                                     <a class="dropdown-item" href="{{route("catagoryDelete",$categories->id)}}">Delete</a>
+                                                    @endcan
+
                                                 </div>
                                             </div>
                                         </td>
@@ -66,6 +76,8 @@
 
                             </tbody>
                         </table>
+
+                         @endcan
                     </div>
                 </div>
 
@@ -77,6 +89,10 @@
                 <div class="card">
 
                     <div class="card-body">
+                        
+                        @can("Add Category")
+                            
+                        
                         <h5 class="card-title">Add Category</h5>
 
                         <form action="{{ route('catagoryInsert') }}" method="POST" enctype="multipart/form-data">
@@ -110,6 +126,8 @@
 
                             <button type="submit" class="btn btn-primary mt-2">Submit</button>
                         </form>
+
+                        @endcan
 
 
                     </div>
