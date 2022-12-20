@@ -351,10 +351,13 @@
 
                             @auth("customerLogin")
                                 
-                           
-
+                             @if (App\Models\orderItemsModel::where("customer_id",Auth::guard("customerLogin")->id())->where("product_id",$ProductDetails->id)->exists())
+                            @if (App\Models\orderItemsModel::where("customer_id",Auth::guard("customerLogin")->id())->where("product_id",$ProductDetails->id)->whereNotNull("review")->first() == false)
+                                
+                            
                             <div class="reviews_rate">
-                                <form class="row" method="post" action="">
+                                <form class="row" method="post" action="{{route("reviewInsert")}}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <h4>Submit Rating</h4>
                                     </div>
@@ -364,29 +367,29 @@
                                             class="revie_stars d-flex align-items-center justify-content-between px-2 py-2 gray rounded mb-2 mt-1">
                                             <div class="srt_013">
                                                 <div class="submit-rating">
-                                                    <input id="star-5" type="radio" name="rating"
-                                                        value="star-5" />
-                                                    <label for="star-5" title="5 stars">
+                                                    <input id="5" type="radio" name="star"
+                                                        value="5" />
+                                                    <label for="5" title="5 stars">
                                                         <i class="active fa fa-star" aria-hidden="true"></i>
                                                     </label>
-                                                    <input id="star-4" type="radio" name="rating"
-                                                        value="star-4" />
-                                                    <label for="star-4" title="4 stars">
+                                                    <input id="4" type="radio" name="star"
+                                                        value="4" />
+                                                    <label for="4" title="4 stars">
                                                         <i class="active fa fa-star" aria-hidden="true"></i>
                                                     </label>
-                                                    <input id="star-3" type="radio" name="rating"
-                                                        value="star-3" />
-                                                    <label for="star-3" title="3 stars">
+                                                    <input id="3" type="radio" name="star"
+                                                        value="3" />
+                                                    <label for="3" title="3 stars">
                                                         <i class="active fa fa-star" aria-hidden="true"></i>
                                                     </label>
-                                                    <input id="star-2" type="radio" name="rating"
-                                                        value="star-2" />
-                                                    <label for="star-2" title="2 stars">
+                                                    <input id="2" type="radio" name="star"
+                                                        value="2" />
+                                                    <label for="2" title="2 stars">
                                                         <i class="active fa fa-star" aria-hidden="true"></i>
                                                     </label>
-                                                    <input id="star-1" type="radio" name="rating"
-                                                        value="star-1" />
-                                                    <label for="star-1" title="1 star">
+                                                    <input id="1" type="radio" name="star"
+                                                        value="1" />
+                                                    <label for="1" title="1 star">
                                                         <i class="active fa fa-star" aria-hidden="true"></i>
                                                     </label>
                                                 </div>
@@ -401,33 +404,52 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="medium text-dark ft-medium">Full Name</label>
-                                            <input type="text" class="form-control" />
+                                            <input type="text" value="{{Auth::guard("customerLogin")->user()->name}}" class="form-control" />
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="review_cus_id" value="{{Auth::guard("customerLogin")->id()}}">
+                                    <input type="hidden" name="review_product_id" value="{{$ProductDetails->id}}">
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                         <div class="form-group">
                                             <label class="medium text-dark ft-medium">Email Address</label>
-                                            <input type="email" class="form-control" />
+                                            <input type="email" value="{{Auth::guard("customerLogin")->user()->email}}" class="form-control" />
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="medium text-dark ft-medium">Images</label>
+                                            <img src="" alt="" width="150px" height="150px" id="reviewImageView">
+                                            <input type="file" multiple name="reviewImage[]" onchange="document.getElementById('reviewImageView').src = window.URL.createObjectURL(this.files[0])" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group">
                                             <label class="medium text-dark ft-medium">Description</label>
-                                            <textarea class="form-control"></textarea>
+                                            <textarea class="form-control" name="review_des"></textarea>
                                         </div>
                                     </div>
 
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                         <div class="form-group m-0">
-                                            <a class="btn btn-white stretched-link hover-black">Submit Review <i
-                                                    class="lni lni-arrow-right"></i></a>
+                                            <button class="btn btn-white stretched-link hover-black" type="submit">Submit Review <i
+                                                    class="lni lni-arrow-right"></i></button>
                                         </div>
                                     </div>
 
                                 </form>
                             </div>
+                             
+                            @else
+                            <div class="alert alert-danger">You are already reviewed this product!!</div>  
+                            @endif
+
+
+                             @endif
 
                              @endauth
 

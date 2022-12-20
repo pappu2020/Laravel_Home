@@ -204,4 +204,24 @@ class productController extends Controller
 
         return back();
     }
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
 }

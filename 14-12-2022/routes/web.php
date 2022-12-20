@@ -10,6 +10,7 @@ use App\Http\Controllers\checkoutController;
 use App\Http\Controllers\couponController;
 use App\Http\Controllers\customerLoginRegController;
 use App\Http\Controllers\customerProfileController;
+use App\Http\Controllers\customerReviewController;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\productTrackingController;
@@ -109,6 +110,13 @@ Route::get("/productViewPage", [productController::class, "productViewPage"])->n
 
 
 Route::get("/productViewPage/productDelete/{productDeleteId}", [productController::class, "productDelete"])->name("productDelete");
+
+
+
+
+
+
+
 
 
 
@@ -246,3 +254,10 @@ Route::post("/addPermission",[roleManagementController::class, "addPermission"])
 Route::post("/addRole",[roleManagementController::class, "addRole"])->name("addRole");
 Route::post("/assignRole",[roleManagementController::class, "assignRole"])->name("assignRole");
 Route::get("/removeRole/{removeRoleid}",[roleManagementController::class, "removeRole"])->name("removeRole");
+
+
+
+
+//Review Section
+
+ROute::post("/reviewInsert", [customerReviewController::class, "reviewInsert"])->name("reviewInsert");
