@@ -6,6 +6,7 @@ use App\Models\addColorModel;
 use App\Models\addInventoryModel;
 use App\Models\addSizeModel;
 use App\Models\category;
+use App\Models\orderItemsModel;
 use App\Models\productModel;
 use App\Models\productThumbsnailModel;
 use Illuminate\Http\Request;
@@ -48,6 +49,11 @@ class frontendController extends Controller
         $getAvailableSize = addInventoryModel::where("product_id", $getProductDetails->first()->id)->first()->size_id;
 
 
+        $allReview = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->get();
+        $allReviewCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->count();
+        $allStarCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->sum("star");
+
+
        
 
         return view("frontend.productDetails", [
@@ -57,6 +63,9 @@ class frontendController extends Controller
             'getAvailableColor' => $getAvailableColor,
             'getsize' => $getsize,
             'getAvailableSize' => $getAvailableSize,
+            'allReview' => $allReview,
+            'allReviewCount' => $allReviewCount,
+            'allStarCount' => $allStarCount,
 
         ]);
     }

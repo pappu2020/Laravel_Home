@@ -28,6 +28,12 @@ class orderItemsModel extends Model
     {
         return $this->belongsTo(ordersBillModel::class, "order_id");
     }
+    
+    
+    function rel_to_orderCustomer()
+    {
+        return $this->belongsTo(customerLoginModel::class, "customer_id");
+    }
 
     
 }

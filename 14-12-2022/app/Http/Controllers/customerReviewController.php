@@ -32,7 +32,7 @@ class customerReviewController extends Controller
                 $fileNameReview = $req->review_cus_id . '-' . rand(100000, 1999999) . "." . $extensionReview;
                 Image::make($getreviewImage)->save(public_path("uploads/review/reviewImg/" . $fileNameReview));
 
-
+                
                 reviewImagesModel::insert([
                     'customer_id' =>  $req->review_cus_id,
                     'product_id' => $req->review_product_id,
