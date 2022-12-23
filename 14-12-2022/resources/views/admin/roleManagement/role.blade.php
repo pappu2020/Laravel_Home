@@ -55,7 +55,7 @@
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item btn btn-primary"
-                                                href="">Edit</a>
+                                                href="{{route("editRolePermission", $Role->id)}}">Edit</a>
                                             <a class="dropdown-item"
                                                 href="">Delete</a>
                                         </div>
@@ -251,26 +251,8 @@
 
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-success light sharp" data-toggle="dropdown">
-                                            <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24">
-                                                    </rect>
-                                                    <circle fill="#000000" cx="5" cy="12" r="2">
-                                                    </circle>
-                                                    <circle fill="#000000" cx="12" cy="12" r="2">
-                                                    </circle>
-                                                    <circle fill="#000000" cx="19" cy="12" r="2">
-                                                    </circle>
-                                                </g>
-                                            </svg>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item btn btn-primary"
-                                                href="">Edit</a>
-                                            <a class="dropdown-item"
+                                        <a class="btn btn-danger"
                                                 href="{{route("removeRole",$Users->id)}}">Remove</a>
-                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

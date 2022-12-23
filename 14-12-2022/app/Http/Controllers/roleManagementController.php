@@ -59,4 +59,25 @@ class roleManagementController extends Controller
 
 
     }
+
+
+
+
+    function editRolePermission($editRolePermissionid){
+        $allRole = Role::where("id",$editRolePermissionid)->get();
+        $allPermission = Permission::all();
+        return view("admin.roleManagement.editRolePermissionPage",[
+            'allPermission' => $allPermission,
+            'allRole' => $allRole,
+        ]);
+    }
+
+
+    function rolePermissionUpdate(Request $req){
+        $rolePermissionUpdate=Role::find($req->roleId);
+
+        $rolePermissionUpdate->syncPermissions([$req->permission]);
+
+        return back()->with("updateSuccess","New permission added successfully!!");
+    }
 }

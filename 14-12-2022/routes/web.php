@@ -254,6 +254,8 @@ Route::post("/addPermission",[roleManagementController::class, "addPermission"])
 Route::post("/addRole",[roleManagementController::class, "addRole"])->name("addRole");
 Route::post("/assignRole",[roleManagementController::class, "assignRole"])->name("assignRole");
 Route::get("/removeRole/{removeRoleid}",[roleManagementController::class, "removeRole"])->name("removeRole");
+Route::get("/editRolePermission/{editRolePermissionid}",[roleManagementController::class, "editRolePermission"])->name("editRolePermission");
+Route::post("/rolePermissionUpdate",[roleManagementController::class, "rolePermissionUpdate"])->name("rolePermissionUpdate");
 
 
 
@@ -261,3 +263,18 @@ Route::get("/removeRole/{removeRoleid}",[roleManagementController::class, "remov
 //Review Section
 
 ROute::post("/reviewInsert", [customerReviewController::class, "reviewInsert"])->name("reviewInsert");
+
+
+
+
+
+
+
+
+
+//Reset password section
+
+Route::get("/customerPassResetForm", [customerLoginRegController::class, "customerPassResetForm"])->name("customerPassResetForm");
+Route::post("/customerPassResetStore", [customerLoginRegController::class, "customerPassResetStore"])->name("customerPassResetStore");
+Route::get("/customerPassChangeForm/{tokenId}", [customerLoginRegController::class, "customerPassChangeForm"])->name("customerPassChangeForm");
+Route::post("/customerPassChange", [customerLoginRegController::class, "customerPassChange"])->name("customerPassChange");
