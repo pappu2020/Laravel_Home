@@ -125,7 +125,7 @@ class checkoutController extends Controller
         }
       }
 
-      // Mail::to($req->billEmail)->send(new invoiceMail($order_id));
+      Mail::to($req->billEmail)->send(new invoiceMail($order_id));
 
       //     $url = "https://bulksmsbd.net/api/smsapi";
       //     $api_key = "{i5fKe1NZdlNWvbQZ3Fqf}";
@@ -148,7 +148,7 @@ class checkoutController extends Controller
       //     $response = curl_exec($ch);
       //     curl_close($ch);
       //     return $response;
-
+      cartModel::where("customer_id", Auth::guard("customerLogin")->id())->delete();
       return redirect()->route("orderSuccessRoute")->with("orderSuccess", $order_id);
     } elseif ($req->payment_method == 2) {
       $customer_order_info = $req->all();

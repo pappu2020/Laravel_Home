@@ -7,7 +7,7 @@
 
 
 
-            <h1 class="mt-3 mb-3">Reset Password Request</h1>
+            <h1 class="mt-3 mb-3">Password Reset Request</h1>
             <form class="border p-3 rounded" action="{{ route('customerPassResetStore') }}" method="POST">
                 @csrf
                 <div class="form-group">
