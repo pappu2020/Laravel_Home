@@ -25,22 +25,22 @@
         <div class="container">
             <div class="row align-items-start justify-content-between">
 
+
+
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                     <div class="mb-3">
                         <h3>Login</h3>
                     </div>
 
-                    @if (session("customerLoginFail"))
-
-                    <div class="alert alert-danger">{{session("customerLoginFail")}}</div>
-                        
+                    @if (session('customerLoginFail'))
+                        <div class="alert alert-danger">{{ session('customerLoginFail') }}</div>
                     @endif
-                    <form class="border p-3 rounded" action="{{route("customerLogin")}}" method="POST">
+                    <form class="border p-3 rounded" action="{{ route('customerLogin') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Email *</label>
                             <input type="email" class="form-control" placeholder="Email*" name="Loginemail">
-                             @error('Loginemail')
+                            @error('Loginemail')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="eltio_k2">
-                                    <a href="{{route("customerPassResetForm")}}">Lost Your Password?</a>
+                                    <a href="{{ route('customerPassResetForm') }}">Lost Your Password?</a>
                                 </div>
                             </div>
                         </div>
@@ -65,6 +65,14 @@
                             <button type="submit"
                                 class="btn btn-md full-width bg-dark text-light fs-md ft-medium">Login</button>
                         </div>
+
+                        @if (session('EmailVerifySuccess'))
+                           <div class="alert alert-success"> {{ session('EmailVerifySuccess') }}</div>
+                        @endif 
+                        
+                        @if (session('customerVerifyFail'))
+                           <div class="alert alert-danger"> {{ session('customerVerifyFail') }}</div>
+                        @endif
                     </form>
                 </div>
 
@@ -73,7 +81,7 @@
                         <h3>Register</h3>
                     </div>
 
-                    
+
                     <form class="border p-3 rounded" action="{{ route('customerRegistration') }}" method="POST">
                         @csrf
                         <div class="row">
@@ -123,6 +131,10 @@
                             <button type="submit" class="btn btn-md full-width bg-dark text-light fs-md ft-medium">Create
                                 An Account</button>
                         </div>
+
+                        @if (session('customerEmailVerify'))
+                            <div class="alert alert-success">{{ session('customerEmailVerify') }}</div>
+                        @endif
                     </form>
                 </div>
 

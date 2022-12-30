@@ -15,11 +15,13 @@ use App\Http\Controllers\frontendController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\productTrackingController;
 use App\Http\Controllers\roleManagementController;
+use App\Http\Controllers\searchController;
 use App\Http\Controllers\SubcatagoryController;
 use App\Http\Controllers\usersController;
 use App\Models\cartModel;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StripePaymentController;
+use App\Models\customerLoginModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -278,3 +280,18 @@ Route::get("/customerPassResetForm", [customerLoginRegController::class, "custom
 Route::post("/customerPassResetStore", [customerLoginRegController::class, "customerPassResetStore"])->name("customerPassResetStore");
 Route::get("/customerPassChangeForm/{tokenId}", [customerLoginRegController::class, "customerPassChangeForm"])->name("customerPassChangeForm");
 Route::post("/customerPassChange", [customerLoginRegController::class, "customerPassChange"])->name("customerPassChange");
+
+
+
+//Customer Email Verify
+
+Route::get("/customerEmailVerifyProcess/{tokenId}",[customerLoginRegController::class, "customerEmailVerifyProcess"]);
+
+
+
+
+
+
+//Search section
+
+Route::get("/searchPage",[searchController::class, "searchPage"])->name("searchPage");

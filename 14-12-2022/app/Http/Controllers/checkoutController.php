@@ -125,7 +125,7 @@ class checkoutController extends Controller
         }
       }
 
-      Mail::to($req->billEmail)->send(new invoiceMail($order_id));
+      // Mail::to($req->billEmail)->send(new invoiceMail($order_id));
 
       //     $url = "https://bulksmsbd.net/api/smsapi";
       //     $api_key = "{i5fKe1NZdlNWvbQZ3Fqf}";

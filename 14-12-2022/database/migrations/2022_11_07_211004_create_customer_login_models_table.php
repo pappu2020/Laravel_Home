@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("country")->nullable();
             $table->string("address")->nullable();
             $table->string("photo")->nullable();
+            $table->date("email_verify_at")->nullable();
             $table->timestamps();
         });
     }
