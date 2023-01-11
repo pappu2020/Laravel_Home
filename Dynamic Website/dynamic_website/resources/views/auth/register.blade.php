@@ -135,7 +135,7 @@
                 @csrf
                 <div class="auth-credentials m-b-xxl">
                     <label for="signUpUsername" class="form-label">Name</label>
-                    <input type="email" class="form-control m-b-md @error('name') is-invalid @enderror"
+                    <input type="text" class="form-control m-b-md @error('name') is-invalid @enderror"
                         placeholder="Enter Name" name="name">
 
                     @error('name')

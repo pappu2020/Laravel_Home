@@ -51,7 +51,7 @@ class customerProfileController extends Controller
                 $upload_img = $req->profileImg;
                 if (Auth::guard("customerLogin")->user()->photo == null) {
                     $extension = $upload_img->getClientOriginalExtension();
-                    $fileName = Auth::guard("customerLogin")->user()->name . "-" . rand(999999, 1000000) . $extension;
+                    $fileName = Auth::guard("customerLogin")->user()->name . "-" . rand(999999, 1000000) . "." .$extension;
 
 
 
@@ -80,7 +80,7 @@ class customerProfileController extends Controller
                     unlink($delete_pic);
 
                     $extension = $upload_img->getClientOriginalExtension();
-                    $fileName = Auth::guard("customerLogin")->user()->name . "-" . rand(999999, 1000000) . $extension;
+                    $fileName = Auth::guard("customerLogin")->user()->name . "-" . rand(999999, 1000000) .".". $extension;
 
 
 

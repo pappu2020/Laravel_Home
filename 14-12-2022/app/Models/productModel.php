@@ -22,4 +22,9 @@ class productModel extends Model
     function rel_to_Users(){
         return $this->belongsTo(User::class, "created_by");
     }
+    
+    
+    function rel_to_Inventory(){
+        return $this->hasMany(addInventoryModel::class, "product_id");
+    }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\addColorController;
 use App\Http\Controllers\addInventoryController;
 use App\Http\Controllers\addSizeController;
+use App\Http\Controllers\brandController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\catagory;
 use App\Http\Controllers\checkoutController;
@@ -96,6 +97,21 @@ Route::get("/catagory_trash_bin/category_Parmanant_delete/{category_trash_id}", 
 
 Route::get("/SubcatagoryPage", [SubcatagoryController::class, "SubcatagoryPage"])->name("SubcatagoryPage");
 Route::post("/Subcatagory/SubcatagotyStore", [SubcatagoryController::class, "SubcatagoryInsert"])->name("SubcatagoryInsert");
+
+
+
+
+
+//Add Brand Section
+
+Route::get("/addBrandPage", [brandController::class, "addBrandPage"])->name("addBrandPage");
+Route::post("/brandInsert", [brandController::class, "brandInsert"])->name("brandInsert");
+
+
+
+
+
+
 
 
 

@@ -207,7 +207,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="position-relative text-center">
-                        <a href="shop-style-1.html" class="btn stretched-link borders">Explore More<i
+                        <a href="{{route("searchPage")}}" class="btn stretched-link borders">Explore More<i
                                 class="lni lni-arrow-right ml-2"></i></a>
                     </div>
                 </div>

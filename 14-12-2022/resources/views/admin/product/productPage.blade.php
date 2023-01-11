@@ -65,7 +65,17 @@
 
                                     <div class="col-lg-6 mt-3">
                                         <label for="product_Brand" class="form-label">Product Brand</label>
-                                        <input type="text" name="product_Brand" class="form-control border border-dark">
+                                        <select
+                                            class="form-select ms-3 form-control border border-dark bg-primary text-light"
+                                            name="product_Brand">
+                                            <option>--Select the Brand--</option>
+
+                                            @foreach ($allBrand as $Brand)
+                                                <option class="fw-bold" value="{{ $Brand->brand_name}}">
+                                                    {{ $Brand->brand_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
 
 

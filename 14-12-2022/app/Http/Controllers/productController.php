@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\addColorModel;
 use App\Models\addInventoryModel;
 use App\Models\addSizeModel;
+use App\Models\brandModel;
 use Illuminate\Support\Str;
 use App\Models\category;
 use App\Models\productModel;
@@ -21,9 +22,11 @@ class productController extends Controller
     {
         $categoryAllData = category::all();
         $subCategoryAllData = subCategoryModel::all();
+        $allBrand = brandModel::all();
         return view("admin.product.productPage", [
             'categoryAllData' => $categoryAllData,
             'subCategoryAllData' => $subCategoryAllData,
+            'allBrand' => $allBrand,
         ]);
     }
 

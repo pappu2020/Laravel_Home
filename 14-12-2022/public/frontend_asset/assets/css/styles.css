@@ -3276,6 +3276,16 @@ ul.dahs_navbar li a.active {
     border: 3px solid green;
     color: #121212;
 }
+
+.color_id:checked~.form-option-label {
+    border: 5px solid green;
+    color: #121212;
+}
+
+.size_id:checked~.form-option-label {
+    border: 5px solid green;
+    color: #121212;
+}
 .form-option-label:before, .form-option-label:after{
 	display:none;
 }

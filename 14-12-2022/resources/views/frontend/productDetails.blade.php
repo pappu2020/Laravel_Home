@@ -63,17 +63,24 @@
                                     <div class="text-left">
                                         <div class="star-rating align-items-center d-flex justify-content-left mb-1 p-0">
                                             
-                                            {{-- @php
-                                                $totalStar =$allStarCount/$allReviewCount;
-                                            @endphp --}}
+                                            @php
+                                               $totalStar = 0;
+                                                if ($allReviewCount == 0) {
+                                                  $totalStar = 0;  
+                                                }
+                                                else{
+                                                   $totalStar =$allStarCount/$allReviewCount;
+                                                }
+                                                
+                                            @endphp
                                             
                                             
-                                            {{-- @for ($i=1;$i<=$totalStar;$i++)
+                                            @for ($i=1;$i<=$totalStar;$i++)
                                                 
                                             
                                             <i class="fas fa-star filled"></i>
 
-                                            @endfor --}}
+                                            @endfor
                                             
                                             
                                             
