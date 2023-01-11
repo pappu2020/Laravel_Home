@@ -45,6 +45,7 @@ Route::get("/adminLogin", [frontendController::class, "adminLogin"])->name("admi
 Route::get("/",[frontendController::class,"indexFrontend"])->name("indexFrontend");
 Route::get("product/productDetails/{slug}",[frontendController::class,"productDetails"])->name("productDetails");
 Route::POST("getSize",[frontendController::class,"getSize"]);
+Route::get("/categoriesWiseProductPage/{categoryId}",[frontendController::class, "categoriesWiseProductPage"])->name("categoriesWiseProductPage");
 
 
 

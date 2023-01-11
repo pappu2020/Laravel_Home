@@ -10,6 +10,8 @@ use App\Models\orderItemsModel;
 use App\Models\productModel;
 use App\Models\productThumbsnailModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cookie;
 
 class frontendController extends Controller
 {
@@ -29,10 +31,46 @@ class frontendController extends Controller
         $allCategoryInfo = category::all();
         $allProductsInfo = productModel::latest()->take(8)->get();
         $allFeatureProductsInfo = productModel::latest()->take(3)->get();
+        $AlltopSellingProduct = orderItemsModel::groupBy('product_id')
+            ->selectRaw('sum(quantity) as sum, product_id')
+            ->havingRaw('sum >= 1')
+            ->take(3)
+            ->orderBy("sum", "DESC")
+            ->get();
+
+
+
+        //recent view product
+
+        $AllrecentProduct = json_decode(Cookie::get('recentViewedProduct'), true);
+
+
+        if ($AllrecentProduct == null) {
+            $get_recent = [];
+            $after_unique = array_unique($get_recent);
+        } else {
+            $after_unique = array_unique($AllrecentProduct);
+        }
+
+        $AllrecentViewedProduct = productModel::find($after_unique)->take(3);
+
+
+
+
+
+
+
+
+
+
+
+
         return view("frontend.index", [
             'allCategoryInfo' => $allCategoryInfo,
             'allProductsInfo' => $allProductsInfo,
             'allFeatureProductsInfo' => $allFeatureProductsInfo,
+            'AlltopSellingProduct' => $AlltopSellingProduct,
+            'AllrecentViewedProduct' => $AllrecentViewedProduct,
         ]);
     }
 
@@ -49,12 +87,38 @@ class frontendController extends Controller
         $getAvailableSize = addInventoryModel::where("product_id", $getProductDetails->first()->id)->first()->size_id;
 
 
-        $allReview = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->get();
-        $allReviewCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->count();
-        $allStarCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review","!=",null)->sum("star");
+        $allReview = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review", "!=", null)->get();
+        $allReviewCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review", "!=", null)->count();
+        $allStarCount = orderItemsModel::where("product_id", $getProductDetails->first()->id)->where("review", "!=", null)->sum("star");
 
 
-       
+
+
+
+        //recent viewed product
+        $productId = $getProductDetails->first()->id;
+
+
+        $getCookie = Cookie::get('recentViewedProduct');
+
+
+        if (!$getCookie) {
+            $getCookie = "[]";
+        }
+
+
+        $allInfo = json_decode($getCookie, true);
+        $allInfo = Arr::prepend($allInfo, $productId);
+        $recentProductId = json_encode($allInfo);
+
+
+        Cookie::queue('recentViewedProduct', $recentProductId, 1000);
+
+
+
+
+
+
 
         return view("frontend.productDetails", [
             'getProductDetails' => $getProductDetails,
@@ -89,4 +153,26 @@ class frontendController extends Controller
 
         echo $str;;
     }
+
+
+
+function categoriesWiseProductPage($categoryId){
+    $categoryName = category::where("id",$categoryId)->first()->catagory_name;
+    $allProductInfo = productModel::where("category_id", $categoryId)->get();
+    return view("frontend.categoriesWiseProductPage",[
+            'allProductInfo' => $allProductInfo,
+            'categoryName' => $categoryName,
+    ]);
+}
+
+
+
+
+
+
+
+
+
+
+
 }

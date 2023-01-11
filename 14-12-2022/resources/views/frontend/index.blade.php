@@ -13,7 +13,7 @@
                         <div class="killore--block-link-content">
                             <ul>
                                 @foreach ($allCategoryInfo as $CategoryInfo)
-                                    <li><a href="#"><img
+                                    <li><a href="{{route("categoriesWiseProductPage",$CategoryInfo->id)}}"><img
                                                 src="{{ asset('uploads/category') }}/{{ $CategoryInfo->catagory_img }}"
                                                 alt="" width="30px" height="30px"> &nbsp
                                             {{ $CategoryInfo->catagory_name }}</a></li>
@@ -207,7 +207,7 @@
             <div class="row justify-content-center">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="position-relative text-center">
-                        <a href="{{route("searchPage")}}" class="btn stretched-link borders">Explore More<i
+                        <a href="{{ route('searchPage') }}" class="btn stretched-link borders">Explore More<i
                                 class="lni lni-arrow-right ml-2"></i></a>
                     </div>
                 </div>
@@ -448,79 +448,45 @@
                     <div class="ftr-content">
 
                         <!-- Single Item -->
-                        <div class="product_grid row">
-                            <div class="col-xl-4 col-lg-5 col-md-5 col-4">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/1.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
-                                <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">Mobiles</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">Zoomio
-                                            iPhones</a></h5>
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$99 - $129</span></div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Single Item -->
-                        <div class="product_grid row">
-                            <div class="col-xl-4 col-lg-5 col-md-5 col-4">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/2.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
-                                <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">TV/LED</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">32 Inch Smart
-                                            LED</a></h5>
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$799 - $1200</span></div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Single Item -->
-                        <div class="product_grid row">
-                            <div class="col-xl-4 col-lg-5 col-md-5 col-4">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/10.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
-                                <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">Headphone</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">Ziomi
-                                            Headphone</a></h5>
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
+                        @foreach ($AlltopSellingProduct as $topSellingProduct)
+                            <div class="product_grid row">
+                                <div class="col-xl-4 col-lg-5 col-md-5 col-4">
+                                    <div class="shop_thumb position-relative">
+                                        <a class="card-img-top d-block overflow-hidden" href="{{route("productDetails",$topSellingProduct->rel_to_product->slug)}}"><img
+                                                class="card-img-top" src="{{asset("uploads/products/preview/")}}/{{$topSellingProduct->rel_to_product->product_preview_img}}" alt="..."></a>
                                     </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$49 - $110</span></div>
+                                </div>
+                                <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
+                                    <div class="text-left mfliud">
+                                        <div class="elso_titl"><span class="small">{{$topSellingProduct->rel_to_product->rel_to_category->catagory_name }}</span></div>
+                                        <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a
+                                                href="shop-single-v1.html">{{ $topSellingProduct->rel_to_product->product_name }}</a>
+                                        </h5>
+                                        <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star filled"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <div class="elis_rty">
+
+                                            <span class="ft-medium text-muted line-through fs-md mr-2">Tk
+                                                {{ $topSellingProduct->rel_to_product->product_Price }}</span>
+
+                                            <span class="ft-bold text-danger fs-sm">Tk
+                                                {{ $topSellingProduct->rel_to_product->After_discount }}</span>
+
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
+
+
 
                     </div>
                 </div>
@@ -586,22 +552,26 @@
 
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
                     <div class="ftr-title">
-                        <h4 class="ft-medium">Recent Products</h4>
+                        <h4 class="ft-medium">Recent Viewed Product</h4>
                     </div>
                     <div class="ftr-content">
                         <!-- Single Item -->
+                        
+                       
+                       @foreach ($AllrecentViewedProduct as $recentViewedProduct)
+                           
+                      
                         <div class="product_grid row">
                             <div class="col-xl-4 col-lg-5 col-md-5 col-4">
                                 <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/7.png" alt="..."></a>
+                                    <a class="card-img-top d-block overflow-hidden" href="{{route("productDetails",$recentViewedProduct->slug)}}"><img
+                                            class="card-img-top" src="{{asset("uploads/products/preview/")}}/{{$recentViewedProduct->product_preview_img}}" alt="..."></a>
                                 </div>
                             </div>
                             <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
                                 <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">TV/LED</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">Smart 43 Inch
-                                            LED</a></h5>
+                                    <div class="elso_titl"><span class="small">{{$recentViewedProduct->rel_to_category->catagory_name }}</span></div>
+                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">{{$recentViewedProduct->product_name}}</a></h5>
                                     <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star filled"></i>
@@ -609,60 +579,26 @@
                                         <i class="fas fa-star filled"></i>
                                         <i class="fas fa-star"></i>
                                     </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$909 - $1400</span></div>
+                                    <div class="elis_rty">
+
+                                            <span class="ft-medium text-muted line-through fs-md mr-2">Tk
+                                                {{ $recentViewedProduct->product_Price }}</span>
+
+                                            <span class="ft-bold text-danger fs-sm">Tk
+                                                {{$recentViewedProduct->After_discount }}</span>
+
+
+                                        </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Single Item -->
-                        <div class="product_grid row">
-                            <div class="col-xl-4 col-lg-5 col-md-5 col-4">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/8.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
-                                <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">Headphone</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">Vivo Smart
-                                            Headphone</a></h5>
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$129 - $549</span></div>
-                                </div>
-                            </div>
-                        </div>
+                         @endforeach
 
-                        <!-- Single Item -->
-                        <div class="product_grid row">
-                            <div class="col-xl-4 col-lg-5 col-md-5 col-4">
-                                <div class="shop_thumb position-relative">
-                                    <a class="card-img-top d-block overflow-hidden" href="shop-single-v1.html"><img
-                                            class="card-img-top" src="assets/img/shop/9.png" alt="..."></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-8 col-lg-7 col-md-7 col-8 pl-0">
-                                <div class="text-left mfliud">
-                                    <div class="elso_titl"><span class="small">Mobiles</span></div>
-                                    <h5 class="fs-md mb-0 lh-1 mb-1 ft-medium"><a href="shop-single-v1.html">Micro Android
-                                            Phones</a></h5>
-                                    <div class="star-rating align-items-center d-flex justify-content-left mb-2 p-0">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <div class="elis_rty"><span class="ft-bold text-dark fs-sm">$990 - $1949</span></div>
-                                </div>
-                            </div>
-                        </div>
+
+                        
+
+                       
                     </div>
                 </div>
 
