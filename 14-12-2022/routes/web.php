@@ -13,6 +13,8 @@ use App\Http\Controllers\customerLoginRegController;
 use App\Http\Controllers\customerProfileController;
 use App\Http\Controllers\customerReviewController;
 use App\Http\Controllers\frontendController;
+use App\Http\Controllers\githubLoginController;
+use App\Http\Controllers\googleLoginController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\productTrackingController;
 use App\Http\Controllers\roleManagementController;
@@ -312,3 +314,19 @@ Route::get("/customerEmailVerifyProcess/{tokenId}",[customerLoginRegController::
 //Search section
 
 Route::get("/searchPage",[searchController::class, "searchPage"])->name("searchPage");
+
+
+
+
+//Social login section
+
+//Github
+
+Route::get("/github/redirect",[githubLoginController::class,"githubRedirect"])->name("githubRedirect");
+Route::get("/github/callback",[githubLoginController::class, "githubcallback"])->name("githubcallback");
+
+
+//Google
+
+Route::get("/google/redirect",[googleLoginController::class,"googleRedirect"])->name("googleRedirect");
+Route::get("/google/callback",[googleLoginController::class, "googlecallback"])->name("googlecallback");

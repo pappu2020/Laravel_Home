@@ -313,7 +313,7 @@
                             <div class="sl_cat_01">
                                 <div
                                     class="d-inline-flex align-items-center justify-content-center p-4 circle mb-2 border">
-                                    <a href="javascript:void(0);" class="d-block"><img
+                                    <a href="{{route("categoriesWiseProductPage",$CategoryInfo->id)}}" class="d-block"><img
                                             src="{{ asset('uploads/category') }}/{{ $CategoryInfo->catagory_img }}"
                                             class="img-fluid" width="40" alt=""></a>
                                 </div>
