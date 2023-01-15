@@ -124,8 +124,9 @@
 
 
                                     <div class="input-group bg-white rounded-md border-bold">
-                                        <input type="text" id="search_input" class="form-control custom-height b-0"
-                                            placeholder="Search for products..." value="{{@$_GET["q"]}}" />
+                                        <input type="text" id="search_input"
+                                            class="form-control custom-height b-0"
+                                            placeholder="Search for products..." value="{{ @$_GET['q'] }}" />
                                         <div class="input-group-append">
                                             <div class="input-group-text"><button id="search_btn"
                                                     class="btn bg-white text-danger custom-height rounded px-3"
@@ -607,6 +608,11 @@
     </script>
 
 
+
+
+
+
+    @yield('frontend_script')
     {{-- Search section --}}
 
 
@@ -652,7 +658,7 @@
         });
 
 
-        $(".color_id").click(function() {
+        $(".colors_id").click(function() {
             var searchValue = $("#search_input").val();
             var min = $("#min").val();
             var max = $("#max").val();
@@ -751,7 +757,7 @@
 
 
 
-    @yield('frontend_script')
+
 
     @if (session('customerRegSuccess') || session('customerLoginsuccess'))
         <script>
@@ -847,6 +853,10 @@
             })
         </script>
     @endif
+
+
+    
+
 
 
 </body>

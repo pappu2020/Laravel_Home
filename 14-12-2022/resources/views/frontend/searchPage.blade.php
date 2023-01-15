@@ -157,7 +157,7 @@
 
                                                     @foreach ($allColor as $Color)
                                                         <div class="form-check form-option form-check-inline mb-1">
-                                                            <input class="color_id" type="radio" name="colorId"
+                                                            <input class="colors_id" type="radio" name="colorId"
                                                                 id="colorId{{ $Color->id }}"
                                                                 value="{{ $Color->id }}"
                                                                 {{ $Color->id == @$_GET['color'] ? 'checked' : '' }}>
