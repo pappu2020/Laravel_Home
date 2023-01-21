@@ -1669,7 +1669,7 @@ label {
 	background: #19273e;
 	padding: 20px 30px;
 	margin-bottom: 30px;
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 	color: #8b98af;
 	font-size: 14px;
 }
