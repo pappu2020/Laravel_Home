@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\recentImageUploadModel;
 use App\Models\recentWorkModel;
 use App\Models\recentWorkNumberModel;
 use Carbon\Carbon;
@@ -212,5 +213,58 @@ class recentWorkController extends Controller
 
                 recentWorkNumberModel::onlyTrashed()->where("id", $recentNumTrashParDelId)->forceDelete();
                 return back();
+        }
+
+
+
+        //Recent work image upload
+
+
+        function addRecentWorkImagePage(){
+                $allRecentWorkInfo = recentWorkModel::all();
+                return view("admin.recentWork.addRecentWorkImagePage",[
+                        'allRecentWorkInfo' => $allRecentWorkInfo,
+                ]);
+        }
+
+
+        function addRecentWorkImageInsert(Request $req){
+
+
+                $getRenetsImages = $req->extrsrecentImage;
+
+                foreach ($getRenetsImages as $recentImage) {
+                        $extension = $recentImage->getClientOriginalExtension();
+                        
+
+                        $fileName = $req->recent_work_name.'-'.rand(100000, 1999999)."." . $extension;
+                        Image::make($recentImage)->save(public_path("uploads/extraRecentWorkImages/" . $fileName));
+
+
+                        recentImageUploadModel::insert([
+                                'recentWorkId' =>  $req->recent_work_name,
+                                'images' => $fileName,
+                                'created_at' => Carbon::now(),
+                        ]);
+
+                        
+                }
+
+                return back();
+
+        }
+
+
+
+
+
+
+        //single recent work 
+
+        function singleRecentWorkPage($reecentId){
+                $recentImage = recentImageUploadModel::where("recentWorkId", $reecentId)->get();
+                return view("admin.recentWork.singleRecentWorkPage",[
+                        'recentImage' => $recentImage,
+                ]);
         }
 }

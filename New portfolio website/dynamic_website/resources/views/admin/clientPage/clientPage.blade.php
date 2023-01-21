@@ -48,7 +48,9 @@
                     <div class="col-xl-12">
                         <div class="main-menu">
                             <nav class="navbar navbar-expand-lg">
-                                <a href="index.html" class="navbar-brand logo-sticky-none">Pappu Saha</a>
+                                <a href="{{ route('clientPage') }}" class="navbar-brand logo-sticky-none"><img
+                                        width="170px" height="100px"
+                                        src="{{ asset('dynamic_webpage/img/logo/new.png') }}" alt=""></a>
                                 <a href="index.html" class="navbar-brand s-logo-none"></a>
                                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                                     data-target="#navbarNav">
@@ -84,44 +86,43 @@
             </div>
             <div class="logo-side mb-30">
                 <a href="index-2.html">
-                   <h2>Pappu Saha</h2>
+                    <h2>Pappu Saha</h2>
                 </a>
             </div>
-           
-           
-           
+
+
+
             @foreach ($AllcontactData as $contactData)
-                
-            
-            <div class="side-info mb-30">
-                <div class="contact-list mb-30">
-                    <h4>{{$contactData -> contact_address}}</h4>
-                    
+                <div class="side-info mb-30">
+                    <div class="contact-list mb-30">
+                        <h4>{{ $contactData->contact_address }}</h4>
+
+                    </div>
+                    <div class="contact-list mb-30">
+                        <h4>{{ $contactData->contact_phone_num }}</h4>
+
+                    </div>
+                    <div class="contact-list mb-30">
+                        <h4>Email Address</h4>
+                        <p>{{ $contactData->contact_email }}</p>
+                    </div>
                 </div>
-                <div class="contact-list mb-30">
-                    <h4>{{$contactData -> contact_phone_num}}</h4>
-                    
-                </div>
-                <div class="contact-list mb-30">
-                    <h4>Email Address</h4>
-                    <p>{{$contactData -> contact_email}}</p>
-                </div>
-            </div>
             @endforeach
-            
-            
-            
+
+
+
             <div class="social-icon-right mt-20">
                 @foreach ($homeAllSocialDataClient as $homeSocialDataClient)
-                <a href="{{$homeSocialDataClient->homeSocialaddress}}"><i class="{{$homeSocialDataClient->homeSocialIcon}}"></i></a>
-                 @endforeach
+                    <a href="{{ $homeSocialDataClient->homeSocialaddress }}"><i
+                            class="{{ $homeSocialDataClient->homeSocialIcon }}"></i></a>
+                @endforeach
 
             </div>
-        
-        
-        
-        
-        
+
+
+
+
+
         </div>
         <div class="offcanvas-overly"></div>
         <!-- offcanvas-end -->
@@ -160,7 +161,9 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <a href="#" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
+                                <a href="#portfolio" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
+                                <a href="{{route("display_pdf")}}" target="_blank" class="btn wow fadeInUp" data-wow-delay="1s">SEE CV</a>
+                               
                             </div>
                         </div>
                         <div class="col-xl-5 col-lg-6 d-none d-lg-block">
@@ -243,7 +246,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-6 col-lg-8">
                         <div class="section-title text-center mb-70">
-                            
+
                             <h2>My Teachnical and Soft Skills</h2>
                         </div>
                     </div>
@@ -255,7 +258,7 @@
                     @foreach ($AllServiceSectionData as $ServiceSectionData)
                         <div class="col-lg-4 col-md-6">
                             <div class="icon_box_01 wow fadeInLeft" data-wow-delay="0.2s">
-                                
+
                                 <i class="{{ $ServiceSectionData->service_icon }}"></i>
                                 <h3>{{ $ServiceSectionData->service_title }}</h3>
                                 <p>
@@ -291,10 +294,16 @@
                                     <img src="{{ asset('uploads/recentWork') }}/{{ $recentData->recentImage }}"
                                         alt="img">
                                 </div>
-                                <div class="speaker-overlay">
+                                <div class="speaker-overlay mt-3">
                                     <span>{{ $recentData->recentTitle }}</span>
-                                    <h4><a href="portfolio-single.html">{{ $recentData->recentSubTitle }}</a></h4>
-                                    <a href="portfolio-single.html" class="arrow-btn">More information
+                                    <h4><a class="mt-3"
+                                            href="{{ route('singleRecentWorkPage', $recentData->id) }}">{{ $recentData->recentSubTitle }}</a>
+                                    </h4>
+                                    <a href="{{ route('singleRecentWorkPage', $recentData->id) }}"
+                                        class="arrow-btn">More information
+                                        <span></span></a>
+                                    <a href="{{ route('singleRecentWorkPage', $recentData->id) }}"
+                                        class="arrow-btn d-block mt-1">View Live
                                         <span></span></a>
                                 </div>
                             </div>
@@ -348,27 +357,26 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-9 col-lg-10">
                         <div class="testimonial-active">
-                            
-                            
+
+
                             @foreach ($AllcustomerData as $customerData)
-                                
-                            
-                            
-                            <div class="single-testimonial text-center">
-                                <div class="testi-avatar">
-                                    <img class="rounded-circle" width="200px" height="200px" src="{{asset("uploads/customerSection")}}/{{$customerData -> customerImage}}" alt="img">
-                                </div>
-                                <div class="testi-content">
-                                    <h4><span>“</span> {{$customerData -> customer_description}}<span>”</span></h4>
-                                    <div class="testi-avatar-info">
-                                        <h5>{{$customerData -> customerTitle}}</h5>
-                                        <span>{{$customerData -> customerPosition}}</span>
+                                <div class="single-testimonial text-center">
+                                    <div class="testi-avatar">
+                                        <img class="rounded-circle" width="200px" height="200px"
+                                            src="{{ asset('uploads/customerSection') }}/{{ $customerData->customerImage }}"
+                                            alt="img">
+                                    </div>
+                                    <div class="testi-content">
+                                        <h4><span>“</span> {{ $customerData->customer_description }}<span>”</span>
+                                        </h4>
+                                        <div class="testi-avatar-info">
+                                            <h5>{{ $customerData->customerTitle }}</h5>
+                                            <span>{{ $customerData->customerPosition }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
                             @endforeach
-                           
+
                         </div>
                     </div>
                 </div>
@@ -425,52 +433,46 @@
                             <h2>Contact Information</h2>
                         </div>
                         <div class="contact-content">
-                            
-                            
-                             @foreach ($AllcontactData as $contactData)
-                                 
-                             
-                            <h5>OFFICE IN <span>{{$contactData->contact_country_name}}</span></h5>
-                            
-                            <div class="contact-list">
-                                <ul>
-                                    <li><i class="fas fa-map-marker"></i><span>Address :</span>{{$contactData->contact_address}}</li>
-                                    <li><i class="fas fa-headphones"></i><span>Phone :</span>{{$contactData->contact_phone_num}}</li>
-                                    <li><i class="fas fa-globe-asia"></i><span>e-mail :</span>{{$contactData->contact_email}}</li>
-                                </ul>
-                            </div>
-                        
-                        @endforeach
-                        
-                        
-                        
+
+
+                            @foreach ($AllcontactData as $contactData)
+                                <h5>OFFICE IN <span>{{ $contactData->contact_country_name }}</span></h5>
+
+                                <div class="contact-list">
+                                    <ul>
+                                        <li><i class="fas fa-map-marker"></i><span>Address
+                                                :</span>{{ $contactData->contact_address }}</li>
+                                        <li><i class="fas fa-headphones"></i><span>Phone
+                                                :</span>{{ $contactData->contact_phone_num }}</li>
+                                        <li><i class="fas fa-globe-asia"></i><span>e-mail
+                                                :</span>{{ $contactData->contact_email }}</li>
+                                    </ul>
+                                </div>
+                            @endforeach
+
+
+
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        @if (session("conactFormSendSuccess"))
-                           <div class="alert alert-success">{{session("conactFormSendSuccess")}}</div> 
+                        @if (session('conactFormSendSuccess'))
+                            <div class="alert alert-success">{{ session('conactFormSendSuccess') }}</div>
                         @endif
                         <div class="contact-form">
-                            <form action="{{route("contactMeFormInsert")}}" method="post">
+                            <form action="{{ route('contactMeFormInsert') }}" method="post">
                                 @csrf
                                 <input type="text" placeholder="Enter your name" name="contactFormName">
-                                @error("contactFormName")
-
-                                <div class="alert alert-danger">{{$message}}</div>
-                                    
+                                @error('contactFormName')
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <input type="email" placeholder="Enter your email" name="contactFormEmail">
 
-                                 @error("contactFormEmail")
-
-                                <div class="alert alert-danger">{{$message}}</div>
-                                    
+                                @error('contactFormEmail')
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <textarea name="contactFormMsg" id="message" placeholder="your message *"></textarea>
-                                @error("contactFormMsg")
-
-                                <div class="alert alert-danger">{{$message}}</div>
-                                    
+                                @error('contactFormMsg')
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                                 <button class="btn" type="submit">SEND</button>
                             </form>
@@ -491,7 +493,7 @@
                 <div class="row align-items-center">
                     <div class="col-12">
                         <div class="copyright-text text-center">
-                            <p>Copyright© <span>Kufa</span> | All Rights Reserved</p>
+                            <p>Copyright© <span>Kufa</span> | All Rights Reserved || Backend developer by Pappu Saha</p>
                         </div>
                     </div>
                 </div>
@@ -523,7 +525,7 @@
     <script src="{{ asset('dynamic_webpage/js/main.js') }}"></script>
     <script src="https://kit.fontawesome.com/ecd7a02304.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/707368be08.js" crossorigin="anonymous"></script>
-    
+
 </body>
 
 <!-- Mirrored from themebeyond.com/html/kufa/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Feb 2020 06:28:17 GMT -->

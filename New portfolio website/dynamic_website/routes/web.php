@@ -7,12 +7,13 @@ use App\Http\Controllers\contacFormController;
 use App\Http\Controllers\contactMeController;
 use App\Http\Controllers\customerQuotesController;
 use App\Http\Controllers\homeSectionController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\recentWorkController;
 use App\Http\Controllers\serviceSectionController;
 use App\Models\contactFormModel;
 use App\Models\contactMeModel;
 use App\Models\recentWorkModel;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route("clientPage");
 });
 
 Auth::routes();
@@ -36,7 +37,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-Route::get('/clientPage', [clientPageController::class, 'clientPage'])->name('clientPage');
+// Route::get('/clientPage', [clientPageController::class, 'clientPage'])->name('clientPage');
+Route::get('/Portfolio', [clientPageController::class, 'clientPage'])->name('clientPage');
 
 
 //Profile Page
@@ -160,6 +162,19 @@ Route::get("/recentTrashbbinPage/recentTrashRestore/{recentTrashRestoreId}", [re
 Route::get("/recentTrashbbinPage/recentTrashDelete/{recentTrashDeleteId}", [recentWorkController::class, "recentTrashDelete"])->name("recentTrashDelete");
 
 
+//Recent Work image Upload
+
+Route::get("/addRecentWorkImagePage", [recentWorkController::class, "addRecentWorkImagePage"])->name("addRecentWorkImagePage");
+Route::post("/addRecentWorkImageInsert", [recentWorkController::class, "addRecentWorkImageInsert"])->name("addRecentWorkImageInsert");
+
+
+
+//single recent work
+Route::get("/singleRecentWorkPage/{reecentId}", [recentWorkController::class, "singleRecentWorkPage"])->name("singleRecentWorkPage");
+
+
+
+
 
 
 //Recent Work Number Section
@@ -213,6 +228,14 @@ Route::get("/contactMeTrashedPage/contactMeParDel/{contacMEParDelId}", [contactM
 
 Route::post("/contactMeFormInsert", [contacFormController::class, "contactMeFormInsert"])->name("contactMeFormInsert");
 Route::get("/contactView", [contacFormController::class, "contactView"])->name("contactView");
+
+
+
+
+
+
+//for displaying PDF
+Route::get('/display_pdf',[PdfController::class,"index"])->name("display_pdf");
 
 
 
