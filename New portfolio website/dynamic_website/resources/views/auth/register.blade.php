@@ -128,6 +128,12 @@
             <div class="logo">
                 <a href="index.html">Neptune</a>
             </div>
+
+            @if (session("regFailed"))
+
+            <div class="alert alert-danger">{{session("regFailed")}}</div>
+                
+            @endif
             <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account?
                 <a href="{{ route('login') }}">Sign In</a>
             </p>
