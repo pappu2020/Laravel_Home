@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     function userListPage(){
         $allUserList = User::where("email","!=",Auth::User()->email)->get();
         $allUserCount = User::count();

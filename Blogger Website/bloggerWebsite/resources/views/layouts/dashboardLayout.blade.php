@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/demo_1/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('dashboard_asset/images/favicon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 </head>
 
 <body>
@@ -47,19 +48,40 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#advancedUI" role="button"
+                        <a class="nav-link" data-toggle="collapse" href="#user" role="button"
                             aria-expanded="false" aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
                             <span class="link-title">Users</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
-                        <div class="collapse" id="advancedUI">
+                        <div class="collapse" id="user">
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     <a href="{{ route('userListPage') }}" class="nav-link">User List</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('trashUserPage') }}" class="nav-link">Trash Bin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+                     <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#category" role="button"
+                            aria-expanded="false" aria-controls="advancedUI">
+                            <i class="link-icon" data-feather="anchor"></i>
+                            <span class="link-title">Category</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="category">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('categoryPage') }}" class="nav-link">Add Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Trash Bin</a>
                                 </li>
 
                             </ul>
@@ -228,7 +250,8 @@
                                     </a>
                                     <a href="javascript:;" class="dropdown-item">
                                         <div class="figure">
-                                            <img src="{{asset("uploads/userProfile/")}}/{{Auth::User()->photo}}" alt="userr">
+                                            <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
+                                                alt="userr">
                                         </div>
                                         <div class="content">
                                             <div class="d-flex justify-content-between align-items-center">
@@ -324,16 +347,18 @@
                         <li class="nav-item dropdown nav-profile">
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://via.placeholder.com/30x30" alt="profile">
+                                <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
+                                    alt="profile">
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <div class="dropdown-header d-flex flex-column align-items-center">
                                     <div class="figure mb-3">
-                                        <img src="{{asset("uploads/userProfile/")}}/{{Auth::User()->photo}}" alt="">
+                                        <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
+                                            alt="">
                                     </div>
                                     <div class="info text-center">
-                                        <p class="name font-weight-bold mb-0">{{Auth::User()->name}}</p>
-                                        <p class="email text-muted mb-3">{{Auth::User()->email}}</p>
+                                        <p class="name font-weight-bold mb-0">{{ Auth::User()->name }}</p>
+                                        <p class="email text-muted mb-3">{{ Auth::User()->email }}</p>
                                     </div>
                                 </div>
                                 <div class="dropdown-body">
@@ -357,10 +382,17 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="javascript:;" class="nav-link">
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                                class="nav-link">
                                                 <i data-feather="log-out"></i>
                                                 <span>Log Out</span>
                                             </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>
@@ -378,12 +410,12 @@
             </div>
 
             <!-- partial:../../partials/_footer.html -->
-            <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+            {{-- <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between">
                 <p class="text-muted text-center text-md-left">Copyright © 2021 <a href="https://www.nobleui.com"
                         target="_blank">NobleUI</a>. All rights reserved</p>
                 <p class="text-muted text-center text-md-left mb-0 d-none d-md-block">Handcrafted With <i
                         class="mb-1 text-primary ml-1 icon-small" data-feather="heart"></i></p>
-            </footer>
+            </footer> --}}
             <!-- partial -->
 
         </div>
@@ -398,6 +430,8 @@
     <script src="{{ asset('dashboard_asset/vendors/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('dashboard_asset/js/template.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+
 
     @if (session('userProfileUpdate'))
         <script>
@@ -416,6 +450,50 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Update Success!!'
+            })
+        </script>
+    @endif   
+    
+    
+    @if (session("CategoryUpdate"))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Update Success!!'
+            })
+        </script>
+    @endif   
+    
+    
+    @if (session('CategoryinsertSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Successfully add to database!!'
             })
         </script>
     @endif

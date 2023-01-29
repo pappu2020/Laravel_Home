@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\categoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,18 @@ Route::get("userRestore/{userId}", [UserController::class, "userRestore"])->name
 
 Route::get("userProfilePage", [userProfileController::class, "userProfilePage"])->name("userProfilePage");
 Route::post("userProfileUpdate", [userProfileController::class, "userProfileUpdate"])->name("userProfileUpdate");
+
+
+
+//Category
+
+Route::get("categoryPage", [categoryController::class, "categoryPage"])->name("categoryPage");
+Route::post("catagoryInsert", [categoryController::class, "catagoryInsert"])->name("catagoryInsert");
+
+Route::get("categoryEditPage/{cataId}", [categoryController::class, "categoryEditPage"])->name("categoryEditPage");
+Route::post("categoryUpdate", [categoryController::class, "categoryUpdate"])->name("categoryUpdate");
+
+
 
 
 

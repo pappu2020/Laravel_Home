@@ -8,7 +8,7 @@
             <div class="card-body">
                 <h4 class="card-title">Users  ({{$allUserCount}})</h4>
 
-                <table class="table">
+                <table class="table" id="userTable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -38,4 +38,15 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('javascriptSection')
+
+<script>
+    $(document).ready( function () {
+    $('#userTable').DataTable();
+} );
+</script>
+    
 @endsection
