@@ -303,7 +303,7 @@
                                     <a href="{{ route('singleRecentWorkPage', $recentData->id) }}"
                                         class="arrow-btn">More information
                                         <span></span></a>
-                                    <a href="{{ route('singleRecentWorkPage', $recentData->id) }}"
+                                    <a href="https://e-commerce.pappusaha.dev/" target="_blank"
                                         class="arrow-btn d-block mt-1">View Live
                                         <span></span></a>
                                 </div>
