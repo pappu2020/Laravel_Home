@@ -55,4 +55,13 @@ class UserController extends Controller
         return back();
 
     }
+
+
+    function deleteCheckedUsers(Request $req){
+        foreach($req->check as $checkedUsers){
+            User::find($checkedUsers)->delete();
+        }
+
+        return back()->with("deleteSuccess","Delete Success!");
+    }
 }

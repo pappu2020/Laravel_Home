@@ -14,6 +14,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/fonts/feather-font/css/iconfont.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard_asset/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/demo_1/style.css') }}">
@@ -48,8 +49,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#user" role="button"
-                            aria-expanded="false" aria-controls="advancedUI">
+                        <a class="nav-link" data-toggle="collapse" href="#user" role="button" aria-expanded="false"
+                            aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
                             <span class="link-title">Users</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
@@ -68,9 +69,9 @@
                     </li>
 
 
-                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#category" role="button"
-                            aria-expanded="false" aria-controls="advancedUI">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
+                            aria-controls="advancedUI">
                             <i class="link-icon" data-feather="anchor"></i>
                             <span class="link-title">Category</span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
@@ -79,6 +80,51 @@
                             <ul class="nav sub-menu">
                                 <li class="nav-item">
                                     <a href="{{ route('categoryPage') }}" class="nav-link">Add Category</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Trash Bin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#tag" role="button" aria-expanded="false"
+                            aria-controls="advancedUI">
+                            <i class="link-icon" data-feather="anchor"></i>
+                            <span class="link-title">Tag</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="tag">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('tagPage') }}" class="nav-link">Add Tag</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Trash Bin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#role" role="button"
+                            aria-expanded="false" aria-controls="advancedUI">
+                            <i class="link-icon" data-feather="anchor"></i>
+                            <span class="link-title">Role Management</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="role">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('rolePage') }}" class="nav-link">Add Role</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-link">Trash Bin</a>
@@ -100,15 +146,15 @@
                 <div class="form-group border-bottom">
                     <div class="form-check form-check-inline">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
-                                value="sidebar-light" checked>
+                            <input type="radio" class="form-check-input" name="sidebarThemeSettings"
+                                id="sidebarLight" value="sidebar-light" checked>
                             Light
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
                         <label class="form-check-label">
-                            <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
-                                value="sidebar-dark">
+                            <input type="radio" class="form-check-input" name="sidebarThemeSettings"
+                                id="sidebarDark" value="sidebar-dark">
                             Dark
                         </label>
                     </div>
@@ -431,6 +477,7 @@
     <script src="{{ asset('dashboard_asset/js/template.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
     @if (session('userProfileUpdate'))
@@ -452,10 +499,10 @@
                 title: 'Update Success!!'
             })
         </script>
-    @endif   
-    
-    
-    @if (session("CategoryUpdate"))
+    @endif
+
+
+    @if (session('CategoryUpdate'))
         <script>
             const Toast = Swal.mixin({
                 toast: true,
@@ -474,9 +521,9 @@
                 title: 'Update Success!!'
             })
         </script>
-    @endif   
-    
-    
+    @endif
+
+
     @if (session('CategoryinsertSuccess'))
         <script>
             const Toast = Swal.mixin({
@@ -494,6 +541,49 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Successfully add to database!!'
+            })
+        </script>
+    @endif
+
+
+    @if (session('insertSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Successfully add to database!!'
+            })
+        </script>
+    @endif
+
+    @if (session('deleteSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Deleted!!'
             })
         </script>
     @endif

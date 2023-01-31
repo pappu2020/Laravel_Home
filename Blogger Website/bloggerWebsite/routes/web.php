@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\roleController;
+use App\Http\Controllers\tagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +31,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get("userListPage",[UserController::class, "userListPage"])->name("userListPage");
 Route::get("userDelete/{userId}",[UserController::class, "userDelete"])->name("userDelete");
+Route::post("deleteCheckedUsers",[UserController::class, "deleteCheckedUsers"])->name("deleteCheckedUsers");
 
 //Trash user
 
@@ -51,6 +54,20 @@ Route::post("catagoryInsert", [categoryController::class, "catagoryInsert"])->na
 
 Route::get("categoryEditPage/{cataId}", [categoryController::class, "categoryEditPage"])->name("categoryEditPage");
 Route::post("categoryUpdate", [categoryController::class, "categoryUpdate"])->name("categoryUpdate");
+
+
+//Tag
+Route::get("tagPage", [tagController::class, "tagPage"])->name("tagPage");
+Route::post("tagInsert", [tagController::class, "tagInsert"])->name("tagInsert");
+
+
+//Role
+Route::get("rolePage", [roleController::class, "rolePage"])->name("rolePage");
+Route::post("addPermission", [roleController::class, "addPermission"])->name("addPermission");
+Route::post("addRole", [roleController::class, "addRole"])->name("addRole");
+Route::post("assignRole", [roleController::class, "assignRole"])->name("assignRole");
+Route::get("removeRole/{removeRoleid}", [roleController::class, "removeRole"])->name("removeRole");
+
 
 
 
