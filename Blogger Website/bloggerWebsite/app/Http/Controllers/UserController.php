@@ -58,10 +58,19 @@ class UserController extends Controller
 
 
     function deleteCheckedUsers(Request $req){
-        foreach($req->check as $checkedUsers){
-            User::find($checkedUsers)->delete();
+
+        if($req->check == ""){
+            return back()->with("checkDeleteError","No data selected!!.Please,Check the user for deleting the user");
         }
 
-        return back()->with("deleteSuccess","Delete Success!");
+        else{
+            foreach ($req->check as $checkedUsers) {
+                User::find($checkedUsers)->delete();
+            }
+
+            return back()->with("deleteSuccess", "Delete Success!");
+
+        }
+        
     }
 }

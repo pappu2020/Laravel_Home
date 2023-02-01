@@ -67,6 +67,8 @@ Route::post("addPermission", [roleController::class, "addPermission"])->name("ad
 Route::post("addRole", [roleController::class, "addRole"])->name("addRole");
 Route::post("assignRole", [roleController::class, "assignRole"])->name("assignRole");
 Route::get("removeRole/{removeRoleid}", [roleController::class, "removeRole"])->name("removeRole");
+Route::get("roleUpdatePage/{editRolePermissionid}", [roleController::class, "roleUpdatePage"])->name("roleUpdatePage");
+Route::post("rolePermissionUpdate", [roleController::class, "rolePermissionUpdate"])->name("rolePermissionUpdate");
 
 
 

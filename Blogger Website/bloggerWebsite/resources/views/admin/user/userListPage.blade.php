@@ -6,6 +6,11 @@
     <div class="container">
        <form action="{{route("deleteCheckedUsers")}}" method="post">
         @csrf
+        @if (session("checkDeleteError"))
+
+        <div class="alert alert-danger">{{session("checkDeleteError")}}</div>
+            
+        @endif
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Users  ({{$allUserCount}})</h4>

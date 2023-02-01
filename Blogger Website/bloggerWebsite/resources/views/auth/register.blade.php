@@ -175,6 +175,11 @@
                                                 </span>
                                             @enderror
 
+                                            
+                                            <div class="my-3">
+                                                {!! NoCaptcha::display() !!}
+                                            </div>
+
                                             <div class="mt-3">
                                                 <button
                                                     class="btn btn-primary text-white mr-2 mb-2 mb-md-0" type="submit">Sign up</button>
@@ -209,6 +214,7 @@
     <!-- endinject -->
     <!-- custom js for this page -->
     <!-- end custom js for this page -->
+    {!! NoCaptcha::renderJs() !!}
 </body>
 
 </html>

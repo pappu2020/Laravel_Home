@@ -183,7 +183,7 @@
                                     </svg>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item btn btn-primary" href="">Edit</a>
+                                    <a class="dropdown-item btn btn-primary" href="{{route("roleUpdatePage",$Role->id)}}">Edit</a>
                                     <a class="dropdown-item" href="">Delete</a>
                                 </div>
 
