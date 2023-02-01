@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\bloggerPostController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\tagController;
@@ -69,6 +70,20 @@ Route::post("assignRole", [roleController::class, "assignRole"])->name("assignRo
 Route::get("removeRole/{removeRoleid}", [roleController::class, "removeRole"])->name("removeRole");
 Route::get("roleUpdatePage/{editRolePermissionid}", [roleController::class, "roleUpdatePage"])->name("roleUpdatePage");
 Route::post("rolePermissionUpdate", [roleController::class, "rolePermissionUpdate"])->name("rolePermissionUpdate");
+
+
+
+
+
+
+
+//Blogger Post Section
+
+Route::get("addPostPage", [bloggerPostController::class, "addPostPage"])->name("addPostPage");
+Route::post("bloggerPostInsert", [bloggerPostController::class, "bloggerPostInsert"])->name("bloggerPostInsert");
+
+
+
 
 
 

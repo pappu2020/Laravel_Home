@@ -21,6 +21,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('dashboard_asset/images/favicon.png') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -48,91 +49,126 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#user" role="button" aria-expanded="false"
-                            aria-controls="advancedUI">
-                            <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Users</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="user">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('userListPage') }}" class="nav-link">User List</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('trashUserPage') }}" class="nav-link">Trash Bin</a>
-                                </li>
 
-                            </ul>
-                        </div>
-                    </li>
+                    @can('show_user_list')
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#user" role="button" aria-expanded="false"
+                                aria-controls="advancedUI">
+                                <i class="link-icon" data-feather="anchor"></i>
+                                <span class="link-title">Users</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="user">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ route('userListPage') }}" class="nav-link">User List</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('trashUserPage') }}" class="nav-link">Trash Bin</a>
+                                    </li>
 
-
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
-                            aria-controls="advancedUI">
-                            <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Category</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="category">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('categoryPage') }}" class="nav-link">Add Category</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Trash Bin</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
 
 
+                    @can('category_add')
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#category" role="button" aria-expanded="false"
+                                aria-controls="advancedUI">
+                                <i class="link-icon" data-feather="anchor"></i>
+                                <span class="link-title">Category</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="category">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ route('categoryPage') }}" class="nav-link">Add Category</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">Trash Bin</a>
+                                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#tag" role="button" aria-expanded="false"
-                            aria-controls="advancedUI">
-                            <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Tag</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="tag">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('tagPage') }}" class="nav-link">Add Tag</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Trash Bin</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
 
 
+                    @can('tag_add')
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#tag" role="button" aria-expanded="false"
+                                aria-controls="advancedUI">
+                                <i class="link-icon" data-feather="anchor"></i>
+                                <span class="link-title">Tag</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="tag">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ route('tagPage') }}" class="nav-link">Add Tag</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">Trash Bin</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
 
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="collapse" href="#role" role="button"
-                            aria-expanded="false" aria-controls="advancedUI">
-                            <i class="link-icon" data-feather="anchor"></i>
-                            <span class="link-title">Role Management</span>
-                            <i class="link-arrow" data-feather="chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="role">
-                            <ul class="nav sub-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('rolePage') }}" class="nav-link">Add Role</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="" class="nav-link">Trash Bin</a>
-                                </li>
 
-                            </ul>
-                        </div>
-                    </li>
+                    @can('role add')
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#role" role="button"
+                                aria-expanded="false" aria-controls="advancedUI">
+                                <i class="link-icon" data-feather="anchor"></i>
+                                <span class="link-title">Role Management</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="role">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="{{ route('rolePage') }}" class="nav-link">Add Role</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">Trash Bin</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
+
+
+                    @can('can post')
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#addPost" role="button"
+                                aria-expanded="false" aria-controls="advancedUI">
+                                <i class="link-icon" data-feather="anchor"></i>
+                                <span class="link-title">Create Post</span>
+                                <i class="link-arrow" data-feather="chevron-down"></i>
+                            </a>
+                            <div class="collapse" id="addPost">
+                                <ul class="nav sub-menu">
+                                    <li class="nav-item">
+                                        <a href="{{route("addPostPage")}}" class="nav-link">Add Post</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">My Post</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">Trash Bin</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
+
 
                 </ul>
             </div>
@@ -478,6 +514,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
 
     @if (session('userProfileUpdate'))
@@ -588,7 +625,7 @@
         </script>
     @endif
 
-    
+
     @if (session('updateSuccess'))
         <script>
             const Toast = Swal.mixin({

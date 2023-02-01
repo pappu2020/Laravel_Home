@@ -10,7 +10,7 @@
 
         <div class="col-lg-4">
 
-            {{-- <div class="card">
+            <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Add Permission</h4>
 
@@ -28,7 +28,7 @@
                         </form>
 
                     </div>
-                </div> --}}
+                </div>
 
         </div>
 
@@ -240,7 +240,13 @@
                                              {{ 'bg-secondary' }}
                                              
                                             @elseif ($rolesname == 'General Officer')
-                                             {{ 'bg-info' }} @endif text-light">{{ $rolesname }}</span>
+                                             {{ 'bg-info' }}
+                                             
+                                             @elseif ($rolesname == 'Author')
+                                             {{ 'bg-warning' }} 
+                                             
+                                             
+                                             @endif text-light">{{ $rolesname }}</span>
 
 
                                         @empty
