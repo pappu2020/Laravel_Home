@@ -14,10 +14,11 @@ use Image;
 
 class bloggerPostController extends Controller
 {
-    function addPostPage(){
+    function addPostPage()
+    {
         $allCategory = categoryModel::all();
         $allTags = tagModel::all();
-        return view('author.addPostPage',[
+        return view('author.addPostPage', [
             'allCategory' => $allCategory,
             'allTags' => $allTags,
         ]);
@@ -25,9 +26,12 @@ class bloggerPostController extends Controller
 
 
 
-    function bloggerPostInsert(Request $req){
+    function bloggerPostInsert(Request $req)
+    {
         $req->validate([
             'title' => 'required',
+            'categoryName' => 'required|not_in:Select the Category',
+            'tagName' => 'required',
             'description' => 'required',
             'featuredImg' => 'required|file|max:5000',
             'featuredImg' => 'mimes:jpg,jpeg,png,gif',
@@ -37,7 +41,7 @@ class bloggerPostController extends Controller
 
             'author_id' => Auth::id(),
             'category_id' => $req->categoryName,
-            
+
             'title' => $req->title,
             'description' => $req->description,
             'slug' => str_replace(" ", "-", Str::lower($req->title)) . '-' . rand(100000, 1999999) . "-" . Auth::User()->name,
@@ -46,19 +50,18 @@ class bloggerPostController extends Controller
         ]);
 
 
-        
-        foreach($req->tagName as $tags){
+
+        foreach ($req->tagName as $tags) {
 
             tagPostModel::insert([
-            'tag_id' => $tags,
-            'post_id' => $blogerPostId,
-            'created_at' => Carbon::now(),
-        ]);
-
+                'tag_id' => $tags,
+                'post_id' => $blogerPostId,
+                'created_at' => Carbon::now(),
+            ]);
         }
-        
-        
-        
+
+
+
 
 
         $getImage = $req->featuredImg;
@@ -68,8 +71,9 @@ class bloggerPostController extends Controller
         // $afterName = str_replace(" ", "-", $req->title);
 
         // $fileName = Str::lower($afterName) . '-' . rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
-        $fileName =rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
+        $fileName = rand(100000, 1999999) . "-" . Auth::id() . "." . $extension;
         Image::make($getImage)->save(public_path("uploads/blogerPost/" . $fileName));
+        Image::make($getImage)->save(public_path("blogger_asset/css/uploads/blogerPost/" . $fileName));
 
 
         bloggerPostModel::find($blogerPostId)->update([
@@ -85,9 +89,10 @@ class bloggerPostController extends Controller
 
 
 
-    function myPostPage(){
-        $authorPosts = bloggerPostModel::where("author_id",Auth::id())->get();
-        return view("author.myPostPage",[
+    function myPostPage()
+    {
+        $authorPosts = bloggerPostModel::where("author_id", Auth::id())->get();
+        return view("author.myPostPage", [
             'authorPosts' => $authorPosts,
         ]);
     }
@@ -96,17 +101,20 @@ class bloggerPostController extends Controller
 
     //delete
 
-    function myPostDelete($delete_id){
+    function myPostDelete($delete_id)
+    {
+
+      
 
         bloggerPostModel::find($delete_id)->delete();
         return back()->with("deleteSuccess", "Delete Success!");
-
     }
 
 
-    function myPostTrashBin(){
+    function myPostTrashBin()
+    {
         $postTrashData = bloggerPostModel::onlyTrashed()->get();
-        return view("author.myPostTrashBin",[
+        return view("author.myPostTrashBin", [
             'postTrashData' => $postTrashData,
         ]);
     }
@@ -118,14 +126,122 @@ class bloggerPostController extends Controller
         bloggerPostModel::onlyTrashed()->find($delete_id)->restore();
         return back()->with("restoreSuccess", "Restore Success!");
     }
-    
-    
+
+
     function myPostParmanantDelete($delete_id)
     {
-        
-        
+
+        $findPhoto = bloggerPostModel::onlyTrashed()->where("id", $delete_id)->first()->featured_img;
+        $delete_pic_uploads = public_path('uploads/blogerPost/' . $findPhoto);
+        $delete_pic_css = public_path("blogger_asset/css/uploads/blogerPost/" . $findPhoto);
+        unlink($delete_pic_uploads);
+        unlink($delete_pic_css);
 
         bloggerPostModel::onlyTrashed()->find($delete_id)->forceDelete();
         return back()->with("deleteSuccess", "Delete Success!");
+    }
+
+
+    //update
+
+    function myPostUpdatePage($update_id)
+    {
+        $bloggerPostInfo = bloggerPostModel::where("id", $update_id)->get();
+        $allCategory = categoryModel::all();
+        $allTags = tagModel::all();
+
+        return view("author.myPostUpdatePage", [
+            'bloggerPostInfo' => $bloggerPostInfo,
+            'allCategory' => $allCategory,
+            'allTags' => $allTags,
+        ]);
+    }
+
+
+    function myPostUpdate(Request $req)
+    {
+
+
+        $req->validate([
+            'title' => 'required',
+            'categoryName' => 'required|not_in:Select the Category',
+            'tagName' => 'required',
+            'description' => 'required',
+            'featuredImg' => 'required|file|max:5000',
+            'featuredImg' => 'mimes:jpg,jpeg,png,gif',
+        ]);
+
+
+        if ($req->featuredImg == "") {
+            bloggerPostModel::find($req->blogId)->update([
+
+
+                'author_id' => Auth::id(),
+                'category_id' => $req->categoryName,
+
+                'title' => $req->title,
+                'description' => $req->description,
+                'slug' => str_replace(" ", "-", Str::lower($req->title)) . '-' . rand(100000, 1999999) . "-" . Auth::User()->name,
+                'created_at' => Carbon::now(),
+
+
+
+            ]);
+
+
+            foreach ($req->tagName as $tags) {
+
+                tagPostModel::where("post_id", $req->blogId)->update([
+                    'tag_id' => $tags,
+                    'post_id' => $req->blogId,
+                    'created_at' => Carbon::now(),
+                ]);
+            }
+            return back()->with('updateSuccess', "update success!!");
+        } else {
+            $findPhoto = bloggerPostModel::where("id", $req->blogId)->first()->featured_img;
+            $delete_pic = public_path('uploads/blogerPost/' . $findPhoto);
+            $delete_pic = public_path("blogger_asset/css/uploads/blogerPost/" . $findPhoto);
+            unlink($delete_pic);
+
+
+
+            $getImage = $req->featuredImg;
+
+            $extension = $getImage->getClientOriginalExtension();
+
+            // $afterName = str_replace(" ", "-", $req->title);
+
+            // $fileName = Str::lower($afterName) . '-' . rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
+            $fileName = rand(100000, 1999999) . "-" . Auth::id() . "." . $extension;
+            Image::make($getImage)->save(public_path("uploads/blogerPost/" . $fileName));
+            Image::make($getImage)->save(public_path("blogger_asset/css/uploads/blogerPost/" . $fileName));
+
+
+            bloggerPostModel::find($req->blogId)->update([
+                
+                'category_id' => $req->categoryName,
+
+                'title' => $req->title,
+                'description' => $req->description,
+                'slug' => str_replace(" ", "-", Str::lower($req->title)) . '-' . rand(100000, 1999999) . "-" . Auth::User()->name,
+                'featured_img' => $fileName,
+                'created_at' => Carbon::now(),
+                
+            ]);
+
+
+            foreach ($req->tagName as $tags) {
+
+                tagPostModel::where("post_id", $req->blogId)->update([
+                    'tag_id' => $tags,
+                    'post_id' => $req->blogId,
+                    'created_at' => Carbon::now(),
+                ]);
+            }
+
+
+            return back()->with('updateSuccess', "update success!!");
+        }
     }
 }

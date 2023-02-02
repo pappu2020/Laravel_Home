@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\bloggerPostController;
+use App\Http\Controllers\bloggerWebsiteController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\tagController;
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -86,6 +87,24 @@ Route::get("myPostDelete/{delete_id}", [bloggerPostController::class, "myPostDel
 Route::get("myPostTrashBin", [bloggerPostController::class, "myPostTrashBin"])->name("myPostTrashBin");
 Route::get("myPostRestore/{delete_id}", [bloggerPostController::class, "myPostRestore"])->name("myPostRestore");
 Route::get("myPostParmanantDelete/{delete_id}", [bloggerPostController::class, "myPostParmanantDelete"])->name("myPostParmanantDelete");
+Route::get("myPostUpdatePage/{update_id}", [bloggerPostController::class, "myPostUpdatePage"])->name("myPostUpdatePage");
+Route::post("myPostUpdate", [bloggerPostController::class, "myPostUpdate"])->name("myPostUpdate");
+
+
+
+
+
+
+
+
+
+//Blogger Website Section
+Route::get("/", [bloggerWebsiteController::class, "bloggerWebsitePage"])->name("homePage");
+
+
+
+
+
 
 
 
