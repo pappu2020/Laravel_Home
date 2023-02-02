@@ -81,6 +81,11 @@ Route::post("rolePermissionUpdate", [roleController::class, "rolePermissionUpdat
 
 Route::get("addPostPage", [bloggerPostController::class, "addPostPage"])->name("addPostPage");
 Route::post("bloggerPostInsert", [bloggerPostController::class, "bloggerPostInsert"])->name("bloggerPostInsert");
+Route::get("myPostPage", [bloggerPostController::class, "myPostPage"])->name("myPostPage");
+Route::get("myPostDelete/{delete_id}", [bloggerPostController::class, "myPostDelete"])->name("myPostDelete");
+Route::get("myPostTrashBin", [bloggerPostController::class, "myPostTrashBin"])->name("myPostTrashBin");
+Route::get("myPostRestore/{delete_id}", [bloggerPostController::class, "myPostRestore"])->name("myPostRestore");
+Route::get("myPostParmanantDelete/{delete_id}", [bloggerPostController::class, "myPostParmanantDelete"])->name("myPostParmanantDelete");
 
 
 

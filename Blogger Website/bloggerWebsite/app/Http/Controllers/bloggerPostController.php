@@ -65,9 +65,10 @@ class bloggerPostController extends Controller
 
         $extension = $getImage->getClientOriginalExtension();
 
-        $afterName = str_replace(" ", "-", $req->title);
+        // $afterName = str_replace(" ", "-", $req->title);
 
-        $fileName = Str::lower($afterName) . '-' . rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
+        // $fileName = Str::lower($afterName) . '-' . rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
+        $fileName =rand(100000, 1999999) ."-".Auth::id(). "." . $extension;
         Image::make($getImage)->save(public_path("uploads/blogerPost/" . $fileName));
 
 
@@ -77,5 +78,54 @@ class bloggerPostController extends Controller
 
 
         return back()->with('insertSuccess', "Insert success!!");
+    }
+
+
+
+
+
+
+    function myPostPage(){
+        $authorPosts = bloggerPostModel::where("author_id",Auth::id())->get();
+        return view("author.myPostPage",[
+            'authorPosts' => $authorPosts,
+        ]);
+    }
+
+
+
+    //delete
+
+    function myPostDelete($delete_id){
+
+        bloggerPostModel::find($delete_id)->delete();
+        return back()->with("deleteSuccess", "Delete Success!");
+
+    }
+
+
+    function myPostTrashBin(){
+        $postTrashData = bloggerPostModel::onlyTrashed()->get();
+        return view("author.myPostTrashBin",[
+            'postTrashData' => $postTrashData,
+        ]);
+    }
+
+
+    function myPostRestore($delete_id)
+    {
+
+        bloggerPostModel::onlyTrashed()->find($delete_id)->restore();
+        return back()->with("restoreSuccess", "Restore Success!");
+    }
+    
+    
+    function myPostParmanantDelete($delete_id)
+    {
+        
+        
+
+        bloggerPostModel::onlyTrashed()->find($delete_id)->forceDelete();
+        return back()->with("deleteSuccess", "Delete Success!");
     }
 }

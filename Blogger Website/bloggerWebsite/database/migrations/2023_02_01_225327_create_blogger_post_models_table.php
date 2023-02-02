@@ -22,6 +22,7 @@ return new class extends Migration
             $table->longText("description");
             $table->string("featured_img");
             $table->string("slug");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

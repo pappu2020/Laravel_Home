@@ -154,14 +154,14 @@
                             <div class="collapse" id="addPost">
                                 <ul class="nav sub-menu">
                                     <li class="nav-item">
-                                        <a href="{{route("addPostPage")}}" class="nav-link">Add Post</a>
+                                        <a href="{{ route('addPostPage') }}" class="nav-link">Add Post</a>
                                     </li>
-                                    
+
                                     <li class="nav-item">
-                                        <a href="" class="nav-link">My Post</a>
+                                        <a href="{{ route('myPostPage') }}" class="nav-link">My Post</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="" class="nav-link">Trash Bin</a>
+                                        <a href="{{ route('myPostTrashBin') }}" class="nav-link">Trash Bin</a>
                                     </li>
 
                                 </ul>
@@ -646,6 +646,31 @@
             })
         </script>
     @endif
+
+    @if (session('restoreSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Your post restore successfully!!'
+            })
+        </script>
+    @endif
+
+   
+
+
 
     @yield('javascriptSection')
     <!-- endinject -->
