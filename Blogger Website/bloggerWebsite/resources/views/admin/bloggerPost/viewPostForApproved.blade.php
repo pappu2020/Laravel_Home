@@ -1,6 +1,6 @@
 @extends('layouts.dashboardLayout')
 
-<style>
+{{-- <style>
     .content {
         margin-top: 30px;
         width: 550px;
@@ -27,7 +27,7 @@
         margin-left: 50px;
         margin-top: 25PX;
     }
-</style>
+</style> --}}
 
 
 
@@ -37,7 +37,7 @@
     <div class="row">
 
         @foreach ($authorPosts as $authorPost)
-            <div class="card rounded col-lg-5 myPostCard">
+            <div class="card rounded col-lg-10">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">

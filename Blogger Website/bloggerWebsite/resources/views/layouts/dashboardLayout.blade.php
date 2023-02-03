@@ -143,6 +143,32 @@
                     @endcan
 
 
+                    @can("blogger_post_management")
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#bloggerPost" role="button"
+                            aria-expanded="false" aria-controls="advancedUI">
+                            <i class="link-icon" data-feather="anchor"></i>
+                            <span class="link-title">Blogger Post Management</span>
+                            <i class="link-arrow" data-feather="chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="bloggerPost">
+                            <ul class="nav sub-menu">
+                                <li class="nav-item">
+                                    <a href="{{route("uploadedbloggerPostPage")}}" class="nav-link">Blogger Post</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-link">Trash Bin</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                    @endcan
+
+
+
                     @can('can post')
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="collapse" href="#addPost" role="button"
@@ -159,6 +185,10 @@
 
                                     <li class="nav-item">
                                         <a href="{{ route('myPostPage') }}" class="nav-link">My Post</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a href="{{ route('myDeclinedPostPage') }}" class="nav-link">My Declined Post</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('myPostTrashBin') }}" class="nav-link">Trash Bin</a>
@@ -668,7 +698,7 @@
         </script>
     @endif
 
-   
+
 
 
 

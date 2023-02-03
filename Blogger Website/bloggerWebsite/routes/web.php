@@ -83,12 +83,20 @@ Route::post("rolePermissionUpdate", [roleController::class, "rolePermissionUpdat
 Route::get("addPostPage", [bloggerPostController::class, "addPostPage"])->name("addPostPage");
 Route::post("bloggerPostInsert", [bloggerPostController::class, "bloggerPostInsert"])->name("bloggerPostInsert");
 Route::get("myPostPage", [bloggerPostController::class, "myPostPage"])->name("myPostPage");
+Route::get("myDeclinedPostPage", [bloggerPostController::class, "myDeclinedPostPage"])->name("myDeclinedPostPage");
 Route::get("myPostDelete/{delete_id}", [bloggerPostController::class, "myPostDelete"])->name("myPostDelete");
 Route::get("myPostTrashBin", [bloggerPostController::class, "myPostTrashBin"])->name("myPostTrashBin");
 Route::get("myPostRestore/{delete_id}", [bloggerPostController::class, "myPostRestore"])->name("myPostRestore");
 Route::get("myPostParmanantDelete/{delete_id}", [bloggerPostController::class, "myPostParmanantDelete"])->name("myPostParmanantDelete");
 Route::get("myPostUpdatePage/{update_id}", [bloggerPostController::class, "myPostUpdatePage"])->name("myPostUpdatePage");
 Route::post("myPostUpdate", [bloggerPostController::class, "myPostUpdate"])->name("myPostUpdate");
+
+
+Route::get("viewPostForApproved/{postid}", [bloggerPostController::class, "viewPostForApproved"])->name("viewPostForApproved");
+
+Route::get("uploadedbloggerPostPage", [bloggerPostController::class, "uploadedbloggerPostPage"])->name("uploadedbloggerPostPage");
+Route::post("uploadedbloggerPostStatus", [bloggerPostController::class, "uploadedbloggerPostStatus"])->name("uploadedbloggerPostStatus");
+
 
 
 

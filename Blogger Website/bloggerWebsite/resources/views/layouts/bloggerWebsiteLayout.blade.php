@@ -23,6 +23,12 @@
     <!-- main style -->
     <link rel="stylesheet" href="{{asset("blogger_asset/css/style.css")}}">
     <link rel="stylesheet" href="{{asset("blogger_asset/css/custom.css")}}">
+
+    <style>
+        .signInbutton{
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,7 +93,11 @@
                     </div>
                     <!--button-subscribe-->
                     <div class="botton-sub">
-                        <a href="signup.html" class="btn-subscribe">Sign Up</a>
+                        <a href="{{route("register")}}" class="btn-subscribe">Sign Up</a>
+                    </div>
+
+                    <div class="botton-sub signInbutton">
+                        <a href="{{route("login")}}" class="btn-subscribe btn-success">Sign In</a>
                     </div>
                     <!--navbar-toggler-->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"

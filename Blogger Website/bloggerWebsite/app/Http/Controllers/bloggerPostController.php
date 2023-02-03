@@ -34,7 +34,7 @@ class bloggerPostController extends Controller
             'tagName' => 'required',
             'description' => 'required',
             'featuredImg' => 'required|file|max:5000',
-            'featuredImg' => 'mimes:jpg,jpeg,png,gif',
+            'featuredImg' => 'mimes:jpg,jpeg,png,gif,webp',
         ]);
 
         $blogerPostId =  bloggerPostModel::insertGetId([
@@ -91,8 +91,28 @@ class bloggerPostController extends Controller
 
     function myPostPage()
     {
-        $authorPosts = bloggerPostModel::where("author_id", Auth::id())->get();
+        $authorPosts = bloggerPostModel::where("author_id", Auth::id())->where("status", "Approved")->get();
         return view("author.myPostPage", [
+            'authorPosts' => $authorPosts,
+        ]);
+    }
+    
+    
+    
+    function myDeclinedPostPage()
+    {
+        $authorPosts = bloggerPostModel::where("author_id", Auth::id())->where("status", "Declined")->get();
+        return view("author.myDeclinedPostPage", [
+            'authorPosts' => $authorPosts,
+        ]);
+    }
+
+
+
+
+    function viewPostForApproved($postid){
+        $authorPosts = bloggerPostModel::where("id", $postid)->get();
+        return view("admin.bloggerPost.viewPostForApproved",[
             'authorPosts' => $authorPosts,
         ]);
     }
@@ -104,7 +124,7 @@ class bloggerPostController extends Controller
     function myPostDelete($delete_id)
     {
 
-      
+
 
         bloggerPostModel::find($delete_id)->delete();
         return back()->with("deleteSuccess", "Delete Success!");
@@ -168,7 +188,7 @@ class bloggerPostController extends Controller
             'tagName' => 'required',
             'description' => 'required',
             'featuredImg' => 'required|file|max:5000',
-            'featuredImg' => 'mimes:jpg,jpeg,png,gif',
+            'featuredImg' => 'mimes:jpg,jpeg,png,gif,webp',
         ]);
 
 
@@ -219,7 +239,7 @@ class bloggerPostController extends Controller
 
 
             bloggerPostModel::find($req->blogId)->update([
-                
+
                 'category_id' => $req->categoryName,
 
                 'title' => $req->title,
@@ -227,7 +247,7 @@ class bloggerPostController extends Controller
                 'slug' => str_replace(" ", "-", Str::lower($req->title)) . '-' . rand(100000, 1999999) . "-" . Auth::User()->name,
                 'featured_img' => $fileName,
                 'created_at' => Carbon::now(),
-                
+
             ]);
 
 
@@ -243,5 +263,31 @@ class bloggerPostController extends Controller
 
             return back()->with('updateSuccess', "update success!!");
         }
+    }
+
+
+
+
+    function uploadedbloggerPostPage()
+    {
+        $allBloggerPost = bloggerPostModel::latest()->get();
+        return view("admin.bloggerPost.uploadedbloggerPostPage", [
+            'allBloggerPost' => $allBloggerPost,
+        ]);
+    }
+
+
+    function uploadedbloggerPostStatus(Request $req)
+    {
+
+        $explode_part = explode(",", $req->stutusButton);
+
+
+
+        bloggerPostModel::where("id", $explode_part[0])->update([
+            'status' => $explode_part[1],
+        ]);
+
+        return back()->with('updateSuccess', "update success!!");
     }
 }

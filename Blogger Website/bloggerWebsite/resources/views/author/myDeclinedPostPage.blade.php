@@ -32,7 +32,7 @@
 
 
 @section('content')
-    <span class="title_div">My Post</span>
+    <span class="title_div">My Declined Post</span>
 
     <div class="row">
 
