@@ -13,7 +13,7 @@ class bloggerWebsiteController extends Controller
     {
         $allCategory = categoryModel::all();
         $allapprovedPost = bloggerPostModel::latest()->where("status", "Approved")->take(5)->get();
-        $allRecentArticles = bloggerPostModel::latest()->where("status", "Approved")->take(9)->get();
+        $allRecentArticles = bloggerPostModel::latest()->where("status", "Approved")->take(5)->paginate(5);
         $allTag = tagModel::all();
         return view("bloggerWebsite.bloggerWebsiteHome", [
             'allCategory' => $allCategory,

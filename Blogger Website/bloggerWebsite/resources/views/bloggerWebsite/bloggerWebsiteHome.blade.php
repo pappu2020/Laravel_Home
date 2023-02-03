@@ -103,7 +103,7 @@
                                 <div class="image">
                                     <img src="{{asset("uploads/category")}}/{{$Category->categoryImg}}" alt="">
                                 </div>
-                                <p>{{$Category->categoryName}} <span>10</span> </p>
+                                <p>{{$Category->categoryName}} <span>{{App\Models\bloggerPostModel::where("category_id",$Category->id)->count()}}</span> </p>
                             </a>
                             @endforeach
 
@@ -167,22 +167,14 @@
                         @endforeach
 
                         
-
+                         {{$allRecentArticles->links("vendor.pagination.custompagination")}}
                         <!--pagination-->
-                        <div class="pagination">
-                            <div class="pagination-area">
-                                <div class="pagination-list">
-                                    <ul class="list-inline">
-                                        <li><a href="#"><i class="las la-arrow-left"></i></a></li>
-                                        <li><a href="#" class="active">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#"><i class="las la-arrow-right"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
+
+                       
+                    
+                    
+                    
                     </div>
                 </div>
 
