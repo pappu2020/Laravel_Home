@@ -123,6 +123,13 @@ Route::get("authorPostDelete/{delete_id}", [bloggerPostController::class, "autho
 Route::get("/", [bloggerWebsiteController::class, "bloggerWebsitePage"])->name("homePage");
 
 
+Route::get("bloggerDetailsPage/{blog_id}", [bloggerWebsiteController::class, "bloggerDetailsPage"])->name("bloggerDetailsPage");
+Route::get("authorPage/{author_id}", [bloggerWebsiteController::class, "authorPage"])->name("authorPage");
+
+
+
+
+
 
 
 

@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-heading-2-title">
-                            <h1>{{ $categoryInfo->first()->categoryName}}</h1>
+                            <h1>{{ $categoryInfo->categoryName}}</h1>
                             <p class="links"><a href="index.html">Home <i class="las la-angle-right"></i></a> Blog</p>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="post-list-content">
                                 <h3 class="entry-title">
-                                    <a href="post-single.html">{{ $categoryWiseBlogs->title }}</a>
+                                    <a href="{{route("bloggerDetailsPage",$categoryWiseBlogs->id)}}">{{ $categoryWiseBlogs->title }}</a>
                                 </h3>
                                 <ul class="entry-meta">
                                     <li class="post-author-img"><img
@@ -65,7 +65,7 @@
                                     <p>{{ $categoryWiseBlogs->short_desp }}</p>
                                 </div>
                                 <div class="post-btn">
-                                    <a href="post-single.html" class="btn-read-more">Continue Reading <i
+                                    <a href="{{route("bloggerDetailsPage",$categoryWiseBlogs->id)}}" class="btn-read-more">Continue Reading <i
                                             class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>

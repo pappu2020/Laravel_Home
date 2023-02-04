@@ -22,7 +22,28 @@ class bloggerWebsiteController extends Controller
             'allTag' => $allTag,
         ]);
     }
+   
 
+
+    function bloggerDetailsPage($blog_id){
+        $bloggerInfo = bloggerPostModel::where("id",$blog_id)->get();
+        
+        return view("bloggerWebsite.bloggerDetailsPage",[
+            'bloggerInfo' => $bloggerInfo,
+        ]);
+    }
+
+
+    function authorPage($author_id){
+        $bloggerInfo = bloggerPostModel::where("author_id", $author_id)->where("status","Approved")->get();
+        $allCategory = categoryModel::all();
+        $allTag = tagModel::all();
+        return view("bloggerWebsite.authorPage",[
+            'bloggerInfo' => $bloggerInfo,
+            'allCategory' => $allCategory,
+            'allTag' => $allTag,
+        ]);
+    }
 
   
 }

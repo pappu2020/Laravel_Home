@@ -58,13 +58,13 @@
                                 <div class="post-overly">
                                     <div class="post-overly-content">
                                         <div class="entry-cat">
-                                            <a href="blog-layout-1.html" class="category-style-2">{{$approvedPost->rel_to_category->categoryName}}</a>
+                                            <a href="{{route("categoryWiseBlogPage",$approvedPost->rel_to_category->id)}}" class="category-style-2">{{$approvedPost->rel_to_category->categoryName}}</a>
                                         </div>
                                         <h2 class="entry-title">
-                                            <a href="post-single.html">{{$approvedPost->title}} </a>
+                                            <a href="{{route("bloggerDetailsPage",$approvedPost->id)}}">{{$approvedPost->title}} </a>
                                         </h2>
                                         <ul class="entry-meta">
-                                            <li class="post-author"> <a href="author.html">{{$approvedPost->rel_to_users->name}}</a></li>
+                                            <li class="post-author"> <a href="{{route("authorPage",$approvedPost->rel_to_users->id)}}">{{$approvedPost->rel_to_users->name}}</a></li>
                                             <li class="post-date"> <span class="line"></span>{{$approvedPost->created_at->format("d-m-Y")}}</li>
                                             <li class="post-timeread"> <span class="line"></span> {{$approvedPost->readTime}} mins read</li>
                                         </ul>
@@ -149,16 +149,16 @@
                             <div class="post-list-content">
                                 <ul class="entry-meta">
                                     <li class="entry-cat">
-                                        <a href="blog-layout-1.html" class="category-style-1">{{$RecentArticles->rel_to_category->categoryName}}</a>
+                                        <a href="{{route("categoryWiseBlogPage",$RecentArticles->rel_to_category->id)}}" class="category-style-1">{{$RecentArticles->rel_to_category->categoryName}}</a>
                                     </li>
                                     <li class="post-date"> <span class="line"></span> {{$RecentArticles->created_at->format("d-m-Y")}}</li>
                                 </ul>
                                 <h5 class="entry-title">
-                                    <a href="post-single.html">{{$RecentArticles->title}}</a>
+                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->id)}}">{{$RecentArticles->title}}</a>
                                 </h5>
 
                                 <div class="post-btn">
-                                    <a href="post-single.html" class="btn-read-more">Continue Reading <i
+                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->id)}}" class="btn-read-more">Continue Reading <i
                                             class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
