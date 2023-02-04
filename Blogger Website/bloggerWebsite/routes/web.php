@@ -58,6 +58,14 @@ Route::get("categoryEditPage/{cataId}", [categoryController::class, "categoryEdi
 Route::post("categoryUpdate", [categoryController::class, "categoryUpdate"])->name("categoryUpdate");
 
 
+
+
+Route::get("categoryWiseBlogPage/{cataId}", [categoryController::class, "categoryWiseBlogPage"])->name("categoryWiseBlogPage");
+
+
+
+
+
 //Tag
 Route::get("tagPage", [tagController::class, "tagPage"])->name("tagPage");
 Route::post("tagInsert", [tagController::class, "tagInsert"])->name("tagInsert");
@@ -84,6 +92,7 @@ Route::get("addPostPage", [bloggerPostController::class, "addPostPage"])->name("
 Route::post("bloggerPostInsert", [bloggerPostController::class, "bloggerPostInsert"])->name("bloggerPostInsert");
 Route::get("myPostPage", [bloggerPostController::class, "myPostPage"])->name("myPostPage");
 Route::get("myDeclinedPostPage", [bloggerPostController::class, "myDeclinedPostPage"])->name("myDeclinedPostPage");
+Route::get("myPendingPostPage", [bloggerPostController::class, "myPendingPostPage"])->name("myPendingPostPage");
 Route::get("myPostDelete/{delete_id}", [bloggerPostController::class, "myPostDelete"])->name("myPostDelete");
 Route::get("myPostTrashBin", [bloggerPostController::class, "myPostTrashBin"])->name("myPostTrashBin");
 Route::get("myPostRestore/{delete_id}", [bloggerPostController::class, "myPostRestore"])->name("myPostRestore");
@@ -96,6 +105,10 @@ Route::get("viewPostForApproved/{postid}", [bloggerPostController::class, "viewP
 
 Route::get("uploadedbloggerPostPage", [bloggerPostController::class, "uploadedbloggerPostPage"])->name("uploadedbloggerPostPage");
 Route::post("uploadedbloggerPostStatus", [bloggerPostController::class, "uploadedbloggerPostStatus"])->name("uploadedbloggerPostStatus");
+
+
+
+Route::get("authorPostDelete/{delete_id}", [bloggerPostController::class, "authorPostDelete"])->name("authorPostDelete");
 
 
 

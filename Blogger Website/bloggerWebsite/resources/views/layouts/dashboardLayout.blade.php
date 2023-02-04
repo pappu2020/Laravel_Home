@@ -174,7 +174,7 @@
                             <a class="nav-link" data-toggle="collapse" href="#addPost" role="button"
                                 aria-expanded="false" aria-controls="advancedUI">
                                 <i class="link-icon" data-feather="anchor"></i>
-                                <span class="link-title">Create Post</span>
+                                <span class="link-title">Blogger Post</span>
                                 <i class="link-arrow" data-feather="chevron-down"></i>
                             </a>
                             <div class="collapse" id="addPost">
@@ -189,6 +189,10 @@
                                     
                                     <li class="nav-item">
                                         <a href="{{ route('myDeclinedPostPage') }}" class="nav-link">My Declined Post</a>
+                                    </li>
+                                    
+                                    <li class="nav-item">
+                                        <a href="{{ route('myPendingPostPage') }}" class="nav-link">My Pending Post</a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="{{ route('myPostTrashBin') }}" class="nav-link">Trash Bin</a>
@@ -630,6 +634,27 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Successfully add to database!!'
+            })
+        </script>
+    @endif  
+    
+    @if (session('insertPostSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Your post created successfully!!.',
             })
         </script>
     @endif

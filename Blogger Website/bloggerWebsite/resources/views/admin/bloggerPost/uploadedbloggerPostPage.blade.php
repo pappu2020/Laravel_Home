@@ -139,7 +139,7 @@
 
                             </td>
 
-                            <td><a href="" class="btn btn-danger"> Delete</a></td>
+                            <td><a href="{{route("authorPostDelete",$BloggerPost->id)}}" class="btn btn-danger"> Delete</a></td>
 
 
                             <td><a href="{{route("viewPostForApproved",$BloggerPost->id)}}" class="btn btn-info"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

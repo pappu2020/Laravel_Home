@@ -32,7 +32,8 @@ class bloggerPostController extends Controller
             'title' => 'required',
             'categoryName' => 'required|not_in:Select the Category',
             'tagName' => 'required',
-            'description' => 'required',
+            'short_desp' => 'required|max:250',
+            'description' => 'required|max:3500',
             'featuredImg' => 'required|file|max:5000',
             'featuredImg' => 'mimes:jpg,jpeg,png,gif,webp',
         ]);
@@ -43,6 +44,7 @@ class bloggerPostController extends Controller
             'category_id' => $req->categoryName,
 
             'title' => $req->title,
+            'short_desp' => $req->short_desp,
             'description' => $req->description,
             'slug' => str_replace(" ", "-", Str::lower($req->title)) . '-' . rand(100000, 1999999) . "-" . Auth::User()->name,
             'created_at' => Carbon::now(),
@@ -81,7 +83,7 @@ class bloggerPostController extends Controller
         ]);
 
 
-        return back()->with('insertSuccess', "Insert success!!");
+        return back()->with('insertPostSuccess', "Your post is pending for approval.You can see your post on my pending post section");
     }
 
 
@@ -103,6 +105,15 @@ class bloggerPostController extends Controller
     {
         $authorPosts = bloggerPostModel::where("author_id", Auth::id())->where("status", "Declined")->get();
         return view("author.myDeclinedPostPage", [
+            'authorPosts' => $authorPosts,
+        ]);
+    } 
+    
+    
+    function myPendingPostPage()
+    {
+        $authorPosts = bloggerPostModel::where("author_id", Auth::id())->where("status",null)->get();
+        return view("author.myPendingPostPage", [
             'authorPosts' => $authorPosts,
         ]);
     }
@@ -159,6 +170,23 @@ class bloggerPostController extends Controller
 
         bloggerPostModel::onlyTrashed()->find($delete_id)->forceDelete();
         return back()->with("deleteSuccess", "Delete Success!");
+    }
+
+
+
+    function authorPostDelete($delete_id){
+
+        // $findPhoto = bloggerPostModel::where("id", $delete_id)->first()->featured_img;
+        // $delete_pic_uploads = public_path('uploads/blogerPost/' . $findPhoto);
+        // $delete_pic_css = public_path("blogger_asset/css/uploads/blogerPost/" . $findPhoto);
+        // unlink($delete_pic_uploads);
+        // unlink($delete_pic_css);
+
+        bloggerPostModel::find($delete_id)->delete();
+        return back()->with("deleteSuccess", "Delete Success!");
+
+
+
     }
 
 

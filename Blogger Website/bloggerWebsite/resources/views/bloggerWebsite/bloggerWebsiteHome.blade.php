@@ -99,7 +99,7 @@
                             
                             
                             @foreach ($allCategory as $Category)
-                            <a class="category-item" href="#">
+                            <a class="category-item" href="{{route("categoryWiseBlogPage", $Category->id)}}">
                                 <div class="image">
                                     <img src="{{asset("uploads/category")}}/{{$Category->categoryImg}}" alt="">
                                 </div>

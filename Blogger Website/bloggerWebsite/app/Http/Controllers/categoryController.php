@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\bloggerPostModel;
 use App\Models\categoryModel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -136,5 +137,21 @@ class categoryController extends Controller
                 return back()->with("CategoryUpdate", "Update Success!!");
             }
         }
+    }
+
+
+    function categoryWiseBlogPage($cataId){
+
+        $AllcategoryWiseBlogs = bloggerPostModel::where("category_id", $cataId)->where("status", "Approved")->paginate(3);
+        $categoryInfo = categoryModel::find($cataId);
+
+        return view("bloggerWebsite.categoryWiseBlogPage",[
+
+            'AllcategoryWiseBlogs' => $AllcategoryWiseBlogs,
+            'categoryInfo' => $categoryInfo,
+        ]);
+
+
+
     }
 }

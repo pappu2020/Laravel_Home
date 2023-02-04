@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer("category_id");
             $table->integer("tag_id")->nullable();
             $table->string("title");
+            $table->string("short_desp");
             $table->longText("description");
             $table->string("featured_img");
             $table->string("slug");

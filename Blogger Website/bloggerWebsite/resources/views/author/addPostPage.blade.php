@@ -64,9 +64,17 @@
                         @enderror
                     </div>
 
+                    <div class="col-lg-12 mt-2 mb-2">
+                        <label for="short_description" class="form-label d-block">Short Description [Please,Write to Short description about your blog between 250 words]</label>
+                        <textarea name="short_desp" id="short_desp" cols="180" rows="3"></textarea>
+                         @error('short_desp')
+                            <p class="mt-2 mb-2 text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+
 
                     <div class="col-lg-12">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">Long Description [Please,Write to details about your blog between 3500 words]</label>
                         <textarea class="form-control" id="despId" style="height: 200px; border:1px solid black" name="description"></textarea>
 
 
@@ -108,6 +116,12 @@
                         </div>
                     </div>
                 </div>
+
+                @if (session("insertPostSuccess"))
+
+                <div class=" mt-5 alert alert-danger">{{session("insertPostSuccess")}}</div>
+                    
+                @endif
 
 
 
