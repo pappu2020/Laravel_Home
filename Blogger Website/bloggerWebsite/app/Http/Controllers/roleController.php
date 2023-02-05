@@ -44,6 +44,9 @@ class roleController extends Controller
 
     function assignRole(Request $req)
     {
+
+       
+        
         $findUser = User::find($req->userNamesId);
         $findUser->assignRole($req->roleNamesId);
 

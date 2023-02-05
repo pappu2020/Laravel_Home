@@ -57,10 +57,10 @@
                                     <a class="nav-link active" href="{{route("homePage")}}"> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="blog.html"> Blogs </a>
+                                    <a class="nav-link" href="{{route("bloggerSiteblogPage")}}"> Blogs </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="author.html"> Authors </a>
+                                    <a class="nav-link" href="{{route("bloggerSiteauthorPage")}}"> Authors </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html"> About </a>

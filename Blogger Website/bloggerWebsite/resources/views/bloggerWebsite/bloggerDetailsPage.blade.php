@@ -78,17 +78,17 @@
                                 <p>Share on :</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="#">
+                                        <a href="https://www.facebook.com/sharer.php?u={{url()->current()}}">
                                             <i class="fab fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://www.instagram.com/sharer.php?u={{url()->current()}}">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://twitter.com/intent/tweet?url={{url()->current()}}">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
@@ -112,12 +112,12 @@
                                 <div class="image">
                                     <a href="author.html" class="image">
                                         @if ($bloggerInfo->first()->rel_to_users->photo == null)
-                                            <img width="150px" height="150px" class="mx-auto d-block"
-                                                src="{{ Avatar::create($bloggerInfo->first()->rel_to_users->name)->toBase64() }}" />
+                                            <a href="{{route("authorPage",$bloggerInfo->first()->rel_to_users->id)}}"><img width="150px" height="150px" class="mx-auto d-block"
+                                                src="{{ Avatar::create($bloggerInfo->first()->rel_to_users->name)->toBase64() }}" /></a>
                                         @else
-                                            <img id="profileImageView"
+                                            <a href="{{route("authorPage",$bloggerInfo->first()->rel_to_users->id)}}"><img id="profileImageView"
                                                 src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->first()->rel_to_users->photo }}"
-                                                width="150px" height="150px" alt="" />
+                                                width="150px" height="150px" alt="" /></a>
                                         @endif
                                     </a>
                                 </div>
@@ -200,42 +200,7 @@
                                     </div>
 
                                 </li>
-                                <!--comment2-->
-                                <li class="comment-item">
-                                    <img src="assets/img/other/use2.jpg" alt="">
-                                    <div class="content">
-                                        <div class="meta">
-                                            <ul class="list-inline">
-                                                <li><a href="#">adam smith</a> </li>
-                                                <li class="slash"></li>
-                                                <li>3 Months Ago</li>
-                                            </ul>
-                                        </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at
-                                            doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
-                                    </div>
-                                </li>
-                                <!--comment3-->
-                                <li class="comment-item">
-                                    <img src="assets/img/other/user3.jpg" alt="">
-                                    <div class="content">
-                                        <div class="meta">
-                                            <ul class="list-inline">
-                                                <li><a href="#">Emma david</a> </li>
-                                                <li class="slash"></li>
-                                                <li>3 Months Ago</li>
-                                            </ul>
-                                        </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at
-                                            doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
-                                    </div>
-                                </li>
+                              
 
                             </ul>
                             <!--Leave-comments-->

@@ -26,7 +26,7 @@ class bloggerWebsiteController extends Controller
 
 
     function bloggerDetailsPage($blog_id){
-        $bloggerInfo = bloggerPostModel::where("id",$blog_id)->get();
+        $bloggerInfo = bloggerPostModel::where("slug",$blog_id)->get();
         
         return view("bloggerWebsite.bloggerDetailsPage",[
             'bloggerInfo' => $bloggerInfo,
@@ -35,13 +35,34 @@ class bloggerWebsiteController extends Controller
 
 
     function authorPage($author_id){
-        $bloggerInfo = bloggerPostModel::where("author_id", $author_id)->where("status","Approved")->get();
+        $bloggerInfo = bloggerPostModel::where("author_id", $author_id)->where("status","Approved")->paginate(4);
         $allCategory = categoryModel::all();
         $allTag = tagModel::all();
         return view("bloggerWebsite.authorPage",[
             'bloggerInfo' => $bloggerInfo,
             'allCategory' => $allCategory,
             'allTag' => $allTag,
+        ]);
+    }
+
+
+    function bloggerSiteblogPage(){
+        $bloggerInformation = bloggerPostModel::where("status","Approved")->paginate(6);
+        
+      
+        return view("bloggerWebsite.bloggerSiteblogPage",[
+            'bloggerInformation' => $bloggerInformation,
+        ]);
+    }
+
+
+    function bloggerSiteauthorPage(){
+        $bloggerInformation = bloggerPostModel::select("author_id")
+        ->groupBy('author_id')
+        ->selectRaw('author_id, sum(author_id) as sum')
+        ->get();
+        return view("bloggerWebsite.bloggerSiteauthorPage",[
+            'bloggerInformation' => $bloggerInformation,
         ]);
     }
 

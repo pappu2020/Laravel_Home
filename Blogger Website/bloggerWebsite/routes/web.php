@@ -125,6 +125,8 @@ Route::get("/", [bloggerWebsiteController::class, "bloggerWebsitePage"])->name("
 
 Route::get("bloggerDetailsPage/{blog_id}", [bloggerWebsiteController::class, "bloggerDetailsPage"])->name("bloggerDetailsPage");
 Route::get("authorPage/{author_id}", [bloggerWebsiteController::class, "authorPage"])->name("authorPage");
+Route::get("bloggerSiteblogPage", [bloggerWebsiteController::class, "bloggerSiteblogPage"])->name("bloggerSiteblogPage");
+Route::get("bloggerSiteauthorPage", [bloggerWebsiteController::class, "bloggerSiteauthorPage"])->name("bloggerSiteauthorPage");
 
 
 

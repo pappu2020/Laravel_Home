@@ -54,8 +54,8 @@
                                             src="{{ asset('uploads/userProfile') }}/{{ $categoryWiseBlogs->rel_to_users->photo }}"
                                             alt=""></li>
                                     <li class="post-author"> <a
-                                            href="author.html">{{ $categoryWiseBlogs->rel_to_users->name }}</a></li>
-                                    <li class="entry-cat"> <a href="blog-layout-1.html" class="category-style-1 "> <span
+                                            href="{{route("authorPage", $categoryWiseBlogs->rel_to_users->id)}}">{{ $categoryWiseBlogs->rel_to_users->name }}</a></li>
+                                    <li class="entry-cat"> <a href="{{route("categoryWiseBlogPage",$AllcategoryWiseBlogs->first()->rel_to_category->id)}}" class="category-style-1 "> <span
                                                 class="line"></span>
                                             {{ $AllcategoryWiseBlogs->first()->rel_to_category->categoryName }}</a></li>
                                     <li class="post-date"> <span class="line"></span>
@@ -72,7 +72,7 @@
                         </div>
                     @empty
                         <div class="nodata">
-                            <h2>No Post Avaliable</h2>
+                            <h2>No Blog Avaliable</h2>
                         </div>
                     @endforelse
 

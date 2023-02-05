@@ -61,7 +61,7 @@
                                             <a href="{{route("categoryWiseBlogPage",$approvedPost->rel_to_category->id)}}" class="category-style-2">{{$approvedPost->rel_to_category->categoryName}}</a>
                                         </div>
                                         <h2 class="entry-title">
-                                            <a href="{{route("bloggerDetailsPage",$approvedPost->id)}}">{{$approvedPost->title}} </a>
+                                            <a href="{{route("bloggerDetailsPage",$approvedPost->slug)}}">{{$approvedPost->title}} </a>
                                         </h2>
                                         <ul class="entry-meta">
                                             <li class="post-author"> <a href="{{route("authorPage",$approvedPost->rel_to_users->id)}}">{{$approvedPost->rel_to_users->name}}</a></li>
@@ -154,11 +154,11 @@
                                     <li class="post-date"> <span class="line"></span> {{$RecentArticles->created_at->format("d-m-Y")}}</li>
                                 </ul>
                                 <h5 class="entry-title">
-                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->id)}}">{{$RecentArticles->title}}</a>
+                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->slug)}}">{{$RecentArticles->title}}</a>
                                 </h5>
 
                                 <div class="post-btn">
-                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->id)}}" class="btn-read-more">Continue Reading <i
+                                    <a href="{{route("bloggerDetailsPage",$RecentArticles->slug)}}" class="btn-read-more">Continue Reading <i
                                             class="las la-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>

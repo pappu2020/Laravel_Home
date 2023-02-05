@@ -41,7 +41,7 @@
 
                                         </div>
                                         <span
-                                            class="badge bg-primary rounded-pill authorBadge">{{ $bloggerInfo->first()->created_at->format('d-m-Y') }}</span>
+                                            class="badge bg-primary rounded-pill authorBadge">{{ App\Models\User::where("id",$bloggerInfo->first()->author_id)->first()->created_at->format("d-m-Y") }}</span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
@@ -54,7 +54,7 @@
 
                                 </ol>
                             </div>
-                            <div class="social-media">
+                            <div class="social-media mt-4">
                                 <ul class="list-inline">
                                     <li>
                                         <a href="#">
@@ -105,7 +105,7 @@
                         @forelse ($bloggerInfo as $blogger)
                             <div class="post-list post-list-style4 pt-0">
                                 <div class="post-list-image">
-                                    <a href="post-single.html">
+                                    <a href="{{route("bloggerDetailsPage",$blogger->id )}}">
                                         <img src="{{ asset('uploads/blogerPost') }}/{{ $blogger->featured_img }}"
                                             alt="">
                                     </a>
@@ -113,7 +113,7 @@
                                 <div class="post-list-content">
                                     <ul class="entry-meta">
                                         <li class="entry-cat">
-                                            <a href="blog-layout-1.html"
+                                            <a href="{{route("categoryWiseBlogPage",$blogger->rel_to_category->id)}}"
                                                 class="category-style-1">{{ $blogger->rel_to_category->categoryName }}</a>
                                         </li>
                                         <li class="post-date"> <span class="line"></span>
@@ -121,10 +121,11 @@
                                     </ul>
                                     <h5 class="entry-title">
                                         <a
-                                            href="{{ route('bloggerDetailsPage', $blogger->id) }}">{{ $blogger->short_desp }}</a>
+                                            href="{{ route('bloggerDetailsPage', $blogger->slug) }}">{{ $blogger->title }}</a>
                                     </h5>
+                                    <p>{{ $blogger->short_desp }}</p>
                                     <div class="post-btn">
-                                        <a href="{{ route('bloggerDetailsPage', $blogger->id) }}"
+                                        <a href="{{ route('bloggerDetailsPage', $blogger->slug) }}"
                                             class="btn-read-more">Continue Reading <i
                                                 class="las la-long-arrow-alt-right"></i></a>
                                     </div>
@@ -137,20 +138,11 @@
 
                         <!--/-->
                         <!--pagination-->
-                        <div class="pagination">
-                            <div class="pagination-area text-left">
-                                <div class="pagination-list">
-                                    <ul class="list-inline">
-                                        <li><a href="#"><i class="las la-arrow-left"></i></a></li>
-                                        <li><a href="#" class="active">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#"><i class="las la-arrow-right"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
+                         {{$bloggerInfo->links("vendor.pagination.custompagination")}}
+                        
+
+
                     </div>
                 </div>
                 <!--/-->
