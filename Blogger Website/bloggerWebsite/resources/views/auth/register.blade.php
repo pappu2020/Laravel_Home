@@ -191,6 +191,8 @@
                                             </div>
                                             <a href="{{route("login")}}" class="d-block mt-3 text-muted">Already a user? Sign
                                                 in</a>
+                                                
+                                            <a href="{{route("homePage")}}" class="d-inline mt-3 text-muted">Back to the Home</a>
                                         </form>
                                     </div>
                                 </div>
@@ -218,3 +220,5 @@
 </body>
 
 </html>
+
+    

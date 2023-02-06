@@ -3,6 +3,7 @@
 use App\Http\Controllers\bloggerPostController;
 use App\Http\Controllers\bloggerWebsiteController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\generalUserController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\tagController;
 use App\Http\Controllers\UserController;
@@ -109,6 +110,19 @@ Route::post("uploadedbloggerPostStatus", [bloggerPostController::class, "uploade
 
 
 Route::get("authorPostDelete/{delete_id}", [bloggerPostController::class, "authorPostDelete"])->name("authorPostDelete");
+
+
+
+
+
+
+//General User Section
+
+Route::get("generalUserSignUpPage", [generalUserController::class, "generalUserSignUpPage"])->name("generalUserSignUpPage");
+Route::get("generalUserSignInPage", [generalUserController::class, "generalUserSignInPage"])->name("generalUserSignInPage");
+Route::post("generalUserInsert", [generalUserController::class, "generalUserInsert"])->name("generalUserInsert");
+Route::post("generalUserLogin", [generalUserController::class, "generalUserLogin"])->name("generalUserLogin");
+Route::get("generalUserLogout", [generalUserController::class, "generalUserLogout"])->name("generalUserLogout");
 
 
 

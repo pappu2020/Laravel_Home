@@ -52,6 +52,11 @@ class bloggerPostController extends Controller
         ]);
 
 
+        $title = $req->old('title');
+        $short_desp = $req->old('short_desp');
+        $description = $req->old('description');
+
+
 
         foreach ($req->tagName as $tags) {
 
@@ -83,7 +88,7 @@ class bloggerPostController extends Controller
         ]);
 
 
-        return back()->with('insertPostSuccess', "Your post is pending for approval.You can see your post on my pending post section");
+        return back()->withInput()->with('insertPostSuccess', "Your post is pending for approval.You can see your post on my pending post section");
     }
 
 

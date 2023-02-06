@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -15,18 +14,32 @@
     <title> Oredoo - Personal Blog HTML Template </title>
 
     <!-- CSS Plugins -->
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/bootstrap.min.css")}}">
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/owl.carousel.css")}}">
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/line-awesome.min.css")}}">
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/fontawesome.css")}}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/line-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/fontawesome.css') }}">
 
     <!-- main style -->
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/style.css")}}">
-    <link rel="stylesheet" href="{{asset("blogger_asset/css/custom.css")}}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('blogger_asset/css/custom.css') }}">
+
 
     <style>
-        .signInbutton{
+        .signInbutton {
             margin-left: 10px;
+        }
+
+        .img{
+            margin-top: 18px;
+        }
+
+        .userName {
+            margin-top: 15px;
+        }
+
+        .myDropDown {
+            margin-left: 15px;
+            margin-top: 22px;
         }
     </style>
 </head>
@@ -54,13 +67,13 @@
                         <div class="collapse navbar-collapse" id="main_nav">
                             <ul class="navbar-nav ">
                                 <li class="nav-item ">
-                                    <a class="nav-link active" href="{{route("homePage")}}"> Home </a>
+                                    <a class="nav-link active" href="{{ route('homePage') }}"> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route("bloggerSiteblogPage")}}"> Blogs </a>
+                                    <a class="nav-link" href="{{ route('bloggerSiteblogPage') }}"> Blogs </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route("bloggerSiteauthorPage")}}"> Authors </a>
+                                    <a class="nav-link" href="{{ route('bloggerSiteauthorPage') }}"> Authors </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html"> About </a>
@@ -92,25 +105,105 @@
                         <i class="las la-search"></i>
                     </div>
                     <!--button-subscribe-->
-                    <div class="botton-sub">
-                        <a href="{{route("register")}}" class="btn-subscribe">Sign Up</a>
+                    {{-- <div class="botton-sub">
+                        <a href="{{route("register")}}" class="btn-subscribe">Become a Author</a>
+                    
+                    
+                    </div> <div class="botton-sub signInbutton">
+                        <a href="{{route("register")}}" class="btn-subscribe">Become a Member</a>
+                    </div> --}}
+
+                    {{-- <div class="botton-sub signInbutton">
+                        <a href="{{route("login")}}" class="btn-subscribe btn-success">Sign In</a>
+                    </div> --}}
+
+
+                    <div class="dropdown">
+
+                        @auth('generaluserLogin')
+                            <div class="userInfo mt-3">
+                                <div class="d-flex flex-row bd-highlight mb-3">
+                                    <div class="p-2 bd-highlight">
+
+                                        <div class="img">
+
+
+                                            @if (Auth::guard('generaluserLogin')->user()->photo == null)
+                                                <img width="50px" height="50px" class="mx-auto d-block"
+                                                    src="{{ Avatar::create(Auth::guard('generaluserLogin')->user()->name)->toBase64() }}" />
+                                            @else
+                                                <a href=""><img id="profileImageView" src="" width="50px"
+                                                        height="50px" alt="" /></a>
+                                            @endif
+
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="p-2 bd-highlight userName">
+                                       
+                                        <h4> {{ Auth::guard('generaluserLogin')->user()->name }}</h4>
+                                        <p class="fw-bold"> {{ Auth::guard('generaluserLogin')->user()->email }}</p class="fw-bold">
+                                    
+                                    
+                                    
+                                    </div>
+
+
+
+                                    <div class="p-2 bd-highlight myDropDown">
+
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                data-toggle="dropdown" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                                                </svg>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Profile</a>
+                                                <a class="dropdown-item" href="{{route("generalUserLogout")}}">Log out</a>
+                                                
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        @else
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-expanded="false">
+                                Sign Up
+                            </button>
+                        @endauth
+
+
+
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ route('register') }}">Beacome a Author</a>
+                            <a class="dropdown-item" href="{{ route('generalUserSignUpPage') }}">Become a Member</a>
+
+                        </div>
                     </div>
 
-                    <div class="botton-sub signInbutton">
-                        <a href="{{route("login")}}" class="btn-subscribe btn-success">Sign In</a>
-                    </div>
+
                     <!--navbar-toggler-->
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                    {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </button> --}}
                 </div>
             </div>
         </div>
     </header>
 
 
-    @yield("content")
+    @yield('content')
 
 
 
@@ -142,8 +235,8 @@
                                 <form action="#" class="newslettre-form">
                                     <div class="form-flex">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Email Adress"
-                                                required="required">
+                                            <input type="email" class="form-control"
+                                                placeholder="Your Email Adress" required="required">
                                         </div>
                                         <button class="submit-btn" type="submit">
                                             <i class="fas fa-paper-plane"></i>
@@ -212,22 +305,70 @@
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{asset("blogger_asset/js/jquery.min.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/popper.min.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/bootstrap.min.js")}}"></script>
+    <script src="{{ asset('blogger_asset/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/popper.min.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/bootstrap.min.js') }}"></script>
 
 
     <!-- JS Plugins  -->
-    <script src="{{asset("blogger_asset/js/theia-sticky-sidebar.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/ajax-contact.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/owl.carousel.min.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/switch.js")}}"></script>
-    <script src="{{asset("blogger_asset/js/jquery.marquee.js")}}"></script>
+    <script src="{{ asset('blogger_asset/js/theia-sticky-sidebar.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/ajax-contact.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/switch.js') }}"></script>
+    <script src="{{ asset('blogger_asset/js/jquery.marquee.js') }}"></script>
 
 
     <!-- JS main  -->
-    <script src="{{asset("blogger_asset/js/main.js")}}"></script>
+    <script src="{{ asset('blogger_asset/js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @yield('javascript')
+
+    @if (session('insertSuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'You created Your Account successfully!!.',
+            })
+        </script>
+    @endif
+
+
+    @if (session('generalUserLoginsuccess'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'You are Logged In!!.',
+            })
+        </script>
+    @endif
+
 
 
 </body>
+
 </html>

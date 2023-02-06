@@ -105,7 +105,7 @@
                         @forelse ($bloggerInfo as $blogger)
                             <div class="post-list post-list-style4 pt-0">
                                 <div class="post-list-image">
-                                    <a href="{{route("bloggerDetailsPage",$blogger->id )}}">
+                                    <a href="{{route("bloggerDetailsPage",$blogger->slug )}}">
                                         <img src="{{ asset('uploads/blogerPost') }}/{{ $blogger->featured_img }}"
                                             alt="">
                                     </a>
