@@ -4,6 +4,8 @@ use App\Http\Controllers\bloggerPostController;
 use App\Http\Controllers\bloggerWebsiteController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\generalUserController;
+use App\Http\Controllers\githubController;
+use App\Http\Controllers\googleController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\tagController;
 use App\Http\Controllers\UserController;
@@ -141,6 +143,23 @@ Route::get("bloggerDetailsPage/{blog_id}", [bloggerWebsiteController::class, "bl
 Route::get("authorPage/{author_id}", [bloggerWebsiteController::class, "authorPage"])->name("authorPage");
 Route::get("bloggerSiteblogPage", [bloggerWebsiteController::class, "bloggerSiteblogPage"])->name("bloggerSiteblogPage");
 Route::get("bloggerSiteauthorPage", [bloggerWebsiteController::class, "bloggerSiteauthorPage"])->name("bloggerSiteauthorPage");
+
+
+
+
+
+//Social login section
+
+//Github
+
+Route::get("/github/redirect",[githubController::class,"githubRedirect"])->name("githubRedirect");
+Route::get("/github/callback",[githubController::class, "githubcallback"])->name("githubcallback");
+
+
+//Google
+
+Route::get("/google/redirect",[googleController::class,"googleRedirect"])->name("googleRedirect");
+Route::get("/google/callback",[googleController::class, "googlecallback"])->name("googlecallback");
 
 
 

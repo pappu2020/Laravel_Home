@@ -36,7 +36,7 @@
                                 <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
                                     <div class="p-2 bd-highlight">
 
-                                        <a href=""><span><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                                        <a href="{{route("googleRedirect")}}"><span><svg xmlns="http://www.w3.org/2000/svg" width="26"
                                                     height="26" fill="currentColor" class="bi bi-google"
                                                     viewBox="0 0 16 16">
                                                     <path
@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="p-2 bd-highlight">
 
-                                        <a href=""><span><svg xmlns="http://www.w3.org/2000/svg" width="26"
+                                        <a href="{{route("githubRedirect")}}"><span><svg xmlns="http://www.w3.org/2000/svg" width="26"
                                                     height="26" fill="currentColor" class="bi bi-github"
                                                     viewBox="0 0 16 16">
                                                     <path
