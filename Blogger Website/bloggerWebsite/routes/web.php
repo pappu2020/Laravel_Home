@@ -4,6 +4,7 @@ use App\Http\Controllers\bloggerPostController;
 use App\Http\Controllers\bloggerWebsiteController;
 use App\Http\Controllers\categoryController;
 use App\Http\Controllers\generalUserController;
+use App\Http\Controllers\generalUserPassResetController;
 use App\Http\Controllers\githubController;
 use App\Http\Controllers\googleController;
 use App\Http\Controllers\roleController;
@@ -160,6 +161,16 @@ Route::get("/github/callback",[githubController::class, "githubcallback"])->name
 
 Route::get("/google/redirect",[googleController::class,"googleRedirect"])->name("googleRedirect");
 Route::get("/google/callback",[googleController::class, "googlecallback"])->name("googlecallback");
+
+
+
+
+//GeneralUserPassword Reset Section
+Route::get("/genUserpasswordResetReqPage", [generalUserPassResetController::class, "genUserpasswordResetReqPage"])->name("genUserpasswordResetReqPage");
+Route::post("/generalUserPasswordResetSend", [generalUserPassResetController::class, "generalUserPasswordResetSend"])->name("generalUserPasswordResetSend");
+Route::get("/genUserPassChangeForm/{tokenId}", [generalUserPassResetController::class, "genUserPassChangeForm"])->name("genUserPassChangeForm");
+Route::post("/genUserPassChange", [generalUserPassResetController::class, "genUserPassChange"])->name("genUserPassChange");
+
 
 
 

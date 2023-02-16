@@ -142,7 +142,7 @@
                         
                         <div class="post-list post-list-style4">
                             <div class="post-list-image">
-                                <a href="post-single.html">
+                                <a href="{{route("bloggerDetailsPage",$RecentArticles->slug)}}">
                                     <img src="{{asset("uploads/blogerPost")}}/{{$RecentArticles->featured_img}}" alt="">
                                 </a>
                             </div>
