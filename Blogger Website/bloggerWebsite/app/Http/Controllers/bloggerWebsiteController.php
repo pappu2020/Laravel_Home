@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\bloggerPostModel;
 use App\Models\categoryModel;
+use App\Models\generalUserCommentModel;
 use App\Models\tagModel;
 use Illuminate\Http\Request;
 
@@ -27,9 +28,14 @@ class bloggerWebsiteController extends Controller
 
     function bloggerDetailsPage($blog_id){
         $bloggerInfo = bloggerPostModel::where("slug",$blog_id)->get();
+
+        $allComments = generalUserCommentModel::with('rel_to_replies')->where("post_id", $bloggerInfo->first()->id)->where("parent_id",null)->get();
+        $allCommentscount = generalUserCommentModel::with('rel_to_replies')->where("post_id", $bloggerInfo->first()->id)->get();
         
         return view("bloggerWebsite.bloggerDetailsPage",[
             'bloggerInfo' => $bloggerInfo,
+            'allComments' => $allComments,
+            'allCommentscount' => $allCommentscount,
         ]);
     }
 

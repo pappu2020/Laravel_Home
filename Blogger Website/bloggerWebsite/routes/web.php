@@ -3,6 +3,7 @@
 use App\Http\Controllers\bloggerPostController;
 use App\Http\Controllers\bloggerWebsiteController;
 use App\Http\Controllers\categoryController;
+use App\Http\Controllers\generalUserCommentController;
 use App\Http\Controllers\generalUserController;
 use App\Http\Controllers\generalUserPassResetController;
 use App\Http\Controllers\githubController;
@@ -170,6 +171,16 @@ Route::get("/genUserpasswordResetReqPage", [generalUserPassResetController::clas
 Route::post("/generalUserPasswordResetSend", [generalUserPassResetController::class, "generalUserPasswordResetSend"])->name("generalUserPasswordResetSend");
 Route::get("/genUserPassChangeForm/{tokenId}", [generalUserPassResetController::class, "genUserPassChangeForm"])->name("genUserPassChangeForm");
 Route::post("/genUserPassChange", [generalUserPassResetController::class, "genUserPassChange"])->name("genUserPassChange");
+
+
+
+
+
+
+
+//Comments
+Route::post("commentsInsert", [generalUserCommentController::class, "commentsInsert"])->name("commentsInsert");
+
 
 
 

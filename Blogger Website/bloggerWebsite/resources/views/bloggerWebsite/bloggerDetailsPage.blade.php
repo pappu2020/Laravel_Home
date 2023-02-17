@@ -1,9 +1,15 @@
 @extends('layouts.bloggerWebsiteLayout')
 <style>
-    .authorBadge{
+    .authorBadge {
         margin-left: 15px;
         margin-top: 3px;
         color: white;
+    }
+
+    .rel_to_genUsers {
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
     }
 </style>
 
@@ -78,17 +84,17 @@
                                 <p>Share on :</p>
                                 <ul class="list-inline">
                                     <li>
-                                        <a href="https://www.facebook.com/sharer.php?u={{url()->current()}}">
+                                        <a href="https://www.facebook.com/sharer.php?u={{ url()->current() }}">
                                             <i class="fab fa-facebook"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://www.instagram.com/sharer.php?u={{url()->current()}}">
+                                        <a href="https://www.instagram.com/sharer.php?u={{ url()->current() }}">
                                             <i class="fab fa-instagram"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://twitter.com/intent/tweet?url={{url()->current()}}">
+                                        <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}">
                                             <i class="fab fa-twitter"></i>
                                         </a>
                                     </li>
@@ -112,34 +118,40 @@
                                 <div class="image">
                                     <a href="author.html" class="image">
                                         @if ($bloggerInfo->first()->rel_to_users->photo == null)
-                                            <a href="{{route("authorPage",$bloggerInfo->first()->rel_to_users->id)}}"><img width="150px" height="150px" class="mx-auto d-block"
-                                                src="{{ Avatar::create($bloggerInfo->first()->rel_to_users->name)->toBase64() }}" /></a>
+                                            <a href="{{ route('authorPage', $bloggerInfo->first()->rel_to_users->id) }}"><img
+                                                    width="150px" height="150px" class="mx-auto d-block"
+                                                    src="{{ Avatar::create($bloggerInfo->first()->rel_to_users->name)->toBase64() }}" /></a>
                                         @else
-                                            <a href="{{route("authorPage",$bloggerInfo->first()->rel_to_users->id)}}"><img id="profileImageView"
-                                                src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->first()->rel_to_users->photo }}"
-                                                width="150px" height="150px" alt="" /></a>
+                                            <a href="{{ route('authorPage', $bloggerInfo->first()->rel_to_users->id) }}"><img
+                                                    id="profileImageView"
+                                                    src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->first()->rel_to_users->photo }}"
+                                                    width="150px" height="150px" alt="" /></a>
                                         @endif
                                     </a>
                                 </div>
                                 <div class="content">
-                                    <a href="{{route("authorPage",$bloggerInfo->first()->rel_to_users->id)}}"><h4>{{ $bloggerInfo->first()->rel_to_users->name }}</h4></a>
+                                    <a href="{{ route('authorPage', $bloggerInfo->first()->rel_to_users->id) }}">
+                                        <h4>{{ $bloggerInfo->first()->rel_to_users->name }}</h4>
+                                    </a>
                                     <div class="listAuthorInfo">
                                         <ol class="list-group list-group-numbered">
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">Account Opened: </div>
-                                                   
+
                                                 </div>
-                                                <span class="badge bg-primary rounded-pill authorBadge">{{ $bloggerInfo->first()->created_at->format("d-m-Y") }}</span>
+                                                <span
+                                                    class="badge bg-primary rounded-pill authorBadge">{{ $bloggerInfo->first()->created_at->format('d-m-Y') }}</span>
                                             </li>
                                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                                 <div class="ms-2 me-auto">
                                                     <div class="fw-bold">Total Blogs: </div>
-                                                    
+
                                                 </div>
-                                                <span class="badge bg-primary rounded-pill text-light">{{App\Models\bloggerPostModel::where("author_id",$bloggerInfo->first()->author_id)->count()}}</span>
+                                                <span
+                                                    class="badge bg-primary rounded-pill text-light">{{ App\Models\bloggerPostModel::where('author_id', $bloggerInfo->first()->author_id)->count() }}</span>
                                             </li>
-                                           
+
                                         </ol>
                                     </div>
                                     <div class="social-media mt-5">
@@ -179,79 +191,148 @@
                         <!--post-single-comments-->
                         <div class="post-single-comments">
                             <!--Comments-->
-                            <h4>3 Comments</h4>
-                            <ul class="comments">
-                                <!--comment1-->
-                                <li class="comment-item pt-0">
-                                    <img src="assets/img/other/user1.jpg" alt="">
-                                    <div class="content">
-                                        <div class="meta">
-                                            <ul class="list-inline">
-                                                <li><a href="#">Nirmaine Nicole</a> </li>
-                                                <li class="slash"></li>
-                                                <li>3 Months Ago</li>
-                                            </ul>
-                                        </div>
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus at
-                                            doloremque adipisci eum placeat
-                                            quod non fugiat aliquid sit similique!
-                                        </p>
-                                        <a href="#" class="btn-reply"><i class="las la-reply"></i> Reply</a>
-                                    </div>
+                            <h4>{{ $allCommentscount->count() }} {{ $allCommentscount->count() > 1 ? 'Comments' : 'Comment' }}
+                            </h4>
 
-                                </li>
-                              
+                            <!--comment1-->
 
-                            </ul>
-                            <!--Leave-comments-->
-                            <div class="comments-form">
-                                <h4>Leave a Reply</h4>
-                                <!--form-->
-                                <form class="form " action="#" method="POST" id="main_contact_form">
-                                    <p>Your email adress will not be published ,Requied fileds are marked*.</p>
-                                    <div class="alert alert-success contact_msg" style="display: none" role="alert">
-                                        Your message was sent successfully.
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="name" id="name" class="form-control"
-                                                    placeholder="Name*" required="required">
+
+                            @foreach ($allComments as $Comments)
+                                <ul class="comments">
+                                    <li class="comment-item pt-0">
+                                        @if ($Comments->rel_to_genUsers->photo == null)
+                                            <img class="d-block"
+                                                src="{{ Avatar::create($Comments->rel_to_genUsers->name)->toBase64() }}" />
+                                        @else
+                                            {{-- <a href="{{ route('authorPage', $bloggerInfo->rel_to_users->id) }}"><img
+                                                    id="profileImageView"
+                                                    src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->rel_to_users->photo }}"
+                                                    width="150px" height="150px" alt="" /></a> --}}
+                                        @endif
+                                        <div class="content">
+                                            <div class="meta">
+                                                <ul class="list-inline">
+                                                    <li><a href="#">{{ $Comments->rel_to_genUsers->name }}</a> </li>
+                                                    <li class="slash"></li>
+                                                    <li>{{ $Comments->created_at->diffForHumans() }}</li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="email" name="email" id="email" class="form-control"
-                                                    placeholder="Email*" required="required">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea name="message" id="message" cols="30" rows="5" class="form-control" placeholder="Message*"
-                                                    required="required"></textarea>
-                                            </div>
+                                            <p>{{ $Comments->commment }}
+                                            </p>
+                                            <a href="#reply_form" data-parent="{{ $Comments->id }}" class="reply_btn"><i
+                                                    class="las la-reply"></i> Reply</a>
                                         </div>
 
-                                        <div class="col-lg-12">
-                                            <div class="mb-20">
-                                                <input name="name" type="checkbox" value="1"
-                                                    required="required">
-                                                <label for="name"><span>save my name , email and website in this
-                                                        browser for the next time I comment.</span></label>
+                                    </li>
+
+                                    @foreach ($Comments->rel_to_replies as $reply)
+                                        <li class="comment-item pt-0" style="padding-left:120px">
+                                            @if ($reply->rel_to_genUsers->photo == null)
+                                                <img width="50px" height="50px" class="d-block"
+                                                    src="{{ Avatar::create($reply->rel_to_genUsers->name)->toBase64() }}" />
+                                            @else
+                                                {{-- <a href="{{ route('authorPage', $bloggerInfo->rel_to_users->id) }}"><img
+                                                    id="profileImageView"
+                                                    src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->rel_to_users->photo }}"
+                                                    width="150px" height="150px" alt="" /></a> --}}
+                                            @endif
+                                            <div class="content">
+                                                <div class="meta">
+                                                    <ul class="list-inline">
+                                                        <li><a href="#">{{ $reply->rel_to_genUsers->name }}</a>
+                                                        </li>
+                                                        <li class="slash"></li>
+                                                        <li>{{ $reply->created_at->diffForHumans() }}</li>
+                                                    </ul>
+                                                </div>
+                                                <p>{{ $reply->commment }}
+                                                </p>
+                                                <a href="#reply_form" data-parent="{{ $Comments->id }}"
+                                                    class="reply_btn"><i class="las la-reply"></i> Reply</a>
                                             </div>
 
-                                            <button type="submit" name="submit" class="btn-custom">
-                                                Send Comment
-                                            </button>
+                                        </li>
+                                        @endforeach
+
+                                </ul>
+                            
+                            @endforeach
+                            @auth('generaluserLogin')
+                                <!--Leave-comments-->
+                                <div class="comments-form">
+                                    <h4>Leave a Reply</h4>
+                                    <!--form-->
+                                    <form action="{{ route('commentsInsert') }}" method="post" id="reply_form">
+                                        @csrf
+                                        <p>Your email adress will not be published ,Requied fileds are marked*.</p>
+                                        <div class="alert alert-success contact_msg" style="display: none" role="alert">
+                                            Your message was sent successfully.
                                         </div>
-                                    </div>
-                                </form>
-                                <!--/-->
-                            </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="name" class="form-label">Name</label>
+                                                    <input type="text" readonly
+                                                        value="{{ Auth::guard('generaluserLogin')->user()->name }}"
+                                                        class="form-control" placeholder="Name*" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="email" class="form-label">Email</label>
+                                                    <input type="email" readonly
+                                                        value="{{ Auth::guard('generaluserLogin')->user()->email }}"
+                                                        class="form-control" placeholder="Email*" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="comment" class="form-label">Enter your comment here [Maximum
+                                                        lenght of comment is 250 words]</label>
+                                                    <textarea name="comment" cols="30" rows="5" class="form-control"></textarea>
+                                                </div>
+
+                                                @error('comment')
+                                                    <p class="text-danger mt-2 mb-2">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-lg-12">
+
+
+                                                <button type="submit" name="submit" class="btn-custom">
+                                                    Send Comment
+                                                </button>
+                                            </div>
+
+                                            <input type="hidden" name="parent_id" class="parent_id">
+                                            <input type="hidden" name="post_id" value="{{ $bloggerInfo->first()->id }}">
+                                        </div>
+                                    </form>
+                                    <!--/-->
+                                </div>
+                            @else
+                                <div class="alert alert-warning m-auto">
+                                    <p>Please, Login in to your account for leave a comment &nbsp &nbsp &nbsp <a
+                                            class="btn btn-primary float-right"
+                                            href="{{ route('generalUserSignInPage') }}">Login</a></p>
+                                </div>
+                            @endauth
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+@endsection
+
+
+@section('javascript')
+    <script>
+        $('.reply_btn').click(function() {
+            var parent_id = $(this).attr('data-parent');
+
+            $('.parent_id').attr('value', parent_id);
+        })
+    </script>
 @endsection

@@ -44,7 +44,15 @@ class generalUserController extends Controller
             'created_at' => Carbon::now(),
         ]);
 
-        return redirect()->route("generalUserSignInPage")->with('insertSuccess', "You Created Your Account Successfully!!");
+        if (Auth::guard("generaluserLogin")->attempt(['email' => $req->email, 'password' => $req->password])) {
+
+
+            return redirect()->route("homePage")->with('generalUserLoginsuccess', "Login Success!!");
+        }
+
+
+
+        // return redirect()->route("generalUserSignInPage")->with('insertSuccess', "You Created Your Account Successfully!!");
     }
 
 
