@@ -47,7 +47,7 @@
                             </div>
                             <div class="post-list-content">
                                 <h3 class="entry-title">
-                                    <a href="{{route("bloggerDetailsPage",$categoryWiseBlogs->id)}}">{{ $categoryWiseBlogs->title }}</a>
+                                    <a href="{{route("bloggerDetailsPage",$categoryWiseBlogs->slug)}}">{{ $categoryWiseBlogs->title }}</a>
                                 </h3>
                                 <ul class="entry-meta">
                                     <li class="post-author-img"><img

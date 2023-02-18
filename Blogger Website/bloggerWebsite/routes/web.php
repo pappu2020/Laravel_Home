@@ -9,6 +9,7 @@ use App\Http\Controllers\generalUserPassResetController;
 use App\Http\Controllers\githubController;
 use App\Http\Controllers\googleController;
 use App\Http\Controllers\roleController;
+use App\Http\Controllers\searchController;
 use App\Http\Controllers\tagController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\userProfileController;
@@ -180,6 +181,14 @@ Route::post("/genUserPassChange", [generalUserPassResetController::class, "genUs
 
 //Comments
 Route::post("commentsInsert", [generalUserCommentController::class, "commentsInsert"])->name("commentsInsert");
+
+
+
+
+//search
+
+
+Route::get("/searchpage", [searchController::class, "searchpage"])->name("searchpage");
 
 
 

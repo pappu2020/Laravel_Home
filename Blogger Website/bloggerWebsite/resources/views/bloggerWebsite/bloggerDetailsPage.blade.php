@@ -44,7 +44,7 @@
 
                                 </li>
                                 <li class="post-author"> <a
-                                        href="author.html">{{ $bloggerInfo->first()->rel_to_users->name }}</a></li>
+                                        href="{{route("authorPage", $bloggerInfo->first()->rel_to_users->id)}}">{{ $bloggerInfo->first()->rel_to_users->name }}</a></li>
                                 <li class="entry-cat"> <a href="" class="category-style-1 "> <span
                                             class="line"></span>
                                         {{ $bloggerInfo->first()->rel_to_category->categoryName }}</a></li>

@@ -292,9 +292,10 @@
                         <button type="button" class="close">
                             <i class="far fa-times"></i>
                         </button>
-                        <form class="search-form" action="https://oredoo.assiagroupe.net/Oredoo/search.html">
-                            <input type="search" value="" placeholder="What are you looking for?">
-                            <button type="submit" class="search-btn"> search</button>
+                        <form class="search-form">
+                            
+                            <input type="search" id="search_input" value="{{ @$_GET['q'] }}" placeholder="What are you looking for?">
+                            <button type="button" class="search-btn" id="search_btn"> search</button>
                         </form>
                     </div>
                 </div>
@@ -323,6 +324,47 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     @yield('javascript')
+
+
+
+    
+
+    {{-- search --}}
+
+    <script>
+        $("#search_btn").click(function() {
+            var searchValue = $("#search_input").val();
+                                      
+            var link = "{{ route('searchpage') }}" + "?q=" + searchValue;
+            window.location.href = link;
+        });
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @if (session('insertSuccess'))
         <script>
