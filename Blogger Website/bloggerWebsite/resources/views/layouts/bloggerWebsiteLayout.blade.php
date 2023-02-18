@@ -29,7 +29,7 @@
             margin-left: 10px;
         }
 
-        .img{
+        .img {
             margin-top: 18px;
         }
 
@@ -142,12 +142,13 @@
                                         </div>
                                     </div>
                                     <div class="p-2 bd-highlight userName">
-                                       
+
                                         <h4> {{ Auth::guard('generaluserLogin')->user()->name }}</h4>
-                                        <p class="fw-bold"> {{ Auth::guard('generaluserLogin')->user()->email }}</p class="fw-bold">
-                                    
-                                    
-                                    
+                                        <p class="fw-bold"> {{ Auth::guard('generaluserLogin')->user()->email }}</p
+                                            class="fw-bold">
+
+
+
                                     </div>
 
 
@@ -165,8 +166,9 @@
                                             </button>
                                             <div class="dropdown-menu">
                                                 <a class="dropdown-item" href="#">Profile</a>
-                                                <a class="dropdown-item" href="{{route("generalUserLogout")}}">Log out</a>
-                                                
+                                                <a class="dropdown-item" href="{{ route('generalUserLogout') }}">Log
+                                                    out</a>
+
                                             </div>
                                         </div>
 
@@ -293,8 +295,9 @@
                             <i class="far fa-times"></i>
                         </button>
                         <form class="search-form">
-                            
-                            <input type="search" id="search_input" value="{{ @$_GET['q'] }}" placeholder="What are you looking for?">
+
+                            <input type="search" id="search_input" value="{{ @$_GET['q'] }}"
+                                placeholder="What are you looking for?">
                             <button type="button" class="search-btn" id="search_btn"> search</button>
                         </form>
                     </div>
@@ -327,19 +330,18 @@
 
 
 
-    
+
 
     {{-- search --}}
 
     <script>
         $("#search_btn").click(function() {
             var searchValue = $("#search_input").val();
-                                      
+           
+
             var link = "{{ route('searchpage') }}" + "?q=" + searchValue;
             window.location.href = link;
         });
-
-
     </script>
 
 
@@ -407,9 +409,9 @@
                 title: 'You are Logged In!!.',
             })
         </script>
-    @endif   
-    
-    
+    @endif
+
+
     @if (session('New_pass_update_success'))
         <script>
             const Toast = Swal.mixin({

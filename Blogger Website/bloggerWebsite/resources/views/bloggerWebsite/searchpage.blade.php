@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-heading-2-title text-left">
-                            <h2>Search resultats for : branding</h2>
-                            <p class="desc">8 Articles were found for keyword <strong> branding</strong></p>
+                            <h2>Search results for : <p class="text-danger d-inline">{{ @$_GET['q'] }}</p></h2>
+                            {{-- <p class="desc">8 Articles were found for keyword <strong> branding</strong></p> --}}
                         </div>
                     </div>
                 </div>
@@ -91,29 +91,14 @@
 
 
                         @empty
+
+                        <div class="m-auto"><div class="alert alert-danger"><h1>Sorry!! No Blog Available</h1></div></div>
                         @endforelse
 
 
 
                         <!--pagination-->
-                        <div class="pagination">
-                            <div class="pagination-area">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="pagination-list">
-                                            <ul class="list-inline">
-                                                <li><a href="#"><i class="las la-arrow-left"></i></a></li>
-                                                <li><a href="#" class="active">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#"><i class="las la-arrow-right"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       {{ $allProductInfo->links('vendor.pagination.custompagination') }}
                         <!--/-->
                     </div>
                 </div>
@@ -143,68 +128,21 @@
                                     <h5>Categories</h5>
                                 </div>
                                 <div class="widget-categories">
-                                    <a class="category-item" href="#">
+                                    
+                                    
+                                    @foreach ($allcategories as $categories)
+                                        
+                                   
+                                    <a class="category-item" href="{{ route('categoryWiseBlogPage', $categories->id) }}">
                                         <div class="image">
-                                            <img src="assets/img/categories/1.jpg" alt="">
+                                            <img src="{{ asset('uploads/category') }}/{{ $categories->categoryImg }}" alt="">
                                         </div>
-                                        <p>Design </p>
+                                        <p>{{ $categories->categoryName }} </p>
                                     </a>
 
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/2.jpg" alt="">
-                                        </div>
-                                        <p>Branding </p>
-                                    </a>
+                                     @endforeach
 
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/3.jpg" alt="">
-                                        </div>
-                                        <p>marketing </p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/4.jpg" alt="">
-                                        </div>
-                                        <p>food </p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/5.jpg" alt="">
-                                        </div>
-                                        <p>technology </p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/6.jpg" alt="">
-                                        </div>
-                                        <p>fashion </p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/7.jpg" alt="">
-                                        </div>
-                                        <p>mobile </p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/8.jpg" alt="">
-                                        </div>
-                                        <p>livestyle</p>
-                                    </a>
-
-                                    <a class="category-item" href="#">
-                                        <div class="image">
-                                            <img src="assets/img/categories/9.jpg" alt="">
-                                        </div>
-                                        <p>healty </p>
-                                    </a>
+                                   
 
 
                                 </div>

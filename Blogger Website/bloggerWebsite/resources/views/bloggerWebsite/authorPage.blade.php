@@ -158,9 +158,9 @@
                                     <h5>Search</h5>
                                 </div>
                                 <div class=" widget-search">
-                                    <form action="https://oredoo.assiagroupe.net/Oredoo/search.html">
-                                        <input type="search" id="gsearch" name="gsearch" placeholder="Search ....">
-                                        <a href="search.html" class="btn-submit"><i class="las la-search"></i></a>
+                                    <form action="">
+                                        <input type="search" id="search_input" value="{{ @$_GET['q'] }}" placeholder="Search ....">
+                                        <button type="button" class="btn-submit"  id="search_btn"><i class="las la-search"></i></button>
                                     </form>
                                 </div>
                             </div>
@@ -341,3 +341,14 @@
         </div>
     </section>
 @endsection
+
+{{-- <script>
+    $("#search_btn_author").click(function() {
+        var searchValue = $("#search_input_author").val();
+
+        var link = "{{ route('searchpage') }}" + "?q=" + searchValue;
+        window.location.href = link;
+    });
+</script> --}}
+
+
