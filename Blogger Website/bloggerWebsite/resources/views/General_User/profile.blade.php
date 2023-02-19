@@ -43,7 +43,7 @@
         }
 
         .img {
-            margin-top: 18px;
+            margin-top: 6px;
 
         }
 
@@ -70,6 +70,15 @@
         .mymodel {
             margin-top: 300px;
             z-index: -1;
+        }
+
+        .quote{
+            margin-top: -15px;
+        }
+
+        .mypost{
+            margin-bottom: 15px;
+            box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
         }
     </style>
 </head>
@@ -132,8 +141,9 @@
                                                 <img width="50px" height="50px" class=" d-block"
                                                     src="{{ Avatar::create(Auth::guard('generaluserLogin')->user()->name)->toBase64() }}" />
                                             @else
-                                                <a href=""><img id="profileImageView" src="{{asset("uploads/genUserProfile")}}/{{Auth::guard('generaluserLogin')->user()->photo}}" width="50px"
-                                                        height="50px" alt="" /></a>
+                                                <a href=""><img id="profileImageView"
+                                                        src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}"
+                                                        width="50px" height="50px" alt="" /></a>
                                             @endif
 
 
@@ -152,7 +162,7 @@
                                     </div>
 
 
-                                  
+
 
 
                                     <div class="bd-highlight ">
@@ -241,13 +251,15 @@
                                         {{-- <img src="https://via.placeholder.com/1148x272" class="img-fluid"
                                             alt="profile cover"> --}}
 
-                                             @if (Auth::guard('generaluserLogin')->user()->coverphoto == null)
-                                                <img src="https://via.placeholder.com/1148x272" class="img-fluid"
-                                            alt="profile cover">
-                                            @else
-                                                <a href=""><img width="1148px" height="272px" id="profileImageView"
-                                                        src="{{asset("uploads/genUserProfile")}}/{{Auth::guard('generaluserLogin')->user()->coverphoto}}" alt="" /></a>
-                                            @endif
+                                        @if (Auth::guard('generaluserLogin')->user()->coverphoto == null)
+                                            <img src="https://via.placeholder.com/1148x272" class="img-fluid"
+                                                alt="profile cover">
+                                        @else
+                                            <a href=""><img width="1148px" height="272px"
+                                                    id="profileImageView"
+                                                    src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->coverphoto }}"
+                                                    alt="" /></a>
+                                        @endif
                                     </figure>
                                     <div class="cover-body d-flex justify-content-between align-items-center">
                                         <div>
@@ -262,7 +274,8 @@
                                                     src="{{ Avatar::create(Auth::guard('generaluserLogin')->user()->name)->toBase64() }}" />
                                             @else
                                                 <a href=""><img class="profile-pic" id="profileImageView"
-                                                        src="{{asset("uploads/genUserProfile")}}/{{Auth::guard('generaluserLogin')->user()->photo}}" alt="" /></a>
+                                                        src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}"
+                                                        alt="" /></a>
                                             @endif
 
 
@@ -299,18 +312,11 @@
                                             <a class="pt-1px d-none d-md-block" href="#">About</a>
                                         </li>
                                         <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                            <i class="mr-1 icon-md" data-feather="users"></i>
-                                            <a class="pt-1px d-none d-md-block" href="#">Friends <span
-                                                    class="text-muted tx-12">3,765</span></a>
+                                            <i class="mr-1 icon-md" data-feather="message-circle"></i>
+                                            <a class="pt-1px d-none d-md-block" href="#">Comments <span
+                                                    class="text-muted tx-12">{{$allCommentPost->count()}}</span></a>
                                         </li>
-                                        <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                            <i class="mr-1 icon-md" data-feather="image"></i>
-                                            <a class="pt-1px d-none d-md-block" href="#">Photos</a>
-                                        </li>
-                                        <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                            <i class="mr-1 icon-md" data-feather="video"></i>
-                                            <a class="pt-1px d-none d-md-block" href="#">Videos</a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -342,24 +348,27 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p>Hi! I'm Amiah the Senior UI Designer at NobleUI. We hope you enjoy the design and
-                                        quality of Social. </p>
+                                    <p> {{ Auth::guard('generaluserLogin')->user()->about }}</p>
                                     <div class="mt-3">
                                         <label class="tx-11 font-weight-bold mb-0 text-uppercase">Joined:</label>
-                                        <p class="text-muted">November 15, 2015</p>
+                                        <p class="text-muted">
+                                            {{ Auth::guard('generaluserLogin')->user()->created_at->diffForHumans() }}
+                                        </p>
                                     </div>
                                     <div class="mt-3">
                                         <label class="tx-11 font-weight-bold mb-0 text-uppercase">Lives:</label>
-                                        <p class="text-muted">New York, USA</p>
+                                        <p class="text-muted">
+                                            {{ Auth::guard('generaluserLogin')->user()->address == null ? 'Not Give yet' : Auth::guard('generaluserLogin')->user()->address }}
+                                        </p>
                                     </div>
                                     <div class="mt-3">
                                         <label class="tx-11 font-weight-bold mb-0 text-uppercase">Email:</label>
-                                        <p class="text-muted">me@nobleui.com</p>
+                                        <p class="text-muted">{{ Auth::guard('generaluserLogin')->user()->email }}</p>
                                     </div>
-                                    <div class="mt-3">
+                                    {{-- <div class="mt-3">
                                         <label class="tx-11 font-weight-bold mb-0 text-uppercase">Website:</label>
                                         <p class="text-muted">www.nobleui.com</p>
-                                    </div>
+                                    </div> --}}
                                     <div class="mt-3 d-flex social-links">
                                         <a href="javascript:;"
                                             class="btn d-flex align-items-center justify-content-center border mr-2 btn-icon github">
@@ -382,301 +391,57 @@
                         </div>
                         <!-- left wrapper end -->
                         <!-- middle wrapper start -->
-                        <div class="col-md-8 col-xl-6 middle-wrapper">
-                            <div class="row">
-                                <div class="col-md-12 grid-margin">
-                                    <div class="card rounded">
-                                        <div class="card-header">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">1 min ago </p>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button class="btn p-0" type="button" id="dropdownMenuButton2"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <i class="icon-lg pb-3px" data-feather="more-horizontal"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="meh"
-                                                                class="icon-sm mr-2"></i> <span
-                                                                class="">Unfollow</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="corner-right-up"
-                                                                class="icon-sm mr-2"></i> <span class="">Go to
-                                                                post</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="share-2"
-                                                                class="icon-sm mr-2"></i> <span
-                                                                class="">Share</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="copy"
-                                                                class="icon-sm mr-2"></i> <span class="">Copy
-                                                                link</span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Accusamus minima delectus nemo unde quae recusandae assumenda.</p>
-                                            <img class="img-fluid" src="https://via.placeholder.com/513x342"
-                                                alt="">
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="d-flex post-actions">
-                                                <a href="javascript:;"
-                                                    class="d-flex align-items-center text-muted mr-4">
-                                                    <i class="icon-md" data-feather="heart"></i>
-                                                    <p class="d-none d-md-block ml-2">Like</p>
-                                                </a>
-                                                <a href="javascript:;"
-                                                    class="d-flex align-items-center text-muted mr-4">
-                                                    <i class="icon-md" data-feather="message-square"></i>
-                                                    <p class="d-none d-md-block ml-2">Comment</p>
-                                                </a>
-                                                <a href="javascript:;" class="d-flex align-items-center text-muted">
-                                                    <i class="icon-md" data-feather="share"></i>
-                                                    <p class="d-none d-md-block ml-2">Share</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="card rounded">
-                                        <div class="card-header">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <div class="d-flex align-items-center">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">5 min ago</p>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown">
-                                                    <button class="btn p-0" type="button" id="dropdownMenuButton3"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <i class="icon-lg pb-3px" data-feather="more-horizontal"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="meh"
-                                                                class="icon-sm mr-2"></i> <span
-                                                                class="">Unfollow</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="corner-right-up"
-                                                                class="icon-sm mr-2"></i> <span class="">Go to
-                                                                post</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="share-2"
-                                                                class="icon-sm mr-2"></i> <span
-                                                                class="">Share</span></a>
-                                                        <a class="dropdown-item d-flex align-items-center"
-                                                            href="#"><i data-feather="copy"
-                                                                class="icon-sm mr-2"></i> <span class="">Copy
-                                                                link</span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="mb-3 tx-14">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit.</p>
-                                            <img class="img-fluid" src="https://via.placeholder.com/513x342"
-                                                alt="">
-                                        </div>
-                                        <div class="card-footer">
-                                            <div class="d-flex post-actions">
-                                                <a href="javascript:;"
-                                                    class="d-flex align-items-center text-muted mr-4">
-                                                    <i class="icon-md" data-feather="heart"></i>
-                                                    <p class="d-none d-md-block ml-2">Like</p>
-                                                </a>
-                                                <a href="javascript:;"
-                                                    class="d-flex align-items-center text-muted mr-4">
-                                                    <i class="icon-md" data-feather="message-square"></i>
-                                                    <p class="d-none d-md-block ml-2">Comment</p>
-                                                </a>
-                                                <a href="javascript:;" class="d-flex align-items-center text-muted">
-                                                    <i class="icon-md" data-feather="share"></i>
-                                                    <p class="d-none d-md-block ml-2">Share</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- middle wrapper end -->
-                        <!-- right wrapper start -->
-                        <div class="d-none d-xl-block col-xl-3 right-wrapper">
-                            <div class="row">
-                                <div class="col-md-12 grid-margin">
-                                    <div class="card rounded">
-                                        <div class="card-body">
-                                            <h6 class="card-title">latest photos</h6>
-                                            <div class="latest-photos">
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure>
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure class="mb-0">
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure class="mb-0">
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <figure class="mb-0">
-                                                            <img class="img-fluid"
-                                                                src="https://via.placeholder.com/67x67"
-                                                                alt="">
-                                                        </figure>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 grid-margin">
-                                    <div class="card rounded">
-                                        <div class="card-body">
-                                            <h6 class="card-title">suggestions for you</h6>
-                                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
-                                            <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
-                                            <div class="d-flex justify-content-between">
-                                                <div class="d-flex align-items-center hover-pointer">
-                                                    <img class="img-xs rounded-circle"
-                                                        src="https://via.placeholder.com/37x37" alt="">
-                                                    <div class="ml-2">
-                                                        <p>Mike Popescu</p>
-                                                        <p class="tx-11 text-muted">12 Mutual Friends</p>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-icon"><i data-feather="user-plus"
-                                                        data-toggle="tooltip" title="Connect"></i></button>
-                                            </div>
 
-                                        </div>
+
+                        <div class="col-md-8 col-xl-7  middle-wrapper">
+
+
+
+
+                            @forelse ($allCommentPost as $CommentPost)
+                                <div class="card mypost">
+                                    <h5 class="card-header">
+
+
+
+                                        @forelse (App\Models\bloggerPostModel::where("id",$CommentPost->post_id)->get() as $blogInfo)
+                                            <img src="{{ asset('uploads/blogerPost') }}/{{ $blogInfo->featured_img }}" alt="" width="100px" height="100px"><p class="p-3 d-inline">{{ $blogInfo->title }}</p>
+
+
+                                    </h5>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $blogInfo->rel_to_users->name }} <p
+                                                class="float-right"><span
+                                                    class="badge badge-primary">{{ $CommentPost->created_at->diffForHumans() }}</span>
+                                            </p>
+                                        </h5>
+                                        <p class="card-text">
+                                        <blockquote class="blockquote">
+                                            <p class="mb-0"><span ><svg class="quote" xmlns="http://www.w3.org/2000/svg"
+                                                        width="26" height="26" fill="currentColor"
+                                                        class="bi bi-quote" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
+                                                    </svg></span>{{ $CommentPost->commment }}
+                                            </p>
+                                        </blockquote>
+                                        </p>
+                                        <a href="{{ route('bloggerDetailsPage', $blogInfo->slug) }}" class="btn btn-primary">Go to post</a>
                                     </div>
                                 </div>
-                            </div>
+
+                            @empty
+                            @endforelse
+                        @empty
+                            @endforelse
+
+
+
+
+
+
                         </div>
-                        <!-- right wrapper end -->
+
                     </div>
                 </div>
 

@@ -37,7 +37,7 @@
         }
 
         .img {
-            margin-top: 18px;
+            margin-top: 10px;
         }
 
         .userName {

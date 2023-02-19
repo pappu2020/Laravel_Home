@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\generalUserCommentModel;
 use App\Models\generalUserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,10 @@ class generalUserProfileController extends Controller
 {
     function profilePage()
     {
-        return view("General_User.profile");
+        $allCommentPost = generalUserCommentModel::latest()->where("general_user_id", Auth::guard('generaluserLogin')->id())->get();
+        return view("General_User.profile",[
+            'allCommentPost' => $allCommentPost,
+        ]);
     }
 
 
@@ -27,6 +31,7 @@ class generalUserProfileController extends Controller
             generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
 
                 'about' => $req->about,
+                'address' => $req->address,
 
             ]);
 
@@ -49,6 +54,7 @@ class generalUserProfileController extends Controller
                 generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
 
                     'about' => $req->about,
+                    'address' => $req->address,
                     'photo' => $fileName,
 
                 ]);
@@ -77,6 +83,7 @@ class generalUserProfileController extends Controller
                 generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
 
                     'about' => $req->about,
+                    'address' => $req->address,
                     'coverphoto' => $fileName,
 
                 ]);
@@ -126,6 +133,7 @@ class generalUserProfileController extends Controller
                 generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
 
                     'about' => $req->about,
+                    'address' => $req->address,
                     'photo' => $fileName_profile,
                     'coverphoto' => $fileName_cover,
 

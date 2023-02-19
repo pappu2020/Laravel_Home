@@ -34,10 +34,19 @@
                         </div>
 
 
+                        <div class="form-group">
+                            <label for="about" class="form-label">Location </label>
+                            <input type="text" name="address" value="{{Auth::guard('generaluserLogin')->user()->address}}">
+                            
+                        </div>
+
+
+
+
                         <div class="d-flex flex-row bd-highlight mb-3">
                             <div class="bd-highlight">
                                 <label for="profileImg" class="form-label">Profile photo</label>
-                                <img src="" alt="" width="200px" height="100px" class="mt-2  d-block"
+                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}" alt="" width="200px" height="100px" class="mt-2  d-block"
                                     id="profileImg">
                                 <input type="file" name="profileImg" class="form-control border border-dark mt-3"
                                     onchange="document.getElementById('profileImg').src = window.URL.createObjectURL(this.files[0])">
@@ -47,7 +56,7 @@
                             </div>
                             <div class="bd-highlight ml-5">
                                 <label for="coverImg" class="form-label">Cover photo</label>
-                                <img src="" alt="" width="200px" height="100px" class="mt-2  d-block"
+                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->coverphoto }}" alt="" width="200px" height="100px" class="mt-2  d-block"
                                     id="coverImg">
                                 <input type="file" name="coverImg" class="form-control border border-dark mt-3"
                                     onchange="document.getElementById('coverImg').src = window.URL.createObjectURL(this.files[0])">

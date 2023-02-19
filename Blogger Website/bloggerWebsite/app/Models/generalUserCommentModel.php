@@ -15,6 +15,11 @@ class generalUserCommentModel extends Model
     }
     
     
+    function rel_to_post(){
+        return $this->hasMany(bloggerPostModel::class, "post_id");
+    }
+    
+    
     function rel_to_replies(){
         return $this->hasMany(generalUserCommentModel::class, 'parent_id', 'id');
     }

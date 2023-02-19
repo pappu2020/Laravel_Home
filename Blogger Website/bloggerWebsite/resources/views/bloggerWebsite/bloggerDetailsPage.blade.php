@@ -204,10 +204,10 @@
                                             <img class="d-block"
                                                 src="{{ Avatar::create($Comments->rel_to_genUsers->name)->toBase64() }}" />
                                         @else
-                                            {{-- <a href="{{ route('authorPage', $bloggerInfo->rel_to_users->id) }}"><img
-                                                    id="profileImageView"
-                                                    src="{{ asset('uploads/userProfile') }}/{{ $bloggerInfo->rel_to_users->photo }}"
-                                                    width="150px" height="150px" alt="" /></a> --}}
+                                            <a href=""><img
+                                                    class="d-block"
+                                                    src="{{ asset("uploads/genUserProfile") }}/{{ Auth::guard('generaluserLogin')->user()->photo }}"
+                                                    alt="" /></a>
                                         @endif
                                         <div class="content">
                                             <div class="meta">
