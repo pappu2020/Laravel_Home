@@ -6,6 +6,7 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\generalUserCommentController;
 use App\Http\Controllers\generalUserController;
 use App\Http\Controllers\generalUserPassResetController;
+use App\Http\Controllers\generalUserProfileController;
 use App\Http\Controllers\githubController;
 use App\Http\Controllers\googleController;
 use App\Http\Controllers\roleController;
@@ -189,6 +190,17 @@ Route::post("commentsInsert", [generalUserCommentController::class, "commentsIns
 
 
 Route::get("/searchpage", [searchController::class, "searchpage"])->name("searchpage");
+
+
+
+
+
+//General user profilr controller
+
+Route::get("/profilePage", [generalUserProfileController::class, "profilePage"])->name("profilePage");
+Route::get("/generalUserProfileEditPage", [generalUserProfileController::class, "generalUserProfileEditPage"])->name("generalUserProfileEditPage");
+
+Route::post("generalUserInfoUpdate", [generalUserProfileController::class, "generalUserInfoUpdate"])->name("generalUserInfoUpdate");
 
 
 

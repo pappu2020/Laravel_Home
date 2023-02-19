@@ -24,6 +24,13 @@
     <link rel="stylesheet" href="{{ asset('blogger_asset/css/custom.css') }}">
 
 
+
+
+
+
+
+
+
     <style>
         .signInbutton {
             margin-left: 10px;
@@ -132,7 +139,7 @@
                                                 <img width="50px" height="50px" class="mx-auto d-block"
                                                     src="{{ Avatar::create(Auth::guard('generaluserLogin')->user()->name)->toBase64() }}" />
                                             @else
-                                                <a href=""><img id="profileImageView" src="" width="50px"
+                                                <a href=""><img id="profileImageView" src="{{asset("uploads/genUserProfile")}}/{{Auth::guard('generaluserLogin')->user()->photo}}" width="50px"
                                                         height="50px" alt="" /></a>
                                             @endif
 
@@ -165,7 +172,7 @@
                                                 </svg>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Profile</a>
+                                                <a class="dropdown-item" href="{{ route('profilePage') }}">Profile</a>
                                                 <a class="dropdown-item" href="{{ route('generalUserLogout') }}">Log
                                                     out</a>
 
@@ -326,6 +333,10 @@
     <script src="{{ asset('blogger_asset/js/main.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+
+
+
     @yield('javascript')
 
 
@@ -337,7 +348,7 @@
     <script>
         $("#search_btn").click(function() {
             var searchValue = $("#search_input").val();
-           
+
 
             var link = "{{ route('searchpage') }}" + "?q=" + searchValue;
             window.location.href = link;
