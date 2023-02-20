@@ -30,7 +30,7 @@
                     @foreach ($bloggerInformation as $blogger)
                         <div class="post-list post-list-style2">
                             <div class="post-list-image">
-                                <a href="post-single.html">
+                                <a href="{{ route('bloggerDetailsPage', $blogger->slug) }}">
                                     <img src="{{ asset('uploads/blogerPost') }}/{{ $blogger->featured_img }}"
                                         alt="">
                                 </a>

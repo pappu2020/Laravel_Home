@@ -9,6 +9,7 @@ use App\Http\Controllers\generalUserPassResetController;
 use App\Http\Controllers\generalUserProfileController;
 use App\Http\Controllers\githubController;
 use App\Http\Controllers\googleController;
+use App\Http\Controllers\likeDislikeController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\tagController;
@@ -201,6 +202,12 @@ Route::get("/profilePage", [generalUserProfileController::class, "profilePage"])
 Route::get("/generalUserProfileEditPage", [generalUserProfileController::class, "generalUserProfileEditPage"])->name("generalUserProfileEditPage");
 
 Route::post("generalUserInfoUpdate", [generalUserProfileController::class, "generalUserInfoUpdate"])->name("generalUserInfoUpdate");
+
+
+
+//Like & Dislike
+
+Route::post("likeCount", [likeDislikeController::class, "likeCount"])->name("likeCount");
 
 
 
