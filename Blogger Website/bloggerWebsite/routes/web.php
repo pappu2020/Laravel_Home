@@ -10,6 +10,7 @@ use App\Http\Controllers\generalUserProfileController;
 use App\Http\Controllers\githubController;
 use App\Http\Controllers\googleController;
 use App\Http\Controllers\likeDislikeController;
+use App\Http\Controllers\newsletterController;
 use App\Http\Controllers\roleController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\tagController;
@@ -208,6 +209,13 @@ Route::post("generalUserInfoUpdate", [generalUserProfileController::class, "gene
 //Like & Dislike
 
 Route::post("likeCount", [likeDislikeController::class, "likeCount"])->name("likeCount");
+Route::post("likeRemove", [likeDislikeController::class, "likeRemove"])->name("likeRemove");
+
+
+
+//Newsletter
+
+Route::get("/insertNewsletter", [newsletterController::class, "insertNewsletter"])->name("insertNewsletter");
 
 
 

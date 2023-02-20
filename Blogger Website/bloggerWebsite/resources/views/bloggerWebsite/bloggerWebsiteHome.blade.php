@@ -212,86 +212,59 @@
 
                                     <ul class="widget-popular-posts">
                                         <!--post1-->
+                                        
+                                        
+                                        @foreach ($allPopularpost as $key =>  $Popularpost)
+                                            
+                                       
+                                        
+                                        
+                                        @foreach ( App\Models\bloggerPostModel::where("id",$Popularpost->post)->get() as $postInfo)
+                                            
+                                      
+                                        
+                                        
                                         <li class="small-post">
                                             <div class="small-post-image">
-                                                <a href="post-single.html">
-                                                    <img src="assets/img/blog/1.jpg" alt="">
-                                                    <small class="nb">1</small>
+                                                <a href="{{ route('bloggerDetailsPage', $postInfo->slug) }}">
+                                                    <img src="{{ asset('uploads/blogerPost') }}/{{ $postInfo->featured_img }}" alt="">
+                                                    <small class="nb">{{$key+1}}</small>
                                                 </a>
                                             </div>
                                             <div class="small-post-content">
                                                 <p>
-                                                    <a href="post-single.html">Everything is designed. Few things are
-                                                        designed well.</a>
+                                                    <a href="{{ route('bloggerDetailsPage', $postInfo->slug) }}">{{$postInfo->title}}</a>
                                                 </p>
-                                                <small> <span class="slash"></span>3 mounth ago</small>
+                                                <small> <span class="slash"></span>{{$postInfo->created_at->diffForHumans()}}</small>
                                             </div>
                                         </li>
+
+
+                                        @endforeach
+
+                                         
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        @endforeach
 
                                         <!--post2-->
-                                        <li class="small-post">
-                                            <div class="small-post-image">
-                                                <a href="post-single.html">
-                                                    <img src="assets/img/blog/5.jpg" alt="">
-                                                    <small class="nb">2</small>
-                                                </a>
-                                            </div>
-                                            <div class="small-post-content">
-                                                <p>
-                                                    <a href="post-single.html">Brand yourself for the career you want, not
-                                                        the job you </a>
-                                                </p>
-                                                <small> <span class="slash"></span> 3 mounth ago</small>
-                                            </div>
-                                        </li>
-
-                                        <!--post3-->
-                                        <li class="small-post">
-                                            <div class="small-post-image">
-                                                <a href="post-single.html">
-                                                    <img src="assets/img/blog/13.jpg" alt="">
-                                                    <small class="nb">3</small>
-
-                                                </a>
-                                            </div>
-                                            <div class="small-post-content">
-                                                <p>
-                                                    <a href="post-single.html">It’s easier to ask forgiveness than it is to
-                                                        get permission.</a>
-                                                </p>
-                                                <small> <span class="slash"></span>3 mounth ago</small>
-                                            </div>
-                                        </li>
-
-                                        <!--post4-->
-                                        <li class="small-post">
-                                            <div class="small-post-image">
-                                                <a href="post-single.html">
-                                                    <img src="assets/img/blog/16.jpg" alt="">
-                                                    <small class="nb">4</small>
-                                                </a>
-                                            </div>
-                                            <div class="small-post-content">
-                                                <p>
-                                                    <a href="post-single.html">All happiness depends on a leisurely
-                                                        breakfast</a>
-                                                </p>
-                                                <small> <span class="slash"></span>
-                                                    3 mounth ago</small>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                     
                                 </div>
 
                                 <!--newslatter-->
                                 <div class="widget widget-newsletter">
                                     <h5>Subscribe To Our Newsletter</h5>
                                     <p>No spam, notifications only about new products, updates.</p>
-                                    <form action="#" class="newslettre-form">
+                                    <form action="{{route("insertNewsletter")}}" class="newslettre-form">
+                                        @csrf
                                         <div class="form-flex">
                                             <div class="form-group">
                                                 <input type="email" class="form-control"
-                                                    placeholder="Your Email Adress" required="required">
+                                                    placeholder="Your Email Adress" required="required" name="newsletter">
                                             </div>
                                             <button class="btn-custom" type="submit">Subscribe now</button>
                                         </div>

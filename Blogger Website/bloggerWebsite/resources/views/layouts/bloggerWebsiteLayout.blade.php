@@ -241,13 +241,14 @@
                                     <p>Sign up for free and be the first to get notified about new posts.</p>
                                 </div>
 
-                                <form action="#" class="newslettre-form">
+                                <form action="{{route("insertNewsletter")}}" class="newslettre-form">
+                                    @csrf
                                     <div class="form-flex">
                                         <div class="form-group">
                                             <input type="email" class="form-control"
-                                                placeholder="Your Email Adress" required="required">
+                                                placeholder="Your Email Adress" required="required" name="newsletter">
                                         </div>
-                                        <button class="submit-btn" type="submit">
+                                        <button class="submit-btn" type="submit" >
                                             <i class="fas fa-paper-plane"></i>
                                         </button>
                                     </div>
@@ -338,7 +339,30 @@
 
 
     @yield('javascript')
+    
 
+
+    
+    @if (session('newsletter'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Sent Success!!'
+            })
+        </script>
+    @endif
 
 
 

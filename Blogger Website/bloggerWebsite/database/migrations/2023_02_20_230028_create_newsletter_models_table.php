@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('like_dislike_models', function (Blueprint $table) {
+        Schema::create('newsletter_models', function (Blueprint $table) {
             $table->id();
-            $table->string("post_id");
-            $table->integer("post");
-            $table->integer("user_id");
-            $table->integer("like")->nullable();
-            $table->integer("dislike")->nullable();           
+            $table->integer("userId");
+            $table->string("email");
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('like_dislike_models');
+        Schema::dropIfExists('newsletter_models');
     }
 };
