@@ -1264,7 +1264,22 @@ ul {
 }
 
 .header-area .logo img {
-  max-height: 50px;
+   width: 100px;
+  height: 100px;
+}
+
+@media (min-width: 300px) and (max-width: 575px) {
+.header-area .logo {
+ 
+  margin-right: 0px;
+}
+
+.header-area .logo img {
+  width: 100px;
+  height: 100px;
+
+
+}
 }
 
 .header-area .logo-white {

@@ -7,6 +7,9 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
+
 
 class userProfileController extends Controller
 {
@@ -80,4 +83,47 @@ class userProfileController extends Controller
             }
         }
     }
+
+
+
+
+    function UserPassUpdate(Request $req)
+    {
+        $req->validate([
+
+
+
+            'previous_Password' => 'required',
+
+
+            'password' => Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols(),
+            'password' => 'required|confirmed',
+
+            'password_confirmation' => 'required',
+
+
+        ]);
+
+
+        if (Hash::check($req->previous_Password, Auth::user()->password)) {
+
+
+            if ($req->password == $req->password_confirmation) {
+                User::find(Auth::id())->update([
+                    "password" => bcrypt($req->password),
+                ]);
+                return back()->with('pass_update_success', 'Password Update success!!');
+            } else {
+                return back()->with('pass_not_matched', 'Password did not matched!!');
+            }
+        } else {
+            return back()->with('pass_not_matched', 'Password does not matched with your previous password');
+        }
+    }
+
+
 }

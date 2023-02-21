@@ -233,14 +233,28 @@
                           
                             <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
-                                    alt="profile">
+                                @if (Auth::user()->photo == null)
+                                                <img width="50px" height="50px" class="mx-auto d-block"
+                                                    src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                            @else
+                                                <a href=""><img id="profileImageView" src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}" width="50px"
+                                                        height="50px" alt="" /></a>
+                                            @endif
                             </a>
                             <div class="dropdown-menu" aria-labelledby="profileDropdown">
                                 <div class="dropdown-header d-flex flex-column align-items-center">
                                     <div class="figure mb-3">
-                                        <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
-                                            alt="">
+                                        {{-- <img src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}"
+                                            alt=""> --}}
+
+
+                                            @if (Auth::user()->photo == null)
+                                                <img width="50px" height="50px" class="mx-auto d-block"
+                                                    src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
+                                            @else
+                                                <a href=""><img id="profileImageView" src="{{ asset('uploads/userProfile/') }}/{{ Auth::User()->photo }}" width="50px"
+                                                        height="50px" alt="" /></a>
+                                            @endif
                                     </div>
                                     <div class="info text-center">
                                         <p class="name font-weight-bold mb-0">{{ Auth::User()->name }}</p>
@@ -509,6 +523,28 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Your post restore successfully!!'
+            })
+        </script>
+    @endif
+    
+    
+    @if (session('pass_update_success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Password Changed Successfully!!'
             })
         </script>
     @endif

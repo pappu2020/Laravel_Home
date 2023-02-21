@@ -58,7 +58,7 @@ class userpasswordResetController extends Controller
     }
 
 
-    function genUserPassChange(Request $req)
+    function UserPassChange(Request $req)
     {
         $req->validate([
 

@@ -56,6 +56,7 @@ Route::get("userRestore/{userId}", [UserController::class, "userRestore"])->name
 
 Route::get("userProfilePage", [userProfileController::class, "userProfilePage"])->name("userProfilePage");
 Route::post("userProfileUpdate", [userProfileController::class, "userProfileUpdate"])->name("userProfileUpdate");
+Route::post("UserPassUpdate", [userProfileController::class, "UserPassUpdate"])->name("UserPassUpdate");
 
 
 
