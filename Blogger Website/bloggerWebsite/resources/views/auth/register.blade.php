@@ -115,12 +115,12 @@
                             <div class="row">
                                 <div class="col-md-4 pr-md-0">
                                     <div class="auth-left-wrapper">
-
+                                       <img height="705px" width="235px" src="{{asset("dashboard_asset/images/signup.jpg")}}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-8 pl-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2"><img width="50px" height="50px" src="{{asset("dashboard_asset/images/logo.png")}}" alt=""></a>
                                         <h5 class="text-muted font-weight-normal mb-4">Create a free account.</h5>
                                         <form class="forms-sample" method="POST" action="{{ route('register') }}">
                                             @csrf
@@ -183,11 +183,11 @@
                                             <div class="mt-3">
                                                 <button
                                                     class="btn btn-primary text-white mr-2 mb-2 mb-md-0" type="submit">Sign up</button>
-                                                <button type="button"
+                                                {{-- <button type="button"
                                                     class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
                                                     <i class="btn-icon-prepend" data-feather="twitter"></i>
                                                     Sign up with twitter
-                                                </button>
+                                                </button> --}}
                                             </div>
                                             <a href="{{route("login")}}" class="d-block mt-3 text-muted">Already a user? Sign
                                                 in</a>

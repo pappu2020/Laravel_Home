@@ -74,7 +74,7 @@ class generalUserController extends Controller
         }
 
         else{
-            return redirect()->route("generalUserSignInPage")->with('generalUserLoginsuccess', "Login Success!!");
+            return redirect()->route("generalUserSignInPage")->with('generalUserLoginFailed', "The email address or password you entered isn't connected to an account.");
         }
     }
 
@@ -82,5 +82,14 @@ class generalUserController extends Controller
     {
         Auth::guard("generaluserLogin")->logout();
         return redirect()->route("homePage");
+    }
+
+
+
+    function generalUserList(){
+        $allUserList = generalUserModel::all();
+        return view("admin.user.generalUserList",[
+            'allUserList' => $allUserList,
+        ]);
     }
 }

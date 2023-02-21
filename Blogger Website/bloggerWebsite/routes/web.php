@@ -15,6 +15,7 @@ use App\Http\Controllers\roleController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\tagController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\userpasswordResetController;
 use App\Http\Controllers\userProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -131,6 +132,8 @@ Route::get("generalUserSignInPage", [generalUserController::class, "generalUserS
 Route::post("generalUserInsert", [generalUserController::class, "generalUserInsert"])->name("generalUserInsert");
 Route::post("generalUserLogin", [generalUserController::class, "generalUserLogin"])->name("generalUserLogin");
 Route::get("generalUserLogout", [generalUserController::class, "generalUserLogout"])->name("generalUserLogout");
+Route::get("generalUserList", [generalUserController::class, "generalUserList"])->name("generalUserList");
+
 
 
 
@@ -179,6 +182,15 @@ Route::post("/genUserPassChange", [generalUserPassResetController::class, "genUs
 
 
 
+//UserPassword Reset Section
+Route::get("/UserpasswordResetReqPage", [userpasswordResetController::class, "UserpasswordResetReqPage"])->name("UserpasswordResetReqPage");
+Route::post("/UserPasswordResetSend", [userpasswordResetController::class, "UserPasswordResetSend"])->name("UserPasswordResetSend");
+Route::get("/UserPassChangeForm/{tokenId}", [userpasswordResetController::class, "UserPassChangeForm"])->name("UserPassChangeForm");
+Route::post("/UserPassChange", [userpasswordResetController::class, "UserPassChange"])->name("UserPassChange");
+
+
+
+
 
 
 
@@ -197,12 +209,14 @@ Route::get("/searchpage", [searchController::class, "searchpage"])->name("search
 
 
 
-//General user profilr controller
+//General user profile controller
 
 Route::get("/profilePage", [generalUserProfileController::class, "profilePage"])->name("profilePage");
 Route::get("/generalUserProfileEditPage", [generalUserProfileController::class, "generalUserProfileEditPage"])->name("generalUserProfileEditPage");
 
 Route::post("generalUserInfoUpdate", [generalUserProfileController::class, "generalUserInfoUpdate"])->name("generalUserInfoUpdate");
+
+Route::post("generalUserPassUpdate", [generalUserProfileController::class, "generalUserPassUpdate"])->name("generalUserPassUpdate");
 
 
 

@@ -25,19 +25,20 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit your profile</h4>
-                    <form action="{{route("generalUserInfoUpdate")}}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('generalUserInfoUpdate') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="about">Write something about you</label>
-                            <textarea class="form-control" name="about" rows="3">{{Auth::guard('generaluserLogin')->user()->about}}</textarea>
+                            <textarea class="form-control" name="about" rows="3">{{ Auth::guard('generaluserLogin')->user()->about }}</textarea>
                             <p>Max limit : 120 words</p>
                         </div>
 
 
                         <div class="form-group">
                             <label for="about" class="form-label">Location </label>
-                            <input type="text" name="address" value="{{Auth::guard('generaluserLogin')->user()->address}}">
-                            
+                            <input type="text" name="address"
+                                value="{{ Auth::guard('generaluserLogin')->user()->address }}">
+
                         </div>
 
 
@@ -46,8 +47,8 @@
                         <div class="d-flex flex-row bd-highlight mb-3">
                             <div class="bd-highlight">
                                 <label for="profileImg" class="form-label">Profile photo</label>
-                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}" alt="" width="200px" height="100px" class="mt-2  d-block"
-                                    id="profileImg">
+                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}"
+                                    alt="" width="200px" height="100px" class="mt-2  d-block" id="profileImg">
                                 <input type="file" name="profileImg" class="form-control border border-dark mt-3"
                                     onchange="document.getElementById('profileImg').src = window.URL.createObjectURL(this.files[0])">
 
@@ -56,8 +57,8 @@
                             </div>
                             <div class="bd-highlight ml-5">
                                 <label for="coverImg" class="form-label">Cover photo</label>
-                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->coverphoto }}" alt="" width="200px" height="100px" class="mt-2  d-block"
-                                    id="coverImg">
+                                <img src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->coverphoto }}"
+                                    alt="" width="200px" height="100px" class="mt-2  d-block" id="coverImg">
                                 <input type="file" name="coverImg" class="form-control border border-dark mt-3"
                                     onchange="document.getElementById('coverImg').src = window.URL.createObjectURL(this.files[0])">
 
@@ -84,24 +85,45 @@
                 <div class="card-body">
                     <h5 class="card-title">Change your password</h5>
 
-                    <form>
-                       
+                    <form action="{{ route('generalUserPassUpdate') }}" method="post">
+                        @csrf
+
                         <div class="form-group">
                             <label for="exampleInputPassword1">Previous Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" name="previous_Password">
                         </div>
-                        
+
+                        @error('previous_Password')
+                            
+                                <p class="mt-2 mb-2 text-danger">{{$message}}</p>
+                            
+                        @enderror
+
                         <div class="form-group">
                             <label for="exampleInputPassword1">New Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>  
-                        
+                            <input type="password" class="form-control" name="password">
+                        </div>
+
+                        @error('password')
+                            <p class="mt-2 mb-2 text-danger">{{$message}}</p>
+                        @enderror
+
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" class="form-control" name="password_confirmation">
                         </div>
-                       
+
+                         @error('password_confirmation')
+                            <p class="mt-2 mb-2 text-danger">{{$message}}</p>
+                        @enderror
+
                         <button type="submit" class="btn btn-primary">Update</button>
+
+                        @if (session("pass_not_matched"))
+
+                        <p class="text-danger mt-2 mb-2">{{session("pass_not_matched")}}</p>
+                            
+                        @endif
                     </form>
 
                 </div>

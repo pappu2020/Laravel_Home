@@ -10,8 +10,8 @@
     <!-- favicon -->
     <link rel="icon" sizes="16x16" href="assets/img/favicon.png">
 
-    <!-- Title -->Stay Connected
-    <title> Oredoo - Personal Blog HTML Template </title>
+    
+    <title> Helping Hand || Blogger </title>
 
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{{ asset('blogger_asset/css/bootstrap.min.css') }}">
@@ -21,7 +21,7 @@
 
     <!-- main style -->
     <link rel="stylesheet" href="{{ asset('blogger_asset/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('blogger_asset/css/custom.css') }}">
+    <link rel="shortcut icon" href="{{asset("dashboard_asset/images/logo.png")}}" />
 
 
 
@@ -63,9 +63,9 @@
             <div class="header-area ">
                 <!--logo-->
                 <div class="logo">
-                    <a href="index.html">
-                        <img src="assets/img/logo/logo-dark.png" alt="" class="logo-dark">
-                        <img src="assets/img/logo/logo-white.png" alt="" class="logo-white">
+                    <a href="https://www.logodesign.net/image/hand-pencil-on-color-splashes-2784ld">
+                      
+                        <img src="{{asset("dashboard_asset/images/logo.png")}}" alt="" width="150px" height="300px">
                     </a>
                 </div>
                 <div class="header-navbar">
@@ -360,6 +360,28 @@
             Toast.fire({
                 icon: 'success',
                 title: 'Sent Success!!'
+            })
+        </script>
+    @endif
+    
+    
+    @if (session('pass_update_success'))
+        <script>
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Password Changed Successfully!!'
             })
         </script>
     @endif

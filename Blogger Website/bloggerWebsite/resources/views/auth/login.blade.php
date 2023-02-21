@@ -114,11 +114,13 @@
                                 <div class="col-md-4 pr-md-0">
                                     <div class="auth-left-wrapper">
 
+                                        <img width="237px" height="430px" src="{{asset("dashboard_asset/images/signup.jpg")}}" alt="">
+
                                     </div>
                                 </div>
                                 <div class="col-md-8 pl-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2"><img width="50px" height="50px" src="{{asset("dashboard_asset/images/logo.png")}}"></a>
                                         <h5 class="text-muted font-weight-normal mb-4">Welcome back! Log in to your
                                             account.</h5>
                                         <form class="forms-sample" method="POST" action="{{ route('login') }}">
@@ -151,11 +153,11 @@
                                             <div class="mt-3">
                                                 
                                                    <button type="submit" class="btn btn-primary mr-2 mb-2 mb-md-0 text-white">Login</button>
-                                                <button type="button"
+                                                <a href="{{route("UserpasswordResetReqPage")}}"
                                                     class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                                                    <i class="btn-icon-prepend" data-feather="twitter"></i>
-                                                    Login with twitter
-                                                </button>
+                                                    
+                                                    Forgotten Password
+                                                </a>
                                             </div>
                                             <a href="{{route("register")}}" class="d-block mt-3 text-muted">Not a user? Sign
                                                 up</a>

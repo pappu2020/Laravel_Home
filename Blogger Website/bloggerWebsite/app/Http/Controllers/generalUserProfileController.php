@@ -7,13 +7,15 @@ use App\Models\generalUserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Image;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Hash;
 
 class generalUserProfileController extends Controller
 {
     function profilePage()
     {
         $allCommentPost = generalUserCommentModel::latest()->where("general_user_id", Auth::guard('generaluserLogin')->id())->get();
-        return view("General_User.profile",[
+        return view("General_User.profile", [
             'allCommentPost' => $allCommentPost,
         ]);
     }
@@ -36,9 +38,7 @@ class generalUserProfileController extends Controller
             ]);
 
             return back();
-        }
-
-        elseif ($req->coverImg == "") {
+        } elseif ($req->coverImg == "") {
 
 
             $upload_img = $req->profileImg;
@@ -61,13 +61,7 @@ class generalUserProfileController extends Controller
 
                 return back();
             }
-        }
-
-
-
-
-
-       elseif ($req->profileImg == "") {
+        } elseif ($req->profileImg == "") {
 
 
             $upload_img = $req->coverImg;
@@ -90,18 +84,14 @@ class generalUserProfileController extends Controller
 
                 return back();
             }
-        }
-
-
-
-        else{
+        } else {
 
 
             if (Auth::guard("generaluserLogin")->user()->photo == null && Auth::guard("generaluserLogin")->user()->coverphoto == null) {
 
 
                 $upload_img_cover = $req->coverImg;
-                
+
                 $extension_cover = $upload_img_cover->getClientOriginalExtension();
                 $fileName_cover = Auth::guard("generaluserLogin")->user()->name . "-" . "profile-photo" . "-" . uniqid() . "." . $extension_cover;
 
@@ -122,14 +112,14 @@ class generalUserProfileController extends Controller
 
 
 
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
                 generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
 
                     'about' => $req->about,
@@ -141,31 +131,46 @@ class generalUserProfileController extends Controller
 
                 return back();
             }
-
-            
-
         }
+    }
 
 
 
+    function generalUserPassUpdate(Request $req)
+    {
+        $req->validate([
 
 
 
+            'previous_Password' => 'required',
 
 
+            'password' => Password::min(8)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols(),
+            'password' => 'required|confirmed',
+
+            'password_confirmation' => 'required',
 
 
+        ]);
 
 
+        if (Hash::check($req->previous_Password, Auth::guard("generaluserLogin")->user()->password)) {
 
 
-
-
-
-
-
-
-
-
+            if ($req->password == $req->password_confirmation) {
+                generalUserModel::find(Auth::guard("generaluserLogin")->id())->update([
+                    "password" => bcrypt($req->password),
+                ]);
+                return back()->with('pass_update_success', 'Password Update success!!');
+            } else {
+                return back()->with('pass_not_matched', 'Password did not matched!!');
+            }
+        } else {
+            return back()->with('pass_not_matched', 'Password does not matched with your previous password');
+        }
     }
 }

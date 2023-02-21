@@ -82,6 +82,12 @@
 
                         </form>
 
+                        @if (session("generalUserLoginFailed"))
+
+                        <div class="alert alert-danger mt-2 mb-2">{{session("generalUserLoginFailed")}}</div>
+                            
+                        @endif
+
 
                     </div>
                 </div>
