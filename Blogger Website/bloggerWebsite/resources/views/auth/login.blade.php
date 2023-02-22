@@ -100,6 +100,16 @@
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/demo_1/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('dashboard_asset/images/favicon.png') }}" />
+
+     <style>
+
+        @media (min-width: 300px) and (max-width: 575px) {
+           .leftBackground{
+            display: none;
+           }
+        }
+        
+    </style>
 </head>
 
 <body>
@@ -111,7 +121,7 @@
                     <div class="col-md-8 col-xl-6 mx-auto">
                         <div class="card">
                             <div class="row">
-                                <div class="col-md-4 pr-md-0">
+                                <div class="col-md-4 pr-md-0 leftBackground">
                                     <div class="auth-left-wrapper">
 
                                         <img width="237px" height="430px" src="{{asset("dashboard_asset/images/signup.jpg")}}" alt="">

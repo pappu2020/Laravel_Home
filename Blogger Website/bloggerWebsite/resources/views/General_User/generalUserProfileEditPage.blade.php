@@ -17,10 +17,32 @@
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
     }
+
+
+    @media (min-width: 300px) and (max-width: 575px) {
+
+        .mydiv {
+            margin-bottom: 20px;
+        }
+
+        .myform {
+            margin-top: 100px;
+            margin-left: 3px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        }
+
+        .mypasswordForm {
+            margin-top: 20px;
+            margin-left: 3px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+        }
+
+    }
 </style>
 @section('content')
     <div class="row mydiv">
-        <div class="col-lg-5 myform">
+        <div class="col-lg-5 col-sm-12 myform">
 
             <div class="card">
                 <div class="card-body">
@@ -78,7 +100,7 @@
         </div>
 
 
-        <div class="col-lg-3 mypasswordForm">
+        <div class="col-lg-3 col-sm-12 mypasswordForm">
 
 
             <div class="card">
@@ -94,9 +116,7 @@
                         </div>
 
                         @error('previous_Password')
-                            
-                                <p class="mt-2 mb-2 text-danger">{{$message}}</p>
-                            
+                            <p class="mt-2 mb-2 text-danger">{{ $message }}</p>
                         @enderror
 
                         <div class="form-group">
@@ -105,7 +125,7 @@
                         </div>
 
                         @error('password')
-                            <p class="mt-2 mb-2 text-danger">{{$message}}</p>
+                            <p class="mt-2 mb-2 text-danger">{{ $message }}</p>
                         @enderror
 
                         <div class="form-group">
@@ -113,16 +133,14 @@
                             <input type="password" class="form-control" name="password_confirmation">
                         </div>
 
-                         @error('password_confirmation')
-                            <p class="mt-2 mb-2 text-danger">{{$message}}</p>
+                        @error('password_confirmation')
+                            <p class="mt-2 mb-2 text-danger">{{ $message }}</p>
                         @enderror
 
                         <button type="submit" class="btn btn-primary">Update</button>
 
-                        @if (session("pass_not_matched"))
-
-                        <p class="text-danger mt-2 mb-2">{{session("pass_not_matched")}}</p>
-                            
+                        @if (session('pass_not_matched'))
+                            <p class="text-danger mt-2 mb-2">{{ session('pass_not_matched') }}</p>
                         @endif
                     </form>
 

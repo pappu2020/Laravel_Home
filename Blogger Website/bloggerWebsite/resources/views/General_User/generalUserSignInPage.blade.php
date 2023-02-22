@@ -7,7 +7,7 @@
     <section class="login">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6 col-md-8 m-auto">
+                <div class="col-lg-6  m-lg-auto">
                     <div class="login-content">
                         <h4>Login</h4>
                         <p></p>

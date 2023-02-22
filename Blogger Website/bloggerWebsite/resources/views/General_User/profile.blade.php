@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{Auth::guard("generaluserLogin")->user()->name}} || Helping Hand</title>
+    <title>{{ Auth::guard('generaluserLogin')->user()->name }} || Helping Hand</title>
     <!-- core:css -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/vendors/core/core.css') }}">
     <!-- endinject -->
@@ -18,7 +18,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/demo_1/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{asset("dashboard_asset/images/logo.png")}}" />
+    <link rel="shortcut icon" href="{{ asset('dashboard_asset/images/logo.png') }}" />
 
 
 
@@ -43,7 +43,10 @@
         }
 
         .img {
-            margin-top: 6px;
+            /* margin-top: 6px; */
+            margin-left: 100px;
+            margin-right: 50px;
+
 
         }
 
@@ -53,32 +56,114 @@
 
         }
 
-        .myDropDown {
+        /* .myDropDown {
             margin-left: 15px;
             margin-top: 22px;
-        }
+        } */
 
         .mynav {
-            margin-right: 300px;
+            margin-right: 250px;
         }
 
         .logout {
-            margin-top: 25px;
-            margin-left: 20px;
+
+            margin-left: 444px;
+            position: absolute;
+            margin-top: -68px;
+            width: 100px;
+
         }
 
-        .mymodel {
-            margin-top: 300px;
-            z-index: -1;
-        }
 
-        .quote{
+
+        .quote {
             margin-top: -15px;
         }
 
-        .mypost{
+        .mypost {
             margin-bottom: 15px;
             box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+        }
+
+
+        .smallHeader {
+            display: none;
+        }
+
+        .mycoverPhoto {
+            width: 1148px;
+            height: 272px;
+        }
+
+         .myEditBtn {
+                width: 100px;
+                font-size: 10px;
+                position: absolute;
+                margin-left: 1100px;
+                margin-top: 4px;
+            }
+
+
+
+        @media (min-width: 300px) and (max-width: 575px) {
+            .img {
+                display: none;
+
+            }
+
+            .userName {
+                display: none;
+
+            }
+
+            .header {
+                display: none;
+            }
+
+            .smallHeader {
+                display: block;
+
+            }
+
+            .smallLogo {
+                width: 100px;
+                height: 100px;
+                padding: 20px;
+                margin-left: 30px;
+            }
+
+            .smallHomeDiv {
+                margin-top: 30px;
+                margin-left: 15px;
+            }
+
+            .smalllogout {
+                margin-top: 30px;
+                margin-left: 25px;
+            }
+
+            .smallUserName {
+                font-size: 15px;
+                margin-top: 45px;
+                margin-left: 10px;
+                font-weight: bold;
+            }
+
+            .mycoverPhoto {
+                width: auto;
+                height: 472px;
+            }
+
+            .myEditBtn {
+                width: 100px;
+                font-size: 10px;
+                position: absolute;
+                margin-left: 219px;
+                margin-top: 0px;
+            }
+
+
+
         }
     </style>
 </head>
@@ -93,8 +178,8 @@
                 <!--logo-->
                 <div class="logo">
                     <a href="index.html">
-                        <img src="assets/img/logo/logo-dark.png" alt="" class="logo-dark">
-                        <img src="assets/img/logo/logo-white.png" alt="" class="logo-white">
+                        <img src="{{ asset('dashboard_asset/images/logo.png') }}" alt="" class="logo-dark">
+                        <img src="{{ asset('dashboard_asset/images/logo.png') }}" alt="" class="logo-white">
                     </a>
                 </div>
                 <div class="header-navbar">
@@ -134,16 +219,16 @@
                                 <div class="d-flex flex-row bd-highlight">
                                     <div class=" bd-highlight">
 
-                                        <div class="img">
+                                        <div class="">
 
 
                                             @if (Auth::guard('generaluserLogin')->user()->photo == null)
-                                                <img width="50px" height="50px" class=" d-block"
+                                                <img width="50px" height="50px" class=" d-block img"
                                                     src="{{ Avatar::create(Auth::guard('generaluserLogin')->user()->name)->toBase64() }}" />
                                             @else
                                                 <a href=""><img id="profileImageView"
                                                         src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->photo }}"
-                                                        width="50px" height="50px" alt="" /></a>
+                                                        width="50px" height="50px" class="img" alt="" /></a>
                                             @endif
 
 
@@ -165,15 +250,14 @@
 
 
 
-                                    <div class="bd-highlight ">
 
 
-                                        <div class="logout">
-                                            <a href="{{ route('generalUserLogout') }}" class="btn btn-danger">Log Out</a>
-                                        </div>
 
 
-                                    </div>
+
+
+
+
 
 
 
@@ -188,6 +272,13 @@
 
 
                                 </div>
+
+                                <div class="logoutDiv">
+                                    <a href="{{ route('generalUserLogout') }}" class="btn btn-danger logout">Log
+                                        Out</a>
+                                </div>
+
+
 
 
 
@@ -224,6 +315,58 @@
 
 
 
+    <div class="smallHeader">
+        <div class="d-flex flex-row bd-highlight">
+
+            <div class="bd-highlight smallHomeDiv">
+
+                <a href="{{ route('homePage') }}" class="btn btn-success  smallHome">Home <span><svg
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-house-door" viewBox="0 0 16 16">
+                            <path
+                                d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z" />
+                        </svg></span></a>
+            </div>
+
+
+
+            <div class="bd-highlight">
+
+
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="{{ asset('dashboard_asset/images/logo.png') }}" alt="" class="smallLogo">
+
+                    </a>
+                </div>
+            </div>
+
+            @auth('generaluserLogin')
+                <div class="dropdown">
+                    <a href="" class="" type="button" data-toggle="dropdown" aria-expanded="false">
+
+                        <p class="smallUserName">{{ Auth::guard('generaluserLogin')->user()->name }}</p>
+
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class=" btn btn-danger" href="{{ route('generalUserLogout') }}">Log out</a>
+
+                    </div>
+                </div>
+            @else
+                <div class="bd-highlight smalllogoutDiv">
+
+                    <a href="#" class="btn btn-danger smalllogout">Log out</a>
+                </div>
+            @endauth
+        </div>
+
+    </div>
+
+
+
+
+
 
 
 
@@ -252,13 +395,12 @@
                                             alt="profile cover"> --}}
 
                                         @if (Auth::guard('generaluserLogin')->user()->coverphoto == null)
-                                            <img src="https://via.placeholder.com/1148x272" class="img-fluid"
-                                                alt="profile cover">
+                                            <img src="https://via.placeholder.com/1148x272"
+                                                class="img-fluid mycoverPhoto" alt="profile cover">
                                         @else
-                                            <a href=""><img width="1148px" height="272px"
-                                                    id="profileImageView"
+                                            <a href=""><img id="profileImageView"
                                                     src="{{ asset('uploads/genUserProfile') }}/{{ Auth::guard('generaluserLogin')->user()->coverphoto }}"
-                                                    alt="" /></a>
+                                                    alt="" class="mycoverPhoto" /></a>
                                         @endif
                                     </figure>
                                     <div class="cover-body d-flex justify-content-between align-items-center">
@@ -286,11 +428,24 @@
                                             <span
                                                 class="profile-name">{{ Auth::guard('generaluserLogin')->user()->name }}</span>
                                         </div>
-                                        <div class="">
-                                            <a href="{{ route('generalUserProfileEditPage') }}"
-                                                class="btn btn-primary btn-icon-text btn-edit-profile">
+
+                                    </div>
+
+                                    <div class="">
+                                        {{-- <a href="{{ route('generalUserProfileEditPage') }}"
+                                                class="btn btn-primary btn-icon-text ">
                                                 <i data-feather="edit" class="btn-icon-prepend"></i> Edit profile
-                                            </a>
+                                            </a> --}}
+
+                                        <a href="{{ route('generalUserProfileEditPage') }}" class="btn btn-success myEditBtn">Edit Profile &nbsp; <span><svg
+                                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-pencil-square"
+                                                    viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                </svg></span></a>
 
 
 
@@ -298,7 +453,6 @@
 
 
 
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="header-links">
@@ -314,7 +468,7 @@
                                         <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                                             <i class="mr-1 icon-md" data-feather="message-circle"></i>
                                             <a class="pt-1px d-none d-md-block" href="#">Comments <span
-                                                    class="text-muted tx-12">{{$allCommentPost->count()}}</span></a>
+                                                    class="text-muted tx-12">{{ $allCommentPost->count() }}</span></a>
                                         </li>
 
                                     </ul>
@@ -405,7 +559,9 @@
 
 
                                         @forelse (App\Models\bloggerPostModel::where("id",$CommentPost->post_id)->get() as $blogInfo)
-                                            <img src="{{ asset('uploads/blogerPost') }}/{{ $blogInfo->featured_img }}" alt="" width="100px" height="100px"><p class="p-3 d-inline">{{ $blogInfo->title }}</p>
+                                            <img src="{{ asset('uploads/blogerPost') }}/{{ $blogInfo->featured_img }}"
+                                                alt="" width="100px" height="100px">
+                                            <p class="p-3 d-inline">{{ $blogInfo->title }}</p>
 
 
                                     </h5>
@@ -417,16 +573,18 @@
                                         </h5>
                                         <p class="card-text">
                                         <blockquote class="blockquote">
-                                            <p class="mb-0"><span ><svg class="quote" xmlns="http://www.w3.org/2000/svg"
-                                                        width="26" height="26" fill="currentColor"
-                                                        class="bi bi-quote" viewBox="0 0 16 16">
+                                            <p class="mb-0"><span><svg class="quote"
+                                                        xmlns="http://www.w3.org/2000/svg" width="26"
+                                                        height="26" fill="currentColor" class="bi bi-quote"
+                                                        viewBox="0 0 16 16">
                                                         <path
                                                             d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z" />
                                                     </svg></span>{{ $CommentPost->commment }}
                                             </p>
                                         </blockquote>
                                         </p>
-                                        <a href="{{ route('bloggerDetailsPage', $blogInfo->slug) }}" class="btn btn-primary">Go to post</a>
+                                        <a href="{{ route('bloggerDetailsPage', $blogInfo->slug) }}"
+                                            class="btn btn-primary">Go to post</a>
                                     </div>
                                 </div>
 
@@ -453,7 +611,7 @@
     </div>
 
     <!-- core:js -->
-    <script src="{{ asset('dashboard_asset/vendors/core/core.js') }}"></script>
+    {{-- <script src="{{ asset('dashboard_asset/vendors/core/core.js') }}"></script> --}}
     <!-- endinject -->
     <!-- plugin js for this page -->
     <!-- end plugin js for this page -->

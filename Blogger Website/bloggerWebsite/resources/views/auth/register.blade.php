@@ -102,7 +102,20 @@
     <link rel="stylesheet" href="{{ asset('dashboard_asset/css/demo_1/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('dashboard_asset/images/favicon.png') }}" />
+
+
+    <style>
+
+        @media (min-width: 300px) and (max-width: 575px) {
+           .leftBackground{
+            display: none;
+           }
+        }
+        
+    </style>
 </head>
+
+
 
 <body>
     <div class="main-wrapper">
@@ -113,14 +126,17 @@
                     <div class="col-md-8 col-xl-6 mx-auto">
                         <div class="card">
                             <div class="row">
-                                <div class="col-md-4 pr-md-0">
+                                <div class="col-md-4 pr-md-0 leftBackground">
                                     <div class="auth-left-wrapper">
-                                       <img height="705px" width="235px" src="{{asset("dashboard_asset/images/signup.jpg")}}" alt="">
+                                        <img height="705px" width="235px"
+                                            src="{{ asset('dashboard_asset/images/signup.jpg') }}" alt="">
                                     </div>
                                 </div>
                                 <div class="col-md-8 pl-md-0">
                                     <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo d-block mb-2"><img width="50px" height="50px" src="{{asset("dashboard_asset/images/logo.png")}}" alt=""></a>
+                                        <a href="#" class="noble-ui-logo d-block mb-2"><img width="50px"
+                                                height="50px" src="{{ asset('dashboard_asset/images/logo.png') }}"
+                                                alt=""></a>
                                         <h5 class="text-muted font-weight-normal mb-4">Create a free account.</h5>
                                         <form class="forms-sample" method="POST" action="{{ route('register') }}">
                                             @csrf
@@ -175,24 +191,26 @@
                                                 </span>
                                             @enderror
 
-                                            
+
                                             <div class="my-3">
                                                 {!! NoCaptcha::display() !!}
                                             </div>
 
                                             <div class="mt-3">
-                                                <button
-                                                    class="btn btn-primary text-white mr-2 mb-2 mb-md-0" type="submit">Sign up</button>
+                                                <button class="btn btn-primary text-white mr-2 mb-2 mb-md-0"
+                                                    type="submit">Sign up</button>
                                                 {{-- <button type="button"
                                                     class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
                                                     <i class="btn-icon-prepend" data-feather="twitter"></i>
                                                     Sign up with twitter
                                                 </button> --}}
                                             </div>
-                                            <a href="{{route("login")}}" class="d-block mt-3 text-muted">Already a user? Sign
+                                            <a href="{{ route('login') }}" class="d-block mt-3 text-muted">Already a
+                                                user? Sign
                                                 in</a>
-                                                
-                                            <a href="{{route("homePage")}}" class="d-inline mt-3 text-muted">Back to the Home</a>
+
+                                            <a href="{{ route('homePage') }}" class="d-inline mt-3 text-muted">Back to
+                                                the Home</a>
                                         </form>
                                     </div>
                                 </div>
@@ -220,5 +238,3 @@
 </body>
 
 </html>
-
-    

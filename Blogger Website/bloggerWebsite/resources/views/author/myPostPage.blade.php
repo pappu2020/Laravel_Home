@@ -3,9 +3,14 @@
 <style>
     .content {
         margin-top: 30px;
-        width: 550px;
+        width: 480px;
         height: 400px;
         overflow: scroll;
+
+    }
+
+    .contentPara {
+        font-size: 15px;
     }
 
     .title_div {
@@ -27,6 +32,42 @@
         margin-left: 50px;
         margin-top: 25PX;
     }
+
+
+    @media (min-width: 300px) and (max-width: 575px) {
+
+        .content {
+            margin-top: 30px;
+            width: 300px;
+            height: 400px;
+            overflow: scroll;
+        }
+
+        .contentPara {
+            font-size: 15px;
+        }
+
+        .title_div {
+
+            background-color: green;
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            margin-left: 5px;
+            margin-bottom: 10px;
+
+        }
+
+        .myPostCard {
+            margin-right: 0px;
+            margin-left: 0px;
+            margin-top: 25PX;
+        }
+
+
+
+    }
 </style>
 
 
@@ -37,7 +78,7 @@
     <div class="row">
 
         @foreach ($authorPosts as $authorPost)
-            <div class="card rounded col-lg-5 myPostCard">
+            <div class="card rounded col-lg-5 col-sm-12 myPostCard">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
@@ -60,8 +101,8 @@
                                         d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
                                 </svg></button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{{route("myPostUpdatePage",$authorPost->id)}}">Edit</a>
-                                <a class="dropdown-item" href="{{route("myPostDelete",$authorPost->id)}}">Delete</a>
+                                <a class="dropdown-item" href="{{ route('myPostUpdatePage', $authorPost->id) }}">Edit</a>
+                                <a class="dropdown-item" href="{{ route('myPostDelete', $authorPost->id) }}">Delete</a>
                                 <a class="dropdown-item" href="#">Go to post</a>
                             </div>
                         </div>
@@ -85,7 +126,7 @@
                             src="{{ asset('uploads/blogerPost') }}/{{ $authorPost->featured_img }}" alt="">
 
                         <div class="content">
-                            <p> {!! $authorPost->description !!}</p>
+                            <p class="contentPara"> {!! $authorPost->description !!}</p>
                         </div>
                 </div>
                 <div class="card-footer">

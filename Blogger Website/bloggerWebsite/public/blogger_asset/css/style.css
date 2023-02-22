@@ -862,6 +862,18 @@ ul {
   padding: 30px;
 }
 
+@media (min-width: 300px) and (max-width: 575px) {
+
+.login-content {
+  border: 1px solid #E6E7E7;
+  padding: 20px;
+  width: 324px;
+  margin-left: -100px;
+}
+
+
+}
+
 .login-content h4 {
   margin-bottom: 20px;
 }

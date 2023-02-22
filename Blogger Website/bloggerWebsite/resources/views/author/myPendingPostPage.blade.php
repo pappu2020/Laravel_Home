@@ -1,11 +1,16 @@
 @extends('layouts.dashboardLayout')
 
 <style>
-    .content {
+     .content {
         margin-top: 30px;
-        width: 550px;
+        width: 480px;
         height: 400px;
         overflow: scroll;
+
+    }
+
+    .contentPara {
+        font-size: 15px;
     }
 
     .title_div {
@@ -28,10 +33,45 @@
         margin-top: 25PX;
     }
 
-    .nodata{
+
+    .nodata {
         margin: auto;
         padding: 50px;
         color: red;
+    }
+
+
+    @media (min-width: 300px) and (max-width: 575px) {
+
+        .content {
+            margin-top: 30px;
+            width: 300px;
+            height: 400px;
+            overflow: scroll;
+        }
+
+        .contentPara {
+            font-size: 15px;
+        }
+
+        .title_div {
+
+            background-color: green;
+            padding: 10px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            margin-left: 5px;
+            margin-bottom: 10px;
+
+        }
+
+        .myPostCard {
+            margin-right: 0px;
+            margin-left: 0px;
+            margin-top: 25PX;
+        }
+
     }
 </style>
 
