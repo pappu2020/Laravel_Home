@@ -1,0 +1,261 @@
+.mainContainer {
+    margin-left: 120px;
+}
+
+body {
+   background: #1f4037;
+   /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #99f2c8, #1f4037);
+   /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #99f2c8, #1f4037);
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+}
+
+
+
+
+
+
+.leftPartMain {
+    background-color: #243A59; 
+   
+}
+
+.imageDiv {
+    padding-left: 65px;
+    padding-top: 20px;
+
+}
+
+.contactDiv {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.heading {
+    color: white;
+
+    border-bottom: 3px solid white;
+    display: inline;
+    padding-bottom: 2px;
+}
+
+.contactInfo {
+    color: white;
+    margin-top: 12px;
+}
+
+.contactPara {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.contactParaLinkedInMain{
+    font-size: 8px;
+    margin-left: 5px;
+}
+
+.contactParaLinkedIn {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.infoDiv {
+    margin-bottom: 5px;
+}
+
+.skillsDiv {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.skillsHeading {
+    color: white;
+    font-size: 10px;
+    margin-top: 10px;
+    ;
+}
+
+.skillsProgress {
+    height: 7px;
+    margin-bottom: 10px;
+    margin-top: -10px;
+}
+
+.progressPara {
+    font-size: 7px;
+    ;
+}
+
+.skillsCircleDiv {
+    margin-left: 47px;
+    margin-top: 4px;
+    color: white;
+}
+
+.skillsCircleDiv2 {
+    margin-left: 3px;
+    margin-top: 4px;
+    color: white;
+}
+
+.skillsCircleDiv3 {
+    margin-left: 3px;
+    margin-top: 4px;
+    color: white;
+}
+
+.skillsCircleDiv4 {
+    margin-left: 3px;
+    margin-top: 4px;
+    color: white;
+}
+
+.skillsCircleDiv5 {
+    margin-left: 3px;
+    margin-top: 4px;
+    color: white;
+}
+
+
+.skillsCircleDiv6 {
+    margin-left: 47px;
+    margin-top: -9px;
+    color: white;
+}
+
+.skillsCircleDiv7 {
+    margin-left: 3px;
+    margin-top: -9px;
+    color: white;
+}
+
+.skillsCircleDiv8 {
+    margin-left: 3px;
+    margin-top: -9px;
+    color: white;
+}
+
+.skillsCircleDiv9 {
+    margin-left: 3px;
+    margin-top: -9px;
+    color: white;
+}
+
+.skillsCircleDiv10 {
+    margin-left: 3px;
+    margin-top: -9px;
+    color: white;
+}
+
+
+.skillsCircle {
+    display: inline;
+
+}
+
+.skillsHeading2 {
+    color: white;
+    font-size: 10px;
+    margin-top: -3px;
+
+}
+
+
+
+
+/* Right part */
+.rightPartMain {
+    background-color: white;
+    width: 762px;
+}
+
+.nameDiv {
+    padding-top: 10px;
+    padding-left: 255px;
+    background-color: #96EEC5;
+    width: 762px;
+    color: black;
+    padding-bottom: 20px;
+    margin-left: -12px;
+    font-weight: 900;
+}
+
+.myWorkTitle {
+    margin-left: 13px;
+}
+
+
+.nameHr {
+
+
+    border: none;
+    border-top: 4px dashed black;
+
+
+    height: 1px;
+    width: 35%;
+    margin-left: 22px;
+
+
+}
+
+.summaryDiv {
+    margin-top: 30px;
+    margin-left: 15px;
+}
+
+.Summaryheading {
+    color: blue;
+
+    border-bottom: 2px solid black;
+    display: inline;
+    padding-bottom: 3px;
+}
+
+.summaryInfo {
+    width: 730px;
+    margin-top: 10px;
+}
+
+.eduDiv {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.eduInfo {
+    margin-top: 13px;
+    color: black;
+    line-height: 8px;
+}
+
+.projectDiv {
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.subLi {
+    margin-top: -10px;
+    font-style: italic;
+}
+
+.certificationDiv {
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+
+.referenceDiv {
+    margin-left: 15px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.refInfo {
+    margin-top: 25px;
+    line-height: 8px;
+}

@@ -206,4 +206,12 @@ function homeSocialUpdateShow($homeSocialUpdate){
 
 }
 
+
+
+//cv
+
+function pappu_saha_cv(){
+    return view("admin.homeSection.pappu_saha_cv");
+}
+
 }

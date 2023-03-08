@@ -163,7 +163,7 @@
                                     </ul>
                                 </div>
                                 <a href="#portfolio" class="btn wow fadeInUp" data-wow-delay="1s">SEE PORTFOLIOS</a>
-                                <a href="{{route("display_pdf")}}" target="_blank" class="btn wow fadeInUp" data-wow-delay="1s">SEE CV</a>
+                                <a href="{{route("pappu_saha_cv")}}" target="_blank" class="btn wow fadeInUp" data-wow-delay="1s">SEE CV</a>
                                
                             </div>
                         </div>

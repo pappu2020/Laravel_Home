@@ -73,6 +73,10 @@ Route::get("/homeSectionpage/HomeParmanentdelete/{homeSecParDelId}", [homeSectio
 Route::post("/homeSectionpage/homeContentUpdate", [homeSectionController::class, "homeContentUpdate"])->name("homeContentUpdate");
 
 
+//CV
+Route::get("/pappu_saha_cv", [homeSectionController::class, "pappu_saha_cv"])->name("pappu_saha_cv");
+
+
 
 
 

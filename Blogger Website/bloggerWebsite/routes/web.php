@@ -250,3 +250,9 @@ Route::get("/insertNewsletter", [newsletterController::class, "insertNewsletter"
 
 
 
+
+
+
+
+
+
